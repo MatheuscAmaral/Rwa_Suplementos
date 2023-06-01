@@ -75,22 +75,22 @@
 }
 
 .creatine5_0 {
-    background-color: rgb(32, 166, 211);    
+    background-color: rgb(36, 34, 34);    
     color: white;
     display: flex;
 
 } 
 
 .t1 {
-    padding-left: 10%;
+    padding-left: 11%;
     padding-top: 2%;
 }
- .img_creatine5_0muscle {
-    padding-left: 20%;
-    padding-top: 10%
+ .img_creatine5_0 {
+    padding-left: 13%;
+    padding-top: 3%
  }
 .t2 {
-    padding-left: 25%;
+    padding-left: 20%;
     padding-top: 2%;
 }
 /* Menu Sessao card */
