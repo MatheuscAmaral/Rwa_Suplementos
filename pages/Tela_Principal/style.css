@@ -55,6 +55,11 @@
     margin-right: 10px;
 }
 
+.search.active input{
+  border-radius: 5px 5px 0 0;
+}
+
+
 .btn {
     color:  rgb(255, 255, 255) !important;
     border: none !important;
