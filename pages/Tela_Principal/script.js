@@ -32,5 +32,34 @@ inputBox.onkeyup =(e)=>{
             return data = `<li>${data}</li>`;
         })
         searchWrapper.classList.add('active');
+        ShowSuggestions(emptyArray);
+        let allList = sugestBox.querySelectorAll('li');
+        for (let i = 0; i < allList.length; i++) {
+            allList[i].setAttribute('onclick', 'select(this)');z    
+        } 
     }
+}
+
+function select(element){
+    let selectData = element.textContent;
+    inputBox.value = selectData;
+    lupa.onclick = ()=>{
+        webLink = `/pages/=${selectData}/index.html`
+        linkTag.setAttribute('href', webLink);
+        linkTag.click();
+    }
+    searchWrapper.classList.remove('active');
+}
+
+function ShowSuggestions(list){
+    let listData;
+    if (!list.length){
+        userValue = inputBox.value;
+        listData = `<li>${userData}</li>`
+    }
+    else {
+        listData = list.join('');
+    }
+
+    sugestBox.innerHTML = listData;
 }
