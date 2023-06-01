@@ -73,7 +73,27 @@
     transition: 0.2s;
     color: blue !important;
 }
+ 
+.wheyprom {
+    background-color: rgb(32, 166, 211);
+    color: white;
+    display: flex;
 
+} 
+
+.t1 {
+    padding-left: 13%;
+    padding-top: 2%;
+}
+.img_wheydux {
+    padding-left: 8%;
+    padding-top: 3%;
+   
+}
+.t2 {
+    padding-left: 5%;
+    padding-top: 2%;
+}
 
 /* Menu Sessao card */
 

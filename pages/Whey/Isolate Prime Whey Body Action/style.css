@@ -74,7 +74,26 @@
     color: blue !important;
 }
 
+.wheyprom {
+    background-color: rgb(49, 49, 214);
+    color: white;
+    display: flex;
 
+} 
+
+.t1 {
+    padding-left: 13%;
+    padding-top: 2%;
+}
+.img_wheyisolateprime {
+    padding-left: 3%;
+    padding-top: 2%;
+   
+}
+.t2 {
+    padding-left: 9%;
+    padding-top: 2%;
+}
 /* Menu Sessao card */
 
 .compras {

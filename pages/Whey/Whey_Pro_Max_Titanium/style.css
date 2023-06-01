@@ -74,6 +74,27 @@
     color: blue !important;
 }
 
+.wheyprom {
+    background-color: rgb(32, 166, 211);
+    color: white;
+    display: flex;
+
+} 
+
+.t1 {
+    padding-left: 13%;
+    padding-top: 2%;
+}
+.img_wheypromax {
+    padding-left: 8%;
+    padding-top: 5%;
+   
+}
+.t2 {
+    padding-left: 20%;
+    padding-top: 2%;
+}
+
 
 /* Menu Sessao card */
 

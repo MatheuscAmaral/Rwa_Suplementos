@@ -74,7 +74,25 @@
     color: blue !important;
 }
 
+.creatine5_0 {
+    background-color: rgb(32, 166, 211);    
+    color: white;
+    display: flex;
 
+} 
+
+.t1 {
+    padding-left: 10%;
+    padding-top: 2%;
+}
+ .img_creatine5_0muscle {
+    padding-left: 20%;
+    padding-top: 10%
+ }
+.t2 {
+    padding-left: 25%;
+    padding-top: 2%;
+}
 /* Menu Sessao card */
 
 .compras {
