@@ -74,6 +74,27 @@
     color: blue !important;
 }
 
+.Whey_Integral_Medica {
+    background-color: rgb(32, 166, 211);
+    color: white;
+    display: flex;
+}
+
+.t1 {
+    padding-left: 15%;
+    padding-top: 2%;
+}
+
+.t2 {
+    padding-top: 2%;
+    padding-right: 20%;
+}
+
+.img_whey_integralm {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
 
 /* Menu Sessao card */
 

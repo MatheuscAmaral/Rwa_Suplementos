@@ -74,6 +74,27 @@
     color: blue !important;
 }
 
+.Whey_Body_Action {
+    background-color: rgb(32, 166, 211);
+    color: white;
+    display: flex;
+}
+
+.t1 {
+    padding-left: 17%;
+    padding-top: 2%;
+}
+
+.t2 {
+    padding-top: 2%;
+    padding-left: 7%;
+}
+
+.img_whey_bodyaction {
+    padding-left: 10%;
+    padding-top: 4%;
+}
+
 
 /* Menu Sessao card */
 
