@@ -112,11 +112,14 @@
     border-radius: 10px;
     background-color:#ddd;
     transition: 0.2s;
+    opacity: 0; 
+    transition: opacity 0.3s; 
 }
 
 .compras:hover {
-    background-color: rgba(0, 0, 0, 0.707);
+    background-color: black;
     color: white;
+    opacity: 1;
 }
 
 h2 {
@@ -132,6 +135,7 @@ h2 {
   width: 200px;
   transition: box-shadow 0.3s ease;
 }
+
 
 .card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
