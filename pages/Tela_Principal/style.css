@@ -29,7 +29,6 @@
 
 .cabecalho-central {
     display: flex;
-    gap: 30px;
 }
 
 .cabecalho-central-text {
@@ -79,7 +78,6 @@
     color: blue !important;
 }
 
-
 /* carrosel */
 
 .carrosel {
@@ -99,9 +97,6 @@
     flex-direction: row;
   }
 
-.card-promocao {
-    padding-left: 20px;
-}
 
 .compras {
     margin-top: 10px;
@@ -134,6 +129,11 @@ h2 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   width: 200px;
   transition: box-shadow 0.3s ease;
+
+}
+
+.card-text {
+  text-align: center;
 }
 
 
