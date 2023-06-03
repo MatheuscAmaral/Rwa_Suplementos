@@ -18,7 +18,6 @@
     align-items: center;
     justify-content: space-around;
     background-color: white;
-    margin-bottom: 50px;
     border-top: 1px solid rgb(255, 255, 255); 
 }
 
@@ -110,8 +109,125 @@ p {
   margin-bottom: 20px;
 }
 
+.conheca_o_top10 {
+    background-color: rgb(4, 0, 66);
+    color: white;
+    display: flex;
+    background-image: url('/pages/Tela_Principal/Imagens/Untitled_design__2_.png');
+}
+
+.t1 {
+    padding-left: 20%;
+    padding-top: 2.5%;
+    padding-bottom: 2%;
+}
+
+
+
+.img_whey {
+    padding-left: 20%;
+}
+
+.top1 {
+    padding-left: 12%;
+    padding-top: 2%;
+}
+
+.top2 {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
+.top3 {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
+.top4 {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
+.top5 {
+    padding-left: 2%;
+    padding-top: 2%;
+}
+
+.top_5 {
+    display: flex;
+}
+
+.top_10 {
+    display: flex;
+}
+
+.top6 {
+    padding-left: 12%;
+    padding-top: 1%;
+}
+
+.top7 {
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+.top8 {
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+.top9 {
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+.top10 {
+    padding-left: 2%;
+    padding-top: 1%;
+}
+
+#img_redonda1 {
+    border-radius: 7%;
+}
+
+#img_redonda2 {
+    border-radius: 7%;
+}
+
+#img_redonda3 {
+    border-radius: 7%;
+}
+
+#img_redonda4 {
+    border-radius: 7%;
+}
+
+#img_redonda5 {
+    border-radius: 7%;
+}
+
+#img_redonda6 {
+    border-radius: 7%;
+}
+
+#img_redonda7 {
+    border-radius: 7%;
+}
+
+#img_redonda8 {
+    border-radius: 7%;
+}
+
+#img_redonda9 {
+    border-radius: 7%;
+}
+
+#img_redonda10 {
+    border-radius: 7%;
+}
+
 .footer {
-    padding-top: 29.5%;
+    padding-top: 5%;
 }
 /* Rodape cima*/
 .footer-cima {
