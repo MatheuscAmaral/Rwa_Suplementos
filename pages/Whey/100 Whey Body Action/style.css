@@ -86,16 +86,39 @@
 }
 
 .t2 {
-    padding-top: 2%;
-    padding-left: 7%;
+    padding-top: 14%;
+
 }
 
 .img_whey_bodyaction {
     padding-left: 10%;
     padding-top: 4%;
 }
+ 
+.t3 {
+    padding-top: 8%;
+    color: rgb(0, 255, 0); 
+    font-family: 'poppins';
+    font-weight: 700;
+    font-weight: bold;
+    display: flex;
+}
 
+.t4 {
+    color: grey;
+    padding-bottom: 5%;
+}
 
+.t5 {
+    padding-top: 5%;
+    text-align: center;
+}
+.t6 {
+    display: inline-block;
+}
+.cor_bolepix {
+    color: rgb(0, 255, 0); 
+}
 /* Menu Sessao card */
 
 .compras {
@@ -107,6 +130,19 @@
     border-radius: 10px;
     background-color:#ddd;
     transition: 0.2s;
+}
+
+.compras2 {
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(0, 255, 0);;
+    transition: 0.2s;
+    color: black;
+    
 }
 
 .compras:hover {
