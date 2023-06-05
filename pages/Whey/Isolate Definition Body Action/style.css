@@ -81,20 +81,33 @@
 }
 
 .t1 {
-    padding-left: 17%;
+    padding-left: 24%;
     padding-top: 2%;
 }
 
 .t2 {
     padding-top: 14%;
-
 }
 
 .img_whey_bodyaction {
     padding-left: 1%;
     padding-top: 4%;
+    padding-right: 4%;
 }
  
+.beneficios {
+    background-color: rgb(171, 171, 185);
+}
+
+.bene {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.img_bene {
+    padding-left: 31%;
+}
+
 .t3 {
     padding-top: 8%;
     color: rgb(0, 255, 0); 
@@ -162,9 +175,7 @@ p {
   margin-bottom: 20px;
 }
 
-.footer {
-    padding-top: 29.5%;
-}
+
 /* Rodape cima*/
 .footer-cima {
     padding: 50px;

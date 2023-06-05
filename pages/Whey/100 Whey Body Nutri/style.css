@@ -82,7 +82,7 @@
 } 
 
 .t1 {
-    padding-left: 19%;
+    padding-left: 22%;
     padding-top: 2%;
 }
 .img_wheypromax {
@@ -95,6 +95,19 @@
 
     padding-top: 20%;
     padding-bottom: 15%;
+}
+
+.beneficios {
+    background-color: rgb(171, 171, 185);
+}
+
+.bene {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.img_bene {
+    padding-left: 31%;
 }
 
 .t3 {
@@ -170,9 +183,6 @@ p {
   margin-bottom: 20px;
 }
 
-.footer {
-    padding-top: 29.5%;
-}
 /* Rodape cima*/
 .footer-cima {
     padding: 50px;

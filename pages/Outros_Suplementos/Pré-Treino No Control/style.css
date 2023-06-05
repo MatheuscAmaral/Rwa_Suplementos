@@ -81,18 +81,19 @@
 }
 
 .t1 {
-    padding-left: 7%;
+    padding-left: 23%;
     padding-top: 2%;
 }
 
 .t2 {
     padding-top: 14%;
-    padding-left: 5%;
 }
 
 .img_whey_bodyaction {
-    padding-left: 17%;
+    padding-left: 3%;
     padding-top: 4%;
+    padding-right: 10%;
+    padding-bottom: 5%;
 }
  
 .t3 {
@@ -164,7 +165,7 @@ p {
 }
 
 .footer {
-    padding-top: 29.5%;
+    padding-top: 8.5%;
 }
 /* Rodape cima*/
 .footer-cima {

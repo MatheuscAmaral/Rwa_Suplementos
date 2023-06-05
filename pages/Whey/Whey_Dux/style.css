@@ -80,8 +80,21 @@
     display: flex;
 }
 
+.beneficios {
+    background-color: rgb(171, 171, 185);
+}
+
+.bene {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.img_bene {
+    padding-left: 31%;
+}
+
 .t1 {
-    padding-left: 17%;
+    padding-left: 27%;
     padding-top: 2%;
 }
 
@@ -163,9 +176,7 @@ p {
   margin-bottom: 20px;
 }
 
-.footer {
-    padding-top: 29.5%;
-}
+
 /* Rodape cima*/
 .footer-cima {
     padding: 50px;

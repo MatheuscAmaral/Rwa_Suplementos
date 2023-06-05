@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: white;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     border-top: 1px solid rgb(255, 255, 255); 
 }
 
@@ -81,17 +81,16 @@
 }
 
 .t1 {
-    padding-left: 7%;
+    padding-left: 15%;
     padding-top: 2%;
 }
 
 .t2 {
-    padding-top: 14%;
+    padding-top: 18%;
 
 }
 
 .img_whey_bodyaction {
-    padding-left: 1%;
     padding-top: 4%;
 }
  
@@ -162,9 +161,7 @@ p {
   margin-bottom: 20px;
 }
 
-.footer {
-    padding-top: 29.5%;
-}
+
 /* Rodape cima*/
 .footer-cima {
     padding: 50px;
