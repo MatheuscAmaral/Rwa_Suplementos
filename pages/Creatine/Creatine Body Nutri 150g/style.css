@@ -178,6 +178,7 @@ p {
     font-size: 1em;
     width: 300px;
     border-radius: 5px;
+    display: flex;
 }
 
 .footer-cima a {
