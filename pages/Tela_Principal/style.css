@@ -24,7 +24,7 @@
 
 .cabecalho-logo {
     height: 110px;
-    margin-left: 50px;
+    padding-left: 50%;
 }
 
 .cabecalho-central {
@@ -32,7 +32,6 @@
 }
 
 .cabecalho-central-text {
-    font-size: large;
     text-decoration: none;
     color: white;
     transition: 0.3s;
@@ -44,25 +43,15 @@
 
 .cabecalho-barra {
     display: flex;
-    flex-direction: row;
     gap: 10px;
     align-items: center;
 }
 
-.cabecalho-barra-img {
-    padding-bottom: 5px;
-    margin-right: 10px;
-}
 
-.search.active input{
-  border-radius: 5px 5px 0 0;
-}
-
-
-  .btn {
+.btn {
       color:  rgb(255, 255, 255) !important;
       border: none !important;
-  }
+}
 
 .btn:hover {
     background-color: rgba(0, 0, 0, 0.503) !important;
@@ -72,6 +61,25 @@
 .btn-lupa {
     padding-bottom: 5px;
 }
+.btn-primary {
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.bi-person-circle {
+  margin-right: 5px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+
 
 .nav-link:hover {
     transition: 0.2s;
@@ -134,9 +142,6 @@
   padding-left: 10%;
   padding-bottom: 8%;
 }
-
-
-
 
 .produtos1 {
   display: flex;
@@ -203,13 +208,12 @@
   padding-left: 2%;
   padding-top: 3%;
 }
+
 .compras:hover {
   background-color: rgba(0, 0, 0, 0.707);
   color: white;
   opacity: 1;
 }
-
-
 
 h2 {
 font-size: 24px;

@@ -3,12 +3,12 @@
 
 /* reset geral */
 * {
-    font-family: 'poppins'; 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 100%;
 }
+
 
 /* cabecalho */
 .cabecalho {
@@ -30,6 +30,7 @@
 .cabecalho-central {
     display: flex;
     gap: 30px;
+    font-family: 'poppins'; 
 }
 
 .cabecalho-central-text {
@@ -82,34 +83,22 @@
 } 
 
 .t1 {
-    padding-left: 15%;
+    padding-left: 24%;
     padding-top: 2%;
 }
 .img_wheypromax {
-    padding-left: 1%;
+    padding-left: 6%;
     padding-top: 5%;
     padding-bottom: 5%;
+   
 }
 .t2 {
-    padding-top: 15%;
+    padding-left: 20%;
+    padding-top: 18%;
     padding-bottom: 15%;
 }
 
-.beneficios {
-    background-color: rgb(171, 171, 185);
-}
-
-.bene {
-    text-align: center;
-    padding-top: 5%;
-}
-
-.img_bene {
-    padding-left: 31%;
-}
-
 .t3 {
-    padding-right: 8%;
     padding-top: 8%;
     color: rgb(0, 255, 0); 
     font-family: 'poppins';
@@ -130,8 +119,22 @@
 .t6 {
     display: block;
 }
+
+.beneficios {
+    background-color: rgb(171, 171, 185);
+}
+
+.bene {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.img_bene {
+    padding-left: 31%;
+}
+
 .cor_bolepix {
-    color: rgb(0, 255, 0); 
+    color: rgb(0, 255, 0);
 }
 
 /* Menu Sessao card */
@@ -158,29 +161,37 @@
     text-align: center;
     padding: 10px;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 10px;    
     background-color: rgb(0, 255, 0);;
     transition: 0.2s;
     color: black;
+    
 }
+
 
 h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  font-family: 'poppins'; 
 }
 
 
 h3 {
   font-size: 14px;
   margin-bottom: 10px;
+  font-family: 'poppins'; 
 }
 
 p {
   font-size: 16px;
   margin-bottom: 20px;
+  font-family: 'poppins'; 
 }
 
+.footer {
+    font-family: 'poppins'; 
+}
 /* Rodape cima*/
 .footer-cima {
     padding: 50px;
