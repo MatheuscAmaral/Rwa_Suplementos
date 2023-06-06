@@ -49,18 +49,12 @@ body {
     align-items: center;
     background-color: white;
     width: 355px;
-    height: 320px;
+    height: 500px;
     padding: 35px;
     border-radius: 10px;
 }
 
 .login form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.login form2 {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -76,10 +70,10 @@ body {
     border-radius: 8px;
 }
 
-
 .login img {
     width: 75px;
     height: auto;
+
 }
 
 .input::placeholder{
