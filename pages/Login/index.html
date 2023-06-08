@@ -30,13 +30,30 @@
 
             </div>
 
-            <form>
-
-                <input type="text" name="usuario" placeholder="Email" id="login" autofocus>
-                <input type="password" name="senha" placeholder="Sua senha" id="senha">
-                <input type="submit" name="Entrar" onclick="logar(); return false">
-
-            </form>
+            <div class="container">
+              <div class="card">
+        
+                <div id="msgError"></div>
+        
+                <div class="label-float">
+                  <input type="text" id="usuario" placeholder="Usuário" required />
+                  <label id="userLabel" for="usuario"></label>
+                </div>
+        
+                <div class="label-float">
+                  <input type="password" id="senha" placeholder="Sua senha" required />
+                  <label id="senhaLabel" for="senha"></label>
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+        
+                <div class="justify-center">
+                  <input type="submit" id="entrar" onclick="entrar()"></input>
+                </div>
+        
+                <div class="justify-center">
+                  <hr />
+                </div>
+        
             
             <p>
                 Ainda não tem uma conta? 

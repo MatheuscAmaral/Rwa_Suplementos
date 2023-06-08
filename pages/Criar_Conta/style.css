@@ -49,11 +49,20 @@ body {
     align-items: center;
     background-color: white;
     width: 355px;
-    height: 500px;
+    height: 490px;
     padding: 35px;
     border-radius: 10px;
 }
 
+.login #cadastrar {
+    width: 300px;
+    background-color: #230fd3;
+}
+
+input[type="submit"] {
+    text-transform: uppercase;
+  }
+  
 .login form {
     display: flex;
     flex-direction: column;
@@ -63,9 +72,9 @@ body {
 .login input {
     margin-top: 10px;
     color: black;
-    padding-left: 10px;
     border: 2px solid black;
     height: 45px;
+    width: 300px;
     outline: none;
     border-radius: 8px;
 }
@@ -98,3 +107,4 @@ a {
     color: #14087e;
     text-decoration: none;
 }
+

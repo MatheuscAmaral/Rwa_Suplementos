@@ -49,7 +49,7 @@ body {
     align-items: center;
     background-color: white;
     width: 355px;
-    height: 320px;
+    height: 350px;
     padding: 35px;
     border-radius: 10px;
 }
@@ -69,14 +69,21 @@ body {
 .login input {
     margin-top: 10px;
     color: black;
-    padding-left: 10px;
     border: 2px solid black;
     height: 45px;
+    width: 100%;
     outline: none;
     border-radius: 8px;
 }
 
+.login #entrar {
+    background-color: #230fd3;
+}
 
+input[type="submit"] {
+    text-transform: uppercase;
+  }
+    
 .login img {
     width: 75px;
     height: auto;
