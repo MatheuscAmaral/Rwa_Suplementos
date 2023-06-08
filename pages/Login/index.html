@@ -34,7 +34,7 @@
 
                 <input type="text" name="usuario" placeholder="Email" id="login" autofocus>
                 <input type="password" name="senha" placeholder="Sua senha" id="senha">
-                <input type="submit" name="Entrar" onclick="logar(); return false" >
+                <input type="submit" name="Entrar" onclick="logar(); return false">
 
             </form>
             
@@ -47,26 +47,6 @@
 
         </div>
     </section>
-
-    <script>
-        function logar() {
-
-          var login = document.getElementById('login').value;
-          var senha = document.getElementById('senha').value;
-          
-          if (login == "admin" && senha == "admin") {
-                alert('Sucesso');
-                location.href = "/pages/Tela_Principal/index.html";
-          }
-
-          else {
-                alert('Usuário ou Senha incorretos.');
-                login = block;
-          }
-
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
