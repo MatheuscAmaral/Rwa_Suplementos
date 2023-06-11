@@ -214,6 +214,13 @@ const products = [
     }
 ]
 
+const formatter = Intl.NumberFormat('pt-BR', {
+    style: "currency",
+    currency: 'BRL',
+    maximumFractionDigits: 2,
+})
+
+
 const listContainer = document.querySelector('#list');
 const header = document.querySelector('#header');
 const search = document.querySelector('#search');
@@ -227,12 +234,13 @@ function render(products){
     
     else {
         products.forEach((product, index) => {
+          
             list+=`
             <div class="product">
             <div class="product-image">
-            <img src="${product.poster}" alt=""
+            <img src="${product.poster}" alt="" width="10%"
             </div>
-            ${product.title} - ${product.price}
+            ${product.title} - ${formatter.format(product.price)}
             <a href="">
                 <div class="product-button" data-id="${product.id}">
                     Remove
@@ -245,4 +253,23 @@ function render(products){
     listContainer.innerHTML = list;
 }
 
+function removeProduct(productId) {
+    const index = products.findIndex((product) => {
+        return +product.id == +productId;
+    });
+
+    if(index > -1){
+        products.splice(index, 1);
+        render(products);
+    }
+}
+
+document.body.addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    const productId = event.target.getAttribute('data-remove');
+    if (productId) {
+        removeProduct(productId);
+    }
+});
 render(products);
