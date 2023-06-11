@@ -117,29 +117,132 @@ const products = [
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/ripzzz-triptofano-.png'
     },
+
+    {
+        id: 18,
+        title: 'Triptofano New Nutrition',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/triptofanonewnutrition.png'
+    },
+
+    {
+        id: 19, 
+        title: 'Complexo B New Nutrition',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/complexo-b-120.png'
+    },
+
+    {
+        id: 20,
+        title: 'Thermo cut HD Muscle Hd',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/thermo-cut-hd-.png'
+    },
+
+    {
+        id: 21,
+        title: 'Psillium Ocean Drop',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/pssilium_ocean_drop-.png'
+    },
+
+    {
+        id: 22, 
+        title: 'Barra de Proteina Muscle HD',
+        price: 89.90, 
+        poster: '/docs/Tela_Principal/Imagens/protein-bar-.png'
+    },
+
+    {
+        id: 23,
+        title: 'Ômega 3 Catari',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/omega-3-catarinense-.png'
+    },
+
+
+    {
+        id: 24,
+        title: 'CoQ10 Body Nutri',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/-q-10_body_nutri-.png'
+    },
+
+
+    {
+        id: 25,
+        title: 'Glutamina Black Skull',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/glutamina black skull.png'
+    },
     
-    "Triptofano New Nutrition",
-    "Complexo B New Nutrition",
-    "Thermo cut HD Muscle Hd",
-    "Psillium Ocean Drop",
-    "Barra de Proteina Muscle HD",
-    "Ômega 3 Catari",
-    "CoQ10 Body Nutri",
-    "Glutamina Black Skull",
-    "Maca Peruana Body Nutri",
-    "Equilibrium Body Nutri",
-    "Bcaa Age",
-    "Ômega 3 Muscle HD",
-    "Probiotic10 SunFood",
-    "Body Nutri",
-    "Body Action",
-    "Max Titanium",
-    "Integral Médica",
-    "Muscle Hd",
-    "New Nutrition",
-    "Age",
-    "SunFood",
-    "Black Skull",
-    "Dux",
-    "Ocean Drop"
+    {
+        id: 26,
+        title: 'Maca Peruana Body Nutri',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/maca_peruana_body_nutry-.png'
+    },
+
+
+    {
+        id: 27,
+        title: 'Equilibrium Body Nutri',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/equilibrium-.png'
+    },
+
+
+    {
+        id: 28,
+        title: 'Bcaa Age',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/bcaaa_age-.png'
+    },
+
+    {
+        id: 28,
+        title: 'Ômega 3 Muscle HD',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/omega_3musclehd-.png'
+    },
+
+    {
+        id: 29,
+        title: 'Probiotic10 SunFood',
+        price: 89.90,
+        poster: '/docs/Tela_Principal/Imagens/sunfood_probiotico.png'
+    }
 ]
+
+const listContainer = document.querySelector('#list');
+const header = document.querySelector('#header');
+const search = document.querySelector('#search');
+
+function render(products){
+    let list = '';
+
+    if (products.length <= 0) {
+        lit += `<div id="no-products"> Nenhum produto disponível</div>`;
+    }
+    
+    else {
+        products.forEach((product, index) => {
+            list+=`
+            <div class="product">
+            <div class="product-image">
+            <img src="${product.poster}" alt=""
+            </div>
+            ${product.title} - ${product.price}
+            <a href="">
+                <div class="product-button" data-id="${product.id}">
+                    Remove
+                </div>
+            </a>
+            </div>
+            `
+        })
+    }
+    listContainer.innerHTML = list;
+}
+
+render(products);
