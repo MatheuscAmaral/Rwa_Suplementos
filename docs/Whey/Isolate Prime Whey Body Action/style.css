@@ -85,14 +85,6 @@
     background-color: rgb(171, 171, 185);
 }
 
-.bene {
-    text-align: center;
-    padding-top: 5%;
-}
-
-.img_bene {
-    padding-left: 31%;
-}
 
 .t1 {
     padding-left: 24%;
@@ -189,6 +181,9 @@ p {
 
 
 /* Rodape cima*/
+.footer {
+    padding-top: 2%;
+}
 .footer-cima {
     padding: 50px;
     display: flex;
