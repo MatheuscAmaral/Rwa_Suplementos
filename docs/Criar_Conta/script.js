@@ -93,7 +93,7 @@ function cadastrar(){
     msgError.setAttribute('style', 'display: none')
     msgError.innerHTML = ''
     
-    window.location.href = '/pages/Login/index.html'
+    window.location.href = '/docs/Login/index.html'
   
     
   } else {

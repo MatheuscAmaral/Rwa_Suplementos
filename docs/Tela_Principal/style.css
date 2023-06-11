@@ -10,6 +10,43 @@
     font-size: 100%;
 }
 
+#search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 10px;
+  width: 200px;
+}
+
+.overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+
+.search-input:focus + .overlay {
+  display: block;
+}
+
+#product-list-container {
+  display: none;
+  max-height: 300px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Habilita a rolagem vertical */
+  border: 1px solid #ccc; /* Opcional: Adicione uma borda para melhorar a aparência */
+  padding: 10px; /* Opcional: Adicione um espaçamento interno */
+}
+
+.product {
+  margin-bottom: 10px; /* Opcional: Adicione um espaçamento entre os itens da lista */
+}
+
+
+
 /* cabecalho */
 .cabecalho {
     box-shadow: 0px 0px 1.2px 0px black;

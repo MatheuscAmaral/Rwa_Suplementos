@@ -57,42 +57,42 @@ const products = [
 
     {
         id: 9,
-        title: 'Creatine HD Muscle Hd',
+        title: 'Creatina HD Muscle Hd',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatina hd muscle hd.png'
     },
 
     {
         id: 10,
-        title: 'Creatine Turbo Black Skull',
+        title: 'Creatina Turbo Black Skull',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatine_black_skull-.png'
     },
 
     {
         id: 11,
-        title: 'Creatine 5.0 Muscle HD',
+        title: 'Creatina 5.0 Muscle HD',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatina 5.0 muscle hd.png'
     },
     
     {
         id: 12,
-        title: 'Creatine Body Nutri 300g',
+        title: 'Creatina Body Nutri 300g',
         price: 99.90,
         poster: '/docs/Tela_Principal/Imagens/creatine double force.png'
     },
     
     {
         id: 13,
-        title: 'Creatine Max Titanium',
+        title: 'Creatina Max Titanium',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatina-150g-max-titanium.png'
     },
 
     {
         id: 14,
-        title: 'Creatine Integral Médica',
+        title: 'Creatina Integral Médica',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatina integral medica.png'
     },
@@ -211,65 +211,106 @@ const products = [
         title: 'Probiotic10 SunFood',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/sunfood_probiotico.png'
+    },
+
+    {
+        id: 30, 
+        title: 'Zma Growth',
+        price: 89.90
+    },
+
+    {
+        id: 31,
+        title: 'Zma Body Nutry',
+        price: 89.90
+    },
+
+    {
+        id: 32,
+        title: 'Fiber Premium Growth',
+        price: 89.90
+    },
+
+    {
+        id: 33,
+        title: 'Colágeno Hidrolisado Body Nutri',
+        price: 89.90
+    },
+
+    {
+        id:34,
+        title: 'Vit C Body Nutri',
+        price: 89.90
+    },
+
+    {
+        id: 35,
+        title: 'Complexo B Growth',
+        price: 89.90
     }
+
 ]
 
+  
 const formatter = Intl.NumberFormat('pt-BR', {
-    style: "currency",
+    style: 'currency',
     currency: 'BRL',
     maximumFractionDigits: 2,
-})
+  });
 
+  function renderProducts(products) {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = '';
 
-const listContainer = document.querySelector('#list');
-const header = document.querySelector('#header');
-const search = document.querySelector('#search');
+    if (products.length === 0) {
+      productList.innerHTML = '<div class="no-products">Nenhum produto disponível</div>';
+    } else {
+      products.forEach((product) => {
+        const productItem = document.createElement('div');
+        productItem.classList.add('product');
 
-function render(products){
-    let list = '';
+        const productImage = document.createElement('img');
+        productImage.src = product.poster;
+        productImage.alt = product.title;
+        productImage.width = '10%';
 
-    if (products.length <= 0) {
-        lit += `<div id="no-products"> Nenhum produto disponível</div>`;
+        const productTitle = document.createElement('span');
+        productTitle.textContent = product.title;
+
+        const productPrice = document.createElement('span');
+        productPrice.textContent = formatter.format(product.price);
+
+        productItem.appendChild(productTitle);
+        productItem.appendChild(productPrice);
+
+        productList.appendChild(productItem);
+      });
     }
-    
-    else {
-        products.forEach((product, index) => {
-          
-            list+=`
-            <div class="product">
-            <div class="product-image">
-            <img src="${product.poster}" alt="" width="10%"
-            </div>
-            ${product.title} - ${formatter.format(product.price)}
-            <a href="">
-                <div class="product-button" data-id="${product.id}">
-                    Remove
-                </div>
-            </a>
-            </div>
-            `
-        })
-    }
-    listContainer.innerHTML = list;
-}
+  }
 
-function removeProduct(productId) {
-    const index = products.findIndex((product) => {
-        return +product.id == +productId;
-    });
+  function filterProducts(searchTerm) {
+    const filteredProducts = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    renderProducts(filteredProducts);
+  }
 
-    if(index > -1){
-        products.splice(index, 1);
-        render(products);
-    }
-}
+  const searchInput = document.querySelector('.search-input');
+  const productListContainer = document.getElementById('product-list-container');
 
-document.body.addEventListener('click', function (event) {
-    event.preventDefault();
-    
-    const productId = event.target.getAttribute('data-remove');
-    if (productId) {
-        removeProduct(productId);
+  searchInput.addEventListener('click', () => {
+    productListContainer.style.display = 'block';
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.matches('.search-input')) {
+      productListContainer.style.display = 'none';
     }
-});
-render(products);
+  });
+
+  searchInput.addEventListener('input', (event) => {
+    const searchTerm = event.target.value;
+    filterProducts(searchTerm);
+  });
+
+  renderProducts(products);
