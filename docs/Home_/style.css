@@ -10,6 +10,45 @@
     font-size: 100%;
 }
 
+@media (max-width: 7680px) {
+  
+#search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 10px;
+  width: 200px;
+}
+
+.overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+
+.search-input:focus + .overlay {
+  display: block;
+}
+
+#product-list-container {
+  display: none;
+  max-height: 300px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Habilita a rolagem vertical */
+  border: 1px solid #ccc; /* Opcional: Adicione uma borda para melhorar a aparência */
+  padding: 10px; /* Opcional: Adicione um espaçamento interno */
+}
+
+.product {
+  margin-bottom: 10px; /* Opcional: Adicione um espaçamento entre os itens da lista */
+}
+
+
+
 /* cabecalho */
 .cabecalho {
     box-shadow: 0px 0px 1.2px 0px black;
@@ -20,12 +59,11 @@
     background-color: white;
     margin-bottom: 50px;
     border-top: 1px solid rgb(255, 255, 255); 
-    padding-left: 7%;
 }
 
 .cabecalho-logo {
     height: 110px;
-    padding-left: 30%;
+    padding-left: 50%;
 }
 
 .cabecalho-central {
@@ -45,6 +83,7 @@
 .cabecalho-barra {
     gap: 10px;
     align-items: center;
+
 }
 
 
@@ -61,7 +100,6 @@
 .btn-lupa {
     padding-bottom: 5px;
 }
-
 .btn-primary {
   color: #fff;
   background-color: transparent;
@@ -73,6 +111,14 @@
   background-color: #fff;
   color: #000;
 }
+
+.bi-person-circle {
+  margin-right: 5px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+
 
 .nav-link:hover {
     transition: 0.2s;
@@ -312,59 +358,278 @@ margin-bottom: 20px;
 .contatos {
   text-decoration: none;
 }
+.img_suplementos img {
+  width: 150%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.img_suplementos .card-content {
+  padding-top: 15px;
+}
+
+.img_suplementos button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.img_suplementos3 img {
+  width: 150%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.img_suplementos3 .card-content {
+  padding-top: 15px;
+}
+
+.img_suplementos3 button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+  
+}
 
 /* Media Querys */
 
-/* 0 -- 480 celular */
-@media (max-width: 480px) {
+/* 0 -- 450 celular */
+@media (max-width: 450px) {
 
-  /* footer */
-  .footer-cima {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
+  .cabecalho {
+    box-shadow: 0px 0px 1.2px 0px black;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid rgb(255, 255, 255); 
+    margin-bottom: 0px;
+
   }
 
-}
-
-/* 481 -- 768 tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-
-  /* footer */
-  .footer-cima {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-  }
-}
-
-/* 769 -- 1279 laptop */
-@media (min-width: 769px) and (max-width: 1279px) {
-
-  /* footer */
-  .footer-cima {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
+  .cabecalho-logo {
+    height: 100px;
+    order: 1;
+    padding-left: 10%;
   }
 
+  .cabecalho-central {
+  display: none;
 }
+  
+  .btn-lupa {
+    display: none;
+}
+  
+  .search-input {
+    width: 170px;
+}
+  
+ .footer {
+   padding-top: 10%;
+ }
+  
+.footer-cima {
+    display: inline-block;
+    padding-bottom: 5%;
+  }
 
-/* 1280 -- ++ notebooks e monitores */
-@media (min-width: 1280px) {
-
-  /* footer */
-  .footer-cima {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
+  img[alt="rodape"] {
+    width: 40%;
   }
   
+.footer-card {
+  font-size: 1em;
+  width: 400px;
+  border-radius: 5px;
+}
+  .footer-baixo {
+  text-align: center;
+  background-color: lightgray;
+}
+
+  .suplementosproteinas {
+  padding-left: 10%;
+  padding-bottom: 15%;
+}
+  
+  .card1  {
+    display: none;
+  }
+  .card2  {
+    display: none;
+  }
+  .card3  {
+    display: none;
+  }
+
+  .card4  {
+    display: none;
+  }
+
+  .card5  {
+    display: none;
+  }
+
+  .card6  {
+    display: none;
+  }
+  .card7  {
+    display: none;
+  }
+  .card8  {
+    display: none;
+  }
+  .card9  {
+    display: none;
+  }
+
+  .produtos1 {
+   padding-right: 40%;
+
+  }
+  
+  .produtos2 {
+    padding-left: 10%;
+    padding-right: 45%;
+    width: 70%;
+  }
+
+  .produtos3 {
+   padding-right: 30%;
+  padding-left: 10%;
+  }
+  
+  .cabecalho-icons {
+     display: none;
+
+  }
+  
+
+  .carrosel {
+    box-shadow: 10px rgba(255, 255, 255, 0.2);  
+    width: 100%;
+    margin-bottom: 10%;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+}
+
+/* 450 -- 800 tablet */
+@media (max-width: 850px) {
+
+  .cabecalho {
+    margin-bottom: 0px;
+    align-items: center;
+  }
+
+
+  .cabecalho-logo {
+    height: 100px;
+    order: 1;
+    padding-left: 10%;
+  }
+
+  .cabecalho-central {
+    display: none;
+}
+  .cabecalho-barra {
+    gap: 10px;
+    align-items: center;
+}
+  
+  .cabecalho-icons {
+    justify-content: space-between;
+  }
+  .btn-lupa {
+    display: none;
+}
+  
+  .search-input {
+    width: 170px;
+}
+  
+ .footer {
+   padding-top: 10%;
+ }
+  
+.footer-cima {
+    display: inline-block;
+    padding-bottom: 5%;
+    padding-left: 30%;
+  }
+  
+  .footer-card {
+  font-size: 1em;
+  width: 530px;
+  border-radius: 5px;
+}
+  
+  .footer-baixo {
+  text-align: center;
+  background-color: lightgray;
+}
+
+  .suplementosproteinas {
+    padding-bottom: 15%;
+}
    
-    
-    .produtos {
-      display: flex;
-    }
+  .card2  {
+    display: none;
+  }
+  
+  .card3  {
+    display: none;
+  }
+
+  .card5  {
+    display: none;
+  }
+
+  .card6  {
+    display: none;
+  }
+
+  .card8  {
+    display: none;
+  }
+  
+  .card9  {
+    display: none;
+  }
+
+  .produtos2 {
+    padding-right: 5%;
+  }
+ 
+  .carrosel {
+    box-shadow: 10px rgba(255, 255, 255, 0.2);  
+    width: 100%;
+    margin-bottom: 10%;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+  
+  .compras {
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color:#ddd;
+    transition: 0s;
+    opacity: 1; 
+    transition: opacity 0s; 
+}
+
+
+
 }

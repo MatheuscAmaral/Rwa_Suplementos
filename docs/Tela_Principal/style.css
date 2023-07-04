@@ -10,6 +10,7 @@
     font-size: 100%;
 }
 
+
 #search-container {
   position: relative;
 }
@@ -356,59 +357,127 @@ margin-bottom: 20px;
 .contatos {
   text-decoration: none;
 }
+.img_suplementos img {
+  width: 150%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.img_suplementos .card-content {
+  padding-top: 15px;
+}
+
+.img_suplementos button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.img_suplementos3 img {
+  width: 150%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.img_suplementos3 .card-content {
+  padding-top: 15px;
+}
+
+.img_suplementos3 button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 /* Media Querys */
 
 /* 0 -- 480 celular */
-@media (max-width: 480px) {
+@media (max-width: 450px) {
 
-  /* footer */
+  .cabecalho-logo {
+    height: 100px;
+    padding-left: 3%;
+}
+  .btn-lupa {
+    display: none;
+}
+  .search-input {
+  width: 150px;
+}
+ .footer {
+   padding-top: 10%;
+ }
   .footer-cima {
-      display: flex;
-      flex-direction: column;
-      gap: 50px;
+    display: inline-block;
+    padding-bottom: 5%;
   }
-
+.footer-card {
+  font-size: 1em;
+  width: 400px;
+  border-radius: 5px;
+}
+  .footer-baixo {
+  text-align: center;
+  background-color: lightgray;
+}
+.cabecalho-central {
+  display: none;
 }
 
-/* 481 -- 768 tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-
-  /* footer */
-  .footer-cima {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-  }
+  .suplementosproteinas {
+  padding-left: 10%;
+  padding-bottom: 15%;
 }
-
-/* 769 -- 1279 laptop */
-@media (min-width: 769px) and (max-width: 1279px) {
-
-  /* footer */
-  .footer-cima {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
+  .card1  {
+    display: none;
+  }
+  .card2  {
+    display: none;
+  }
+  .card3  {
+    display: none;
   }
 
-}
+  .card4  {
+    display: none;
+  }
 
-/* 1280 -- ++ notebooks e monitores */
-@media (min-width: 1280px) {
+  .card5  {
+    display: none;
+  }
 
-  /* footer */
-  .footer-cima {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
+  .card6  {
+    display: none;
+  }
+  .card7  {
+    display: none;
+  }
+  .card8  {
+    display: none;
+  }
+  .card9  {
+    display: none;
+  }
+
+  .produtos1 {
+   padding-right: 40%;
+
   }
   
-   
-    
-    .produtos {
-      display: flex;
-    }
+  .produtos2 {
+    padding-left: 15%;
+    padding-right: 35%;
+   width: 100%;
+  }
+
+  .produtos3 {
+   padding-right: 40%;
+  padding-left: 3%;
+  }
 }
