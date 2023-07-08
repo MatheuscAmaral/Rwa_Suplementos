@@ -129,7 +129,7 @@ p {
 }
 
 .top1 {
-    padding-left: 12%;
+    padding-left: 18%;
     padding-top: 2%;
 }
 
@@ -162,7 +162,7 @@ p {
 }
 
 .top6 {
-    padding-left: 12%;
+    padding-left: 18%;
     padding-top: 1%;
 }
 
@@ -271,48 +271,61 @@ p {
 /* Media Querys */
 
 /* 0 -- 480 celular */
-@media (max-width: 480px) {
-
-    /* footer */
-    .footer-cima {
+@media (max-width: 500px) {
+    .top_5 {
         display: flex;
         flex-direction: column;
-        gap: 50px;
-    }
-
-}
-
-/* 481 -- 768 tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-
-    /* footer */
-    .footer-cima {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
-/* 769 -- 1279 laptop */
-@media (min-width: 769px) and (max-width: 1279px) {
-    /* menu */
-    .menu-sessao {
-        flex-direction: column;
-        margin: 10px;
-    }
-
-    /* footer */
-    .footer-cima {
         align-items: center;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-    .busca-itens {
-        margin: 40px;
     }
 
+    .top1 {
+        padding-left: 3px;
+    }
+
+    .top_10 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top6 {
+        padding-left: 4px;
+    }
+
+
+    .footer {
+        padding-top: 5%;
+    }
+
+    /* Rodape cima*/
+    .footer-cima {
+        margin-top: 100px;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        background-color: lightgray;
+        color: rgb(0, 0, 0);
+        gap: 3rem;
+    }
+    .footer-card {
+        font-size: 1em;
+        width: 300px;
+        border-radius: 5px;
+    }
+    
+    .footer-cima a {
+        color: rgb(0, 0, 0);
+    }
+    
+    /* rodape baixo */
+    .footer-baixo {
+        text-align: center;
+        background-color: lightgray;
+    }
+    
 }
+
+
 
 /* 1280 -- ++ notebooks e monitores */
 @media (min-width: 1280px) {
@@ -331,3 +344,5 @@ p {
         display: flex;
       }
 }
+
+
