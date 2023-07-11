@@ -77,11 +77,11 @@
     background-color: rgb(4, 0, 66);
     color: white;
     display: flex;
-    background-image: url('/docs/Tela_Principal/Imagens/Untitled\ design\ \(2\).png');
+    background-image: url('/Imagens/Untitled\ design\ \(2\).png');
 }
 
 .sobre_nos {
-    background-image: url("/docs/Tela_Principal/Imagens/fundo_acad.jpg");
+    background-image: url("/Imagens/fundo_acad.jpg");
 }
 
 .rwa {
