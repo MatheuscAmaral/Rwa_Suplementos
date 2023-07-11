@@ -95,16 +95,17 @@
 
 .produtos1 {
     display: flex;
+    gap: 2rem;
+    justify-content: center;
     padding-top: 1%;
-}
-
-.produtos2 {
+  }
+  
+  .produtos2 {
     display: flex;
-}
-
-.produtos3 {
-    display: flex;
-}
+    gap: 2rem;
+    margin-left: 16.5%;
+  }
+  
 
 .inicio_creatina {
     background-color: rgb(4, 0, 66);
@@ -120,54 +121,45 @@
 }
 
 .card1 {
-    padding-left: 17%;
     padding-top: 3%;
-}
+  }
+  
+  .card2 {
+    padding-top: 3%;
+  }
+  
+  .card3 {
+    padding-top: 3%;
+  }
+  
+  .card4 {
+    padding-top: 3%;
+  }
+  
+  .card5 {
+    padding-top: 3%;
+  }
+  
+  .card6 {
+    padding-top: 3%;
+  }
+  
+  .card7 {
+    padding-top: 3%;
+  }
+  
+  .card8 {
+    padding-top: 3%;
+  }
+  
+  .card9 {
+    padding-top: 3%;
+  }
+  
+  .card10 {
+    padding-top: 3%;
+  }
 
-.card2 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card3 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card4 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card5 {
-    padding-left: 17%;
-    padding-top: 3%;
-}
-
-.card6 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card7 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card8 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
-
-.card9 {
-    padding-left: 17%;
-    padding-top: 3%;
-}
-
-.card10 {
-    padding-left: 2%;
-    padding-top: 3%;
-}
 .compras:hover {
     background-color: rgba(0, 0, 0, 0.707);
     color: white;
@@ -248,58 +240,68 @@ p {
 /* Media Querys */
 
 /* 0 -- 480 celular */
-@media (max-width: 480px) {
-
-    /* footer */
-    .footer-cima {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
+@media (max-width: 500px) {
+    .cabecalho {
+      box-shadow: 0px 0px 1.2px 0px black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      background-color: white;
+      margin-bottom: 20px;
+      border-top: 1px solid rgb(255, 255, 255);
     }
-
-}
-
-/* 481 -- 768 tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-
-    /* footer */
-    .footer-cima {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
+  
+    .cabecalho-logo {
+      height: 90px;
+      margin-left: 10px;
     }
-}
-
-/* 769 -- 1279 laptop */
-@media (min-width: 769px) and (max-width: 1279px) {
-
-    /* footer */
-    .footer-cima {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
+    .btn-lupa {
+      display: none;
     }
-    .busca-itens {
-        margin: 40px;
+    .search-input {
+      width: 150px;
     }
-
-}
-
-/* 1280 -- ++ notebooks e monitores */
-@media (min-width: 1280px) {
-
-    /* footer */
+  
+    .footer {
+      margin-top: 30%;
+    }
+  
     .footer-cima {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding-bottom: 5%;
+    }
+  
+    .footer-card {
+      font-size: 1em;
+      width: 400px;
+      border-radius: 5px;
+    }
+  
+    .footer-baixo {
+      text-align: center;
+      background-color: lightgray;
+    }
+  
+    .cabecalho-central {
+      display: none;
+    }
+  
+    .produtos1 {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1%;
+      align-items: center;
     }
     
-     
-      
-      .produtos {
-        display: flex;
-      }
-}
+    .produtos2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0;
+    }
+  
+  
+  }
