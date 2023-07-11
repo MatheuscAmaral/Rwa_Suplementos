@@ -179,12 +179,12 @@
 
 .img_suplementos3 {
   padding-top: 4%;
-  padding-left: 12%;
+  padding-left: 10%;
   transition: 0.2s;
 }
 
 .suplementosproteinas {
-  padding-left: 10%;
+  margin-left: 10%;
   padding-bottom: 8%;
  
 }
@@ -465,8 +465,26 @@ margin-bottom: 20px;
 /* 0 -- 480 celular */
 @media (max-width: 450px) {
 
+  .cabecalho {
+    box-shadow: 0px 0px 1.2px 0px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    margin-bottom: 20px;
+    border-top: 1px solid rgb(255, 255, 255); 
+}
+
+
+  .carrosel {
+    box-shadow: 10px rgba(255, 255, 255, 0.2);  
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10%;
+}
   .cabecalho-logo {
-    height: 100px;
+    height: 90px;
     padding-left: 3%;
 }
   .btn-lupa {
@@ -475,36 +493,45 @@ margin-bottom: 20px;
   .search-input {
   width: 150px;
 }
+
  .footer {
-   padding-top: 10%;
+   margin-top: 30%;
  }
+
   .footer-cima {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     padding-bottom: 5%;
   }
+
   .footer-card {
     font-size: 1em;
     width: 400px;
     border-radius: 5px;
   }
+
     .footer-baixo {
     text-align: center;
     background-color: lightgray;
   }
+
   .cabecalho-central {
     display: none;
   }
 
   .suplementosproteinas {
-  padding-left: 10%;
-  padding-bottom: 15%;
-}
+    margin-bottom: 15%;
+  }
+
   .card1  {
     display: none;
   }
+
   .card2  {
     display: none;
   }
+
   .card3  {
     display: none;
   }
@@ -520,12 +547,15 @@ margin-bottom: 20px;
   .card6  {
     display: none;
   }
+
   .card7  {
     display: none;
   }
+
   .card8  {
     display: none;
   }
+
   .card9  {
     display: none;
   }
@@ -538,11 +568,12 @@ margin-bottom: 20px;
   .produtos2 {
     padding-left: 15%;
     padding-right: 35%;
-   width: 100%;
+    margin-bottom: 15%;
+    width: 100%;
   }
 
   .produtos3 {
-   padding-right: 40%;
-  padding-left: 3%;
+   padding-right: 35%;
+    padding-left: 8%;
   }
 }

@@ -10,7 +10,6 @@
     font-size: 100%;
 }
 
-@media (max-width: 7680px) {
   
 #search-container {
   position: relative;
@@ -47,18 +46,16 @@
   margin-bottom: 10px; /* Opcional: Adicione um espaçamento entre os itens da lista */
 }
 
-
-
 /* cabecalho */
 .cabecalho {
-    box-shadow: 0px 0px 1.2px 0px black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;
-    margin-bottom: 50px;
-    border-top: 1px solid rgb(255, 255, 255); 
+  box-shadow: 0px 0px 1.2px 0px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  margin-bottom: 50px;
+  border-top: 1px solid rgb(255, 255, 255); 
 }
 
 .cabecalho-logo {
@@ -84,6 +81,42 @@
     gap: 10px;
     align-items: center;
 
+}
+
+
+#search-container {
+  position: relative;
+}
+
+.search-input {
+  padding: 10px;
+  width: 200px;
+}
+
+.overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+
+.search-input:focus + .overlay {
+  display: block;
+}
+
+#product-list-container {
+  display: none;
+  max-height: 300px; /* Defina a altura máxima desejada */
+  overflow-y: auto; /* Habilita a rolagem vertical */
+  border: 1px solid #ccc; /* Opcional: Adicione uma borda para melhorar a aparência */
+  padding: 10px; /* Opcional: Adicione um espaçamento interno */
+}
+
+.product {
+  margin-bottom: 10px; /* Opcional: Adicione um espaçamento entre os itens da lista */
 }
 
 
@@ -136,8 +169,8 @@
 
 .carrosel {
     box-shadow: 10px rgba(255, 255, 255, 0.2);  
-    width: 90%;
-    margin-left: 6%;
+    width: 85%;
+    margin-left: 8%;
     margin-bottom: 10%;
 }
 
@@ -171,29 +204,46 @@
 
 .img_suplementos {
   padding-top: 4%;
+  transition: 0.2s;
+}
+
+.img_suplementos:hover {
+  transform: scale(1.05);
 }
 
 .img_suplementos3 {
   padding-top: 4%;
-  padding-left: 12%;
-}
-.suplementosproteinas {
   padding-left: 10%;
+  transition: 0.2s;
+}
+
+.suplementosproteinas {
+  margin-left: 10%;
   padding-bottom: 8%;
+ 
 }
 
 .produtos1 {
   display: flex;
+  gap: 2rem;
   padding-top: 1%;
+  margin-left: 20px;
 }
 
 .produtos2 {
   display: flex;
+  gap: 2rem;
 }
 
 .produtos3 {
   display: flex;
+  gap: 2rem;
 }
+
+.img_suplementos3:hover {
+  transform: scale(1.05);
+}
+
 
 .inicio_proteinas {
   background-color: rgb(4, 0, 66);
@@ -203,50 +253,98 @@
 }
 
 .card1 {
-  padding-left: 20%;
+  margin-left: 300px;
   padding-top: 3%;
+  transition: 0.2s;
+}
+
+
+.card1:hover {
+  transform: scale(1.05);
 }
 
 .card2 {
-  padding-left: 2%;
+
   padding-top: 3%;
+  transition: 0.2s;
 }
 
+.card2:hover {
+  transform: scale(1.05);
+}
+
+
 .card3 {
-  padding-left: 2%;
   padding-top: 3%;
+  transition: 0.2s;
+}
+
+.card3:hover {
+  transform: scale(1.05);
 }
 
 .card4 {
-  padding-left: 10%;
+  margin-left: 200px;
   padding-top: 3%;
+  transition: 0.2s;
 }
+
+.card4:hover {
+  transform: scale(1.05);
+}
+
 
 .card5 {
-  padding-left: 2%;
   padding-top: 3%;
+  transition: 0.2s;
 }
+
+.card5:hover {
+  transform: scale(1.05);
+}
+
 
 .card6 {
-  padding-left: 2%;
   padding-top: 3%;
-  padding-right: 10%;
+  margin-right: 170px;
+  transition: 0.2s;
 }
 
+.card6:hover {
+  transform: scale(1.05);
+}
+
+
 .card7 {
-  padding-left: 18%;
+  margin-left: 300px;
   padding-top: 3%;
+  transition: 0.2s;
+}
+
+.card7:hover {
+  transform: scale(1.05);
 }
 
 .card8 {
-  padding-left: 2%;
   padding-top: 3%;
+  transition: 0.2s;
 }
 
-.card9 {
-  padding-left: 2%;
-  padding-top: 3%;
+.card8:hover {
+  transform: scale(1.05);
 }
+
+
+.card9 {
+  padding-top: 3%;
+  transition: 0.2s;
+}
+
+.card9:hover {
+  transform: scale(1.05);
+}
+
+
 
 .compras:hover {
   background-color: rgba(0, 0, 0, 0.707);
@@ -395,76 +493,79 @@ margin-bottom: 20px;
   font-size: 16px;
   cursor: pointer;
 }
-  
-}
 
 /* Media Querys */
 
-/* 0 -- 450 celular */
+/* 0 -- 480 celular */
 @media (max-width: 450px) {
 
   .cabecalho {
     box-shadow: 0px 0px 1.2px 0px black;
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     background-color: white;
+    margin-bottom: 20px;
     border-top: 1px solid rgb(255, 255, 255); 
-    margin-bottom: 0px;
-
-  }
-
-  .cabecalho-logo {
-    height: 100px;
-    order: 1;
-    padding-left: 10%;
-  }
-
-  .cabecalho-central {
-  display: none;
 }
-  
+
+
+  .carrosel {
+    box-shadow: 10px rgba(255, 255, 255, 0.2);  
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10%;
+}
+  .cabecalho-logo {
+    height: 90px;
+    padding-left: 3%;
+}
   .btn-lupa {
     display: none;
 }
-  
   .search-input {
-    width: 170px;
+  width: 150px;
 }
-  
+
  .footer {
-   padding-top: 10%;
+   margin-top: 30%;
  }
-  
-.footer-cima {
-    display: inline-block;
+
+  .footer-cima {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     padding-bottom: 5%;
   }
 
-  img[alt="rodape"] {
-    width: 40%;
+  .footer-card {
+    font-size: 1em;
+    width: 400px;
+    border-radius: 5px;
   }
-  
-.footer-card {
-  font-size: 1em;
-  width: 400px;
-  border-radius: 5px;
-}
-  .footer-baixo {
-  text-align: center;
-  background-color: lightgray;
-}
+
+    .footer-baixo {
+    text-align: center;
+    background-color: lightgray;
+  }
+
+  .cabecalho-central {
+    display: none;
+  }
 
   .suplementosproteinas {
-  padding-left: 10%;
-  padding-bottom: 15%;
-}
-  
+    margin-bottom: 15%;
+  }
+
   .card1  {
     display: none;
   }
+
   .card2  {
     display: none;
   }
+
   .card3  {
     display: none;
   }
@@ -480,12 +581,15 @@ margin-bottom: 20px;
   .card6  {
     display: none;
   }
+
   .card7  {
     display: none;
   }
+
   .card8  {
     display: none;
   }
+
   .card9  {
     display: none;
   }
@@ -496,140 +600,14 @@ margin-bottom: 20px;
   }
   
   .produtos2 {
-    padding-left: 10%;
-    padding-right: 45%;
-    width: 70%;
+    padding-left: 15%;
+    padding-right: 35%;
+    margin-bottom: 15%;
+    width: 100%;
   }
 
   .produtos3 {
-   padding-right: 30%;
-  padding-left: 10%;
+   padding-right: 35%;
+    padding-left: 8%;
   }
-  
-  .cabecalho-icons {
-     display: none;
-
-  }
-  
-
-  .carrosel {
-    box-shadow: 10px rgba(255, 255, 255, 0.2);  
-    width: 100%;
-    margin-bottom: 10%;
-    padding-left: 0px;
-    margin-left: 0px;
-}
-
-}
-
-/* 450 -- 800 tablet */
-@media (max-width: 850px) {
-
-  .cabecalho {
-    margin-bottom: 0px;
-    align-items: center;
-  }
-
-
-  .cabecalho-logo {
-    height: 100px;
-    order: 1;
-    padding-left: 10%;
-  }
-
-  .cabecalho-central {
-    display: none;
-}
-  .cabecalho-barra {
-    gap: 10px;
-    align-items: center;
-}
-  
-  .cabecalho-icons {
-    justify-content: space-between;
-  }
-  .btn-lupa {
-    display: none;
-}
-  
-  .search-input {
-    width: 170px;
-}
-  
- .footer {
-   padding-top: 10%;
- }
-  
-.footer-cima {
-    display: inline-block;
-    padding-bottom: 5%;
-    padding-left: 30%;
-  }
-  
-  .footer-card {
-  font-size: 1em;
-  width: 530px;
-  border-radius: 5px;
-}
-  
-  .footer-baixo {
-  text-align: center;
-  background-color: lightgray;
-}
-
-  .suplementosproteinas {
-    padding-bottom: 15%;
-}
-   
-  .card2  {
-    display: none;
-  }
-  
-  .card3  {
-    display: none;
-  }
-
-  .card5  {
-    display: none;
-  }
-
-  .card6  {
-    display: none;
-  }
-
-  .card8  {
-    display: none;
-  }
-  
-  .card9  {
-    display: none;
-  }
-
-  .produtos2 {
-    padding-right: 5%;
-  }
- 
-  .carrosel {
-    box-shadow: 10px rgba(255, 255, 255, 0.2);  
-    width: 100%;
-    margin-bottom: 10%;
-    padding-left: 0px;
-    margin-left: 0px;
-}
-  
-  .compras {
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color:#ddd;
-    transition: 0s;
-    opacity: 1; 
-    transition: opacity 0s; 
-}
-
-
-
 }

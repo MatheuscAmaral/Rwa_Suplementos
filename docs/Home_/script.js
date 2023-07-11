@@ -11,5 +11,5 @@ logado.innerHTML = `${userLogado.nome}`;
 function sair() {
   localStorage.removeItem("token");
   localStorage.removeItem("userLogado");
-  window.location.href = "/docs/Tela_Principal/Index.html";
+  window.location.href = "/Index.html";
 }
