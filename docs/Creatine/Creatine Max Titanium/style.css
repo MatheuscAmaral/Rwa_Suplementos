@@ -78,10 +78,11 @@
     background-color: rgb(36, 34, 34);    
     color: white;
     display: flex;
+    gap: 5rem;
+    justify-content: center;
 }
 
 .t1 {
-    padding-left: 18%;
     padding-top: 2%;
     font-size: 130%;
 }

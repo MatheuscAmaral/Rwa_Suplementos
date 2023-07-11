@@ -78,17 +78,18 @@
     background-color: rgb(32, 166, 211); 
     color: white;
     display: flex;
-
+    justify-content: center;
 } 
 
 .t1 {
-    padding-left: 15%;
     padding-top: 2%;
 }
- .img_creatine5_0 {
-    padding-left: 5%;
+
+ img[ alt="img_sun"] {
     padding-top: 3%;    
+    padding-bottom: 2%;
  }
+
 .t2 {
     padding-left: 2%;
     padding-top: 2%;
@@ -129,7 +130,7 @@ p {
 }
 
 .footer {
-    padding-top: 29.5%;
+    padding-top: 5%;
 }
 /* Rodape cima*/
 .footer-cima {

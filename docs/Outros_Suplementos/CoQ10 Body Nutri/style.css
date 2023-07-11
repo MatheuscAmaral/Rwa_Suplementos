@@ -78,10 +78,11 @@
     background-color: rgb(36, 34, 34);    
     color: white;
     display: flex;
+    gap: 2rem;
+    justify-content: center;
 }
 
 .t1 {
-    padding-left: 15%;
     padding-top: 2%;
 }
 
@@ -162,7 +163,7 @@ p {
 }
 
 .footer {
-    padding-top: 3.5%;
+    padding-top: 4.5%;
 }
 /* Rodape cima*/
 .footer-cima {
