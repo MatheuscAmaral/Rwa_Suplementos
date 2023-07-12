@@ -1,177 +1,173 @@
 /* import font */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@500&display=swap");
 
 /* reset geral */
 * {
-    font-family: 'poppins'; 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 100%;
+  font-family: "poppins";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
 }
 
 /* cabecalho */
 .cabecalho {
-    box-shadow: 0px 0px 1.2px 0px black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;
-    border-top: 1px solid rgb(255, 255, 255); 
+  box-shadow: 0px 0px 1.2px 0px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  border-top: 1px solid rgb(255, 255, 255);
 }
 
 .cabecalho-logo {
-    height: 110px;
-    margin-left: 50px;
+  height: 110px;
+  margin-left: 50px;
 }
 
 .cabecalho-central {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .cabecalho-central-text {
-    font-size: large;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
+  font-size: large;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
 }
 
 .cabecalho-central-text:hover {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .cabecalho-barra {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 }
 
 .cabecalho-barra-img {
-    padding-bottom: 5px;
-    margin-right: 10px;
+  padding-bottom: 5px;
+  margin-right: 10px;
 }
 
 .btn {
-    color:  rgb(255, 255, 255) !important;
-    border: none !important;
+  color: rgb(255, 255, 255) !important;
+  border: none !important;
 }
 
 .btn:hover {
-    background-color: rgba(0, 0, 0, 0.503) !important;
-    opacity: 95%;
+  background-color: rgba(0, 0, 0, 0.503) !important;
+  opacity: 95%;
 }
 
 .btn-lupa {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .nav-link:hover {
-    transition: 0.2s;
-    color: blue !important;
+  transition: 0.2s;
+  color: blue !important;
 }
-
 
 /* Menu Sessao card */
 
 .card-text {
-    text-align: center;
+  text-align: center;
 }
 
 .compras {
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color:#ddd;
-    transition: 0.2s;
-    opacity: 0; 
-    transition: opacity 0.3s;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #ddd;
+  transition: 0.2s;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .produtos1 {
-    display: flex;
-    padding-top: 1%;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding-top: 1%;
 }
 
 .produtos2 {
-    display: flex;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 }
 
 .produtos3 {
-    display: flex;
+  display: flex;
+  gap: 2rem;
+  margin-left: 16.5%;
 }
 
 .inicio_proteinas {
-    background-color: rgb(4, 0, 66);
-    color: white;
-    display: flex;
-    background-image: url('/Imagens/Untitled_design__2_.png');
+  background-color: rgb(4, 0, 66);
+  color: white;
+  display: flex;
+  background-image: url("/Imagens/Untitled_design__2_.png");
 }
 
 .t1 {
-    padding-left: 17%;
-    padding-top: 1.5%;
-    padding-bottom: 1%;
+  padding-left: 17%;
+  padding-top: 1.5%;
+  padding-bottom: 1%;
 }
 
 .card1 {
-    padding-left: 17%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card2 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card3 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card4 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card5 {
-    padding-left: 17%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card6 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card7 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card8 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card9 {
-    padding-left: 17%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
 
 .card10 {
-    padding-left: 2%;
-    padding-top: 3%;
+  padding-top: 3%;
 }
+
 .compras:hover {
-    background-color: rgba(0, 0, 0, 0.707);
-    color: white;
-    opacity: 1;
+  background-color: rgba(0, 0, 0, 0.707);
+  color: white;
+  opacity: 1;
 }
 
 h2 {
@@ -179,7 +175,6 @@ h2 {
   font-weight: bold;
   margin-bottom: 20px;
 }
-
 
 h3 {
   font-size: 14px;
@@ -192,114 +187,127 @@ p {
 }
 
 .wheycard {
-    color:  gray;
-    padding-bottom: 30px;
+  color: gray;
+  padding-bottom: 30px;
 }
 
 .forma_pagamento {
-    color:  gray;
+  color: gray;
 }
 .preco {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 .footer {
-    padding-top: 5%;
+  padding-top: 5%;
 }
 /* Rodape cima*/
 .footer-cima {
-    padding: 50px;
-    display: flex;
-    background-color: lightgray;
-    color: rgb(0, 0, 0);
-    justify-content: space-around;
+  padding: 50px;
+  display: flex;
+  background-color: lightgray;
+  color: rgb(0, 0, 0);
+  justify-content: space-around;
 }
 .footer-card {
-    font-size: 1em;
-    width: 300px;
-    border-radius: 5px;
+  font-size: 1em;
+  width: 300px;
+  border-radius: 5px;
 }
 
 .footer-cima a {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
-
-
 
 /* rodape baixo */
 .footer-baixo {
-    text-align: center;
-    background-color: lightgray;
+  text-align: center;
+  background-color: lightgray;
 }
 
 #outros-links {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 #outros-links a {
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 .contatos {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Media Querys */
 
 /* 0 -- 480 celular */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
+  .cabecalho {
+    box-shadow: 0px 0px 1.2px 0px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    margin-bottom: 20px;
+    border-top: 1px solid rgb(255, 255, 255);
+  }
 
-    /* footer */
-    .footer-cima {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-    }
+  .cabecalho-logo {
+    height: 90px;
+    margin-left: 10px;
+  }
+  .btn-lupa {
+    display: none;
+  }
+  .search-input {
+    width: 150px;
+  }
+
+  .footer {
+    margin-top: 30%;
+  }
+
+  .footer-cima {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-bottom: 5%;
+  }
+
+  .footer-card {
+    font-size: 1em;
+    width: 400px;
+    border-radius: 5px;
+  }
+
+  .footer-baixo {
+    text-align: center;
+    background-color: lightgray;
+  }
+
+  .cabecalho-central {
+    display: none;
+  }
+
+  .produtos1 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    align-items: center;
+  }
+  
+  .produtos2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .produtos3 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    align-items: center;
+  }
 
 }
 
-/* 481 -- 768 tablets */
-@media (min-width: 481px) and (max-width: 768px) {
-
-    /* footer */
-    .footer-cima {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-
-/* 769 -- 1279 laptop */
-@media (min-width: 769px) and (max-width: 1279px) {
-
-    /* footer */
-    .footer-cima {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-    .busca-itens {
-        margin: 40px;
-    }
-
-}
-
-/* 1280 -- ++ notebooks e monitores */
-@media (min-width: 1280px) {
-
-    /* footer */
-    .footer-cima {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-    
-     
-      
-      .produtos {
-        display: flex;
-      }
-}
