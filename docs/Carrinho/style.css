@@ -30,6 +30,9 @@ body {
 }
 
 .carrinho {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     border-radius: 8px;
     padding: 35px;
     width: 400px;
@@ -91,6 +94,12 @@ body {
 .carrinho .carrinho-item {
     width: 70%;
     padding: 14px;
+}
+
+.itens-carrinho {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .carrinho .cabecalho-carrinho h4 {
@@ -176,4 +185,9 @@ h3 {
 p {
   font-size: 16px;
   margin-bottom: 20px;
+}
+
+
+@media screen and (max) {
+    
 }

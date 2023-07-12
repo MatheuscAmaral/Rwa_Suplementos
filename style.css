@@ -1,15 +1,14 @@
 /* import font */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Poppins:wght@500&display=swap");
 
 /* reset geral */
 * {
-    font-family: 'poppins'; 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 100%;
+  font-family: "poppins";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
 }
-
 
 #search-container {
   position: relative;
@@ -46,58 +45,55 @@
   margin-bottom: 10px; /* Opcional: Adicione um espaçamento entre os itens da lista */
 }
 
-
-
 /* cabecalho */
 .cabecalho {
-    box-shadow: 0px 0px 1.2px 0px black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;
-    margin-bottom: 50px;
-    border-top: 1px solid rgb(255, 255, 255); 
+  box-shadow: 0px 0px 1.2px 0px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  margin-bottom: 50px;
+  border-top: 1px solid rgb(255, 255, 255);
 }
 
 .cabecalho-logo {
-    height: 110px;
-    padding-left: 50%;
+  height: 110px;
+  padding-left: 50%;
 }
 
 .cabecalho-central {
-    display: flex;
+  display: flex;
 }
 
 .cabecalho-central-text {
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
 }
 
 .cabecalho-central-text:hover {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .cabecalho-barra {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-
 .btn {
-      color:  rgb(255, 255, 255) !important;
-      border: none !important;
+  color: rgb(255, 255, 255) !important;
+  border: none !important;
 }
 
 .btn:hover {
-    background-color: rgba(0, 0, 0, 0.503) !important;
-    opacity: 95%;
+  background-color: rgba(0, 0, 0, 0.503) !important;
+  opacity: 95%;
 }
 
 .btn-lupa {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 .btn-primary {
   color: #fff;
@@ -117,13 +113,10 @@
   vertical-align: middle;
 }
 
-
-
 .nav-link:hover {
-    transition: 0.2s;
-    color: blue !important;
+  transition: 0.2s;
+  color: blue !important;
 }
-
 
 .compras:hover {
   background-color: rgba(0, 0, 0, 0.707);
@@ -134,29 +127,29 @@
 /* carrosel */
 
 .carrosel {
-    box-shadow: 10px rgba(255, 255, 255, 0.2);  
-    width: 85%;
-    margin-left: 8%;
-    margin-bottom: 10%;
+  box-shadow: 10px rgba(255, 255, 255, 0.2);
+  width: 85%;
+  margin-left: 8%;
+  margin-bottom: 10%;
 }
 
 .compras {
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color:#ddd;
-    transition: 0.2s;
-    opacity: 0; 
-    transition: opacity 0.3s; 
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #ddd;
+  transition: 0.2s;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .compras:hover {
-    background-color: black;
-    color: white;
-    opacity: 1;
+  background-color: black;
+  color: white;
+  opacity: 1;
 }
 
 .titulo {
@@ -186,7 +179,6 @@
 .suplementosproteinas {
   margin-left: 10%;
   padding-bottom: 8%;
- 
 }
 
 .produtos1 {
@@ -210,12 +202,11 @@
   transform: scale(1.05);
 }
 
-
 .inicio_proteinas {
   background-color: rgb(4, 0, 66);
   color: white;
   display: flex;
-  background-image: url('/pages/Tela_Principal/Imagens/Untitled_design__2_.png');
+  background-image: url("/pages/Tela_Principal/Imagens/Untitled_design__2_.png");
 }
 
 .card1 {
@@ -224,13 +215,11 @@
   transition: 0.2s;
 }
 
-
 .card1:hover {
   transform: scale(1.05);
 }
 
 .card2 {
-
   padding-top: 3%;
   transition: 0.2s;
 }
@@ -238,7 +227,6 @@
 .card2:hover {
   transform: scale(1.05);
 }
-
 
 .card3 {
   padding-top: 3%;
@@ -259,7 +247,6 @@
   transform: scale(1.05);
 }
 
-
 .card5 {
   padding-top: 3%;
   transition: 0.2s;
@@ -268,7 +255,6 @@
 .card5:hover {
   transform: scale(1.05);
 }
-
 
 .card6 {
   padding-top: 3%;
@@ -279,7 +265,6 @@
 .card6:hover {
   transform: scale(1.05);
 }
-
 
 .card7 {
   margin-left: 300px;
@@ -300,7 +285,6 @@
   transform: scale(1.05);
 }
 
-
 .card9 {
   padding-top: 3%;
   transition: 0.2s;
@@ -310,8 +294,6 @@
   transform: scale(1.05);
 }
 
-
-
 .compras:hover {
   background-color: rgba(0, 0, 0, 0.707);
   color: white;
@@ -319,34 +301,32 @@
 }
 
 h2 {
-font-size: 24px;
-font-weight: bold;
-margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-
 h3 {
-font-size: 14px;
-margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 p {
-font-size: 16px;
-margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .wheycard {
-  color:  gray;
+  color: gray;
   padding-bottom: 30px;
 }
 
 .forma_pagamento {
-  color:  gray;
+  color: gray;
 }
 .preco {
   padding-top: 10px;
 }
-
 
 .review-count {
   background-color: #333;
@@ -357,28 +337,27 @@ margin-bottom: 20px;
 }
 
 .card-lateral-titulo {
-    padding-top: 10px;
-    color: rgb(0, 0, 0);
-    font-size: 130%;
-    font-weight: 800;
-    text-align: center;
-    border-top: 3px solid rgb(0, 0, 0);
+  padding-top: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 130%;
+  font-weight: 800;
+  text-align: center;
+  border-top: 3px solid rgb(0, 0, 0);
 }
 .card {
-    box-shadow:  2px 2px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .card-lateral-nome {
-    text-align: center;
-    font-size: 100%;
+  text-align: center;
+  font-size: 100%;
 }
 
 .card-lateral-preco {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    border-bottom: 3px solid rgb(0, 0, 0);;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border-bottom: 3px solid rgb(0, 0, 0);
 }
-
 
 /* Rodape cima*/
 .footer {
@@ -402,8 +381,6 @@ margin-bottom: 20px;
   color: rgb(0, 0, 0);
 }
 
-
-
 /* rodape baixo */
 .footer-baixo {
   text-align: center;
@@ -416,7 +393,6 @@ margin-bottom: 20px;
 }
 #outros-links a {
   text-decoration: none;
-
 }
 
 .contatos {
@@ -432,7 +408,7 @@ margin-bottom: 20px;
 }
 
 .img_suplementos button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -451,7 +427,7 @@ margin-bottom: 20px;
 }
 
 .img_suplementos3 button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -460,11 +436,54 @@ margin-bottom: 20px;
   cursor: pointer;
 }
 
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  background-color: #233caa;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input {
+  padding: 0 10px;
+  width: 200px;
+  caret-color: rgb(23, 0, 169);
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: #1b20ac;
+}
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
 /* Media Querys */
 
 /* 0 -- 480 celular */
 @media (max-width: 450px) {
-
   .cabecalho {
     box-shadow: 0px 0px 1.2px 0px black;
     display: flex;
@@ -473,30 +492,29 @@ margin-bottom: 20px;
     justify-content: space-around;
     background-color: white;
     margin-bottom: 20px;
-    border-top: 1px solid rgb(255, 255, 255); 
-}
-
+    border-top: 1px solid rgb(255, 255, 255);
+  }
 
   .carrosel {
-    box-shadow: 10px rgba(255, 255, 255, 0.2);  
+    box-shadow: 10px rgba(255, 255, 255, 0.2);
     width: 100%;
     margin-left: 0;
     margin-bottom: 10%;
-}
+  }
   .cabecalho-logo {
     height: 90px;
     padding-left: 3%;
-}
+  }
   .btn-lupa {
     display: none;
-}
+  }
   .search-input {
-  width: 150px;
-}
+    width: 150px;
+  }
 
- .footer {
-   margin-top: 30%;
- }
+  .footer {
+    margin-top: 30%;
+  }
 
   .footer-cima {
     display: flex;
@@ -511,7 +529,7 @@ margin-bottom: 20px;
     border-radius: 5px;
   }
 
-    .footer-baixo {
+  .footer-baixo {
     text-align: center;
     background-color: lightgray;
   }
@@ -524,47 +542,46 @@ margin-bottom: 20px;
     margin-bottom: 15%;
   }
 
-  .card1  {
+  .card1 {
     display: none;
   }
 
-  .card2  {
+  .card2 {
     display: none;
   }
 
-  .card3  {
+  .card3 {
     display: none;
   }
 
-  .card4  {
+  .card4 {
     display: none;
   }
 
-  .card5  {
+  .card5 {
     display: none;
   }
 
-  .card6  {
+  .card6 {
     display: none;
   }
 
-  .card7  {
+  .card7 {
     display: none;
   }
 
-  .card8  {
+  .card8 {
     display: none;
   }
 
-  .card9  {
+  .card9 {
     display: none;
   }
 
   .produtos1 {
-   padding-right: 40%;
-
+    padding-right: 40%;
   }
-  
+
   .produtos2 {
     padding-left: 15%;
     padding-right: 35%;
@@ -573,7 +590,40 @@ margin-bottom: 20px;
   }
 
   .produtos3 {
-   padding-right: 35%;
+    padding-right: 35%;
     padding-left: 8%;
+  }
+
+  .searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 50px;
+    border: 1px solid black;
+    background-color: #ffffff00;
+    border-radius: 16px;
+    padding: 10px;
+  }
+  
+  .search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 200px;
+    caret-color: transparent;
+    line-height: 30px;
+    transition: width 0.4s linear;
+  }
+  
+  .searchbar:hover > .search_input {
+    display: none;
+  }
+  
+  .searchbar:hover > .search_icon {
+    display: none;
+  }
+  
+  .search_icon {
+    display: none;
   }
 }
