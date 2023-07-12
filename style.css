@@ -127,12 +127,11 @@
 /* carrosel */
 
 .carrosel {
-  box-shadow: 10px rgba(255, 255, 255, 0.2);
+  box-shadow: 10px rgba(255, 255, 255, 0.2);  
   width: 85%;
   margin-left: 8%;
   margin-bottom: 10%;
 }
-
 .compras {
   margin-top: 10px;
   cursor: pointer;
@@ -440,13 +439,13 @@ p {
   margin-bottom: auto;
   margin-top: auto;
   height: 50px;
-  background-color: #233caa;
+  background-color: #1d62e3;
   border-radius: 30px;
   padding: 10px;
 }
 
 .search_input {
-  color: white;
+  color: rgb(255, 255, 255);
   border: 0;
   outline: 0;
   background: none;
@@ -476,7 +475,7 @@ p {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
@@ -491,7 +490,7 @@ p {
     align-items: center;
     justify-content: space-around;
     background-color: white;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-top: 1px solid rgb(255, 255, 255);
   }
 
@@ -616,14 +615,22 @@ p {
   }
   
   .searchbar:hover > .search_input {
-    display: none;
+    pointer-events: none;
   }
   
   .searchbar:hover > .search_icon {
-    display: none;
+    pointer-events: none;
   }
   
   .search_icon {
     display: none;
+  }
+
+  .titulo h2{
+    font-size: 20px;
+  }
+
+  .titulo3 h2{
+    font-size: 20px;
   }
 }
