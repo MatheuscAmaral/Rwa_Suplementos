@@ -439,7 +439,7 @@ p {
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
-  height: 60px;
+  height: 50px;
   background-color: #233caa;
   border-radius: 30px;
   padding: 10px;
@@ -452,7 +452,7 @@ p {
   background: none;
   width: 0;
   caret-color: transparent;
-  line-height: 40px;
+  line-height: 30px;
   transition: width 0.4s linear;
 }
 
@@ -469,8 +469,8 @@ p {
 }
 
 .search_icon {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   float: right;
   display: flex;
   justify-content: center;
