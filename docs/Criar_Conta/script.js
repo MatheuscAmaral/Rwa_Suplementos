@@ -1,3 +1,11 @@
+document.addEventListener("keypress", function(e){
+  if (e.key === 'Enter'){
+    var btn = document.querySelector("#cadastrar");
+
+    btn.click();
+  }
+});
+
 let nome = document.querySelector('#nome')
 let labelNome = document.querySelector('#labelNome')
 let validNome = false

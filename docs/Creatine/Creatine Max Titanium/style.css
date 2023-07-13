@@ -82,6 +82,11 @@
     justify-content: center;
 }
 
+.preco a {
+    text-decoration: none;
+}
+
+
 .t1 {
     padding-top: 2%;
     font-size: 130%;

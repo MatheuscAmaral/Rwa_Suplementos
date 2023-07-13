@@ -95,6 +95,9 @@
     padding-bottom: 4%;
 }
  
+.preco a {
+    text-decoration: none;
+}
 .beneficios {
     background-color: rgb(171, 171, 185);
 }

@@ -1,3 +1,11 @@
+document.addEventListener("keypress", function(e){
+  if (e.key === 'Enter') {
+    var btn =   document.querySelector("#entrar");
+
+    btn.click();
+  }
+})
+
 let btn = document.querySelector('.fa-eye')
 
 btn.addEventListener('click', ()=>{
@@ -62,4 +70,6 @@ function entrar(){
   }
   
 }
+
+
 
