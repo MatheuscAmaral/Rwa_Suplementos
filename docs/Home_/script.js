@@ -6,7 +6,7 @@ if (localStorage.getItem("token") == null) {
 const userLogado = JSON.parse(localStorage.getItem("userLogado"));
 
 const logado = document.querySelector("#logado");
-logado.innerHTML = `${userLogado.nome}`;
+logado.innerHTML = `Olá, ${userLogado.nome}`;
 
 function sair() {
   localStorage.removeItem("token");
