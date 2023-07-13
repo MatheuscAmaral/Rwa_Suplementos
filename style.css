@@ -634,3 +634,76 @@ p {
     font-size: 20px;
   }
 }
+
+@media (min-width: 900px) and (max-width: 1500px) {
+  .cabecalho {
+    box-shadow: 0px 0px 1.2px 0px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border-top: 1px solid rgb(255, 255, 255); 
+    font-size: 13px;
+  }
+  
+  .cabecalho-logo {
+    height: 90px;
+    margin-left: 50px;
+  }
+  
+  .cabecalho-central {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .cabecalho-central-text {
+    font-size: large;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+  }
+  
+  .cabecalho-central-text:hover {
+    color: rgb(255, 255, 255);
+  }
+  
+  .cabecalho-barra {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .cabecalho-barra-img {
+    padding-bottom: 5px;
+    margin-right: 10px;
+  }
+  
+  .card3 {
+    display: none;
+  }
+
+  .card4 {
+    margin-left: 100px;
+  }
+  .card5 {
+    display: none;
+  }
+
+  .card6 {
+    margin-right: 100px;
+  }
+
+  .card9 {
+    display: none;
+  }
+
+  .card1 {
+    margin-left: 200px;
+  }
+
+  .card7 {
+    margin-left: 200px;
+  }
+}
