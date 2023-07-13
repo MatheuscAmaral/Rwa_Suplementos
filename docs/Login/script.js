@@ -1,3 +1,7 @@
+function goBack() {
+  window.history.back();
+}
+
 document.addEventListener("keypress", function(e){
   if (e.key === 'Enter') {
     var btn =   document.querySelector("#entrar");
