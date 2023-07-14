@@ -12,3 +12,12 @@ function sair() {
     localStorage.removeItem("userLogado");
     window.location.href = "/Index.html";
 }
+
+
+function removeHidden(){
+    document.getElementById('novo_endereco').classList.remove('hidden')
+}
+
+function addHidden(){
+    document.getElementById('novo_endereco').classList.add('hidden')
+}

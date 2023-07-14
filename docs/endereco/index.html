@@ -62,10 +62,29 @@
         <h6>Endereços de entrega</h6>
       </div>
 
-      <button id="novo">
+      <button id="novo" onclick="removeHidden()">
             <i class="fa-solid fa-map-location-dot fa-lg" style="color: #000000;"></i>
-            Adicionar novo endereco
+            Adicionar novo endereço
       </button>
+
+      <div id="novo_endereco" class="hidden">
+        <div id="title">
+          <h6>Cadastrar endereço</h6>
+          <i class="fa-solid fa-square-xmark fa-lg" style="color: #000000;" onclick="addHidden()"></i>
+        </div>
+        <div id="inputs">
+            <input type="text" name="rua" id="rua" placeholder="Rua">
+            <input type="number" name="number" id="number" placeholder="Número">
+            <input type="text" name="bairro" id="bairro" placeholder="Bairro">
+            <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+            <input type="text" name="estado" id="estado" placeholder="Estado">
+            <input type="cep" name="cep" id="cep" placeholder="CEP">
+        </div>
+        <div id="botoes">
+          <button>Cadastrar endereço</button>
+        </div>
+
+      </div>
     </div>
   </div>
   

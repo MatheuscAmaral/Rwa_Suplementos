@@ -16,44 +16,71 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
   background-color: white;
-  border-top: 1px solid rgb(255, 255, 255);
+  margin-bottom: 50px;
+  border-top: 1px solid rgb(255, 255, 255); 
 }
 
 .cabecalho-logo {
-  height: 110px;
-  margin-left: 50px;
+    height: 110px;
+    padding-left: 50%;
 }
 
 .cabecalho-central {
-  display: flex;
-  gap: 30px;
+    display: flex;
 }
 
 .cabecalho-central-text {
-  font-size: large;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
 }
 
 .cabecalho-central-text:hover {
-  color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .cabecalho-barra {
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 50px;
+  background-color: #dbdada;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.search_input {
+  color: rgb(0, 0, 0);
+  border: 0;
+  outline: 0;
+  width: 500px;
+  background: none;
+  caret-color: transparent;
+  line-height: 30px;
+  transition: width 0.4s linear;
+}
+
+
+.search_icon {
+  height: 30px;
+  width: 30px;
+  float: right;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  color: rgb(14, 14, 14);
+  text-decoration: none;
 }
-
-.cabecalho-barra-img {
-  padding-bottom: 5px;
-  margin-right: 10px;
-}
-
 .btn {
   color: rgb(255, 255, 255) !important;
   border: none !important;
@@ -241,33 +268,22 @@ p {
   margin-bottom: auto;
   margin-top: auto;
   height: 50px;
-  background-color: #1d62e3;
-  border-radius: 30px;
+  background-color: #dbdada;
+  border-radius: 8px;
   padding: 10px;
 }
 
 .search_input {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border: 0;
   outline: 0;
+  width: 500px;
   background: none;
-  width: 0;
   caret-color: transparent;
   line-height: 30px;
   transition: width 0.4s linear;
 }
 
-.searchbar:hover > .search_input {
-  padding: 0 10px;
-  width: 200px;
-  caret-color: rgb(23, 0, 169);
-  transition: width 0.4s linear;
-}
-
-.searchbar:hover > .search_icon {
-  background: white;
-  color: #1b20ac;
-}
 
 .search_icon {
   height: 30px;
@@ -277,7 +293,7 @@ p {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: rgb(255, 255, 255);
+  color: rgb(14, 14, 14);
   text-decoration: none;
 }
 
@@ -297,7 +313,7 @@ p {
 
   .cabecalho-logo {
     height: 90px;
-    margin-left: 10px;
+    margin-left: 0px;
   }
   .btn-lupa {
     display: none;
@@ -372,8 +388,7 @@ p {
   .inicio_proteinas h4 {
     font-size: 18px;
   }
-
-   .searchbar {
+  .searchbar {
     margin-bottom: auto;
     margin-top: auto;
     height: 50px;
@@ -392,18 +407,6 @@ p {
     caret-color: transparent;
     line-height: 30px;
     transition: width 0.4s linear;
-  }
-  
-  .searchbar:hover > .search_input {
-    pointer-events: none;
-  }
-  
-  .searchbar:hover > .search_icon {
-    pointer-events: none;
-  }
-  
-  .search_icon {
-    display: none;
   }
 }
 
