@@ -18,3 +18,5 @@ const pedido = document.querySelector("#pedidos");
     localStorage.removeItem("userLogado");
     window.location.href = "/Index.html";
 }
+
+
