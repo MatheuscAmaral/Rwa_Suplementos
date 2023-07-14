@@ -13,11 +13,19 @@ function sair() {
     window.location.href = "/Index.html";
 }
 
-
-function removeHidden(){
-    document.getElementById('novo_endereco').classList.remove('hidden')
-}
-
-function addHidden(){
-    document.getElementById('novo_endereco').classList.add('hidden')
-}
+function removeHidden() {
+    const overlay = document.getElementById('overlay');
+    const novoEndereco = document.getElementById('novo_endereco');
+    
+    overlay.style.display = 'block';
+    novoEndereco.classList.remove('hidden');
+  }
+  
+  function addHidden() {
+    const overlay = document.getElementById('overlay');
+    const novoEndereco = document.getElementById('novo_endereco');
+  
+    overlay.style.display = 'none';
+    novoEndereco.classList.add('hidden');
+  }
+  
