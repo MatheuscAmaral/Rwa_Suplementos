@@ -91,7 +91,25 @@
 
 .midbody {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+  
+}
+
+ #atualizar {
+    height: 40px;
+    color: white;
+    background-color: black;
+}
+
+#novo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  height: 50px;
+  width: 250px;
+  margin-top: 25px;
 }
 
 #opcoes {
@@ -322,6 +340,25 @@ font-size: 16px;
 margin-bottom: 20px;
 }
 
+
+#alterarSenha {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 0 1px black;
+    padding: 20px;
+    margin-top: 25px;
+    width: 600px;
+}
+
+#alterarSenha input {
+    width: 300px;
+    height: 45px;
+}
+
+.label-float {
+    font-size: 12px;
+}
 
 
 /* Rodape cima*/

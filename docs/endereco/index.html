@@ -28,9 +28,6 @@
       <div class="name_user">
         <p id="logado"></p>
       </div>
-      <div class="home">
-        <button id="button" onclick="backHome()">Voltar para a loja</button>
-      </div>
     </div>
 
     <div class="midbody">
@@ -63,50 +60,14 @@
         </div>
       </div>
 
-      <div id="status_pedido">
-        <div id="botoes">
-          <div class="searchbar">
-            <input type="search" id="search" placeholder="Pedido por n°">
-            <button id="buscar">Buscar</button>
-          </div>
-          <select id="box-options">
-            <option value="option1">Todo o período</option>
-            <option value="opcao2">Últimos 3 meses</option>
-            <option value="opcao3">Últimos 6 meses</option>
-            <option value="opcao4">Últimos 12 meses</option>
-          </select>
-        </div>
-
-        <table>
-          <thead>
-              <tr>
-                <th>Pedido</th>
-                <th>Valor</th>
-                <th>Status</th>
-                <th>Mensagem</th>
-              </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>
-                <p class="hidden" id="pedidos"></p>
-              </td>
-              <td>
-                  <p id="valor"></p>
-              </td>
-              <td>
-                  <p id="status"></p>
-              </td>
-
-              <td>
-                  <p id="mensagem"></p>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
+      <div id="alterarSenha">
+        <h6>Endereços de entrega</h6>
       </div>
+
+      <button id="novo">
+            <i class="fa-solid fa-map-location-dot fa-lg" style="color: #000000;"></i>
+            Adicionar novo endereco
+      </button>
     </div>
   </div>
   

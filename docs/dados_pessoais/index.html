@@ -28,9 +28,6 @@
       <div class="name_user">
         <p id="logado"></p>
       </div>
-      <div class="home">
-        <button id="button" onclick="backHome()">Voltar para a loja</button>
-      </div>
     </div>
 
     <div class="midbody">
@@ -63,49 +60,30 @@
         </div>
       </div>
 
-      <div id="status_pedido">
-        <div id="botoes">
-          <div class="searchbar">
-            <input type="search" id="search" placeholder="Pedido por n°">
-            <button id="buscar">Buscar</button>
-          </div>
-          <select id="box-options">
-            <option value="option1">Todo o período</option>
-            <option value="opcao2">Últimos 3 meses</option>
-            <option value="opcao3">Últimos 6 meses</option>
-            <option value="opcao4">Últimos 12 meses</option>
-          </select>
+      <div id="alterarSenha">
+        <h6>Dados pessoais</h6>
+        <div class="label-float">
+            <input type="text" id="cpf" placeholder="Digite seu CPF" maxlength="11" required />
+            <label id="labelcpf" for="cpf"></label>
+        </div>
+        <div class="label-float">
+            <input type="date" id="nascimento"  placeholder="Digite a data de nascimento" maxlength="8" required />
+            <label id="labelcpf" for="cpf"></label>
+        </div>
+        <div class="label-float">
+            <input type="text" id="name"  placeholder="Nome completo" maxlength="20" required />
+            <label id="labelcpf" for="cpf"></label>
+        </div>
+        <div class="label-float">
+            <input type="tel" id="tel"  placeholder="Telefone celular" maxlength="11" required />
+            <label id="labelcpf" for="cpf"></label>
+        </div>
+        <div class="label-float">
+            <input type="email" id="email"  placeholder="E-mail" maxlength="11" required />
+            <label id="labelcpf" for="cpf"></label>
         </div>
 
-        <table>
-          <thead>
-              <tr>
-                <th>Pedido</th>
-                <th>Valor</th>
-                <th>Status</th>
-                <th>Mensagem</th>
-              </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>
-                <p class="hidden" id="pedidos"></p>
-              </td>
-              <td>
-                  <p id="valor"></p>
-              </td>
-              <td>
-                  <p id="status"></p>
-              </td>
-
-              <td>
-                  <p id="mensagem"></p>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
+        <button id="atualizar">Atualizar</button>
       </div>
     </div>
   </div>
