@@ -10,7 +10,6 @@ function backHome() {
 
 const pedido = document.querySelector("#pedidos");
 
-  pedido.classList.remove("hidden");
   pedido.innerHTML = 'Nenhum pedido foi encontrado';
 
 
