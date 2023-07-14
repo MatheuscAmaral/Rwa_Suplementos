@@ -587,7 +587,133 @@ margin-bottom: 20px;
   
   .cabecalho-logo {
     height: 90px;
+    margin-left: 310px;
+  }
+  .topbody {
+    display: flex;  
+    justify-content: center;
+  }
+  
+  .midbody {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  #opcoes {
+    margin-top: 25px;
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 140px 20px 20px;
+    box-shadow: 0 0 1.5px #5e5b5b;
+  }
+  
+  #opcoes a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  #button {
+    border-radius: 5px;
+    padding: 6px;
+    margin-left: 550px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+  }
+  
+  #botoes{
+    display: flex;
+    gap: 21rem;
+  }
+  
+  #box-options {
+    margin-top: 25px;
+    height: 40px;
+    text-align: center;
+    font-size: 13px;
+  }
+  
+  #search {
+    font-size: 13px;
+    padding-left: 10px;
+    height: 45px;
+    width: 350px;
+    margin-top: 25px;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  #status_pedido {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  
+  
+  table {
+    margin-top: 25px;
+    box-shadow: 0 0 1px black;
+    text-align: center;
+    
+  }
+  
+  thead {
+    box-shadow:  0 0 1px black;
+  }
+  
+  .searchbar button {
+    padding: 8px;
+    color: white;
+    background-color: black;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  #first {
+    display: flex;
+    gap: .5rem;
+  }
+  
+  #first p {
+    font-size: 13px;
+  }
+  
+  #second {
+    display: flex;
+    gap: .5rem;
+  }
+  
+  #second p {
+    font-size: 13px;
+  }
+  
+  #third {
+    display: flex;
+    gap: .5rem;
+  }
+  
+  #third p {
+    font-size: 13px;
+  }
+  
+  #fourth {
+    display: flex;
+    gap: .5rem;
+  }
+  
+  #fourth p {
+    font-size: 13px;
+  }
+  
+  #sair {
+    display: flex;
+    gap: .5rem;
+  }
+  
+  #sair p {
+    font-size: 13px;
   }
   
 }
