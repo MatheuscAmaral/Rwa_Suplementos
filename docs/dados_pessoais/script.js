@@ -12,3 +12,7 @@ function sair() {
     localStorage.removeItem("userLogado");
     window.location.href = "/Index.html";
 }
+
+function backHome() {
+    window.location.href = '/docs/Home_/index.html'
+}

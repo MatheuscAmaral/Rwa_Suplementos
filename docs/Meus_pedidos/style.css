@@ -115,7 +115,11 @@
   margin-left: 550px;
   color: white;
   background-color: rgb(12, 12, 12);
+  width: 130px;
+  height: 35px;
+  font-size: 13px;
 }
+
 
 #botoes{
   display: flex;

@@ -29,3 +29,6 @@ function removeHidden() {
     novoEndereco.classList.add('hidden');
   }
   
+  function backHome() {
+    window.location.href = '/docs/Home_/index.html'
+}
