@@ -357,6 +357,11 @@ margin-bottom: 20px;
     height: 45px;
 }
 
+#inputs input {
+  font-size: 14px;
+  padding: 5px;
+}
+
 .label-float {
     font-size: 12px;
 }

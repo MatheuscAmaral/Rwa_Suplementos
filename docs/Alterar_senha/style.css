@@ -343,6 +343,7 @@ margin-bottom: 20px;
 #alterarSenha input {
     width: 300px;
     height: 45px;
+    padding: 10px;
 }
 
 .label-float {

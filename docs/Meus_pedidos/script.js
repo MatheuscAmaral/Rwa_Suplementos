@@ -10,7 +10,7 @@ function backHome() {
 
 const pedido = document.querySelector("#pedidos");
 
-  pedido.innerHTML = 'Nenhum pedido foi encontrado';
+pedido.innerHTML = 'Nenhum pedido foi encontrado';
 
 
   function sair() {
