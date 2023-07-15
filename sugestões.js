@@ -4,6 +4,7 @@ const products = [
         title: 'Whey Pro Max Titanium',
         price: 120.0,
         poster: '/docs/Tela_Principal/Imagens/whey-pro-max.png'
+        
     },
     
     {
@@ -67,6 +68,7 @@ const products = [
         title: 'Creatina Turbo Black Skull',
         price: 89.90,
         poster: '/docs/Tela_Principal/Imagens/creatine_black_skull-.png'
+
     },
 
     {
