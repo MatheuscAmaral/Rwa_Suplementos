@@ -32,3 +32,5 @@ function removeHidden() {
   function backHome() {
     window.location.href = '/docs/Home_/index.html'
 }
+
+
