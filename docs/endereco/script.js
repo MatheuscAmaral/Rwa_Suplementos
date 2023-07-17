@@ -33,6 +33,14 @@ function removeHidden() {
     window.location.href = '/docs/Home_/index.html'
 }
 
+document.addEventListener("keypress", function(e) {
+  if (e.key === 'Enter') {
+    var btn = document.querySelector("#submit")
+
+    btn.click()
+  }
+})
+
 
 function enviarInfo() {
   let ru = document.getElementById('rua').value;
@@ -49,7 +57,7 @@ function enviarInfo() {
   enderecoSpan.classList.add("endereco");
 
   // Defina o conteúdo do elemento <span> com os dados preenchidos
-  enderecoSpan.textContent = ` Endereço: ${ru} ${num}, ${bairr}, ${cid} - ${es}, ${ce}`;
+  enderecoSpan.textContent = ` Endereço: ${ru} ${num}, Bairro ${bairr}, ${cid} - ${es}, CEP: ${ce}`;
 
   // Acessar a div "alterarSenha" e adicionar o elemento <span>
   let alterarSenhaDiv = document.getElementById("alterarSenha");
