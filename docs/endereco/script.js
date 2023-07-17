@@ -30,7 +30,14 @@ function removeHidden() {
   }
   
   function backHome() {
-    window.location.href = '/docs/Home_/index.html'
+    if (localStorage.getItem("token") == null) {
+      alert("Você precisa estar logado para acessar essa página");
+      window.location.href = "/docs/Login/index.html";
+    }
+   
+    else {
+      window.location.href = '/docs/Home_/index.html'
+    }
 }
 
 document.addEventListener("keypress", function(e) {
