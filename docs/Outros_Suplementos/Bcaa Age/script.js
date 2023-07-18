@@ -1,12 +1,14 @@
-if (localStorage.getItem("token") == null) {
-  alert("Você precisa estar logado para acessar essa página");
-  window.location.href = "/docs/Login/index.html";
+if (localStorage.getItem("token") != null) {
+  const userLogado = JSON.parse(localStorage.getItem("userLogado"));
+
+  const logado = document.querySelector("#logado");
+  logado.innerHTML = `Olá, ${userLogado.nome}`;
 }
 
-const userLogado = JSON.parse(localStorage.getItem("userLogado"));
-
-const logado = document.querySelector("#logado");
-logado.innerHTML = `Olá, ${userLogado.nome}`;
+else {
+  const icon = document.getElementById('icon')
+  icon.style.display = 'none'
+}
 
 function sair() {
   localStorage.removeItem("token");

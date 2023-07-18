@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/assets/style/login.css">
+  <link rel="shortcut icon" href="/assets/ico/1-removebg-preview.ico" type="image/x-icon">
+</head>
+
+<body>
+    <section class="area-login">
+        <div class="login">
+          <div class="parte-superior">
+              <button>
+                  <i class="bx bx-chevron-left" onclick="goBack()"></i>
+              </button>
+
+              <img src="/assets/ico/1-removebg-preview.ico">
+
+            </div>
+
+            <div class="container">
+              <div class="card">
+        
+                <div id="msgError"></div>
+        
+                <div class="label-float">
+                  <input type="text" id="usuario" placeholder="Usuário" required />
+                  <label id="userLabel" for="usuario"></label>
+                </div>
+        
+                <div class="label-float">
+                  <input type="password" id="senha" placeholder="Sua senha" required />
+                  <label id="senhaLabel" for="senha"></label>
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </div>
+        
+                <div class="justify-center">
+                  <input type="submit" id="entrar" onclick="entrar()"></input>
+                </div>
+        
+                <div class="justify-center">
+                  <hr />
+                </div>
+        
+            
+            <p>
+                Ainda não tem uma conta? 
+                <a href="/assets/html/criarConta.html">
+                  Criar Conta
+                </a> 
+            </p>
+
+        </div>
+    </section>
+    <script src="/assets/js/login.js"></script>
+</body>
+</html>

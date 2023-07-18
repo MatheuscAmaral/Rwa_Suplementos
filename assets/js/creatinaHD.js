@@ -1,8 +1,8 @@
-if (localStorage.getItem("token") != null) {
-const userLogado = JSON.parse(localStorage.getItem("userLogado"));
+if (localStorage.getItem("token") == null) {
+  const userLogado = JSON.parse(localStorage.getItem("userLogado"));
 
-const logado = document.querySelector("#logado");
-logado.innerHTML = `Olá, ${userLogado.nome}`;
+  const logado = document.querySelector("#logado");
+  logado.innerHTML = `Olá, ${userLogado.nome}`;
 }
 
 else {
