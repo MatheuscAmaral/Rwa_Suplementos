@@ -4,7 +4,7 @@ const logado = document.querySelector("#logado");
 logado.innerHTML = `Olá, <strong>${userLogado.nome}</strong>! Acompanhe seus pedidos e seus dados cadastrais aqui.`;
 
 function backHome() {
-    window.location.href = '/docs/Home_/index.html'
+    window.location.href = '/assets/html/home.html'
 }
 
 function sair() {
@@ -32,11 +32,11 @@ function removeHidden() {
   function backHome() {
     if (localStorage.getItem("token") == null) {
       alert("Você precisa estar logado para acessar essa página");
-      window.location.href = "/docs/Login/index.html";
+      window.location.href = "/assets/html/login.html";
     }
    
     else {
-      window.location.href = '/docs/Home_/index.html'
+      window.location.href = '/assets/html/home.html'
     }
 }
 
