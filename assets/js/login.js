@@ -4,7 +4,7 @@ function goBack() {
 
 document.addEventListener("keypress", function(e){
   if (e.key === 'Enter') {
-    var btn =   document.querySelector("#entrar");
+    var btn =  document.querySelector("#entrar");
 
     btn.click();
   }
@@ -54,7 +54,7 @@ function entrar(){
    
   if(usuario.value == userValid.user && senha.value == userValid.senha)
   {
-    window.location.href = "/assets/html/home.html"
+    window.location.href = "/home.html"
     
     let mathRandom = Math.random().toString(16).substr(2)
     let token = mathRandom + mathRandom
