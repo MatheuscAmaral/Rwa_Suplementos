@@ -6,3 +6,4 @@ if (localStorage.getItem("token") == null) {
 function goBack() {
     window.history.back();
 }
+

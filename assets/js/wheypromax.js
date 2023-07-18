@@ -15,8 +15,8 @@ if (localStorage.getItem("token") != null) {
 
   icon.style.display = 'flex';
   icon.style.gap = '1rem';
-  
-} 
+
+}
 
 else {
   const icon = document.getElementById('icon');
@@ -33,3 +33,5 @@ function sair() {
   localStorage.removeItem("token");
   localStorage.removeItem("userLogado");
 }
+
+
