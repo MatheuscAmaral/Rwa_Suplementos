@@ -344,10 +344,11 @@ p {
 
     .wheyprom {
         justify-content: center;
+        align-items: center;
     }
 
     .t1 {
-        padding-left: 0%;
+        padding-left: 12%;
         padding-top: 2.2%;
     }
 
@@ -455,8 +456,5 @@ p {
       font-family: 'poppins'; 
     } 
 
-    .Whey_Body_Action img {
-        width: 23%;
-    }
   }
   
