@@ -276,4 +276,24 @@ p {
         font-size: 13px;
         background-image: url('/assets/images/Imagens/fundo_acad.jpg');
     }
+
+}
+
+@media (min-width: 900px) and (max-width: 1500px) {
+  .t1 h1 {
+    font-size: 24px;
+  }
+
+  .estados {
+    font-size: 14px;
+  }
+
+  .text1 {
+    font-size: 14px;
+  }
+
+  .text2 {
+    font-size: 14px;
+  }
+
 }
