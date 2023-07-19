@@ -71,11 +71,11 @@
     background-color: rgb(4, 0, 66);
     color: white;
     display: flex;
-    background-image: url('/assets/images//Imagens/Untitled\ design\ \(2\).png');
+    background-image: url('/assets/images/Imagens/Untitled\ design\ \(2\).png');
 }
 
 .sobre_nos {
-    background-image: url("/assets/images//Imagens/fundo_acad.jpg");
+    background-image: url("/assets/images/Imagens/fundo_acad.jpg");
 }
 
 .rwa {
@@ -389,17 +389,7 @@ p {
         color: blue !important;
     }
     
-    .conheca_o_sobre_nos {
-        background-color: rgb(4, 0, 66);
-        color: white;
-        display: flex;
-        background-image: url('/Imagens/Untitled\ design\ \(2\).png');
-    }
-    
-    .sobre_nos {
-        background-image: url("/Imagens/fundo_acad.jpg");
-    }
-    
+
     .rwa {
         padding-top: 4%;
         padding-bottom: 2%;
