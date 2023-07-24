@@ -50,8 +50,15 @@
   }
 
   .Whey_Body_Action img {
-    width: 33%;
+    width:24%;
+    height: 400px;
+    transition: .3s;
 }
+
+.Whey_Body_Action img:hover {
+    transform: scale(1.1);
+}
+
 
 .btn {
     color:  rgb(255, 255, 255) !important;
@@ -85,29 +92,107 @@
     gap: 5rem;
     justify-content: center;
     padding-bottom: 70px;
+    align-items: center;
 }
 
+
 select {
-    padding: 7px;
+    padding: 14px;
     width: 300px;
-    border-radius: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .preco {
     margin-top: 70px;
     margin-left: 40px;
-    
+    display: flex;
+    gap: 10rem;
+}
+
+
+#size {
+    padding: 13px;
+    width: 55px;
+    font-size: 13px;
+    background-color: rgb(13, 107, 221);
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#frete {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 20px;
+    font-size: 13px;
+    box-shadow:  0px 0px 1.2px 0px black;
+    align-items: center;
+}
+
+#frete a {
+    font-size: 11px;
+}
+
+#frete i {
+    font-size: 28px;
+}
+
+#envio {
+    text-decoration: none;
+    color: black;
+}
+
+#text {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+#superior {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+}
+
+#superior h5 {
+    text-align: center;
+}
+
+#rating {
+    margin-left: 10px;
 }
 
 .preco a {
     text-decoration: none;
 }
 
+.preco p {
+    font-size: 15px;
+}
 
 .t1 {
     font-size: 130%;
 }
 
+
+
+#estoque {
+    font-size: 12px;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#estoque b {
+    color: black;
+}
 
 
 .img_whey_bodyaction {
@@ -119,9 +204,13 @@ select {
     padding-top: 8%;
     color: rgb(0, 0, 0); 
     font-family: 'poppins';
-    font-weight: 700;
+    font-size: 12px;
     font-weight: bold;
     display: flex;
+}
+
+.t3 h1 {
+    font-size: 32px;
 }
 
 .t4 {
@@ -158,9 +247,9 @@ select {
     margin-top: 10px;
     cursor: pointer;
     text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(16, 124, 255);;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(13, 107, 221);
     transition: 0.2s;
     color: white;
     
@@ -172,11 +261,12 @@ select {
     margin-top: 10px;
     cursor: pointer;
     text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(19, 161, 213, 0.231);;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);;
     transition: 0.2s;
-    color: rgb(29, 86, 210)    ;
+    color: rgb(0, 0, 0)    ;
     
 }
 
@@ -341,20 +431,114 @@ p {
       transition: width 0.4s linear;
     }
 
-    .Whey_Body_Action {
-        background-color: rgb(36, 34, 34); 
-        color: white;
+    #product {
+        padding-left: 70px;
+        padding-right: 100px;
+        padding-top: 20px;
+    
+    }
+    
+    .Whey_Body_Action {  
+        box-shadow: 0px 0px 0px 0px black;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 0rem;
         justify-content: center;
-        gap: 1rem;
-        font-size: 14px;
-    } 
+        padding-bottom: 70px;
+        align-items: center;
+    }
 
     .Whey_Body_Action img {
-        width: 70%;
+        width: 250px;
+        height: 250px;
+        margin-left: 50px;
     }
+    
+    
+    select {
+        padding: 14px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    .preco {
+        margin-top: 70px;
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    }
+    
+    
+    #size {
+        padding: 13px;
+        width: 55px;
+        font-size: 13px;
+        background-color: rgb(13, 107, 221);
+        color: white;
+        border: none;
+        text-align: center;
+        border-radius: 3px;
+    }
+    
+    #frete {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 20px;
+        font-size: 13px;
+        box-shadow:  0px 0px 1.2px 0px black;
+        align-items: center;
+    }
+    
+    #frete a {
+        font-size: 11px;
+    }
+    
+    #frete i {
+        font-size: 28px;
+    }
+    
+    #envio {
+        text-decoration: none;
+        color: black;
+    }
+    
+    #text {
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+    }
+    
+    #superior {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        align-items: center;
+    }
+    
+    #superior h5 {
+        text-align: center;
+    }
+    
+    #rating {
+        margin-left: 10px;
+    }
+
+    #preco {
+        gap: 1rem;    
+    }
+    
+    .preco a {
+        text-decoration: none;
+    }
+    
+    .preco p {
+        font-size: 15px;
+    }
+    
   }
   
 
@@ -362,14 +546,6 @@ p {
 
     .wheyprom {
         justify-content: center;
-    }
-
-
-    .img_wheypromax {
-        padding-left: 0%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-       
     }
 
     .t2 {
@@ -459,7 +635,8 @@ p {
     } 
 
     .Whey_Body_Action img {
-        width: 40%;
+        width:28%;
+    height: 300px;
     }
   }
   
