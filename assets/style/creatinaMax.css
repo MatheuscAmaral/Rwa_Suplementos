@@ -50,7 +50,7 @@
   }
 
   .Whey_Body_Action img {
-    width: 23%;
+    width: 33%;
 }
 
 .btn {
@@ -76,6 +76,7 @@
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 20px;
+
 }
 
 .Whey_Body_Action {  
@@ -83,11 +84,19 @@
     display: flex;
     gap: 5rem;
     justify-content: center;
+    padding-bottom: 70px;
+}
+
+select {
+    padding: 7px;
+    width: 300px;
+    border-radius: 8px;
 }
 
 .preco {
     margin-top: 70px;
     margin-left: 40px;
+    
 }
 
 .preco a {
@@ -108,7 +117,7 @@
  
 .t3 {
     padding-top: 8%;
-    color: rgb(0, 255, 0); 
+    color: rgb(0, 0, 0); 
     font-family: 'poppins';
     font-weight: 700;
     font-weight: bold;
