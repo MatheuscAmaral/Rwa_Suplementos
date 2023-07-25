@@ -325,139 +325,242 @@ p {
 
 /* 0 -- 480 celular */
 @media (max-width: 500px) {
-    .cabecalho {
-      box-shadow: 0px 0px 1.2px 0px black;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-      background-color: white;
-      border-top: 1px solid rgb(255, 255, 255);
-    }
-  
-    .cabecalho-logo {
-      height: 90px;
-      margin-left: 10px;
-    }
-    .btn-lupa {
-      display: none;
-    }
-    .search-input {
-      width: 150px;
-    }
-  
-    .footer {
-      margin-top: 30%;
-    }
-  
-    .footer-cima {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      padding-bottom: 5%;
-    }
-  
-    .footer-card {
-      font-size: 1em;
-      width: 400px;
-      border-radius: 5px;
-    }
-  
-    .footer-baixo {
-      text-align: center;
-      background-color: lightgray;
-    }
-  
-    .cabecalho-central {
-      display: none;
-    }
-  
-    .produtos1 {
-      display: flex;
-      flex-direction: column;
-      padding-top: 1%;
-      align-items: center;
-    }
-    
-    .produtos2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .produtos3 {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1%;
-        align-items: center;
-    }
+  #cabecalho {
+    box-shadow: 0px 0px 0px 0px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    background-color: white;
+    margin-bottom: 0px;
+    border-top: 0px solid rgb(255, 255, 255); 
+    height: 170px;
+}
 
-    .produtos4 {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1%;
-        align-items: center;
-    }
+#superior {
+  display: flex;
+  flex-direction: column;
+}
 
-    .produtos5 {
-        display: flex;
-        flex-direction: column;
-        padding-top: 1%;
-        align-items: center;
-    }
+#superiorTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .compras:hover {
-      pointer-events: none;
-    }
-  
-    .compras {
-      margin-top: 10px;
-      cursor: pointer;
-      text-align: center;
-      padding: 10px;
-      border: 1px solid black;
-      border-radius: 10px;
-      background-color: #ddd;
-      transition: 0.2s;
-      opacity: 1;
-      transition: opacity 0.3s;
-    }
+#superior a {
+  margin-right: 40px;
+}
 
-    .inicio_outros_suplementos h4 {
-      font-size: 18px;
+.cabecalho-logo {
+  height: 95px;
+  padding-left: 0px;  
+}
+
+#user {
+  margin-left: 40px;
+}
+
+
+  .btn-lupa {
+    display: none;
+  }
+  .search-input {
+    width: 150px;
   }
 
+  .footer {
+    margin-top: 30%;
+  }
+
+  .footer-cima {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-bottom: 5%;
+  }
+
+  .footer-card {
+    font-size: 1em;
+    width: 400px;
+    border-radius: 5px;
+  }
+
+  .footer-baixo {
+    text-align: center;
+    background-color: lightgray;
+  }
+
+  .cabecalho-central {
+    display: none;
+  }
+
+  .produtos1 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    align-items: center;
+  }
   
-  .searchbar {
+  .produtos2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .produtos3 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .compras:hover {
+    pointer-events: none;
+  }
+
+  .compras {
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #ddd;
+    transition: 0.2s;
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  .inicio_proteinas h4 {
+    font-size: 18px;
+  }
+  #superior {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: 4s;
+  }
+
+  #superiorTop {
+    border: .1px solid rgb(185, 185, 185);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 12px;
+
+  }
+
+  #superiorMid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #enter {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 28px;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+
+  #enter a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #low {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileCard {
+    padding: 20px;
+    background-color: rgb(9, 90, 228);
+  }
+
+  .mobileCard a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+  }
+
+  #searchbar {
     margin-bottom: auto;
     margin-top: auto;
-    height: 50px;
-    border: 1px solid black;
-    background-color: #ffffff00;
-    border-radius: 16px;
-    padding: 10px;
+    height: 40px;
+    background-color: #dbdada;
+    border-radius: 8px;
+    padding: 8px;
+
   }
   
   .search_input {
-    color: white;
+    color: rgb(0, 0, 0);
     border: 0;
     outline: 0;
+    width: 270px;
+    font-size: 13px;
     background: none;
-    width: 200px;
     caret-color: transparent;
-    line-height: 30px;
+    line-height: 0px;
     transition: width 0.4s linear;
   }
   
-  .searchbar:hover > .search_input {
-    pointer-events: none;
-  }
-  
-  .searchbar:hover > .search_icon {
-    pointer-events: none;
-  }
   
   .search_icon {
-    display: none;
+    height: 20px;
+    width: 20px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgb(14, 14, 14);
+    text-decoration: none;
   }
+  
+
+  #superiorMid .searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 45px;
+    background-color: #dbdada;
+    border-radius: 8px;
+    padding: 8px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #superiorMid .search_input {
+    color: rgb(0, 0, 0);
+    border: 0;
+    outline: 0;
+    width: 210px;
+    font-size: 13px;
+    background: none;
+    caret-color: transparent;
+    line-height: 0px;
+    transition: width 0.4s linear;
+  }
+  
+  
+  #superiorMid  .search_icon {
+    height: 25px;
+    width: 0px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: rgb(14, 14, 14);
+    text-decoration: none;
+  }
+
 }
