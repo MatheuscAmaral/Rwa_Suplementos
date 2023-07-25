@@ -252,9 +252,9 @@ select {
     background-color: rgb(13, 107, 221);
     transition: 0.2s;
     color: white;
-    
-
-    
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .comprass {
@@ -456,7 +456,7 @@ p {
     
     
     select {
-        padding: 14px;
+        padding: 20px;
         width: 300px;
         border-radius: 5px;
         border: 1px solid black;

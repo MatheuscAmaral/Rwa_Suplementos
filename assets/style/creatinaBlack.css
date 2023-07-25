@@ -253,9 +253,9 @@ select {
     background-color: rgb(13, 107, 221);
     transition: 0.2s;
     color: white;
-    
-
-    
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .comprass {
