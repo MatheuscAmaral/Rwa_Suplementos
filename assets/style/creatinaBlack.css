@@ -53,6 +53,18 @@
   
   }
 
+  
+  .Whey_Body_Action img {
+    width:23%;
+    height: 400px;
+    transition: .3s;
+    padding-top:50px;
+}
+
+.Whey_Body_Action img:hover {
+    transform: scale(1.1);
+}
+
 .btn {
     color:  rgb(255, 255, 255) !important;
     border: none !important;
@@ -72,36 +84,134 @@
     color: blue !important;
 }
 
-.Whey_Body_Action {
-    background-color: rgb(36, 34, 34);    
-    color: white;
+#product {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+
+}
+
+.Whey_Body_Action {  
+    box-shadow: 0px 0px 1.2px 0px black;
     display: flex;
+    gap: 5rem;
+    justify-content: center;
+    padding-bottom: 70px;
+    align-items: center;
+}
+
+
+select {
+    padding: 14px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.preco {
+    margin-top: 70px;
+    margin-left: 40px;
+    display: flex;
+    gap: 10rem;
+}
+
+
+#size {
+    padding: 13px;
+    width: 55px;
+    font-size: 13px;
+    background-color: rgb(13, 107, 221);
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#frete {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 20px;
+    font-size: 13px;
+    box-shadow:  0px 0px 1.2px 0px black;
+    align-items: center;
+}
+
+#frete a {
+    font-size: 11px;
+}
+
+#frete i {
+    font-size: 28px;
+}
+
+#envio {
+    text-decoration: none;
+    color: black;
+}
+
+#text {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+#superior {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+}
+
+#superior h5 {
+    text-align: center;
+}
+
+#rating {
+    margin-left: 10px;
+}
+
+.preco a {
+    text-decoration: none;
+}
+
+.preco p {
+    font-size: 15px;
 }
 
 .t1 {
-    padding-left: 25%;
-    padding-top: 2%;
     font-size: 130%;
 }
 
-.t2 {
-    padding-top: 14%;
-    padding-left: 5%;
-    font-size: 130%;
+
+
+#estoque {
+    font-size: 12px;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
 }
 
-.img_whey_bodyaction {
-    padding-left: 1%;
-    padding-top: 4%;
+#estoque b {
+    color: black;
 }
- 
+
+
+
 .t3 {
     padding-top: 8%;
-    color: rgb(0, 255, 0); 
+    color: rgb(0, 0, 0); 
     font-family: 'poppins';
-    font-weight: 700;
+    font-size: 12px;
     font-weight: bold;
     display: flex;
+}
+
+.t3 h1 {
+    font-size: 32px;
 }
 
 .t4 {
@@ -116,9 +226,11 @@
 .t6 {
     display: inline-block;
 }
+
 .cor_bolepix {
-    color: rgb(0, 255, 0); 
+    color: rgb(0, 0, 0); 
 }
+
 /* Menu Sessao card */
 
 .compras {
@@ -136,12 +248,26 @@
     margin-top: 10px;
     cursor: pointer;
     text-align: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: rgb(0, 255, 0);;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgb(13, 107, 221);
     transition: 0.2s;
-    color: black;
+    color: white;
+    
+
+    
+}
+
+.comprass {
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);;
+    transition: 0.2s;
+    color: rgb(0, 0, 0)    ;
     
 }
 
@@ -258,11 +384,9 @@ p {
       height: 90px;
       margin-left: 0px;
     }
-
     .btn-lupa {
       display: none;
     }
-    
     .search-input {
       width: 150px;
     }
@@ -314,27 +438,114 @@ p {
       transition: width 0.4s linear;
     }
 
-    .Whey_Body_Action {
-        background-color: rgb(36, 34, 34); 
-        color: white;
+    #product {
+        padding-left: 70px;
+        padding-right: 100px;
+        padding-top: 20px;
+    
+    }
+    
+    .Whey_Body_Action {  
+        box-shadow: 0px 0px 0px 0px black;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 0rem;
         justify-content: center;
-        gap: 1rem;
-        font-size: 12px;
-    } 
+        padding-bottom: 70px;
+        align-items: center;
+    }
 
     .Whey_Body_Action img {
-        width: 80%;
-        margin-left: 10%;
+        width: 250px;
+        height: 250px;
+        margin-left: 50px;
+    }
+    
+    
+    select {
+        padding: 14px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    .preco {
+        margin-top: 70px;
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    }
+    
+    
+    #size {
+        padding: 13px;
+        width: 55px;
+        font-size: 13px;
+        background-color: rgb(13, 107, 221);
+        color: white;
+        border: none;
+        text-align: center;
+        border-radius: 3px;
+    }
+    
+    #frete {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 20px;
+        font-size: 13px;
+        box-shadow:  0px 0px 1.2px 0px black;
+        align-items: center;
+    }
+    
+    #frete a {
+        font-size: 11px;
+    }
+    
+    #frete i {
+        font-size: 28px;
+    }
+    
+    #envio {
+        text-decoration: none;
+        color: black;
+    }
+    
+    #text {
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+    }
+    
+    #superior {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        align-items: center;
+    }
+    
+    #superior h5 {
+        text-align: center;
+    }
+    
+    #rating {
+        margin-left: 10px;
     }
 
-    .t1 {
-        padding-left: 5%;
-        padding-top: 2%;
-        font-size: 130%;
+    #preco {
+        gap: 1rem;    
     }
+    
+    .preco a {
+        text-decoration: none;
+    }
+    
+    .preco p {
+        font-size: 15px;
+    }
+    
   }
   
 
@@ -344,26 +555,14 @@ p {
         justify-content: center;
     }
 
-    .t1 {
-        padding-left: 14%;
-        padding-top: 2.2%;
-    }
-
-    .img_wheypromax {
-        padding-left: 0%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-       
-    }
-
     .t2 {
-        padding-top: 20%;
+        padding-top: 2%;
         padding-bottom: 15%;
     }
     
     .t3 {
         padding-top: 8%;
-        color: rgb(0, 255, 0); 
+        color: rgb(0, 0, 0); 
         font-family: 'poppins';
         font-weight: 700;
         font-weight: bold;
@@ -398,7 +597,7 @@ p {
     }
     
     .cor_bolepix {
-        color: rgb(0, 255, 0);
+        color: rgb(0, 0, 0);
     }
     
     /* Menu Sessao card */
@@ -419,18 +618,7 @@ p {
         color: white;
     }
     
-    .compras2 {
-        margin-top: 10px;
-        cursor: pointer;
-        text-align: center;
-        padding: 10px;
-        border: 1px solid black;
-        border-radius: 10px;    
-        background-color: rgb(0, 255, 0);;
-        transition: 0.2s;
-        color: black;
-        
-    }
+
     
     
     h2 {
@@ -454,6 +642,8 @@ p {
     } 
 
     .Whey_Body_Action img {
-        width: 68%;
+        width:28%;
+    height: 300px;
     }
   }
+  
