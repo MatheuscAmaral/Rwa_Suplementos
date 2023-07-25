@@ -47,7 +47,7 @@
 }
 
 /* cabecalho */
-.cabecalho {
+#cabecalho {
   box-shadow: 0px 0px 1.2px 0px black;
   display: flex;
   flex-direction: row;
