@@ -18,43 +18,29 @@
 </head>
 
 <body>
-  <header class="cabecalho">
-    <a href="/home.html"><img class="cabecalho-logo" src="/assets/images/Imagens/rwa logo.png" alt=""></a>
-    <nav class="cabecalho-central">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <div class="container h-100">
-            <div class="d-flex justify-content-center h-100">
-              <div class="searchbar">
-                <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+  <div id="mobile" onclick="goBack()"></div>
+  <main id="main">
+    <header id="cabecalho">
+      <a href="/home.html"><img class="cabecalho-logo" src="/assets/images//Imagens/rwa logo.png" alt=""></a>
+      <nav class="cabecalho-central">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <div class="container h-100">
+              <div class="d-flex justify-content-center h-100">
+                <div class="searchbar">
+                  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
+                  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </nav>
       </nav>
-  </nav>
-  
-    <div class="cabecalho-barra">
-      <div class="cabecalho-icons" id="icon">
-        <style>
-          .cabecalho-icons {
-            display: flex;
-            margin-top: 15px;
-            gap: 1rem;
-          }
-        </style>
-        <a href="/assets/html/meusPedidos.html"><i class="fa-solid fa-user fa-lg" style="color: #000000;"></i></a>
-        <div class="name_user">
-          <p id="logado"></p>
-        </div>
-        <div class="deslogar">
-          <i class="fa-solid fa-right-from-bracket fa-lg" style="color: #000000;" id="botao" onclick="sair()"></i>
-        </div>
-        <a href="/assets/html/carrinho.html"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #000000;"></i></a>
+    
+      <div class="cabecalho-barra">
+        <div class="cabecalho-icons" id="icon"></div>
       </div>
-    </div>
-  </header>
+    </header>
   </div>
   </section>
   </div>
@@ -148,7 +134,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
       </script>
-<script src="/assets/js/creatine_nutri_150g.js"></script>
+<script src="/assets/js/suplementosGeral.js"></script>
 </body>
 
 </html>

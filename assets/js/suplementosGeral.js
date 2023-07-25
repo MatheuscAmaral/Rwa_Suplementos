@@ -110,7 +110,7 @@ function mobile() {
       </div>
       <div id="enter">
         <i class="fa-solid fa-right-to-bracket fa-xl" style="color: #000000;"></i>
-        <a href="/assets/html/login.html">Entrar/Cadastrar</a>
+        <a href="/assets/html/Login.html">Entrar/Cadastrar</a>
       </div>
     </div>
     <div id="low">

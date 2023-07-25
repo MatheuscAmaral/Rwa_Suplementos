@@ -11,15 +11,15 @@
 }
 
 /* cabecalho */
-.cabecalho {
-    box-shadow: 0px 0px 1.2px 0px black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    background-color: white;
-    border-top: 1px solid rgb(255, 255, 255); 
+#cabecalho {
+  box-shadow: 0px 0px 1.2px 0px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: white;
+  border-top: 1px solid rgb(255, 255, 255); 
   }
   
   .cabecalho-logo {
