@@ -679,6 +679,16 @@ p {
         font-size: 15px;
     }
     
+    #sabor {
+        padding: 7px;
+        font-size: 13px;
+        background-color: rgb(13, 107, 221);
+        color: white;
+        border: none;
+        text-align: center;
+        border-radius: 3px;
+    }
+    
   }
   
 

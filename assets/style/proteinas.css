@@ -49,6 +49,10 @@
 
 }
 
+#produtos {
+  display: none;
+}
+
 .btn {
   color:  rgb(255, 255, 255) !important;
   border: none !important;
@@ -390,45 +394,28 @@ p {
   }
 
   .produtos1 {
-    display: flex;
+    display: none;
     flex-direction: column;
-    padding-top: 1%;
-    align-items: center;
   }
   
   .produtos2 {
-    display: flex;
+    display: none;
     flex-direction: column;
-    align-items: center;
   }
 
   .produtos3 {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0;
-    align-items: center;
+    display: none;
+  }
+
+  .card {
+    width: 24.3rem;
   }
 
   .compras:hover {
     pointer-events: none;
   }
 
-  .compras {
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: #ddd;
-    transition: 0.2s;
-    opacity: 1;
-    transition: opacity 0.3s;
-  }
 
-  .inicio_proteinas h4 {
-    font-size: 18px;
-  }
   #superior {
     display: flex;
     flex-direction: column;
@@ -557,5 +544,45 @@ p {
     text-decoration: none;
   }
 
+
+  .inicio_proteinas {
+    background-color: rgb(4, 0, 66);
+    color: white;
+    display: none;
+    background-image: url("/assets/images//Imagens/Untitled_design__2_.png");
+  }
+  
+  #produtos {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardM {
+    display: flex;
+    box-shadow: 0px 0px 1.2px 0px rgb(182, 182, 182);
+    align-items: center;
+  }
+
+  #rating {
+    font-size: 12px;
+  }
+
+  .cardM img{
+    width: 110px;
+    height: 110px;
+  }
+
+  .cardM a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .cardM p {
+    font-size: 14px;
+  }
+
+  #produtos a {
+    display: flex;
+  }
 }
 

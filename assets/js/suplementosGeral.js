@@ -3,6 +3,7 @@ const cabecalho = document.getElementById("cabecalho");
 const searchbar = document.getElementById("searchbar");
 const mobilee = document.getElementById('mobile');
 const main = document.getElementById('main');
+const hidden = document.getElementById('produtos')
 
 if (width <= 500) {
   if (localStorage.getItem("token") == null) {
@@ -31,6 +32,7 @@ if (width <= 500) {
     cabecalho.style.flexDirection = "column";
     cabecalho.style.gap = '0rem'
     cabecalho.style.padding = '20px'
+    hidden.document.getElementById.add.hidden
     
 }
 else {
@@ -183,4 +185,64 @@ function mobile() {
 function goBack() {
   window.history.back();
   main.style.display = 'block'
+}
+
+const botao1 = document.getElementById('button1')
+const botao2 = document.getElementById('button2')
+const botao3 = document.getElementById('button3')
+const botao4 = document.getElementById('button4')
+const pages1 = document.getElementById('firstP')
+const pages2 = document.getElementById('secondP')
+
+
+function backLeft() {
+  pages1.style.display = 'flex';
+  pages1.style.flexDirection = 'column'
+  pages2.style.display = 'none'
+  botao2.style.backgroundColor = 'blue'
+  botao1.style.backgroundColor = ' rgba(128, 128, 128, 0.357)'
+
+  if (pages2.style.display = 'none') {
+    botao3.style.backgroundColor = 'transparent'
+    botao4.style.backgroundColor = 'transparent'
+  }
+}
+
+function pageOne() {
+  pages1.style.display = 'flex';
+  pages1.style.flexDirection = 'column'
+  pages2.style.display = 'none'
+  botao2.style.backgroundColor = 'blue'
+  botao1.style.backgroundColor = ' rgba(128, 128, 128, 0.357)'
+
+  if (pages2.style.display = 'none') {
+    botao3.style.backgroundColor = 'transparent'
+    botao4.style.backgroundColor = 'transparent'
+  }
+}
+
+function pageTwo() {
+  pages2.style.display = 'flex';
+  pages2.style.flexDirection = 'column'
+  pages1.style.display = 'none'
+  botao3.style.backgroundColor = 'blue'
+  botao4.style.backgroundColor = ' rgba(128, 128, 128, 0.357)'
+
+  if (pages1.style.display = 'none') {
+    botao2.style.backgroundColor = 'transparent'
+    botao1.style.backgroundColor = 'transparent'
+  }
+}
+
+function backRight() {
+  pages2.style.display = 'flex';
+  pages2.style.flexDirection = 'column'
+  pages1.style.display = 'none'
+  botao3.style.backgroundColor = 'blue'
+  botao4.style.backgroundColor = ' rgba(128, 128, 128, 0.357)'
+
+  if (pages1.style.display = 'none') {
+    botao2.style.backgroundColor = 'transparent'
+    botao1.style.backgroundColor = 'transparent'
+  }
 }
