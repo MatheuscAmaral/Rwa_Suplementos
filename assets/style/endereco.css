@@ -561,7 +561,7 @@ margin-bottom: 20px;
   
   .midbody {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 2rem;
   }
   

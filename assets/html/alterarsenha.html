@@ -25,54 +25,53 @@
       </div>
     </header>
 
-    <div class="topbody">
-        <p id="logado"></p>
-    </div>
-
-    <div class="midbody">
-      <div id="opcoes">
-        <div id="first">
-          <i class="fa-solid fa-cart-arrow-down fa-lg" style="color: #000000;"></i>
-          <a href="/assets/html/meusPedidos.html"><p>Meus Pedidos</p></a>
+        <div class="topbody">
+            <p id="logado"></p>
         </div>
 
-        <div id="second">
-          <i class="fa-solid fa-key fa-lg" style="color: #000000;"></i>
-          <a href="/assets/html/alterarsenha.html"><p>Alterar senha</p></a>
-        </div>
+        <div class="midbody">
+          <div id="opcoes">
+            <div id="first">
+              <i class="fa-solid fa-cart-arrow-down fa-lg" style="color: #000000;"></i>
+              <a href="/assets/html/meusPedidos.html"><p>Meus Pedidos</p></a>
+            </div>
 
-        <div id="third">
-          <i class="fa-solid fa-circle-user fa-lg" style="color: #000000;"></i>
-          <a href="/assets/html/dadosPessoais.html"><p>Dados Pessoais</p></a>
-        </div>
+            <div id="second">
+              <i class="fa-solid fa-key fa-lg" style="color: #000000;"></i>
+              <a href="/assets/html/alterarsenha.html"><p>Alterar senha</p></a>
+            </div>
 
-        <div id="fourth">
-          <i class="fa-solid fa-location-dot fa-lg" style="color: #000000;"></i>
-          <a href="/assets/html/endereco.html"><p>Endereço de entrega</p></a>
-        </div>
+            <div id="third">
+              <i class="fa-solid fa-circle-user fa-lg" style="color: #000000;"></i>
+              <a href="/assets/html/dadosPessoais.html"><p>Dados Pessoais</p></a>
+            </div>
 
-        <div id="sair">
-          <div class="deslogar">
-            <i class="fa-solid fa-rotate-left fa-lg" style="color: #000000;"></i>
+            <div id="fourth">
+              <i class="fa-solid fa-location-dot fa-lg" style="color: #000000;"></i>
+              <a href="/assets/html/endereco.html"><p>Endereço de entrega</p></a>
+            </div>
+
+            <div id="sair">
+              <div class="deslogar">
+                <i class="fa-solid fa-rotate-left fa-lg" style="color: #000000;"></i>
+              </div>
+              <a href="/home.html" id="botao" onclick="sair()"><p>Sair</p></a>
+            </div>
           </div>
-          <a href="/home.html" id="botao" onclick="sair()"><p>Sair</p></a>
-        </div>
-      </div>
 
-      <div id="alterarSenha">
-        <h6>Alterar senha</h6>
-        <div class="label-float">
-            <input type="password" id="senha" placeholder="Nova Senha" required />
-            <label id="labelSenha" for="senha"></label>
+          <div id="alterarSenha">
+            <h6>Alterar senha</h6>
+            <div class="label-float">
+                <input type="password" id="senha" placeholder="Nova Senha" required />
+                <label id="labelSenha" for="senha"></label>
+            </div>
+            <div class="label-float">
+                <input type="password" id="confirmSenha" placeholder="Confirmar nova senha" required />
+                <label id="labelConfirmSenha" for="confirmSenha"></label>
+            </div>
+            <button id="atualizar">Atualizar senha</button>
+          </div>
         </div>
-        <div class="label-float">
-            <input type="password" id="confirmSenha" placeholder="Confirmar nova senha" required />
-            <label id="labelConfirmSenha" for="confirmSenha"></label>
-        </div>
-        <button id="atualizar">Atualizar senha</button>
-      </div>
-    </div>
-  </div>
   
         <footer class="footer">
           <section class="footer-cima">

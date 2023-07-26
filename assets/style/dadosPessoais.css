@@ -466,13 +466,12 @@ margin-bottom: 20px;
 
  
   .topbody p {
-    display: flex;
-    font-size: 12px;
+    display: none;
   }
   
   .midbody {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 2rem;
   }
   
