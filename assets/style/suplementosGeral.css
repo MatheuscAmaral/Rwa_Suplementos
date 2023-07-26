@@ -78,6 +78,17 @@
 
 }
 
+#sabor {
+    padding: 7px;
+    font-size: 13px;
+    background-color: rgb(13, 107, 221);
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+
 .Whey_Body_Action {  
     box-shadow: 0px 0px 1.2px 0px black;
     display: flex;
@@ -594,6 +605,9 @@ p {
         margin-left: 50px;
     }
     
+    .t1 {
+        display: none;
+    }
     
     select {
         padding: 14px;
@@ -679,16 +693,7 @@ p {
         font-size: 15px;
     }
     
-    #sabor {
-        padding: 7px;
-        font-size: 13px;
-        background-color: rgb(13, 107, 221);
-        color: white;
-        border: none;
-        text-align: center;
-        border-radius: 3px;
-    }
-    
+
   }
   
 
