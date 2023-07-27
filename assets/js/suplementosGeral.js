@@ -3,7 +3,14 @@ const cabecalho = document.getElementById("cabecalho");
 const searchbar = document.getElementById("searchbar");
 const mobilee = document.getElementById('mobile');
 const main = document.getElementById('main');
-const hidden = document.getElementById('produtos')
+const botao1 = document.getElementById('button1')
+const botao2 = document.getElementById('button2')
+const botao3 = document.getElementById('button3')
+const botao4 = document.getElementById('button4')
+const pages1 = document.getElementById('firstP')
+const pages2 = document.getElementById('secondP')
+
+
 
 if (width <= 500) {
   if (localStorage.getItem("token") == null) {
@@ -186,13 +193,6 @@ function goBack() {
   window.history.back();
   main.style.display = 'block'
 }
-
-const botao1 = document.getElementById('button1')
-const botao2 = document.getElementById('button2')
-const botao3 = document.getElementById('button3')
-const botao4 = document.getElementById('button4')
-const pages1 = document.getElementById('firstP')
-const pages2 = document.getElementById('secondP')
 
 
 function backLeft() {
