@@ -198,7 +198,7 @@ const products = [
         id: 25,
         title: 'Glutamina Black Skull',
         price: 89.90,
-        poster: '/assets/images/Imagens/glutamina black skull.png',
+        poster: '/assets/images/Imagens/glutamina-black-skull.png',
         link: '/assets/html/glutamina.html'
     },
     
@@ -294,6 +294,7 @@ const products = [
 
 ]
 
+
 function searchProducts(termo) {
     termo = termo.toLowerCase();
     return products.filter((products) => {
@@ -302,53 +303,103 @@ function searchProducts(termo) {
     });
 }
 
-function renderProducts (products) {
+function renderProducts(products) {
     const containerResults = document.getElementById('result');
     containerResults.innerHTML = '';
-    const divProducts = document.createElement('div');
-      
-        if (products.length === 0) {
-            const divmensagemNenhumResultado = document.createElement('div');
-            divmensagemNenhumResultado.innerHTML = `<img src="/assets/images/Imagens/noresults.png" style="width: 200px">
-              <p>Nenhum resultado encontrado</p>`
   
-            divmensagemNenhumResultado.style.display = 'flex';
-            divmensagemNenhumResultado.style.flexDirection = 'column';
-            divmensagemNenhumResultado.style.alignItems = 'center';
-            divmensagemNenhumResultado.style.gap = '1rem'
-            divmensagemNenhumResultado.style.marginTop = '100px';
-            divmensagemNenhumResultado.style.marginBottom = '100px'
-            containerResults.appendChild(divmensagemNenhumResultado);
-        
-            return; // Encerra a função aqui, não precisa continuar o loop abaixo
-        }
-
-
-    products.forEach((products) => {
-        divProducts.innerHTML = `<span class="menu-sessao-bloco-card">
-                                    <div class="card" style="width: 18rem;">
-                                        <a href="#"><img src=${products.poster} style="width:210px; margin-left: 35px;" class="card-img-top" alt="card2_img"></a>
-                                        <div class="card-body">
-                                        <p class="card-text">${products.title}</p>
-                                        <div class="wheycard">
-                                            Ajuda Na Hipertrofia<br>
-                                            Alta concentração de proteína
-                                        </div>
-                                        <div class="preco">
-                                            <h4>R$ ${products.price}</h4>
-                                            <div class="forma_pagamento">
-                                            no boleto ou PIX. R$130,00 no pagamento via cartão em até 6x de R$21,66 sem juros.
-                                            </div>
-                                        </div>
-                                        <a href=${products.link}>
-                                            <p class="compras">COMPRAR</p>
-                                        </a>
-                                        </div>
-                                    </div>
-                                    </span>`
-        containerResults.appendChild(divProducts);
+    if (products.length === 0) {
+      const divmensagemNenhumResultado = document.createElement('div');
+      divmensagemNenhumResultado.innerHTML = `<img src="/assets/images/Imagens/noresults.png" style="width: 200px">
+        <p>Nenhum resultado encontrado</p>`
+  
+      divmensagemNenhumResultado.style.display = 'flex';
+      divmensagemNenhumResultado.style.flexDirection = 'column';
+      divmensagemNenhumResultado.style.alignItems = 'center';
+      divmensagemNenhumResultado.style.gap = '1rem'
+      divmensagemNenhumResultado.style.marginTop = '100px';
+      divmensagemNenhumResultado.style.marginBottom = '100px'
+      containerResults.appendChild(divmensagemNenhumResultado);
+  
+      return; // Encerra a função aqui, não precisa continuar o loop abaixo
+    }
+  
+    // Verifica a largura da tela
+    const width = window.innerWidth;
+  
+    // Cria um contêiner flexível para os cards
+    const cardsContainer = document.createElement('div');
+    cardsContainer.style.display = 'flex';
+    cardsContainer.style.flexWrap = 'wrap'; // Para que os cards fiquem em várias linhas se necessário
+    cardsContainer.style.justifyContent = 'center'; // Centralizar os cards horizontalmente
+    
+  
+    products.forEach((product) => {
+      const divProducts = document.createElement('div');
+  
+      if (width > 500) {
+        divProducts.style.display = 'flex';
+        divProducts.style.flexDirection = 'row';
+        divProducts.style.margin = '10px'; // Espaçamento entre os cards
+        divProducts.style.flex = '1'; // Cada card ocupará o espaço disponível igualmente
+  
+        divProducts.innerHTML = `
+          <div class="cardSearch">
+            <span class="menu-sessao-bloco-card">
+              <div class="card" style="width: 18rem;">
+                <a href="#"><img src=${product.poster} style="width:210px; margin-left: 35px;" class="card-img-top" alt="card2_img"></a>
+                <div class="card-body">
+                  <p class="card-text">${product.title}</p>
+                  <div class="wheycard">
+                    Ajuda Na Hipertrofia<br>
+                    Alta concentração de proteína
+                  </div>
+                  <div class="preco">
+                    <h4>R$ ${product.price}</h4>
+                    <div class="forma_pagamento">
+                      no boleto ou PIX. R$130,00 no pagamento via cartão em até 6x de R$21,66 sem juros.
+                    </div>
+                  </div>
+                  <a href=${product.link}>
+                    <p class="compras">COMPRAR</p>
+                  </a>
+                </div>
+              </div>
+            </span>
+          </div>`;
+      } 
+      
+      else {
+        divProducts.innerHTML = `<div class="menu-sessao-bloco-card">
+          <div class="cardM" style="width: 24.3rem; display: flex; box-shadow: 0px 0px 10px 0px rgb(182, 182, 182); align-items: center; gap:0rem">
+          <a href=${product.link} style="text-decoratio: none; color: black"><img src=${product.poster} style="width: 110px; height: 110px" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+            <a href=${product.link}><p><strong>${product.title}</strong></p></a>
+              <div id="rating">
+                <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+              </div>
+              <div class="preco">
+                <h5><strong>R$ ${product.price}</strong></h5>
+              </div>
+            </div>
+          </div>
+      </div>`;
+  
+        divProducts.style.display = 'flex';
+        divProducts.style.marginBottom = '10px'; // Espaçamento entre os cards
+      }
+  
+      // Adiciona o card ao contêiner de cards
+      cardsContainer.appendChild(divProducts);
     });
-}
+  
+    // Adiciona o contêiner de cards ao resultado final
+    containerResults.appendChild(cardsContainer);
+  }
+  
 
 function handleSearch() {
     const itemSearch = document.getElementById('barraPesquisa').value;
