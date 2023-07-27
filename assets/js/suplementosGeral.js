@@ -32,8 +32,8 @@ if (width <= 500) {
 </nav>
 </header>
 <div id="searchbar">
-  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+  <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
   </div>`;
     cabecalho.style.display = "flex";
     cabecalho.style.flexDirection = "column";
@@ -61,8 +61,8 @@ else {
 </nav>
 </header>
 <div id="searchbar">
-  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+  <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
   </div>`;
     cabecalho.style.display = "flex";
     cabecalho.style.flexDirection = "column";
@@ -114,8 +114,8 @@ function mobile() {
     </div>
     <div id="superiorMid">
       <div class="searchbar">
-            <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+            <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
       </div>
       <div id="enter">
         <i class="fa-solid fa-right-to-bracket fa-xl" style="color: #000000;"></i>
@@ -156,8 +156,8 @@ function mobile() {
       </div>
       <div id="superiorMid">
         <div class="searchbar">
-              <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-              <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+              <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+              <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
         </div>
         <div id="enter">
         <a href="/assets/html/meusPedidos.html"><i class="fa-solid fa-bag-shopping fa-xl" style="color: #000000;"></i> Meus Pedidos</a>

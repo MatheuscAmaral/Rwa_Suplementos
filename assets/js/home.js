@@ -24,13 +24,14 @@ if (width <= 500) {
 </nav>
 </header>
 <div id="searchbar">
-  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+  <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
   </div>`;
     cabecalho.style.display = "flex";
     cabecalho.style.flexDirection = "column";
     cabecalho.style.gap = '0rem'
     cabecalho.style.padding = '20px'
+    hidden.document.getElementById.add.hidden
     
 }
 else {
@@ -52,8 +53,8 @@ else {
 </nav>
 </header>
 <div id="searchbar">
-  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+  <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
   </div>`;
     cabecalho.style.display = "flex";
     cabecalho.style.flexDirection = "column";
@@ -87,6 +88,96 @@ else {
 
     icon.style.display = "flex";
     icon.style.gap = ".6rem";
+  }
+
+  function sair() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userLogado");
+  }
+}
+
+function mobile() {
+  if (localStorage.getItem("token") == null){
+    mobilee.innerHTML = `
+  <div id="superior">
+    <div id="superiorTop">
+      <div id="user"><strong>Olá, Visitante</strong></div>
+      <a href=""> <i class="fa-solid fa-xmark fa-xl" style="color: #171616;"></i></a>
+    </div>
+    <div id="superiorMid">
+      <div class="searchbar">
+            <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+            <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
+      </div>
+      <div id="enter">
+        <i class="fa-solid fa-right-to-bracket fa-xl" style="color: #000000;"></i>
+        <a href="/assets/html/login.html">Entrar/Cadastrar</a>
+      </div>
+    </div>
+    <div id="low">
+      <div class="mobileCard">
+       <a href="/assets/html/top10.html"> Top 10</a>
+      </div>
+      <div class="mobileCard">
+        <a href="/assets/html/proteinas.html">Proteinas</a>
+      </div>
+      <div class="mobileCard">
+        <a href="/assets/html/creatinas.html">Creatinas</a>
+      </div>
+      <div class="mobileCard">
+        <a href="/assets/html/outros.html">Outros Suplementos</a>
+      </div>
+      <div class="mobileCard">
+       <a href="/assets/html/sobreNos.html">Rwa Suplementos</a>
+      </div>
+      <div class="mobileCard">
+       <a href="https://api.whatsapp.com/send/?phone=5531973324972&text&type=phone_number&app_absent=0"> Entre em contato conosco</a>
+      </div>
+    </div>
+  </div>`
+  main.style.display = 'none'
+  }
+  else {
+    const userLogado = JSON.parse(localStorage.getItem("userLogado"));
+
+    mobilee.innerHTML = `
+    <div id="superior">
+      <div id="superiorTop">
+        <div id="user"><strong> Olá, ${userLogado.nome}</strong></div>
+        <a href=""> <i class="fa-solid fa-xmark fa-xl" style="color: #171616;"></i></a>
+      </div>
+      <div id="superiorMid">
+        <div class="searchbar">
+              <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+              <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
+        </div>
+        <div id="enter">
+        <a href="/assets/html/meusPedidos.html"><i class="fa-solid fa-bag-shopping fa-xl" style="color: #000000;"></i> Meus Pedidos</a>
+        <a href="/assets/html/dadosPessoais.html"><i class="fa-solid fa-user fa-lg" style="color: #000000;"></i>Minha conta</a>
+        </div>
+      </div>
+      <div id="low">
+        <div class="mobileCard">
+         <a href="/assets/html/top10.html"> Top 10</a>
+        </div>
+        <div class="mobileCard">
+          <a href="/assets/html/proteinas.html">Proteinas</a>
+        </div>
+        <div class="mobileCard">
+          <a href="/assets/html/creatinas.html">Creatinas</a>
+        </div>
+        <div class="mobileCard">
+          <a href="/assets/html/outros.html">Outros Suplementos</a>
+        </div>
+        <div class="mobileCard">
+         <a href="/assets/html/sobreNos.html">Rwa Suplementos</a>
+        </div>
+        <div class="mobileCard">
+         <a href="https://api.whatsapp.com/send/?phone=5531973324972&text&type=phone_number&app_absent=0"> Entre em contato conosco</a>
+        </div>
+      </div>
+    </div>`
+    main.style.display = 'none'
   }
 
   function sair() {

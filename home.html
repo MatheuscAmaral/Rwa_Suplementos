@@ -24,8 +24,8 @@
             <div class="container h-100">
               <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">
-                  <input class="search_input" type="text" name="" placeholder="Qual suplemento você precisa?">
-                  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+                  <a class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
                 </div>
               </div>
             </div>
@@ -37,7 +37,8 @@
         <div class="cabecalho-icons" id="icon"></div>
       </div>
     </header>
-    <div class="topbody">
+    <div id="result">
+      <div class="topbody">
       <section class="carrosel">
         <div id="carouselExampleIndicators" class="carousel slide">
           <div class="carousel-indicators">
@@ -126,7 +127,7 @@
         <div class="card2">
           <span class="menu-sessao-bloco-card">
             <div class="card" style="width: 18rem;">
-              <a href="#"><img src="/assets/images/Imagens/logo dux.png" class="card-img-top" alt="card2_img"></a>
+              <a href="#"><img src="/assets/images/Imagens/logo-dux.png" class="card-img-top" alt="card2_img"></a>
               <div class="card-body">
                 <p class="card-text">Whey Protein Concentrado (900g) - Dux</p>
                 <div class="wheycard">
@@ -149,7 +150,7 @@
         <div class="card3">
           <span class="menu-sessao-bloco-card">
             <div class="card" style="width: 18rem;">
-              <a href="#"><img src="/assets/images/Imagens/100 whey body action.png" class="card-img-top" alt="card3_img"></a>
+              <a href="#"><img src="/assets/images/Imagens/100-whey-body-action.png" class="card-img-top" alt="card3_img"></a>
               <div class="card-body">
                 <p class="card-text">100% Whey Prime (900g) <br> - Body Action</p>
                 <div class="wheycard">
@@ -203,7 +204,7 @@
         <div class="card5">
           <span class="menu-sessao-bloco-card">
             <div class="card" style="width: 18rem;">
-              <a href="#"><img src="/assets/images/Imagens/creatine double force 150g.png" class="card-img-top" alt="..."></a>
+              <a href="#"><img src="/assets/images/Imagens/creatine-double-force-150g.png" class="card-img-top" alt="..."></a>
               <div class="card-body">
                 <p class="card-text">Creatina Double Force (150g)<br> - Body Nutri</p>
                 <div class="wheycard">
@@ -338,6 +339,9 @@
             </span>
           </div>
         </div>
+    </div>
+    </div>
+    </div>
         <footer class="footer">
           <section class="footer-cima">
             <div class="footer-card">
@@ -374,6 +378,7 @@
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
           </script>
         <script src="/assets/js/home.js"></script>
+        <script src="/assets/js/suplementos.js"></script>
 </body>
 
 </html>

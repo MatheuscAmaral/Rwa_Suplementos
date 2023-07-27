@@ -3,71 +3,80 @@ const products = [
         id: 1,
         title: 'Whey Pro Max Titanium',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/whey-pro-max.png'
-        
+        poster: '/assets/images/Imagens/whey-pro-max.png',
+        link: '/assets/html/wheypromax.html'
     },
     
     {
         id: 2,
         title: 'Whey Protein Concentrado Dux',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/logo dux.png'
+        poster: '/assets/images/Imagens/logo-dux.png',
+        link: '/assets/html/wheyDux.html'
     },
 
     {
         id: 3,
         title: 'Whey Isolate Definition Body Action',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/isolate_definition_bopy-action-.png'
+        poster: '/assets/images/Imagens/isolate_definition_bopy-action-.png',
+        link: '/assets/html/isolateDefinition.html'
     },
 
     {
         id: 4,
         title: 'Whey 100% Integral Médica',
         price: 120.0,
-        poster:'/docs/Tela_Principal/Imagens/whey-100-pouch-900g-baunilha-integralmedica.png'
+        poster:'/assets/images/Imagens/whey-100-pouch-900g-baunilha-integralmedica.png',
+        link: '/assets/html/wheyIntegral.html'
     },
 
     {
         id: 5,
         title: '100% Whey Max Titanium',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/100 whey max.png'
+        poster: '/assets/images/Imagens/100_whey.png',
+        link: '/assets/html/100wheyMax.html'
     },
 
     {
         id: 6,
         title: 'Isolate Prime Whey Body Action',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/isolate_prime_whey_bodyaction.png'
+        poster: '/assets/images/Imagens/isolate_prime_whey_bodyaction.png',
+        link: '/assets/html/wheyPrime.html'
     },
 
     {
         id: 7,
         title: '100% Whey Body Nutri',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/100_-whey-body-nutri-.png'
+        poster: '/assets/images/Imagens/100_-whey-body-nutri-.png',
+        link: '/assets/html/100wheyNutri.html'
     },
 
     {
         id: 8,
         title: '100% Whey Body Action',
         price: 120.0,
-        poster: '/docs/Tela_Principal/Imagens/100 whey body action.png'
+        poster: '/assets/images/Imagens/100-whey-body-action.png',
+        link: '/assets/html/100wheyAction.html'
     },
 
     {
         id: 9,
         title: 'Creatina HD Muscle Hd',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/creatina hd muscle hd.png'
+        poster: '/assets/images/Imagens/creatina-hd-muscle-hd.png',
+        link: '/assets/html/creatinaHD.html'
     },
 
     {
         id: 10,
         title: 'Creatina Turbo Black Skull',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/creatine_black_skull-.png'
+        poster: '/assets/images/Imagens/creatine_black_skull-.png',
+        link: '/assets/html/creatinaBlack.html'
 
     },
 
@@ -75,91 +84,104 @@ const products = [
         id: 11,
         title: 'Creatina 5.0 Muscle HD',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/creatina 5.0 muscle hd.png'
+        poster: '/assets/images/Imagens/creatina-5.0-muscle-hd.png',
+        link: '/assets/html/creatine_5_muscleHD.html'
     },
     
     {
         id: 12,
         title: 'Creatina Body Nutri 300g',
         price: 99.90,
-        poster: '/docs/Tela_Principal/Imagens/creatine double force.png'
+        poster: '/assets/images/Imagens/creatine-double-force.png',
+        link: '/assets/html/creatina_nutri_300g.html'
     },
     
     {
         id: 13,
         title: 'Creatina Max Titanium',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/creatina-150g-max-titanium.png'
+        poster: '/assets/images/Imagens/creatina-150g-max-titanium.png',
+        link: '/assets/html/creatinaMax.html'
     },
 
     {
         id: 14,
         title: 'Creatina Integral Médica',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/creatina integral medica.png'
+        poster: '/assets/images/Imagens/creatina-integral-medica.png',
+        link: '/assets/html/creatinaIntegral.html'
     },
 
     {
         id: 15,
         title: 'Pré-Treino No Control',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/no_control_-.png'
+        poster: '/assets/images/Imagens/no_control_-.png',
+        link: '/assets/html/nocontrol.html'
     },
 
     {
         id: 16,
         title: 'Zma Black Skull',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/ZMA-BLACK-SKULL-120-CAPS.png'
+        poster: '/assets/images/Imagens/ZMA-BLACK-SKULL-120-CAPS.png',
+        link: '/assets/html/zmaBlack.html'
     },
 
     {
         id: 17,
         title: 'Ripzzz Black Skull',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/ripzzz-triptofano-.png'
+        poster: '/assets/images/Imagens/ripzzz-triptofano-.png',
+        link: '/assets/html/ripzzz.html'
     },
 
     {
         id: 18,
         title: 'Triptofano New Nutrition',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/triptofanonewnutrition.png'
+        poster: '/assets/images/Imagens/triptofanonewnutrition.png',
+        link: '/assets/html/triptofano.html'
     },
 
     {
         id: 19, 
         title: 'Complexo B New Nutrition',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/complexo-b-120.png'
+        poster: '/assets/images/Imagens/complexo-b-120.png',
+        link: '/assets/html/complexoBN.html'
     },
 
     {
         id: 20,
         title: 'Thermo cut HD Muscle Hd',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/thermo-cut-hd-.png'
+        poster: '/assets/images/Imagens/thermo-cut-hd-.png',
+        link: 'assets/html/thermocut.html'
     },
 
     {
         id: 21,
         title: 'Psillium Ocean Drop',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/pssilium_ocean_drop-.png'
+        poster: '/assets/images/Imagens/pssilium_ocean_drop-.png',
+        link: '/assets/html/psillium.html'
     },
 
     {
         id: 22, 
         title: 'Barra de Proteina Muscle HD',
         price: 89.90, 
-        poster: '/docs/Tela_Principal/Imagens/protein-bar-.png'
+        poster: '/assets/images/Imagens/protein-bar-.png',
+        link: '/assets/html/proteinBar.html'
     },
 
     {
         id: 23,
         title: 'Ômega 3 Catari',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/omega-3-catarinense-.png'
+        poster: '/assets/images/Imagens/omega-3-catarinense-.png',
+        link: '/assets/html/omegaCatari.html'
     },
 
 
@@ -167,7 +189,8 @@ const products = [
         id: 24,
         title: 'CoQ10 Body Nutri',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/-q-10_body_nutri-.png'
+        poster: '/assets/images/Imagens/-q-10_body_nutri-.png',
+        link: '/assets/html/coq10.html'
     },
 
 
@@ -175,14 +198,16 @@ const products = [
         id: 25,
         title: 'Glutamina Black Skull',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/glutamina black skull.png'
+        poster: '/assets/images/Imagens/glutamina black skull.png',
+        link: '/assets/html/glutamina.html'
     },
     
     {
         id: 26,
         title: 'Maca Peruana Body Nutri',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/maca_peruana_body_nutry-.png'
+        poster: '/assets/images/Imagens/maca_peruana_body_nutry-.png',
+        link: '/assets/html/maca.html'
     },
 
 
@@ -190,7 +215,8 @@ const products = [
         id: 27,
         title: 'Equilibrium Body Nutri',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/equilibrium-.png'
+        poster: '/assets/images/Imagens/equilibrium-.png',
+        link: '/assets/html/equilibrium.html'
     },
 
 
@@ -198,121 +224,137 @@ const products = [
         id: 28,
         title: 'Bcaa Age',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/bcaaa_age-.png'
+        poster: '/assets/images/Imagens/bcaaa_age-.png',
+        link: '/assets/html/bcaa.html'
     },
 
     {
         id: 28,
         title: 'Ômega 3 Muscle HD',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/omega_3musclehd-.png'
+        poster: '/assets/images/Imagens/omega_3musclehd-.png',
+        link: '/assets/html/omegaMuscle.html'
     },
 
     {
         id: 29,
         title: 'Probiotic10 SunFood',
         price: 89.90,
-        poster: '/docs/Tela_Principal/Imagens/sunfood_probiotico.png'
+        poster: '/assets/images/Imagens/sunfood_probiotico.png',
+        link: '/assets/html/sunfood.html'
     },
 
     {
         id: 30, 
         title: 'Zma Growth',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/zma-growth.png',
+        link: '/assets/html/zmaGrowth.html'
     },
 
     {
         id: 31,
         title: 'Zma Body Nutry',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/ZMA-BODY-NUTRI.png',
+        link: '/assets/html/zmaBody.html'
     },
 
     {
         id: 32,
         title: 'Fiber Premium Growth',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/fiber-premium-growth.png',
+        link: '/assets/html/fiber.html'
     },
 
     {
         id: 33,
         title: 'Colágeno Hidrolisado Body Nutri',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/colageno-hidrolisado-body-nutri.png',
+        link: '/assets/html/colageno.html'
     },
 
     {
         id:34,
         title: 'Vit C Body Nutri',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/vit-c-body-nutri.png',
+        link: '/assets/html/vitc.html'
     },
 
     {
         id: 35,
         title: 'Complexo B Growth',
-        price: 89.90
+        price: 89.90,
+        poster: '/assets/images/Imagens/complexo-b-growth.png',
+        link: '/assets/html/complexoBG.html'
     }
 
 ]
 
+function searchProducts(termo) {
+    termo = termo.toLowerCase();
+    return products.filter((products) => {
+        const tituloLowerCase = products.title.toLowerCase();
+        return tituloLowerCase.includes(termo);
+    });
+}
+
+function renderProducts (products) {
+    const containerResults = document.getElementById('result');
+    containerResults.innerHTML = '';
+    const divProducts = document.createElement('div');
+      
+        if (products.length === 0) {
+            const divmensagemNenhumResultado = document.createElement('div');
+            divmensagemNenhumResultado.innerHTML = `<img src="/assets/images/Imagens/noresults.png" style="width: 200px">
+              <p>Nenhum resultado encontrado</p>`
   
-const formatter = Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    maximumFractionDigits: 2,
-  });
+            divmensagemNenhumResultado.style.display = 'flex';
+            divmensagemNenhumResultado.style.flexDirection = 'column';
+            divmensagemNenhumResultado.style.alignItems = 'center';
+            divmensagemNenhumResultado.style.gap = '1rem'
+            divmensagemNenhumResultado.style.marginTop = '100px';
+            divmensagemNenhumResultado.style.marginBottom = '100px'
+            containerResults.appendChild(divmensagemNenhumResultado);
+        
+            return; // Encerra a função aqui, não precisa continuar o loop abaixo
+        }
 
-  function renderProducts(products) {
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = '';
 
-    if (products.length === 0) {
-      productList.innerHTML = '<div class="no-products">Nenhum produto disponível</div>';
-    } else {
-      products.forEach((product) => {
-        const productItem = document.createElement('div');
-        productItem.classList.add('product');
+    products.forEach((products) => {
+        divProducts.innerHTML = `<span class="menu-sessao-bloco-card">
+                                    <div class="card" style="width: 18rem;">
+                                        <a href="#"><img src=${products.poster} style="width:210px; margin-left: 35px;" class="card-img-top" alt="card2_img"></a>
+                                        <div class="card-body">
+                                        <p class="card-text">${products.title}</p>
+                                        <div class="wheycard">
+                                            Ajuda Na Hipertrofia<br>
+                                            Alta concentração de proteína
+                                        </div>
+                                        <div class="preco">
+                                            <h4>R$ ${products.price}</h4>
+                                            <div class="forma_pagamento">
+                                            no boleto ou PIX. R$130,00 no pagamento via cartão em até 6x de R$21,66 sem juros.
+                                            </div>
+                                        </div>
+                                        <a href=${products.link}>
+                                            <p class="compras">COMPRAR</p>
+                                        </a>
+                                        </div>
+                                    </div>
+                                    </span>`
+        containerResults.appendChild(divProducts);
+    });
+}
 
-        const productImage = document.createElement('img');
-        productImage.src = product.poster;
-        productImage.alt = product.title;
-        productImage.width = '10%';
+function handleSearch() {
+    const itemSearch = document.getElementById('barraPesquisa').value;
+    const results = searchProducts(itemSearch);
+    renderProducts(results);
 
-        const productTitle = document.createElement('span');
-        productTitle.textContent = product.title;
+}
 
-        const productPrice = document.createElement('span');
-        productPrice.textContent = formatter.format(product.price);
-
-        productItem.appendChild(productTitle);
-        productItem.appendChild(productPrice);
-
-        productList.appendChild(productItem);
-      });
-    }
-  }
-
-  function filterProducts(searchTerm) {
-    const filteredProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    renderProducts(filteredProducts);
-  }
-
-  const searchInput = document.querySelector('.search-input');
-  const productListContainer = document.getElementById('product-list-container');
-
-  searchInput.addEventListener('click', () => {
-    productListContainer.style.display = 'block';
-  });
-
-  document.addEventListener('click', (event) => {
-    if (!event.target.matches('.search-input')) {
-      productListContainer.style.display = 'none';
-    }
-  });
-
-  searchInput.addEventListener('input', (event) => {
-    const searchTerm = event.target.value;
-    filterProducts(searchTerm);
-  });
-
-  renderProducts(products);
+document.getElementById('barraPesquisa').addEventListener('keyup', handleSearch);
