@@ -370,7 +370,7 @@ function renderProducts(products) {
       
       else {
         divProducts.innerHTML = `<div class="menu-sessao-bloco-card">
-          <div class="cardM" style="width: 24.3rem; display: flex; box-shadow: 0px 0px 10px 0px rgb(182, 182, 182); align-items: center; gap:0rem">
+          <div class="cardM" style="width: 24.3rem; display: flex; box-shadow: 0px 0px 1.2px 0px rgb(182, 182, 182); align-items: center; gap:0rem">
           <a href=${product.link} style="text-decoratio: none; color: black"><img src=${product.poster} style="width: 110px; height: 110px" class="card-img-top" alt="..."></a>
             <div class="card-body">
             <a href=${product.link}><p><strong>${product.title}</strong></p></a>
