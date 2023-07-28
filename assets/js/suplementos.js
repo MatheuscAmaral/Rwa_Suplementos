@@ -305,7 +305,11 @@ function searchProducts(termo) {
 
 function renderProducts(products) {
     const containerResults = document.getElementById('result');
-    containerResults.innerHTML = '';
+    containerResults.innerHTML = `Foram encontrados ${products.length} produtos.`;
+    containerResults.style.display = 'flex';
+    containerResults.style.flexDirection = 'column';
+    containerResults.style.gap = '1rem';
+
   
     if (products.length === 0) {
       const divmensagemNenhumResultado = document.createElement('div');
@@ -339,8 +343,7 @@ function renderProducts(products) {
       if (width > 500) {
         divProducts.style.display = 'flex';
         divProducts.style.flexDirection = 'row';
-        divProducts.style.margin = '10px'; // Espaçamento entre os cards
-        divProducts.style.flex = '1'; // Cada card ocupará o espaço disponível igualmente
+        divProducts.style.margin = '50px'; // Espaçamento entre os cards
   
         divProducts.innerHTML = `
           <div class="cardSearch">
@@ -349,10 +352,6 @@ function renderProducts(products) {
                 <a href="#"><img src=${product.poster} style="width:210px; margin-left: 35px;" class="card-img-top" alt="card2_img"></a>
                 <div class="card-body">
                   <p class="card-text">${product.title}</p>
-                  <div class="wheycard">
-                    Ajuda Na Hipertrofia<br>
-                    Alta concentração de proteína
-                  </div>
                   <div class="preco">
                     <h4>R$ ${product.price}</h4>
                     <div class="forma_pagamento">
