@@ -256,7 +256,7 @@ const products = [
         id: 31,
         title: 'Zma Body Nutry',
         price: 89.90,
-        poster: '/assets/images/Imagens/ZMA-BODY-NUTRI.png',
+        poster: '/assets/images/Imagens/zma-body-nutrii.png',
         link: '/assets/html/zmaBody.html'
     },
 
