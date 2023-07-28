@@ -10,7 +10,9 @@
     font-size: 100%;
 }
 
-
+.suplementos_creatina {
+  margin-left: 200px;
+}
   
 #search-container {
   position: relative;
@@ -680,6 +682,33 @@ margin-bottom: 20px;
     padding-bottom: 30px;
     font-size: 12px;
 
+  }
+
+  .suplementosproteinas img {
+    width: 300px;
+    margin-left: 10px;
+  }
+
+  .suplementos_creatina img {
+    width: 300px;
+    margin-left: 50px;
+  }
+
+  .suplementos_creatina a {
+    margin-left: 50px;
+  }
+
+  .suplementos_creatina {
+    margin-left: 0px;
+  }
+
+  .suplementos_creatina {
+    margin-bottom: 50px;
+  }
+
+  .suplementos_outros img {
+    width: 300px;
+    margin-left: 10px;
   }
 
   #superiorMid {

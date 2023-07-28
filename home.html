@@ -93,9 +93,9 @@
     <div class="titulo">
       <h2>Suplementos Proteínas</h2>
     </div>
-    <div class="suplementosproteinas" style="display: flex; gap: 10rem; margin-top: 70px;">
+    <div class="suplementosproteinas" style="display: flex; gap: 20rem; margin-top: 70px;">
       <div class="img_suplementos">
-        <img src="/assets/images/Imagens/suplementosproteinas.png" style="width: 430px;" alt="img_sup">
+        <img src="/assets/images/Imagens/suplementosproteinas.png" alt="img_sup">
         <div class="card-content">
           <a href="/assets/html/proteinas.html"> <button>Ver Mais </button></a>
         </div>
@@ -106,16 +106,16 @@
     <div class="titulo">
       <h2>Suplementos Creatina</h2>
     </div>
-    <div class="suplementos_creatina" style="display: flex; gap: 10rem; margin-top: 70px; margin-left: 200px;">
+    <div class="suplementos_creatina" style="display: flex; gap: 20rem; margin-top: 70px;">
+      <div class="img_suplementos">
+        <img src="/assets/images/Imagens/suplementoscreatina.png">
+        <div class="card-content">
+          <a href="/assets/html/creatinas.html"><button>Ver Mais</button></a>
+        </div>
+      </div>
       <div class="produtos2" id="suplementoscreatina-container">
 
       </div>
-        <div class="img_suplementos">
-          <img src="/assets/images/Imagens/suplementoscreatina.png">
-          <div class="card-content">
-            <a href="/assets/html/creatinas.html"><button>Ver Mais</button></a>
-          </div>
-        </div>
       </div>
       <div class="titulo3">
         <h2>Outros Suplementos</h2>
@@ -169,6 +169,7 @@
         <script src="/assets/js/home.js"></script>
         <script src="/assets/js/suplementos.js"></script>
         <script>
+          if (width > 500) {
           // Obtém a referência da div que será o contêiner dos cards na seção suplementosproteinas
           const suplementosProteinasContainer = document.getElementById('suplementosproteinas-container');
 
@@ -259,7 +260,7 @@
             // Adiciona o card à div suplementosproteinas-container
             suplementosOutrosContainer.innerHTML += cardHTML;
           });
-
+           }
         </script>
 </body>
 

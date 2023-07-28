@@ -317,6 +317,7 @@ function renderProducts(products) {
     containerResults.style.display = 'flex';
     containerResults.style.flexDirection = 'column';
     containerResults.style.gap = '1rem';
+    containerResults.style.textAlign = 'center'
 
   
     if (products.length === 0) {
