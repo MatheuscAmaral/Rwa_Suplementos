@@ -3,6 +3,7 @@ const cabecalho = document.getElementById("cabecalho");
 const searchbar = document.getElementById("searchbar");
 const mobilee = document.getElementById('mobile');
 const main = document.getElementById('main');
+const proteinas = document.getElementById('proteinas');
 
 if (width <= 500) {
   if (localStorage.getItem("token") == null) {

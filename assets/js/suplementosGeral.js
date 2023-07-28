@@ -189,6 +189,7 @@ function mobile() {
   }
 }
 
+
 function goBack() {
   window.history.back();
   main.style.display = 'block'
@@ -246,3 +247,4 @@ function backRight() {
     botao1.style.backgroundColor = 'transparent'
   }
 }
+

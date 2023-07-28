@@ -114,6 +114,14 @@ const products = [
 
     {
         id: 15,
+        title: 'Creatina Body Nutri 150g',
+        price: 99.90,
+        poster: '/assets/images/Imagens/creatine-double-force-150g.png',
+        link: '/assets/html/creatina_nutri_150g.html'
+    },
+
+    {
+        id: 16,
         title: 'Pré-Treino No Control',
         price: 89.90,
         poster: '/assets/images/Imagens/no_control_-.png',
@@ -121,7 +129,7 @@ const products = [
     },
 
     {
-        id: 16,
+        id: 17,
         title: 'Zma Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/ZMA-BLACK-SKULL-120-CAPS.png',
@@ -129,7 +137,7 @@ const products = [
     },
 
     {
-        id: 17,
+        id: 18,
         title: 'Ripzzz Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/ripzzz-triptofano-.png',
@@ -137,7 +145,7 @@ const products = [
     },
 
     {
-        id: 18,
+        id: 19,
         title: 'Triptofano New Nutrition',
         price: 89.90,
         poster: '/assets/images/Imagens/triptofanonewnutrition.png',
@@ -145,7 +153,7 @@ const products = [
     },
 
     {
-        id: 19, 
+        id: 20, 
         title: 'Complexo B New Nutrition',
         price: 89.90,
         poster: '/assets/images/Imagens/complexo-b-120.png',
@@ -153,7 +161,7 @@ const products = [
     },
 
     {
-        id: 20,
+        id: 21,
         title: 'Thermo cut HD Muscle Hd',
         price: 89.90,
         poster: '/assets/images/Imagens/thermo-cut-hd-.png',
@@ -161,7 +169,7 @@ const products = [
     },
 
     {
-        id: 21,
+        id: 22,
         title: 'Psillium Ocean Drop',
         price: 89.90,
         poster: '/assets/images/Imagens/pssilium_ocean_drop-.png',
@@ -169,7 +177,7 @@ const products = [
     },
 
     {
-        id: 22, 
+        id: 23, 
         title: 'Barra de Proteina Muscle HD',
         price: 89.90, 
         poster: '/assets/images/Imagens/protein-bar-.png',
@@ -177,7 +185,7 @@ const products = [
     },
 
     {
-        id: 23,
+        id: 24,
         title: 'Ômega 3 Catari',
         price: 89.90,
         poster: '/assets/images/Imagens/omega-3-catarinense-.png',
@@ -186,7 +194,7 @@ const products = [
 
 
     {
-        id: 24,
+        id: 25,
         title: 'CoQ10 Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/-q-10_body_nutri-.png',
@@ -195,7 +203,7 @@ const products = [
 
 
     {
-        id: 25,
+        id: 26,
         title: 'Glutamina Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/glutamina-black-skull.png',
@@ -203,7 +211,7 @@ const products = [
     },
     
     {
-        id: 26,
+        id: 27,
         title: 'Maca Peruana Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/maca_peruana_body_nutry-.png',
@@ -212,7 +220,7 @@ const products = [
 
 
     {
-        id: 27,
+        id: 28,
         title: 'Equilibrium Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/equilibrium-.png',
@@ -221,7 +229,7 @@ const products = [
 
 
     {
-        id: 28,
+        id: 29,
         title: 'Bcaa Age',
         price: 89.90,
         poster: '/assets/images/Imagens/bcaaa_age-.png',
@@ -229,7 +237,7 @@ const products = [
     },
 
     {
-        id: 28,
+        id: 30,
         title: 'Ômega 3 Muscle HD',
         price: 89.90,
         poster: '/assets/images/Imagens/omega_3musclehd-.png',
@@ -237,7 +245,7 @@ const products = [
     },
 
     {
-        id: 29,
+        id: 31,
         title: 'Probiotic10 SunFood',
         price: 89.90,
         poster: '/assets/images/Imagens/sunfood_probiotico.png',
@@ -245,7 +253,7 @@ const products = [
     },
 
     {
-        id: 30, 
+        id: 32, 
         title: 'Zma Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/zma-growth.png',
@@ -253,7 +261,7 @@ const products = [
     },
 
     {
-        id: 31,
+        id: 33,
         title: 'Zma Body Nutry',
         price: 89.90,
         poster: '/assets/images/Imagens/zma-body-nutrii.png',
@@ -261,7 +269,7 @@ const products = [
     },
 
     {
-        id: 32,
+        id: 34,
         title: 'Fiber Premium Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/fiber-premium-growth.png',
@@ -269,7 +277,7 @@ const products = [
     },
 
     {
-        id: 33,
+        id: 35,
         title: 'Colágeno Hidrolisado Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/colageno-hidrolisado-body-nutri.png',
@@ -277,7 +285,7 @@ const products = [
     },
 
     {
-        id:34,
+        id: 36,
         title: 'Vit C Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/vit-c-body-nutri.png',
@@ -285,7 +293,7 @@ const products = [
     },
 
     {
-        id: 35,
+        id: 37,
         title: 'Complexo B Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/complexo-b-growth.png',
@@ -393,6 +401,7 @@ function renderProducts(products) {
   
       // Adiciona o card ao contêiner de cards
       cardsContainer.appendChild(divProducts);
+      
     });
   
     // Adiciona o contêiner de cards ao resultado final
@@ -407,4 +416,8 @@ function handleSearch() {
 
 }
 
+
+
 document.getElementById('barraPesquisa').addEventListener('keyup', handleSearch);
+
+
