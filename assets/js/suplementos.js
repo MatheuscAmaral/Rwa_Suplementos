@@ -4,7 +4,10 @@ const products = [
         title: 'Whey Pro Max Titanium',
         price: 120.0,
         poster: '/assets/images/Imagens/whey-pro-max.png',
-        link: '/assets/html/wheypromax.html'
+        link: '/assets/html/wheypromax.html',
+        size: '1KG',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Chocolate'
     },
     
     {
@@ -12,7 +15,10 @@ const products = [
         title: 'Whey Protein Concentrado Dux',
         price: 120.0,
         poster: '/assets/images/Imagens/logo-dux.png',
-        link: '/assets/html/wheyDux.html'
+        link: '/assets/html/wheyDux.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Chocolate'
     },
 
     {
@@ -20,7 +26,10 @@ const products = [
         title: 'Whey Isolate Definition Body Action',
         price: 120.0,
         poster: '/assets/images/Imagens/isolate_definition_bopy-action-.png',
-        link: '/assets/html/isolateDefinition.html'
+        link: '/assets/html/isolateDefinition.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Chocolate'
     },
 
     {
@@ -28,7 +37,10 @@ const products = [
         title: 'Whey 100% Integral Médica',
         price: 120.0,
         poster:'/assets/images/Imagens/whey-100-pouch-900g-baunilha-integralmedica.png',
-        link: '/assets/html/wheyIntegral.html'
+        link: '/assets/html/wheyIntegral.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Baunilha'
     },
 
     {
@@ -36,7 +48,10 @@ const products = [
         title: '100% Whey Max Titanium',
         price: 120.0,
         poster: '/assets/images/Imagens/100_whey.png',
-        link: '/assets/html/100wheyMax.html'
+        link: '/assets/html/100wheyMax.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Cookies & Cream'
     },
 
     {
@@ -44,7 +59,10 @@ const products = [
         title: 'Isolate Prime Whey Body Action',
         price: 120.0,
         poster: '/assets/images/Imagens/isolate_prime_whey_bodyaction.png',
-        link: '/assets/html/wheyPrime.html'
+        link: '/assets/html/wheyPrime.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Morango'
     },
 
     {
@@ -52,7 +70,10 @@ const products = [
         title: '100% Whey Body Nutri',
         price: 120.0,
         poster: '/assets/images/Imagens/100_-whey-body-nutri-.png',
-        link: '/assets/html/100wheyNutri.html'
+        link: '/assets/html/100wheyNutri.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Chocolate'
     },
 
     {
@@ -60,7 +81,10 @@ const products = [
         title: '100% Whey Body Action',
         price: 120.0,
         poster: '/assets/images/Imagens/100-whey-body-action.png',
-        link: '/assets/html/100wheyAction.html'
+        link: '/assets/html/100wheyAction.html',
+        size: '900g',
+        showFlavors: true, // Defina como false para produtos que não exibem sabores
+        flavor: 'Chocolate'
     },
 
     {
@@ -68,7 +92,10 @@ const products = [
         title: 'Creatina HD Muscle Hd',
         price: 89.90,
         poster: '/assets/images/Imagens/creatina-hd-muscle-hd.png',
-        link: '/assets/html/creatinaHD.html'
+        link: '/assets/html/creatinaHD.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -76,8 +103,10 @@ const products = [
         title: 'Creatina Turbo Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/creatine_black_skull-.png',
-        link: '/assets/html/creatinaBlack.html'
-
+        link: '/assets/html/creatinaBlack.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -85,7 +114,10 @@ const products = [
         title: 'Creatina 5.0 Muscle HD',
         price: 89.90,
         poster: '/assets/images/Imagens/creatina-5.0-muscle-hd.png',
-        link: '/assets/html/creatine_5_muscleHD.html'
+        link: '/assets/html/creatine_5_muscleHD.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
     
     {
@@ -93,7 +125,10 @@ const products = [
         title: 'Creatina Body Nutri 300g',
         price: 99.90,
         poster: '/assets/images/Imagens/creatine-double-force.png',
-        link: '/assets/html/creatina_nutri_300g.html'
+        link: '/assets/html/creatina_nutri_300g.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
     
     {
@@ -101,7 +136,10 @@ const products = [
         title: 'Creatina Max Titanium',
         price: 89.90,
         poster: '/assets/images/Imagens/creatina-150g-max-titanium.png',
-        link: '/assets/html/creatinaMax.html'
+        link: '/assets/html/creatinaMax.html',
+        size: '150g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -109,7 +147,10 @@ const products = [
         title: 'Creatina Integral Médica',
         price: 89.90,
         poster: '/assets/images/Imagens/creatina-integral-medica.png',
-        link: '/assets/html/creatinaIntegral.html'
+        link: '/assets/html/creatinaIntegral.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -117,7 +158,10 @@ const products = [
         title: 'Creatina Body Nutri 150g',
         price: 99.90,
         poster: '/assets/images/Imagens/creatine-double-force-150g.png',
-        link: '/assets/html/creatina_nutri_150g.html'
+        link: '/assets/html/creatina_nutri_150g.html',
+        size: '150g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -125,7 +169,10 @@ const products = [
         title: 'Pré-Treino No Control',
         price: 89.90,
         poster: '/assets/images/Imagens/no_control_-.png',
-        link: '/assets/html/nocontrol.html'
+        link: '/assets/html/nocontrol.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -133,7 +180,10 @@ const products = [
         title: 'Zma Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/ZMA-BLACK-SKULL-120-CAPS.png',
-        link: '/assets/html/zmaBlack.html'
+        link: '/assets/html/zmaBlack.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -141,7 +191,10 @@ const products = [
         title: 'Ripzzz Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/ripzzz-triptofano-.png',
-        link: '/assets/html/ripzzz.html'
+        link: '/assets/html/ripzzz.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -149,7 +202,10 @@ const products = [
         title: 'Triptofano New Nutrition',
         price: 89.90,
         poster: '/assets/images/Imagens/triptofanonewnutrition.png',
-        link: '/assets/html/triptofano.html'
+        link: '/assets/html/triptofano.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -157,7 +213,10 @@ const products = [
         title: 'Complexo B New Nutrition',
         price: 89.90,
         poster: '/assets/images/Imagens/complexo-b-120.png',
-        link: '/assets/html/complexoBN.html'
+        link: '/assets/html/complexoBN.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -165,7 +224,10 @@ const products = [
         title: 'Thermo cut HD Muscle Hd',
         price: 89.90,
         poster: '/assets/images/Imagens/thermo-cut-hd-.png',
-        link: 'assets/html/thermocut.html'
+        link: 'assets/html/thermocut.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -173,7 +235,10 @@ const products = [
         title: 'Psillium Ocean Drop',
         price: 89.90,
         poster: '/assets/images/Imagens/pssilium_ocean_drop-.png',
-        link: '/assets/html/psillium.html'
+        link: '/assets/html/psillium.html',
+        size: '300g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -181,7 +246,10 @@ const products = [
         title: 'Barra de Proteina Muscle HD',
         price: 89.90, 
         poster: '/assets/images/Imagens/protein-bar-.png',
-        link: '/assets/html/proteinBar.html'
+        link: '/assets/html/proteinBar.html',
+        size: '12uni',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -189,7 +257,10 @@ const products = [
         title: 'Ômega 3 Catari',
         price: 89.90,
         poster: '/assets/images/Imagens/omega-3-catarinense-.png',
-        link: '/assets/html/omegaCatari.html'
+        link: '/assets/html/omegaCatari.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
 
@@ -198,7 +269,10 @@ const products = [
         title: 'CoQ10 Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/-q-10_body_nutri-.png',
-        link: '/assets/html/coq10.html'
+        link: '/assets/html/coq10.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
 
@@ -207,7 +281,10 @@ const products = [
         title: 'Glutamina Black Skull',
         price: 89.90,
         poster: '/assets/images/Imagens/glutamina-black-skull.png',
-        link: '/assets/html/glutamina.html'
+        link: '/assets/html/glutamina.html',
+        size: '150g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
     
     {
@@ -215,7 +292,10 @@ const products = [
         title: 'Maca Peruana Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/maca_peruana_body_nutry-.png',
-        link: '/assets/html/maca.html'
+        link: '/assets/html/maca.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
 
@@ -224,7 +304,10 @@ const products = [
         title: 'Equilibrium Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/equilibrium-.png',
-        link: '/assets/html/equilibrium.html'
+        link: '/assets/html/equilibrium.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
 
@@ -233,7 +316,10 @@ const products = [
         title: 'Bcaa Age',
         price: 89.90,
         poster: '/assets/images/Imagens/bcaaa_age-.png',
-        link: '/assets/html/bcaa.html'
+        link: '/assets/html/bcaa.html',
+        size: '90caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -241,7 +327,10 @@ const products = [
         title: 'Ômega 3 Muscle HD',
         price: 89.90,
         poster: '/assets/images/Imagens/omega_3musclehd-.png',
-        link: '/assets/html/omegaMuscle.html'
+        link: '/assets/html/omegaMuscle.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -249,7 +338,10 @@ const products = [
         title: 'Probiotic10 SunFood',
         price: 89.90,
         poster: '/assets/images/Imagens/sunfood_probiotico.png',
-        link: '/assets/html/sunfood.html'
+        link: '/assets/html/sunfood.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -257,7 +349,10 @@ const products = [
         title: 'Zma Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/zma-growth.png',
-        link: '/assets/html/zmaGrowth.html'
+        link: '/assets/html/zmaGrowth.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -265,7 +360,10 @@ const products = [
         title: 'Zma Body Nutry',
         price: 89.90,
         poster: '/assets/images/Imagens/zma-body-nutrii.png',
-        link: '/assets/html/zmaBody.html'
+        link: '/assets/html/zmaBody.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -273,7 +371,10 @@ const products = [
         title: 'Fiber Premium Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/fiber-premium-growth.png',
-        link: '/assets/html/fiber.html'
+        link: '/assets/html/fiber.html',
+        size: '250g',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -281,7 +382,10 @@ const products = [
         title: 'Colágeno Hidrolisado Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/colageno-hidrolisado-body-nutri.png',
-        link: '/assets/html/colageno.html'
+        link: '/assets/html/colageno.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -289,7 +393,10 @@ const products = [
         title: 'Vit C Body Nutri',
         price: 89.90,
         poster: '/assets/images/Imagens/vit-c-body-nutri.png',
-        link: '/assets/html/vitc.html'
+        link: '/assets/html/vitc.html',
+        size: '60caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     },
 
     {
@@ -297,7 +404,10 @@ const products = [
         title: 'Complexo B Growth',
         price: 89.90,
         poster: '/assets/images/Imagens/complexo-b-growth.png',
-        link: '/assets/html/complexoBG.html'
+        link: '/assets/html/complexoBG.html',
+        size: '120caps',
+        showFlavors: false, // Defina como false para produtos que não exibem sabores
+        flavor: ''
     }
 
 ]

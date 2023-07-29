@@ -62,6 +62,9 @@
   <div id="produtos5">
    
   </div>
+  <div id="produtos6">
+   
+  </div>
           <div id="produtos">
             <div id="firstP">
               
@@ -121,7 +124,7 @@
               const outros1 = document.getElementById('produtos1');
 
 // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
-  const suplementosOutros = products.slice(16, 20);
+  const suplementosOutros = products.slice(15, 19);
 
 // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
 suplementosOutros.forEach(products => {
@@ -156,7 +159,7 @@ suplementosOutros.forEach(products => {
   const outros2 = document.getElementById('produtos2');
 
   // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
-  const suplementosOutros2 = products.slice(21, 25);
+  const suplementosOutros2 = products.slice(20, 24);
 
   // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
   suplementosOutros2.forEach(products => {
@@ -192,7 +195,7 @@ suplementosOutros.forEach(products => {
   const outros3 = document.getElementById('produtos3');
 
   // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
-  const suplementosOutros3 = products.slice(25, 29);
+  const suplementosOutros3 = products.slice(24, 28);
 
   // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
   suplementosOutros3.forEach(products => {
@@ -228,7 +231,7 @@ suplementosOutros.forEach(products => {
   const outros4 = document.getElementById('produtos4');
 
   // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
-  const suplementosOutros4 = products.slice(29, 33);
+  const suplementosOutros4 = products.slice(28, 32);
 
   // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
   suplementosOutros4.forEach(products => {
@@ -264,7 +267,7 @@ suplementosOutros.forEach(products => {
   const outros5 = document.getElementById('produtos5');
 
   // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
-  const suplementosOutros5 = products.slice(33, 37);
+  const suplementosOutros5 = products.slice(32, 36);
 
   // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
   suplementosOutros5.forEach(products => {
@@ -293,6 +296,40 @@ suplementosOutros.forEach(products => {
   outros5.style.marginTop = '30px';
   outros5.style.gap = '1rem';
   outros5.innerHTML += cardHTML;
+  });
+
+  const outros6 = document.getElementById('produtos6');
+
+  // Obtém os três primeiros produtos do vetor products para a seção suplementosproteinas
+  const suplementosOutros6 = products.slice(36, 37);
+
+  // Itera sobre os produtos e cria os cards na div suplementosproteinas-container
+  suplementosOutros6.forEach(products => {
+  const cardHTML = `
+          <span class="menu-sessao-bloco-card">
+            <div class="card" style="width: 18rem;">
+              <a href="/assets/html/details.html?id=${products.id}"><img src=${products.poster} class="card-img-top" alt="..."></a>
+              <div class="card-body">
+                <p class="card-text">${products.title}</p>
+                <div class="preco">
+                  <h4>R$ ${products.price}</h4>
+                  <div class="forma_pagamento">
+                    no boleto ou PIX. R$130,00 no pagamento via cartão em até 6x de R$21,66 sem juros.
+                  </div>
+                </div>
+                <a href="/assets/html/details.html?id=${products.id}">
+                  <p class="compras">COMPRAR</p>
+                </a>
+              </div>
+            </div>
+          </span>`;
+
+  // Adiciona o card à div suplementosproteinas-container
+  outros6.style.display = 'flex';
+  outros6.style.justifyContent = 'center';
+  outros6.style.marginTop = '30px';
+  outros6.style.gap = '1rem';
+  outros6.innerHTML += cardHTML;
   });
 }
 

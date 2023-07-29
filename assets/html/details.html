@@ -124,7 +124,9 @@
                     <div class="t3">(Cada)</div>
                   </div>
                   <label for="sabor">Sabores: <span id="product-flavor">${product.flavor}</span></label>
-                  <button id="sabor"><strong>${product.flavor}</strong></button>
+                  <div id="sabores" style="${product.showFlavors ? '' : 'display: none;'}">
+                    <input type="button" value=${product.flavor}></input>
+                  </div>
                   <label for="size">Tamanho: <span id="product-size">${product.size}</span></label>
                   <button id="size"><strong>${product.size}</strong></button>
                 </div>
