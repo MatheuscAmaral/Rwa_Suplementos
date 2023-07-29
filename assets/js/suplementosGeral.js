@@ -140,7 +140,7 @@ function mobile() {
       </div>
     </div>
   </div>`
-  main.style.display = 'none'
+  main.innerHTML = ''
   }
   else {
     const userLogado = JSON.parse(localStorage.getItem("userLogado"));
@@ -179,7 +179,7 @@ function mobile() {
         </div>
       </div>
     </div>`
-    main.style.display = 'none'
+    main.innerHTML = ''
   }
 }
 
