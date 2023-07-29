@@ -198,6 +198,15 @@ p {
 }
 
 
-@media screen and (max) {
-    
+@media (max-width: 500px) {
+    .carrinho {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border-radius: 8px;
+        padding: 35px;
+        width: 370px;
+        height: min-content;
+        background: var(--cor-fundo);
+    }
 }

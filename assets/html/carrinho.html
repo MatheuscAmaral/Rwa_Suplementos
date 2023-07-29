@@ -110,6 +110,7 @@ if (product) {
     // Encontrar o índice do produto no carrinho com base no ID
     const productIndex = cartItems.findIndex(product => product.id === productId);
 
+
     if (productIndex !== -1) {
       // Remover o produto do carrinho pelo índice
       cartItems.splice(productIndex, 1);
