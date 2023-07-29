@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrinho</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/assets/style/carrinho.css">
-  <link rel="shortcut icon" href="/docs/ico/1-removebg-preview.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/assets/ico/1-removebg-preview.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <title>Carrinho</title>
 </head>
 
 <body>
@@ -25,29 +26,93 @@
       </button>
       <h3>Meu Carrinho</h3>
     </div>
-    <ul class="itens-carrinho">
-      <li class="carrinho-item">
-        <div class="imagem">
-          <img src="/assets/images/Imagens/creatina-150g-max-titanium.png" >
-        </div>
-        <div class="info">
-          <h4>Creatina Max Titanium (150g)</h4>
-          <div class="preco">
-            <p>R$125,50</p>
-            <div class="contador">
-              <i class="bx bx-minus"></i>
-              <span>1</span>
-              <i class="bx bx-plus"></i>
-            </div>
-          </div>
-        </div>
-      </li>
+   <div id="semProdutos" style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 30px; text-align: center; border: 1px solid rgb(179, 179, 179);">
+      <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000; margin-top: 30px;"></i>
+      <h5><strong>SEU CARRINHO ESTÁ VAZIO</strong></h5>
+      <p style="font-size: 13px;">Navegue agora pelas categorias de nossa loja e escolha os produtos desejados para adicionar em seu carrinho de compras</p>
+   </div>
+    <ul id="itens-carrinho">
+      
     </ul>
     
-    <button class="pagar">Pagar R$316,60</button>
+    <button id="pagar">
+
+    </button>
   </div>
 
 <script src="/assets/js/carrinho.js"></script>
+<script src="/assets/js/suplementos.js"></script>
+<script>
+       
+  // Função para obter o ID do produto da URL da página
+  function getProductIdFromURL() {
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+return parseInt(urlParams.get('id'));
+}
+
+// Função para encontrar o produto com base no ID
+function findProductById(productId) {
+return products.find(product => product.id === productId);
+}
+
+// Função para exibir os detalhes do produto na página
+function showProductDetails(product) {
+const productDetailsContainer = document.getElementById('itens-carrinho');
+const preco = document.getElementById('pagar')
+
+// Construir o conteúdo HTML com os detalhes do produto
+const htmlContent = `
+  <li class="carrinho-item">
+    <div class="imagem">
+      <img src=${product.poster}>
+    </div>
+    <div class="info">
+      <div id="top">
+        <h4>${product.title}</h4>
+        <i class="fa-solid fa-trash-can fa-sm" style="color: #6e6e6e;"></i>
+      </div>
+      <div class="preco">
+        <p>R$ ${product.price}</p>
+        <div class="contador">
+          <i class="bx bx-minus"></i>
+          <span>1</span>
+          <i class="bx bx-plus"></i>
+        </div>
+      </div>
+    </div>
+  </li>
+`;
+preco.innerHTML = `Pagar R$${product.price}`
+
+// Adicionar o conteúdo HTML ao contêiner na página
+productDetailsContainer.innerHTML = htmlContent;
+}
+
+// Função principal para obter o ID do produto da URL, buscar o produto e exibir os detalhes
+function loadProductDetails() {
+const productId = getProductIdFromURL();
+const product = findProductById(productId);
+
+if (product) {
+  showProductDetails(product);
+  const semProdutos = document.getElementById('semProdutos')
+  semProdutos.innerHTML = ``
+  semProdutos.style.border = 'none'
+  semProdutos.style.marginTop = '0px'
+} 
+else {
+  console.error('Não há nenhum produto no carrinho');
+}
+}
+
+// Carregar os detalhes do produto quando a página for carregada
+
+window.onload = loadProductDetails;
+
+
+
+</script>
 </body>
 
 </html>

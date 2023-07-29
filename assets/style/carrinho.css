@@ -73,33 +73,43 @@ body {
 .carrinho .carrinho-item {
     position: relative;
     display: flex;
+    gap: 1rem;
     width: 100%;
     margin: 30px 0;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 18px #2a2f430f;
+    border: 1px solid rgb(214, 214, 214);
 }
 
 .carrinho .carrinho-item .imagem {
-    width: 80%;
+    width: 60%;
 }
 
 .carrinho .carrinho-item img {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    width: 70%;
+}
+
+#itens-carrinho #top{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrinho .info h4 {
+    font-size: 12px;
 }
 
 .carrinho .carrinho-item {
-    width: 70%;
+    width: 100%;
     padding: 14px;
 }
 
-.itens-carrinho {
+#itens-carrinho {
    display: flex;
    flex-direction: column;
-   align-items: center;
 }
 
 .carrinho .cabecalho-carrinho h4 {
@@ -138,7 +148,7 @@ body {
     color: var(--cor-secundaria);
 }
 
-.carrinho .pagar {
+.carrinho #pagar {
     font: 500 1rem 'Poppins';
     color: white;
     cursor: pointer;
