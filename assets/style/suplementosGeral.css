@@ -96,6 +96,7 @@
     justify-content: center;
     padding-bottom: 70px;
     align-items: center;
+    margin-top: 30px;
 }
 
 
@@ -583,8 +584,8 @@ p {
         text-decoration: none;
       }
     #product {
-        padding-left: 70px;
-        padding-right: 100px;
+        padding-left: 0px;
+        padding-right: 0px;
         padding-top: 20px;
     
     }
@@ -594,15 +595,14 @@ p {
         display: flex;
         flex-direction: column;
         gap: 0rem;
-        justify-content: center;
         padding-bottom: 70px;
-        align-items: center;
+        margin-left: 0px;
+        padding-left: 0px;
     }
 
     .Whey_Body_Action img {
         width: 250px;
         height: 300px;
-        margin-left: 50px;
     }
     
     .t1 {
@@ -619,7 +619,7 @@ p {
     
     .preco {
         margin-top: 70px;
-        margin-left: 40px;
+        margin-left: 10px;
         display: flex;
         flex-direction: column;
         gap: 10rem;
@@ -791,7 +791,7 @@ p {
 
     .Whey_Body_Action img {
         width:28%;
-    height: 300px;
+        height: 300px;
     }
   }
   

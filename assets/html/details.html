@@ -43,64 +43,10 @@
   </div>
   </section>
   </div>
-  <div id="details"></div>
-  <div id="product">
-    <div class="Whey_Body_Action">
-      <img src="/assets/images/Imagens/100 whey max.png" style="width: 150px; height: 300px;">
-    <div class="preco">
-      <div id="superior">
-        <div class="t2">
-          <h5>100% WHEY MAX TITANIUM</h5>
-        </div>
-        <div id="rating">
-          <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
-          <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
-          <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
-          <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
-          <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
-        </div>
-        <div class="t3">
-          <h1>R$119,90</h1>
-          <div class="t3">(Cada)</div>
-        </div>
-        <label for="sabor">Sabores: Chocolate</label>
-        <button id="sabor"><strong>Chocolate</strong></button>
-        <label for="size">Tamanho: 1kg</label>
-        <button id="size"><strong>1kg</strong></button>
-      </div>
-    <div id="right">  
-      <select id="quantidade">   
-        <option value=""  selected >Quantidade: </option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10+">10+</option>
-    </select>
-    <div id="estoque">
-      Item em estoque <br>
-      <b>Comprar agora</b>
-    </div>
-      <a href="/assets/html/carrinho.html"><p class="comprass">ADICIONAR AO CARRINHO</p></a>
-      <a href="/assets/html/carrinho.html"><p class="compras2"><i class="fa-solid fa-bag-shopping fa-lg" style="color: #ffffff;"></i>  COMPRAR AGORA</p></a>
-      <div id="frete">
-        <i class="fa-solid fa-truck-fast fa-lg" style="color: #3456fe;"></i>
-        <div id="text">
-          <div id="title">
-            Frete
-          </div>
-          <a href="" id="envio">Veja as opções de envio</a>
-        </div>
-      </div>
-    </div>
-  </div> 
+  <div id="details">
+    
   </div>
-  </div>
+  
  
   <footer class="footer">
     <section class="footer-cima">
@@ -138,6 +84,103 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script src="/assets/js/suplementosGeral.js"></script>
+    <script src="/assets/js/suplementos.js"></script>
+    <script>
+      
+      // Função para obter o ID do produto da URL da página
+  function getProductIdFromURL() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return parseInt(urlParams.get('id'));
+  }
+
+  // Função para encontrar o produto com base no ID
+  function findProductById(productId) {
+    return products.find(product => product.id === productId);
+  }
+
+  // Função para exibir os detalhes do produto na página
+  function showProductDetails(product) {
+    const productDetailsContainer = document.getElementById('details');
+
+    // Construir o conteúdo HTML com os detalhes do produto
+    const htmlContent = `
+    <div class="Whey_Body_Action">
+              <img id="product-image" src="${product.poster}" style="width: 300px; height: 350px;">
+              <div class="preco">
+                <div id="superior">
+                  <div class="t2">
+                    <h5 id="product-title">${product.title}</h5>
+                  </div>
+                  <div id="rating">
+                    <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                    <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                    <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                    <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                    <i class="fa-solid fa-star fa-lg" style="color: #005eff;"></i>
+                  </div>
+                  <div class="t3">
+                    <h1 id="product-price">R$ ${product.price}</h1>
+                    <div class="t3">(Cada)</div>
+                  </div>
+                  <label for="sabor">Sabores: <span id="product-flavor">${product.flavor}</span></label>
+                  <button id="sabor"><strong>${product.flavor}</strong></button>
+                  <label for="size">Tamanho: <span id="product-size">${product.size}</span></label>
+                  <button id="size"><strong>${product.size}</strong></button>
+                </div>
+                <div id="right">  
+                  <select id="quantidade">   
+                    <option value="" selected>Quantidade:</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10+">10+</option>
+                  </select>
+                  <div id="estoque">
+                    Item em estoque <br>
+                    <b>Comprar agora</b>
+                  </div>
+                  <a href="/assets/html/carrinho.html"><p class="comprass">ADICIONAR AO CARRINHO</p></a>
+                  <a href="/assets/html/carrinho.html"><p class="compras2"><i class="fa-solid fa-bag-shopping fa-lg" style="color: #ffffff;"></i>  COMPRAR AGORA</p></a>
+                  <div id="frete">
+                    <i class="fa-solid fa-truck-fast fa-lg" style="color: #3456fe;"></i>
+                    <div id="text">
+                      <div id="title">
+                        Frete
+                      </div>
+                      <a href="" id="envio">Veja as opções de envio</a>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+    `;
+
+    // Adicionar o conteúdo HTML ao contêiner na página
+    productDetailsContainer.innerHTML = htmlContent;
+  }
+
+  // Função principal para obter o ID do produto da URL, buscar o produto e exibir os detalhes
+  function loadProductDetails() {
+    const productId = getProductIdFromURL();
+    const product = findProductById(productId);
+
+    if (product) {
+      showProductDetails(product);
+    } else {
+      console.error('Produto não encontrado.');
+    }
+  }
+
+  // Carregar os detalhes do produto quando a página for carregada
+  window.onload = loadProductDetails;
+    </script>
 </body>
 
 </html>

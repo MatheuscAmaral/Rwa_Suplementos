@@ -124,9 +124,6 @@ function mobile() {
     </div>
     <div id="low">
       <div class="mobileCard">
-       <a href="/assets/html/top10.html"> Top 10</a>
-      </div>
-      <div class="mobileCard">
         <a href="/assets/html/proteinas.html">Proteinas</a>
       </div>
       <div class="mobileCard">
@@ -165,9 +162,6 @@ function mobile() {
         </div>
       </div>
       <div id="low">
-        <div class="mobileCard">
-         <a href="/assets/html/top10.html"> Top 10</a>
-        </div>
         <div class="mobileCard">
           <a href="/assets/html/proteinas.html">Proteinas</a>
         </div>
