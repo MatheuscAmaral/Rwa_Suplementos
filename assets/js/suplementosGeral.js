@@ -9,7 +9,7 @@ const botao3 = document.getElementById('button3')
 const botao4 = document.getElementById('button4')
 const pages1 = document.getElementById('firstP')
 const pages2 = document.getElementById('secondP')
-
+const fretee = document.getElementById('fretee')
 
 
 if (width <= 500) {
@@ -182,6 +182,8 @@ function mobile() {
     main.innerHTML = ''
   }
 }
+
+
 
 
 function goBack() {

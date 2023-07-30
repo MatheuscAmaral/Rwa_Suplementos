@@ -44,9 +44,12 @@
   </section>
   </div>
   <div id="details">
-    
+
   </div>
-  
+
+  <div id="fretee">
+
+  </div>
  
   <footer class="footer">
     <section class="footer-cima">
@@ -156,7 +159,7 @@
                       <div id="title">
                         Frete
                       </div>
-                      <a href="" id="envio">Veja as opções de envio</a>
+                      <a onclick="freteT()">Veja as opções de envio</a>
                     </div>
                   </div>
                 </div>
@@ -167,6 +170,44 @@
     // Adicionar o conteúdo HTML ao contêiner na página
     productDetailsContainer.innerHTML = htmlContent;
   }
+
+  function freteT() {
+        const fretee = document.getElementById('fretee')
+        fretee.innerHTML = `<div id="overlay">
+                              <div id="freteT">
+                                  <div id="titleF"> 
+                                    Opções de frete
+                                  </div>
+                                  <div id="cardFrete">
+                                    <div id="superiorT">
+                                      <div id="titleSup">
+                                        Entrega
+                                      </div>
+                                      <div id="close-icon">
+                                        <i class="fa-solid fa-x fa-sm" style="color: #000000;" onclick="closeOverlay()"></i> 
+                                      </div>
+                                    </div>
+                                    <div id="mid">
+                                      <i class="fa-solid fa-truck-fast fa-lg" style="color: #3456fe;"></i>
+                                      Insira o seu CEP
+                                    </div>
+                                      <div id="low">
+                                        <div id="inputCep">
+                                          <input type="text" id="cep" maxlength="8" placeholder="Digite o CEP">
+                                          <button type="button" onclick="consultarCEP()">Consultar</button>
+                                        </div>
+                                      <a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t"> Não sei meu CEP</a>
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>`
+        document.body.appendChild(overlay);
+    }
+
+    function closeOverlay() {
+      const overlay = document.getElementById('.overlay');
+      overlay.style.display = 'none';
+}
 
   // Função principal para obter o ID do produto da URL, buscar o produto e exibir os detalhes
   function loadProductDetails() {
@@ -182,6 +223,37 @@
 
   // Carregar os detalhes do produto quando a página for carregada
   window.onload = loadProductDetails;
+
+  function consultarCEP() {
+      const cepInput = document.getElementById('cep');
+      const cep = cepInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+      if (cep.length !== 8) {
+        alert('O CEP deve conter 8 dígitos.');
+        return;
+      }
+
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => exibirResultado(data))
+        .catch(error => console.log(error));
+    }
+
+    function exibirResultado(data) {
+      const resultDiv = document.getElementById('result');
+      if (data.erro) {
+        resultDiv.innerHTML = 'CEP não encontrado.';
+      } else {
+        resultDiv.innerHTML = `
+          <p><strong>CEP:</strong> ${data.cep}</p>
+          <p><strong>Logradouro:</strong> ${data.logradouro}</p>
+          <p><strong>Bairro:</strong> ${data.bairro}</p>
+          <p><strong>Cidade/UF:</strong> ${data.localidade}/${data.uf}</p>
+        `;
+      }
+    }
+
+    
     </script>
 </body>
 

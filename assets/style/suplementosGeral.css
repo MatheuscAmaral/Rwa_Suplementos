@@ -10,8 +10,100 @@
     font-size: 100%;
 }
 
+#search-container {
+    position: relative;
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 200px;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+  }
+  
+  .search-input:focus + .overlay {
+    display: block;
+  }
+  
+  #product-list-container {
+    display: none;
+    max-height: 300px; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Habilita a rolagem vertical */
+    border: 1px solid #ccc; /* Opcional: Adicione uma borda para melhorar a aparência */
+    padding: 10px; /* Opcional: Adicione um espaçamento interno */
+  }
+
 .preco a {
     text-decoration: none;
+}
+
+#freteT {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#mid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+#mid i {
+    font-size: 30px;
+}
+
+#cardFrete {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 14px;
+    align-items: center;
+    border: 1px solid rgb(190, 189, 189);
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+    padding-top: 30px;
+}
+
+#low a {
+    color: black;
+}
+
+#low {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#low button {
+    border: none;
+    background-color: blue;
+    padding: 7px;
+    color: white;
+}
+
+#low input {
+    padding: 5px;
+}
+
+#superiorT {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
 }
 
 /* cabecalho */
