@@ -200,6 +200,7 @@ select {
     border-radius: 5px;
     border: 1px solid black;
     text-align: center;
+    background-color: transparent;
 }
 
 .preco {
