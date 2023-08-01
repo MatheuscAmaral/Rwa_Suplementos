@@ -58,7 +58,7 @@ function goBack() {
         
         result++;
         value.innerText = result;
-        preco.innerHTML = `Pagar R$${product.price * result}`
+        preco.innerHTML = `Pagar R$${parseFloat(product.price * result).toFixed(2)}`
       })
 
       document.getElementById('minus').addEventListener('click', () => {
@@ -66,7 +66,7 @@ function goBack() {
 
         result = result - 1;
         value.innerText = result;
-        preco.innerHTML = `Pagar R$${product.price * result}`
+        preco.innerHTML = `Pagar R$${parseFloat(product.price * result).toFixed(2)}`
       })
 
       preco.innerHTML = `Pagar R$${product.price}`
