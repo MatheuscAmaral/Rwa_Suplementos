@@ -22,9 +22,10 @@ function goBack() {
     
     const productDetailsContainer = document.getElementById('itens-carrinho');
     
+    const preco = document.getElementById('pagar')
     // Função para exibir os detalhes do produto na página
     function showProductDetails(product) {
-    const preco = document.getElementById('pagar')
+    
     
     
     const htmlContent = `
@@ -70,11 +71,18 @@ function goBack() {
       })
 
       preco.innerHTML = `Pagar R$${product.price}`
+
     }
     
     function deleteP() {
-      productDetailsContainer.innerHTML = ''
+      productDetailsContainer.innerHTML = `<div id="semProdutos" style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 30px; text-align: center; border: 1px solid rgb(179, 179, 179); padding: 20px;">
+      <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000; margin-top: 30px;"></i>
+      <h5><strong>SEU CARRINHO ESTÁ VAZIO</strong></h5>
+      <p style="font-size: 13px;">Navegue agora pelas categorias de nossa loja e escolha os produtos desejados para adicionar em seu carrinho de compras</p>
+   </div>`
+      preco.innerHTML = `Pagar R$0.00`
     }
+    
     // Função principal para obter o ID do produto da URL, buscar o produto e exibir os detalhes
     function loadProductDetails() {
     const productId = getProductIdFromURL();
