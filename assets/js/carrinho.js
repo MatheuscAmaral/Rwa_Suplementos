@@ -66,8 +66,14 @@ function goBack() {
         let result = parseInt(value.innerText);
 
         result = result - 1;
-        value.innerText = result;
-        preco.innerHTML = `Pagar R$${parseFloat(product.price * result).toFixed(2)}`
+        if (result <= 0) {
+          alert('Você não pode comprar zero unidades de um produto.')
+        }
+
+        else {
+          value.innerText = result;
+          preco.innerHTML = `Pagar R$${parseFloat(product.price * result).toFixed(2)}`
+        }
       })
 
       preco.innerHTML = `Pagar R$${product.price}`
