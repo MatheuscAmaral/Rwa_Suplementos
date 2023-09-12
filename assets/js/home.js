@@ -35,33 +35,33 @@ if (width <= 500) {
     hidden.document.getElementById.add.hidden
     
 }
-else {
-  cabecalho.innerHTML = `<header id="cabecalho">
-    <a onclick="mobile()"><i class="fa-solid fa-bars-staggered fa-2xl" style="color: #000000;"></i></a>
-  <a href="/home.html"><img class="cabecalho-logo" src=" /assets/images/Imagens/rwa logo.png" alt=""></a>
-  <div class="deslogar">
-          <a href="/assets/html/carrinho.html"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i></a>
-  </div>
-  <nav class="cabecalho-central">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="container h-100">
-          <div class="d-flex justify-content-center h-100">
+  else {
+    cabecalho.innerHTML = `<header id="cabecalho">
+      <a onclick="mobile()"><i class="fa-solid fa-bars-staggered fa-2xl" style="color: #000000;"></i></a>
+    <a href="/home.html"><img class="cabecalho-logo" src=" /assets/images/Imagens/rwa logo.png" alt=""></a>
+    <div class="deslogar">
+            <a href="/assets/html/carrinho.html"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i></a>
+    </div>
+    <nav class="cabecalho-central">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-</nav>
-</header>
-<div id="searchbar">
-  <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
-  <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
-  </div>`;
-    cabecalho.style.display = "flex";
-    cabecalho.style.flexDirection = "column";
-    cabecalho.style.gap = '0rem'
-    cabecalho.style.padding = '20px'
-}
+      </nav>
+  </nav>
+  </header>
+  <div id="searchbar">
+    <input class="search_input"  id="barraPesquisa" type="text" name="" placeholder="Qual suplemento você precisa?">
+    <a href="#" class="search_icon"><i class="fas fa-search" pesquisarProdutos(termo)></i></a>
+    </div>`;
+      cabecalho.style.display = "flex";
+      cabecalho.style.flexDirection = "column";
+      cabecalho.style.gap = '0rem'
+      cabecalho.style.padding = '20px'
+  }
 } 
 else {
   if (localStorage.getItem("token") != null) {
@@ -74,7 +74,7 @@ else {
           Olá, ${userLogado.nome}
         </div>
         <div class="deslogar">
-          <a  href="/assets/html/creatinaHD.html" id="botao" onclick="sair()"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #000000;" ></i></a>
+          <a  href="home.html" id="botao" onclick="sair()"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #000000;" ></i></a>
         </div>
         <a href="/assets/html/carrinho.html"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #000000;"></i></a>`;
 
