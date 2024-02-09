@@ -20,7 +20,7 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "/catalogo",
+                path: "/catalogo/:search",
                 element: <Catalog/>
             },
             {

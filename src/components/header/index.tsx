@@ -4,17 +4,25 @@ import { IoClose } from "react-icons/io5";
 import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
 import logo from "../../assets/rwalogo2.png";
 import { Link } from 'react-router-dom';
+import { IoSearch } from "react-icons/io5";
+import { useContext } from 'react'; 
+import { CartContext } from '@/contexts/CartContext';
+
+import { Input } from "@/components/ui/input"
 
 export const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [input, setInput] = useState<string>("");
+  const { cartAmount } = useContext(CartContext);
+  console.log(cartAmount, "cart");
 
   return (
     <header className="bg-white shadow-sm mb-2">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-24" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link to={"/"} className="-m-1.5 p-1.5">
+          <Link to={"/"}>
             <span className="sr-only">Your Company</span>
-            <img className="h-8" src={logo} alt="logo" />
+            <img className="h-16" src={logo} alt="logo" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -23,29 +31,28 @@ export const Header = () => {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
             <FaBarsStaggered className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
-          </a>
+        <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+          <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
+          <Link to={`/catalogo/${input}`} className='absolute right-3 top-3 p'>
+            <IoSearch fontSize={16}/>
+          </Link>
         </Popover.Group>
         <div className="hidden lg:flex gap-2 items-center  lg:flex-1 lg:justify-end">
           <Link to={"/login"} >
             <FaUser fontSize={22}/>
           </Link>
 
-          <button >
+          <button className='relative'>
             <FaCartShopping fontSize={24}/>
-          </button>  
+            {cartAmount > 0 && (
+              <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>0</span>
+            )}
+          </button> 
+
+
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -55,7 +62,7 @@ export const Header = () => {
             <Link to={"/"} className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
-                className="h-8 w-auto"
+                className="h-16 w-auto"
                 src={logo}
                 alt="logo"
               />
