@@ -48,7 +48,7 @@ export const Header = () => {
           <button className='relative'>
             <FaCartShopping fontSize={24}/>
             {cartAmount > 0 && (
-              <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>0</span>
+              <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
             )}
           </button> 
 

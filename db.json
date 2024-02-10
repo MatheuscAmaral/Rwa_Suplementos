@@ -4,7 +4,7 @@
             "id": 1,
             "title": "Whey Pro Max Titanium",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/whey-pro-max.png",
+            "poster": "/src/assets/whey-pro-max.png",
             "size": "1KG",
             "showFlavors": true, 
             "flavor": "Chocolate"
@@ -14,7 +14,7 @@
             "id": 2,
             "title": "Whey Protein Concentrado Dux",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/logo-dux.png",
+            "poster": "/src/assets/logo-dux.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Chocolate"
@@ -24,7 +24,7 @@
             "id": 3,
             "title": "Whey Isolate Definition Body Action",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/isolate_definition_bopy-action-.png",
+            "poster": "/src/assets/isolate_definition_bopy-action-.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Chocolate"
@@ -34,7 +34,7 @@
             "id": 4,
             "title": "Whey 100% Integral Médica",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/whey-100-pouch-900g-baunilha-integralmedica.png",
+            "poster": "/src/assets/whey-100-pouch-900g-baunilha-integralmedica.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Baunilha"
@@ -44,7 +44,7 @@
             "id": 5,
             "title": "100% Whey Max Titanium",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/100_whey.png",
+            "poster": "/src/assets/100_whey.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Cookies & Cream"
@@ -54,7 +54,7 @@
             "id": 6,
             "title": "Isolate Prime Whey Body Action",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/isolate_prime_whey_bodyaction.png",
+            "poster": "/src/assets/isolate_prime_whey_bodyaction.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Morango"
@@ -64,7 +64,7 @@
             "id": 7,
             "title": "100% Whey Body Nutri",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/100_-whey-body-nutri-.png",
+            "poster": "/src/assets/100_-whey-body-nutri-.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Chocolate"
@@ -74,7 +74,7 @@
             "id": 8,
             "title": "100% Whey Body Action",
             "price": 120.0,
-            "poster": "/assets/images/Imagens/100-whey-body-action.png",
+            "poster": "/src/assets/100-whey-body-action.png",
             "size": "900g",
             "showFlavors": true,
             "flavor": "Chocolate"
@@ -84,7 +84,7 @@
             "id": 9,
             "title": "Creatina HD Muscle Hd",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/creatina-hd-muscle-hd.png",
+            "poster": "/src/assets/creatina-hd-muscle-hd.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -94,7 +94,7 @@
             "id": 10,
             "title": "Creatina Turbo Black Skull",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/creatine_black_skull-.png",
+            "poster": "/src/assets/creatine_black_skull-.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -104,7 +104,7 @@
             "id": 11,
             "title": "Creatina 5.0 Muscle HD",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/creatina-5.0-muscle-hd.png",
+            "poster": "/src/assets/creatina-5.0-muscle-hd.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -114,7 +114,7 @@
             "id": 12,
             "title": "Creatina Body Nutri 300g",
             "price": 99.90,
-            "poster": "/assets/images/Imagens/creatine-double-force.png",
+            "poster": "/src/assets/creatine-double-force.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -124,7 +124,7 @@
             "id": 13,
             "title": "Creatina Max Titanium",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/creatina-150g-max-titanium.png",
+            "poster": "/src/assets/creatina-150g-max-titanium.png",
             "size": "150g",
             "showFlavors": false,
             "flavor": ""
@@ -134,7 +134,7 @@
             "id": 14,
             "title": "Creatina Integral Médica",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/creatina-integral-medica.png",
+            "poster": "/src/assets/creatina-integral-medica.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -144,7 +144,7 @@
             "id": 15,
             "title": "Creatina Body Nutri 150g",
             "price": 99.90,
-            "poster": "/assets/images/Imagens/creatine-double-force-150g.png",
+            "poster": "/src/assets/creatine-double-force-150g.png",
             "size": "150g",
             "showFlavors": false,
             "flavor": ""
@@ -154,7 +154,7 @@
             "id": 16,
             "title": "Pré-Treino No Control",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/no_control_-.png",
+            "poster": "/src/assets/no_control_-.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -164,7 +164,7 @@
             "id": 17,
             "title": "Zma Black Skull",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/ZMA-BLACK-SKULL-120-CAPS.png",
+            "poster": "/src/assets/ZMA-BLACK-SKULL-120-CAPS.png",
             "size": "120caps",
             "showFlavors": false,
             "flavor": ""
@@ -174,7 +174,7 @@
             "id": 18,
             "title": "Ripzzz Black Skull",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/ripzzz-triptofano-.png",
+            "poster": "/src/assets/ripzzz-triptofano-.png",
             "size": "60caps",
             "showFlavors": false,
             "flavor": ""
@@ -184,7 +184,7 @@
             "id": 19,
             "title": "Triptofano New Nutrition",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/triptofanonewnutrition.png",
+            "poster": "/src/assets/triptofanonewnutrition.png",
             "size": "60caps",
             "showFlavors": false,
             "flavor": ""
@@ -194,7 +194,7 @@
             "id": 20,
             "title": "Complexo B New Nutrition",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/complexo-b-120.png",
+            "poster": "/src/assets/complexo-b-120.png",
             "size": "120caps",
             "showFlavors": false,
             "flavor": ""
@@ -204,7 +204,7 @@
             "id": 21,
             "title": "Thermo cut HD Muscle Hd",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/thermo-cut-hd-.png",
+            "poster": "/src/assets/thermo-cut-hd-.png",
             "size": "120caps",
             "showFlavors": false,
             "flavor": ""
@@ -214,7 +214,7 @@
             "id": 22,
             "title": "Psillium Ocean Drop",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/pssilium_ocean_drop-.png",
+            "poster": "/src/assets/pssilium_ocean_drop-.png",
             "size": "300g",
             "showFlavors": false,
             "flavor": ""
@@ -224,7 +224,7 @@
             "id": 23,
             "title": "Barra de Proteina Muscle HD",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/protein-bar-.png",
+            "poster": "/src/assets/protein-bar-.png",
             "size": "12uni",
             "showFlavors": false,
             "flavor": ""
@@ -234,7 +234,7 @@
             "id": 24,
             "title": "Ômega 3 Catari",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/omega-3-catarinense-.png",
+            "poster": "/src/assets/omega-3-catarinense-.png",
             "size": "120caps",
             "showFlavors": false,
             "flavor": ""
@@ -244,7 +244,7 @@
             "id": 25,
             "title": "CoQ10 Body Nutri",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/-q-10_body_nutri-.png",
+            "poster": "/src/assets/-q-10_body_nutri-.png",
             "size": "60caps",
             "showFlavors": false,
             "flavor": ""
@@ -254,7 +254,7 @@
             "id": 26,
             "title": "Glutamina Black Skull",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/glutamina-black-skull.png",
+            "poster": "/src/assets/glutamina-black-skull.png",
             "size": "150g",
             "showFlavors": false,
             "flavor": ""
@@ -264,7 +264,7 @@
             "id": 27,
             "title": "Maca Peruana Body Nutri",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/maca_peruana_body_nutry-.png",
+            "poster": "/src/assets/maca_peruana_body_nutry-.png",
             "size": "60caps",
             "showFlavors": false,
             "flavor": ""
@@ -274,7 +274,7 @@
             "id": 28,
             "title": "Equilibrium Body Nutri",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/equilibrium-.png",
+            "poster": "/src/assets/equilibrium-.png",
             "size": "60caps",
             "showFlavors": false,
             "flavor": ""
@@ -284,7 +284,7 @@
             "id": 29,
             "title": "Bcaa Age",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/bcaaa_age-.png",
+            "poster": "/src/assets/bcaaa_age-.png",
             "size": "90caps",
             "showFlavors": false,
             "flavor": ""
@@ -294,7 +294,7 @@
             "id": 30,
             "title": "Ômega 3 Muscle HD",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/omega_3musclehd-.png",
+            "poster": "/src/assets/omega_3musclehd-.png",
             "size": "120caps",
             "showFlavors": false,
             "flavor": ""
@@ -304,7 +304,7 @@
             "id": 31,
             "title": "Probiotic10 SunFood",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/sunfood_probiotico.png",
+            "poster": "/src/assets/sunfood_probiotico.png",
             "size": "60caps",
             "showFlavors": false, 
             "flavor": ""
@@ -314,7 +314,7 @@
             "id": 32, 
             "title": "Zma Growth",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/zma-growth.png",
+            "poster": "/src/assets/zma-growth.png",
             "size": "120caps",
             "showFlavors": false, 
             "flavor": ""
@@ -324,7 +324,7 @@
             "id": 33,
             "title": "Zma Body Nutry",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/zma-body-nutrii.png",
+            "poster": "/src/assets/zma-body-nutrii.png",
             "size": "60caps",
             "showFlavors": false, 
             "flavor": ""
@@ -334,7 +334,7 @@
             "id": 34,
             "title": "Fiber Premium Growth",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/fiber-premium-growth.png",
+            "poster": "/src/assets/fiber-premium-growth.png",
             "size": "250g",
             "showFlavors": false, 
             "flavor": ""
@@ -344,7 +344,7 @@
             "id": 35,
             "title": "Colágeno Hidrolisado Body Nutri",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/colageno-hidrolisado-body-nutri.png",
+            "poster": "/src/assets/colageno-hidrolisado-body-nutri.png",
             "size": "120caps",
             "showFlavors": false, 
             "flavor": ""
@@ -354,7 +354,7 @@
             "id": 36,
             "title": "Vit C Body Nutri",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/vit-c-body-nutri.png",
+            "poster": "/src/assets/vit-c-body-nutri.png",
             "size": "60caps",
             "showFlavors": false, 
             "flavor": ""
@@ -364,7 +364,7 @@
             "id": 37,
             "title": "Complexo B Growth",
             "price": 89.90,
-            "poster": "/assets/images/Imagens/complexo-b-growth.png",
+            "poster": "/src/assets/complexo-b-growth.png",
             "size": "120caps",
             "showFlavors": false, 
             "flavor": ""
