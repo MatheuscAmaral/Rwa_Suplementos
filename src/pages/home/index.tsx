@@ -17,7 +17,7 @@ export interface ProductsProps {
 
 export const Home = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
-    const { addItemCart } = useContext(CartContext);
+    const { addItemCart, removeItemCart } = useContext(CartContext);
 
 
     useEffect(() => {
@@ -32,6 +32,10 @@ export const Home = () => {
 
     const addProductCart = (item: ProductsProps) => {
         addItemCart(item);
+    }
+
+    const removeProductCart = (products: ProductsProps) => {
+        removeItemCart(products)
     }
 
     return (  
@@ -50,6 +54,9 @@ export const Home = () => {
 
                                 <button className="bg-blue-700 p-2 w-10 rounded-full flex items-center justify-center" onClick={() => addProductCart(p)}>
                                     <FaCartPlus fontSize={22} color="white" />
+                                </button>
+                                <button onClick={() => removeProductCart(p)}>
+                                    x
                                 </button>
                             </div>
                         )
