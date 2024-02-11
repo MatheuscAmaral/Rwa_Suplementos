@@ -44,7 +44,6 @@ const CartProvider = ({children}: CartProviderProps) => {
             amount: 1
         }
 
-        toast.success('Produto adicionado ao carrinho!');
         setCart((prevCart) => [...prevCart, data]);
     }
 
