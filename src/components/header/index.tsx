@@ -17,7 +17,7 @@ export const Header = () => {
   console.log(cartAmount, "cart");
 
   return (
-    <header className="bg-white shadow-sm mb-2">
+    <header className="bg-white shadow-sm ">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-24" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to={"/"}>
