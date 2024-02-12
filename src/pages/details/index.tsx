@@ -46,7 +46,7 @@ export const Details = () => {
         <>
              {
                 product && (
-                    <div className="flex flex-col sm:flex-row justify-center gap-28 py-20  items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto mt-10">
+                    <div className="flex flex-col sm:flex-row justify-center gap-28 px-5 py-20 mb-20 items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto mt-10">
                         <img className="w-72 hover:scale-105 transition-all" src={product.image}/>
 
                         <div className="flex flex-col gap-2 w-full max-w-sm">

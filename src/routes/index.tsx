@@ -10,6 +10,7 @@ import { Details } from "../pages/details";
 import { Orders } from "../pages/orders";
 import { DetailsOrders } from "../pages/detailsOrders";
 import { Account } from "../pages/account";
+import { InfoAccount } from "@/pages/register/infoAccount";
 
 const router = createBrowserRouter([
     {
@@ -52,7 +53,12 @@ const router = createBrowserRouter([
 
     {
         path: "/cadastro",
-        element: <Register/>
+        element: <Register/>,
+    },
+
+    {
+        path: "/cadastro/detalhes/:id",
+        element: <InfoAccount/>
     }
 ])
 

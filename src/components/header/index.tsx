@@ -6,7 +6,7 @@ import logo from "../../assets/rwalogo2.png";
 import { Link } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { useContext } from 'react'; 
-import { CartContext } from '@/contexts/CartContext';
+import { CartContext } from '@/contexts/CartContext'
 
 import { Input } from "@/components/ui/input"
 
