@@ -7,6 +7,7 @@ interface CartDataProps {
     cartAmount: number;
     addItemCart: (newItem: ProductsProps) => void;
     removeItemCart: (product: ProductsProps) => void;
+    total: string;
 }
 
 export interface CartProps {
@@ -15,7 +16,10 @@ export interface CartProps {
     price: number,
     image: string,
     amount: number,
-    total: number
+    total: number,
+    flavor: string,
+    category: string,
+    size: string,
 }
 
 interface CartProviderProps {
@@ -26,6 +30,7 @@ export const CartContext = createContext({} as CartDataProps);
 
 const CartProvider = ({children}: CartProviderProps) => {
     const [cart, setCart] = useState<CartProps[]>([]);
+    const [total, setTotal] = useState("");
 
     const addItemCart = (newItem: ProductsProps) => {
         const existItemCart = cart.filter(c => c.id === newItem.id);
@@ -38,6 +43,7 @@ const CartProvider = ({children}: CartProviderProps) => {
             cartList[index].total = cartList[index].price * cartList[index].amount;
 
             setCart([...cartList]);
+            totalCart(cart);
 
             toast.success('Produto atualizado com sucesso!');
 
@@ -47,10 +53,12 @@ const CartProvider = ({children}: CartProviderProps) => {
         let data = {
             ...newItem, 
             amount: 1,
-            total: 0
+            total: newItem.price
         }
 
         setCart((prevCart) => [...prevCart, data]);
+        console.log(total)
+        totalCart(cart);
     }
 
     const removeItemCart = (product: ProductsProps) => {
@@ -62,6 +70,8 @@ const CartProvider = ({children}: CartProviderProps) => {
                 cart[index].total -= cart[index].price;
                 setCart([...cart]);
 
+                totalCart(cart);
+
                 toast.success('Produto atualizado com sucesso!');
 
                 return;
@@ -70,12 +80,31 @@ const CartProvider = ({children}: CartProviderProps) => {
 
             cart.splice(index, 1)
             setCart([...cart])
+            totalCart(cart);
             toast.success('Produto removido do carrinho!')
         }   
     }
 
+    const totalCart = (items: CartProps[]) => {
+        let myCart = items;
+
+        console.log(myCart)
+        
+        let result = myCart.reduce((acc, obj) => {
+            return acc + obj.total
+        }, 0)
+
+        const resultFormated = result.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL"
+        })
+
+        setTotal(resultFormated);
+        console.log(total) 
+    }
+
     return ( 
-        <CartContext.Provider value={{cart, cartAmount: cart.length, addItemCart, removeItemCart}}>
+        <CartContext.Provider value={{cart, cartAmount: cart.length, addItemCart, removeItemCart, total}}>
             {children}
         </CartContext.Provider>
     )

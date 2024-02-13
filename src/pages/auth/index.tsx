@@ -18,7 +18,8 @@ interface UserProps {
     neighborhood: string,
     number: string,
     city: string,
-    state: string
+    state: string,
+    nome: string
 }
 
 export const Auth = () => {
@@ -54,7 +55,7 @@ export const Auth = () => {
                 saveAuthUser(user);
                 navigate("/");
             } else {
-                toast.error("Opss, usuário não encontrado!");
+                toast.error("Opss, usuário ou senha incorreta!");
             }
         } 
         

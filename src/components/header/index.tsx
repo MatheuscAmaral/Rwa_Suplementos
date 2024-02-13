@@ -3,12 +3,12 @@ import { Dialog, Popover } from '@headlessui/react'
 import { IoClose } from "react-icons/io5";
 import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
 import logo from "../../assets/rwalogo2.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { useContext } from 'react'; 
 import { CartContext } from '@/contexts/CartContext'
 import { AuthContext } from '@/contexts/AuthContext';
-
+import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
@@ -26,32 +26,20 @@ import { ProductsProps } from '@/pages/home';
 
 type Anchor = 'right';
 
-interface ProductCart {
-  amount: number,
-  image: string,
-  title: string,
-  total: number,
-  price: number,
-  id: number,
-  flavor: string,
-  category: string,
-  size: string,
-  product: ProductsProps[]
-}
 
 export const Header = () => {
   const [state, setState] = React.useState({
     right: false,
   });
 
-  const [total, setTotal] = useState();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [input, setInput] = useState<string>("");
   
-  const { cart, cartAmount, addItemCart, removeItemCart } = useContext(CartContext);
+  const { cart, cartAmount, addItemCart, removeItemCart, total } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -67,20 +55,41 @@ export const Header = () => {
       setState({ ...state, [anchor]: open });
   };
 
-  const removeProductCartTrash = (product: ProductCart) => {
+  const removeProductCartTrash = (product: ProductsProps) => {
       product.amount = 0;
 
       removeItemCart(product);
   }
 
-  const removeProductCart = (product: ProductCart) => {
+  const removeProductCart = (product: ProductsProps) => {
     removeItemCart(product)
   }
 
-  const addProductCart = (product: ProductCart) => {
+  const addProductCart = (product: ProductsProps) => {
     addItemCart(product)
   }
 
+  const goToCheckout = () => {
+    setLoading(true)
+
+    setTimeout(() => {
+      navigate("/checkout");
+      setLoading(false);
+
+      
+    }, 1000);
+  }
+
+  const goToCatalog = () => {
+    setLoading(true)
+
+    setTimeout(() => {
+      navigate("/catalogo/todos");
+      setLoading(false);
+
+      
+    }, 1000);
+  }
 
   const list = (anchor: Anchor) => (
     <Box
@@ -93,7 +102,17 @@ export const Header = () => {
         <IoMdClose onClick={toggleDrawer(anchor, false)} fontSize={20} className='cursor-pointer' />
       </div>
 
-        <div className=' flex flex-col gap-1 mt-5'>
+        {
+          cartAmount <= 0 && (
+              <div className=' flex items-center flex-col mt-60 gap-2'>
+                <FaCartPlus fontSize={30} />
+
+                <p>O carrinho está vazio!</p>
+              </div>
+          )
+        }
+
+        <div className=' flex flex-col gap-1 mt-5 mb-60'>
           {
             cart.map(c => {
               return (
@@ -120,18 +139,10 @@ export const Header = () => {
 
                   <span className=' text-xs font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5'>
                     {
-                      c.amount <= 1 ? (
-                        c.price.toLocaleString("pt-br", {
-                          style: "currency",
-                          currency: "BRL"
-                        })
-                       
-                      ) : (
                         c.total.toLocaleString("pt-br", {
                           style: "currency",
                           currency: "BRL"
                         })
-                      )
                     }
                   </span>
 
@@ -142,23 +153,27 @@ export const Header = () => {
             })
           }
 
-          <footer className='absolute bottom-0 flex flex-col gap-4 '>
+          <footer className='fixed pt-5 bg-white bottom-0 flex flex-col gap-4 mx-auto pl-2'>
              <section>
                 <div className='flex justify-between items-center px-2 text-sm'>
                     <p>SubTotal</p> 
-                    <span className='text-lg font-semibold'>R$ 93,90</span> 
+                      <p className='text-lg font-semibold'>
+                          {total}
+                      </p> 
                   </div>
 
-                  <div className='flex gap-36 items-center px-2 text-sm'>
+                  <div className='flex gap-32 items-center px-2 text-sm'>
                     <p>Descontos</p> 
-                    <span className='text-lg font-semibold'>-R$ 2,20</span> 
+                    <span className='text-lg font-semibold'>-R$ 0,00</span> 
                   </div>
              </section>
               
               <p className='text-xs text-gray-400 text-center'>Frete e impostos calculados no checkout</p>
 
                 <div className='p-2.5'>
-                  <button onClick={(e) => setLoading(e.target.value)} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 `}>
+                  {
+                    cartAmount > 0 ? (
+                      <button onClick={() => goToCheckout()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0  mb-3`}>
                       {
                           loading ? (
                               <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -169,7 +184,22 @@ export const Header = () => {
                                   </p>      
                               )
                       }
-                  </button>
+                      </button>
+                    ) : (
+                          <button onClick={() => goToCatalog()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0  mb-3`}>
+                            { 
+                            loading ? (
+                              <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
+                              ) : (
+                                  <p style={{paddingBottom: 2}} className='transition-all flex items-center gap-2'>
+                                    <IoBagCheckOutline fontSize={20}/>
+                                    Visualizar catálogo
+                                  </p>      
+                              )
+                            }
+                          </button>
+                        )
+                      }
                 </div>
           </footer>
         </div>
@@ -196,7 +226,7 @@ export const Header = () => {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
           <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
-          <Link to={`/catalogo/${input}`} className='absolute right-3 top-3 p'>
+          <Link to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
             <IoSearch fontSize={16}/>
           </Link>
         </Popover.Group>

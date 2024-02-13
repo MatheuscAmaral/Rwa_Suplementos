@@ -10,7 +10,8 @@ export interface UserDataProps {
     neighborhood: string,
     number: string,
     city: string,
-    state: string
+    state: string,
+    nome: string
 }
 
 interface AuthProps {

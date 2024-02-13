@@ -26,12 +26,13 @@ export interface ProductsProps {
     image: string,
     category: string,
     size: string,
-    flavor: string
+    flavor: string,
+    amount: number,
 }
 
 export const Home = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
-    const { addItemCart, removeItemCart } = useContext(CartContext);
+    const { addItemCart } = useContext(CartContext);
 
 
     useEffect(() => {
@@ -48,9 +49,9 @@ export const Home = () => {
         addItemCart(item);
     }
     
-    const removeProductCart = (products: ProductsProps) => {
-        removeItemCart(products)
-    }
+    // const removeProductCart = (products: ProductsProps) => {
+    //     removeItemCart(products)
+    // }
 
 
     return (  
