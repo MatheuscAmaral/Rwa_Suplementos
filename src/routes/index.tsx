@@ -57,7 +57,7 @@ const router = createBrowserRouter([
     },
 
     {
-        path: "/cadastro/detalhes/:id",
+        path: "/cadastro/detalhes/:cpf/:email",
         element: <InfoAccount/>
     }
 ])

@@ -9,12 +9,13 @@ interface CartDataProps {
     removeItemCart: (product: ProductsProps) => void;
 }
 
-interface CartProps {
+export interface CartProps {
     id: number, 
     title: string,
     price: number,
     image: string,
-    amount: number
+    amount: number,
+    total: number
 }
 
 interface CartProviderProps {
@@ -34,14 +35,19 @@ const CartProvider = ({children}: CartProviderProps) => {
         
         if (existItemCart.length > 0) {
             cartList[index].amount += 1;
-            setCart([...cartList])
-            toast.success('Produto atualizado com sucesso!')
+            cartList[index].total = cartList[index].price * cartList[index].amount;
+
+            setCart([...cartList]);
+
+            toast.success('Produto atualizado com sucesso!');
+
             return;
         }
         
         let data = {
             ...newItem, 
-            amount: 1
+            amount: 1,
+            total: 0
         }
 
         setCart((prevCart) => [...prevCart, data]);
@@ -49,10 +55,15 @@ const CartProvider = ({children}: CartProviderProps) => {
 
     const removeItemCart = (product: ProductsProps) => {
         const index = cart.findIndex(c => c.id === product.id);
+        
         if (index != -1) {
             if (cart[index].amount > 1) {
                 cart[index].amount--;
-                toast.success('Produto atualizado com sucesso!')
+                cart[index].total -= cart[index].price;
+                setCart([...cart]);
+
+                toast.success('Produto atualizado com sucesso!');
+
                 return;
             }
 

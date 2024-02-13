@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
 import { IoClose } from "react-icons/io5";
 import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
@@ -7,18 +7,178 @@ import { Link } from 'react-router-dom';
 import { IoSearch } from "react-icons/io5";
 import { useContext } from 'react'; 
 import { CartContext } from '@/contexts/CartContext'
+import { AuthContext } from '@/contexts/AuthContext';
+
+import { FaRegTrashAlt } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
+import { IoMdClose } from "react-icons/io";
+import { IoBagCheckOutline } from "react-icons/io5";
+
+import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Button from '@mui/material/Button';
+
+
 
 import { Input } from "@/components/ui/input"
+import { ProductsProps } from '@/pages/home';
+
+type Anchor = 'right';
+
+interface ProductCart {
+  amount: number,
+  image: string,
+  title: string,
+  total: number,
+  price: number,
+  id: number,
+  flavor: string,
+  category: string,
+  size: string,
+  product: ProductsProps[]
+}
 
 export const Header = () => {
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const [total, setTotal] = useState();
+
+  const [loading, setLoading] = useState(false);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [input, setInput] = useState<string>("");
-  const { cartAmount } = useContext(CartContext);
-  console.log(cartAmount, "cart");
+  
+  const { cart, cartAmount, addItemCart, removeItemCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+
+  const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+
+      setState({ ...state, [anchor]: open });
+  };
+
+  const removeProductCartTrash = (product: ProductCart) => {
+      product.amount = 0;
+
+      removeItemCart(product);
+  }
+
+  const removeProductCart = (product: ProductCart) => {
+    removeItemCart(product)
+  }
+
+  const addProductCart = (product: ProductCart) => {
+    addItemCart(product)
+  }
+
+
+  const list = (anchor: Anchor) => (
+    <Box
+      sx={{ width: 310 }}
+      role="presentation"
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <div className='flex pt-3 justify-between px-3 shadow-sm pb-3'>
+        <p className='text-md flex items-center gap-1'>Carrinho <span className='text-xs'>({cartAmount})</span></p>
+        <IoMdClose onClick={toggleDrawer(anchor, false)} fontSize={20} className='cursor-pointer' />
+      </div>
+
+        <div className=' flex flex-col gap-1 mt-5'>
+          {
+            cart.map(c => {
+              return (
+                <section key={c.id} className='flex gap-3 items-center border p-4 m-3 rounded-sm relative'>
+                  <img src={c.image} alt="img_produto" className='w-14'/>
+
+                  <div className='flex flex-col gap-2'>
+                    <p className=' text-xs w-full max-w-32'>{c.title}</p>
+
+                    <div className='flex border rounded-full w-14 py-0.5 justify-center gap-2 text-xs bg-white'>
+                      <button onClick={() => removeProductCart(c)}>
+                        -
+                      </button>
+
+                      <span>
+                        {c.amount}
+                      </span>
+
+                      <button onClick={() => addProductCart(c)}>
+                        +
+                      </button>
+                    </div>
+                  </div>
+
+                  <span className=' text-xs font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5'>
+                    {
+                      c.amount <= 1 ? (
+                        c.price.toLocaleString("pt-br", {
+                          style: "currency",
+                          currency: "BRL"
+                        })
+                       
+                      ) : (
+                        c.total.toLocaleString("pt-br", {
+                          style: "currency",
+                          currency: "BRL"
+                        })
+                      )
+                    }
+                  </span>
+
+
+                  <FaRegTrashAlt onClick={() => removeProductCartTrash(c)} color='gray' fontSize={14} className='absolute top-3 right-3 cursor-pointer'/>
+                </section>
+              )
+            })
+          }
+
+          <footer className='absolute bottom-0 flex flex-col gap-4 '>
+             <section>
+                <div className='flex justify-between items-center px-2 text-sm'>
+                    <p>SubTotal</p> 
+                    <span className='text-lg font-semibold'>R$ 93,90</span> 
+                  </div>
+
+                  <div className='flex gap-36 items-center px-2 text-sm'>
+                    <p>Descontos</p> 
+                    <span className='text-lg font-semibold'>-R$ 2,20</span> 
+                  </div>
+             </section>
+              
+              <p className='text-xs text-gray-400 text-center'>Frete e impostos calculados no checkout</p>
+
+                <div className='p-2.5'>
+                  <button onClick={(e) => setLoading(e.target.value)} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 `}>
+                      {
+                          loading ? (
+                              <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
+                              ) : (
+                                  <p style={{paddingBottom: 2}} className='transition-all flex items-center gap-2'>
+                                    <IoBagCheckOutline fontSize={20}/>
+                                    Finalizar compra
+                                  </p>      
+                              )
+                      }
+                  </button>
+                </div>
+          </footer>
+        </div>
+    </Box>
+  );
 
   return (
     <header className="bg-white shadow-sm ">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-24" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-22" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to={"/"}>
             <span className="sr-only">Your Company</span>
@@ -40,17 +200,51 @@ export const Header = () => {
             <IoSearch fontSize={16}/>
           </Link>
         </Popover.Group>
-        <div className="hidden lg:flex gap-2 items-center  lg:flex-1 lg:justify-end">
-          <Link to={"/login"} >
-            <FaUser fontSize={22}/>
-          </Link>
+        <div className={`hidden lg:flex  ${user.length > 0 ? "gap-5" : "gap-2"} items-center  lg:flex-1 lg:justify-end`}>
+          {
+            user.length > 0 ? (
+                user.map(u => {
+                  return (
+                  <div className='flex items-center gap-2'>
+                    <Link to={"/conta"} >
+                      <FaUser fontSize={19.5}/>
+                    </Link>
+                
+                    <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
+                  </div>
+                )
+              })
+            ) : (
+              <Link to={"/login"} >
+                <FaUser fontSize={20}/>
+              </Link>
+            )
+          }
 
-          <button className='relative'>
-            <FaCartShopping fontSize={24}/>
-            {cartAmount > 0 && (
-              <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
-            )}
-          </button> 
+         <section className=' relative'>
+            <button className='relative pt-1.5'>
+                <FaCartShopping fontSize={21}/>
+                {cartAmount > 0 && (
+                  <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
+                )}
+              </button> 
+
+              <div className='absolute bottom-0 left-0 opacity-0'>
+                {(['right'] as const).map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <SwipeableDrawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                      onOpen={toggleDrawer(anchor, true)}
+                    >
+                      {list(anchor)}
+                    </SwipeableDrawer>
+                  </React.Fragment>
+                ))}
+              </div>
+         </section>
 
 
         </div>

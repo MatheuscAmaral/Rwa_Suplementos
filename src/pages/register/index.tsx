@@ -4,6 +4,8 @@ import { Link, useNavigate} from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useState } from 'react';
+import { api } from '@/api';
+import toast from 'react-hot-toast';
 
 
 
@@ -13,12 +15,36 @@ export const Register = () =>  {
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
-    function verifyRegister(e: React.FormEvent<HTMLFormElement>) {
+    async function verifyRegister(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         setLoading(true);
 
-       navigate(`/cadastro/detalhes/${1}`);
+        try {
+            const response = await api.get("/user", {
+                params: {
+                    cpf: cpf,
+                    email: email
+                }
+            })
+
+            const userData = response.data;
+
+            if(userData.length <= 0) {
+                navigate(`/cadastro/detalhes/${cpf}/${email}`);
+            } else {
+                toast.error("Opss, usuário já existe!")
+            }
+        }
+        
+        catch {
+            toast.error("Opss, ocorreu um erro, favor contatar o suporte!")
+        }
+
+        finally {
+            setLoading(false);
+        }
+
     }
 
     return (

@@ -2,7 +2,7 @@ import logo from "../../../assets/rwalogo2.png"
 
 import * as React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -19,7 +19,16 @@ import StepLabel from '@mui/material/StepLabel';
 import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { StepIconProps } from '@mui/material/StepIcon';
+import { BiStreetView } from "react-icons/bi";
+import { GoNumber } from "react-icons/go";
+import { TbPasswordFingerprint } from "react-icons/tb";
+import { GiVillage, GiModernCity } from "react-icons/gi";
+import { MdOutlineShareLocation, MdDriveFileRenameOutline } from "react-icons/md";
+import cepApi from "@/api/cep";
+import toast from "react-hot-toast";
 
+import { FaSearch } from "react-icons/fa";
+import { api } from "@/api";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -87,14 +96,102 @@ function ColorlibStepIcon(props: StepIconProps) {
 
 const steps = ['Cadastro', 'Informações adicionais', 'Create an ad'];
 
-export function InfoAccount() {
+interface CepProps {
+    cepInput: string
+}
 
+export function InfoAccount() {
     const [step, setStep] = useState(Number);
 
-    const verifySectionInfo = (e: React.FormEvent<HTMLFormElement>) => {
+    const [nome, setNome] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPass, setConfirmPass] = useState("");
+
+    const [cep, setCep] = useState("");
+    const [street, setStreet] = useState("");
+    const [neighborhood, setNeighborhood] = useState("");
+    const [number, setNumber] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const { cpf, email } = useParams();
+
+    const navigate = useNavigate();
+
+    const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const cepInput = e.target.value;
+
+        setCep(cepInput);
+
+        verifyCep({cepInput});
+    }
+
+
+    async function verifyCep(cepInput: CepProps) {
+        if(cepInput.cepInput.length != 8 && cepInput.cepInput.length != 0) {
+            return;
+        }
+
+        if(cepInput.cepInput.length == 0) {
+            setStreet("");
+            setNeighborhood("");
+            setCity("");
+            setState("");
+            setNumber("");
+
+            return;
+        }
+
+        try {
+            const response = await cepApi.get(`/${cepInput.cepInput}`);
+
+            setStreet(response.data.logradouro);
+            setNeighborhood(response.data.bairro);
+            setCity(response.data.localidade);
+            setState(response.data.uf);
+        }
+
+        catch {
+            toast.error("Opss, ocorreu um erro ao buscar o cep!");
+        }  
+    }
+
+
+    async function verifySectionInfo (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
-        setStep((step) => step + 1);
+        setStep((step) => step + 1);  
+
+        console.log(cpf, email)
+
+        console.log(step)
+        
+        if(step > 0) {
+           try {
+                const response = await api.post("/user", {
+                    nome: nome,
+                    cpf: cpf,
+                    email: email,
+                    password: password,
+                    address: [
+                        {
+                            cep: cep,
+                            rua: street,
+                            numero: number,
+                            bairro: neighborhood,
+                            cidade: city,
+                            estado: state
+                        }
+                    ]
+                });
+
+                navigate("/login");
+           }
+
+           catch {
+                toast.error("Opss, ocorreu um erro ao salvar o cadastro");
+           }
+
+        }
     }
 
     return (
@@ -119,54 +216,69 @@ export function InfoAccount() {
                         { 
                             step == 0 ?  (
                                 <section className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                                    <div className='w-full text-sm text-gray-600'>
+                                    <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="user" className='ml-1'>Nome completo *</label>
-                                        <Input placeholder='Digite seu nome completo' type='text' id='user' className='text-xs mt-2' required/>
+                                        <Input  value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Digite seu nome completo' type='text' id='user' className='text-xs mt-2' required/>
+                                        <MdDriveFileRenameOutline fontSize={18} className="absolute top-10 right-3 "/>
                                     </div>
 
-                                    <div className='w-full text-sm text-gray-600'>
+                                    <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="password" className='ml-1'>Senha *</label>
-                                        <Input placeholder='Digite sua senha' type='password' id='password' className='text-xs mt-2' required/>
+                                        <Input value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='Digite sua senha' type='password' id='password' className='text-xs mt-2' required/>
+                                        <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 "/>
                                     </div>
 
-                                    <div className='w-full text-sm text-gray-600'>
+                                    <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="password" className='ml-1'>Confirmar senha *</label>
-                                        <Input placeholder='Digite sua senha novamente' type='password' id='password' className='text-xs mt-2' required/>
+                                        <Input value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)}  placeholder='Digite sua senha novamente' type='password' id='password' className='text-xs mt-2' required/>
+                                        <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 "/>
                                     </div>
                                 </section>
                             ) : (
                                 <>
-                                    <div className='w-full text-sm text-gray-600'>
+                                    <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="cep" className='ml-1'>CEP *</label>
-                                        <Input placeholder='Digite o cep' type='number' id='cep' className='text-xs mt-2' required/>
+                                        <Input minLength={1} value={cep}  onChange={handleCepChange}
+                                            placeholder='Digite o cep' type='number' id='cep' className='text-xs mt-2' 
+                                            required
+                                        />
+                                        <FaSearch className="absolute top-10 right-3 "/>
                                     </div>
 
-                                    <section className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                                        <div className='w-full text-sm text-gray-600'>
-                                            <label htmlFor="rua" className='ml-1'>Rua *</label>
-                                            <Input placeholder='Digite o nome da sua rua' type='text' id='rua' className='text-xs mt-2' required/>
-                                        </div>
+                                                           
+                                       {
+                                            <section className={`grid grid-cols-1 md:grid-cols-2 gap-7 ${cep.length != 8 ? "opacity-70" : "" }`}>
+                                                <div className='w-full text-sm text-gray-600 relative'>
+                                                    <label htmlFor="rua" className='ml-1'>Rua *</label>
+                                                    <Input value={street} onChange={(e) => setStreet(e.target.value)} placeholder='Digite o nome da sua rua' type='text' id='rua' readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " opacity-80 cursor-not-allowed bg-gray-200" : ""}`} required/>
+                                                    <BiStreetView fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
 
-                                        <div className='w-full text-sm text-gray-600'>
-                                            <label htmlFor="number" className='ml-1'>Número *</label>
-                                            <Input placeholder='Digite o número da residência' type='number' id='number' className='text-xs mt-2' required/>
-                                        </div>
+                                                <div className='w-full text-sm text-gray-600 relative'>
+                                                    <label htmlFor="number" className='ml-1'>Número *</label>
+                                                    <Input value={number} onChange={(e) => setNumber(e.target.value)} placeholder='Digite o número da residência' type='number' id='number' readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " opacity-80 cursor-not-allowed bg-gray-200" : ""}`} required/>
+                                                    <GoNumber fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
 
-                                        <div className='w-full text-sm text-gray-600'>
-                                            <label htmlFor="cep" className='ml-1'>Bairro *</label>
-                                            <Input placeholder='Digite o nome do bairro' type='text' id='bairro' className='text-xs mt-2' required/>
-                                        </div>
+                                                <div className='w-full text-sm text-gray-600 relative'>
+                                                    <label htmlFor="bairro" className='ml-1'>Bairro *</label>
+                                                    <Input value={neighborhood} onChange={(e) => setNeighborhood(e.target.value)} placeholder='Digite o nome do bairro' type='text' id='bairro' readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " opacity-80 cursor-not-allowed bg-gray-200" : ""}`} required/>
+                                                    <GiVillage fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
 
-                                        <div className='w-full text-sm text-gray-600'>
-                                            <label htmlFor="cidade" className='ml-1'>Cidade *</label>
-                                            <Input placeholder='Digite o nome da cidade' type='text' id='cidade' className='text-xs mt-2' required/>
-                                        </div>
+                                                <div className={"w-full text-sm text-gray-600 relative"}>
+                                                    <label htmlFor="cidade" className='ml-1'>Cidade *</label>
+                                                    <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder='Digite o nome da cidade' type='text' id='cidade'  readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " cursor-not-allowed bg-gray-200" : ""}`} required/>
+                                                    <GiModernCity fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
 
-                                        <div className='w-full text-sm text-gray-600'>
-                                            <label htmlFor="estado" className='ml-1'>Estado *</label>
-                                            <Input placeholder='Digite o nome do estado' type='text' id='estado' className='text-xs mt-2' required/>
-                                        </div>
-                                    </section>                                
+                                                <div className='w-full text-sm text-gray-600 relative'>
+                                                    <label htmlFor="estado" className='ml-1'>Estado *</label>
+                                                    <Input value={state} onChange={(e) => setState(e.target.value)} placeholder='Digite o nome do estado' type='text' id='estado'  readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? "  cursor-not-allowed bg-gray-200" : ""}`} required/>
+                                                    <MdOutlineShareLocation fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
+                                            </section> 
+                                       }
                                 </>
                         )
                     }
