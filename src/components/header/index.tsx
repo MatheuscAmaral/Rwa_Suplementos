@@ -153,26 +153,33 @@ export const Header = () => {
             })
           }
 
-          <footer className='fixed pt-5 bg-white bottom-0 flex flex-col gap-4 mx-auto pl-2'>
-             <section>
-                <div className='flex justify-between items-center px-2 text-sm'>
-                    <p>SubTotal</p> 
-                      <p className='text-lg font-semibold'>
-                          {total}
-                      </p> 
-                  </div>
+          <footer className={`fixed pt-5 bg-white bottom-0 flex flex-col gap-4 mx-auto w-full max-w-xs ${cart.length > 0 && "px-3"}`}>
+              {
+                cart.length > 0 && (
+                   <>
+                     <section>
+                      <div className='flex justify-between items-center px-2 text-sm'>
+                          <p>SubTotal</p> 
+                            <p className='text-lg font-semibold'>
+                                {total}
+                            </p> 
+                        </div>
 
-                  <div className='flex gap-32 items-center px-2 text-sm'>
-                    <p>Descontos</p> 
-                    <span className='text-lg font-semibold'>-R$ 0,00</span> 
-                  </div>
-             </section>
+                        <div className='flex gap-32 items-center px-2 text-sm'>
+                          <p>Descontos</p> 
+                          <span className='text-lg font-semibold'>-R$ 0,00</span> 
+                        </div>
+                    </section>
+                    
+                    <p className='text-xs text-gray-400 text-center'>Frete e impostos calculados no checkout</p>
+                   </>
+                )
+              }
               
-              <p className='text-xs text-gray-400 text-center'>Frete e impostos calculados no checkout</p>
 
                 <div className='p-2.5'>
                   {
-                    cartAmount > 0 ? (
+                    cart.length > 0 ? (
                       <button onClick={() => goToCheckout()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0  mb-3`}>
                       {
                           loading ? (
@@ -186,7 +193,8 @@ export const Header = () => {
                       }
                       </button>
                     ) : (
-                          <button onClick={() => goToCatalog()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0  mb-3`}>
+                          <div className=' w-72'>
+                            <button onClick={() => goToCatalog()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3`}>
                             { 
                             loading ? (
                               <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -198,6 +206,7 @@ export const Header = () => {
                               )
                             }
                           </button>
+                          </div>
                         )
                       }
                 </div>
@@ -226,7 +235,7 @@ export const Header = () => {
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
           <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
-          <Link to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
+          <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
             <IoSearch fontSize={16}/>
           </Link>
         </Popover.Group>
