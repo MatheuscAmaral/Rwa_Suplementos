@@ -1,7 +1,9 @@
 import { api } from "@/api";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
 import { ProductsProps } from "../home";
+
+import { CartContext } from "@/contexts/CartContext";
 
 import { Skeleton } from "@/components/ui/skeleton"
 
@@ -14,6 +16,8 @@ export const Catalog = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
     const [loadPage, setLoadPage] = useState(false);
 
+    const { cart, addItemCart } = useContext(CartContext);
+
     useEffect(() => {
         async function getProducts() {
             try {
@@ -23,18 +27,17 @@ export const Catalog = () => {
                     setLoadPage(true);             
                 }, 800);
                           
-                const allProducts = response.data;
-                
+                let allProducts = response.data;
+
                 if(search && search != "todos") {
-                    // Filtra os produtos com base no termo de pesquisa
                     const filteredProducts = allProducts.filter((product: { title: string; }) =>
-                    product.title.toLowerCase().includes(search.toLowerCase())
+                        product.title.toLowerCase().includes(search.toLowerCase())
                     );
                     
                     setProducts(filteredProducts);
                     return;
                 }
-                
+
                 setProducts(allProducts);
             }
             
@@ -47,7 +50,12 @@ export const Catalog = () => {
         getProducts();
     }, [search]); 
 
+    const addProductCart = (item: ProductsProps) => {
+        addItemCart(item);
+    }
+
     return (
+        
         <main className="w-full max-w-5xl mx-auto mt-10 px-12 md:px-5">
             {
                 loadPage ? (
@@ -87,7 +95,7 @@ export const Catalog = () => {
                             </div>
                         </section>
 
-                        <div>
+                        <div className="w-full">
                             <section className={`px-5 pb-5 ${search != "todos" ? "pt-7" : "pt-2"} bg-gray-50 rounded-lg`}>
                                 <h1 className="text-2xl font-semibold pb-5 text-gray-600">
                                     {
@@ -104,10 +112,13 @@ export const Catalog = () => {
                                 products.length > 0 ? (
                                     <section className="grid grid-cols-2 w-full sm:grid-cols-3 transition-all md:grid-cols-4 justify-center gap-2 mt-3 mb-52">
                                         {
-                                            products.map(p => {
+                                            products.map((p) => {
                                                 return (
-                                                    <div className="flex flex-col h-56 gap-4 shadow-sm py-4 px-5 rounded-lg w-full sm:max-w-52 bg-gray-50">
-                                                        <img src={p.image} className=" w-20 mx-auto" alt="img_produto" />
+                                                    <div key={p.id} className="flex flex-col h-60 gap-4 shadow-sm py-4 px-5 rounded-lg w-full sm:max-w-52 bg-gray-50">
+                                                        <Link to={`/detalhes/${p.id}`} className="cursor-pointer hover:scale-105 transition-all">
+                                                            <img src={p.image} className=" w-20 mx-auto" alt="img_produto" />                                                        
+                                                        </Link>
+                                                        
                                                         <h1 key={p.id} className=" text-xs md:px-0 font-semibold w-34">{p.title}</h1>
                 
                                                         <p className="text-md font-semibold text-start">
@@ -118,6 +129,12 @@ export const Catalog = () => {
                                                                 })
                                                             }
                                                         </p>
+
+                                                        
+                                                        <button className="text-sm" onClick={() => addProductCart(p)}>
+                                                            comprar
+                                                        </button>
+                                                    
                                                     </div>
                                                 )
                                             })

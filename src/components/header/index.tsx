@@ -180,7 +180,7 @@ export const Header = () => {
                 <div className='p-2.5'>
                   {
                     cart.length > 0 ? (
-                      <button onClick={() => goToCheckout()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0  mb-3`}>
+                      <button onClick={() => goToCheckout()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-blue-700 transition-all  mb-3`}>
                       {
                           loading ? (
                               <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -194,7 +194,7 @@ export const Header = () => {
                       </button>
                     ) : (
                           <div className=' w-72'>
-                            <button onClick={() => goToCatalog()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3`}>
+                            <button onClick={() => goToCatalog()} id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3 hover:bg-blue-700 transition-all`}>
                             { 
                             loading ? (
                               <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -216,81 +216,158 @@ export const Header = () => {
   );
 
   return (
-    <header className="bg-white shadow-sm ">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-22" aria-label="Global">
-        <div className="flex lg:flex-1">
+    <header className="bg-white shadow-sm">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between pt-5 px-6 mb-5 lg:hidden" aria-label="Global">
+        <div className="w-full flex items-center justify-between mx-auto lg:hidden">
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <FaBarsStaggered className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+
           <Link to={"/"}>
             <span className="sr-only">Your Company</span>
             <img className="h-16" src={logo} alt="logo" />
           </Link>
+
+          <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+            <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
+            <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
+              <IoSearch fontSize={16}/>
+            </Link>
+          </Popover.Group>
+
+          
+          <div className={`${user.length > 0 ? "gap-5" : "gap-2"}lg:flex lg:gap-2 items-center lg:flex-1 lg:justify-end`}>
+            {
+              user.length > 0 ? (
+                  user.map(u => {
+                    return (
+                    <div className='hidden lg:flex items-center gap-2'>
+                      <Link to={"/conta"} >
+                        <FaUser fontSize={19.5}/>
+                      </Link>
+                  
+                      <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
+                    </div>
+                  )
+                })
+              ) : (
+                <Link className='hidden lg:flex  ' to={"/login"} >
+                  <FaUser fontSize={20}/>
+                </Link>
+              )
+            }
+
+            <section className=' relative'>
+                <button className='relative pt-1.5'>
+                  <FaCartShopping fontSize={21}/>
+                  {cartAmount > 0 && (
+                    <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
+                  )}
+                </button> 
+
+                <div className='absolute bottom-0 left-0 opacity-0'>
+                  {(['right'] as const).map((anchor) => (
+                    <React.Fragment key={anchor}>
+                      <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                      <SwipeableDrawer
+                        anchor={anchor}
+                        open={state[anchor]}
+                        onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}
+                      >
+                        {list(anchor)}
+                      </SwipeableDrawer>
+                    </React.Fragment>
+                  ))}
+                </div>
+            </section>
+          </div>
         </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <FaBarsStaggered className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+
+
+      </nav>
+
+      <nav className='hidden lg:flex mx-auto justify-between w-full max-w-7xl pt-5 px-30 md:px-16 items-center'>
+          <Link to={"/"}>
+            <span className="sr-only">Your Company</span>
+            <img className="h-16" src={logo} alt="logo" />
+          </Link>
+
+          <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+            <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
+            <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
+              <IoSearch fontSize={16}/>
+            </Link>
+          </Popover.Group>
+
+          <div className={`flex ${user.length > 0 ? "gap-5" : "gap-2"} items-center gap-2`}>
+            {
+              user.length > 0 ? (
+                  user.map(u => {
+                    return (
+                    <div className='hidden lg:flex items-center gap-2'>
+                      <Link to={"/conta"} >
+                        <FaUser fontSize={19.5}/>
+                      </Link>
+                  
+                      <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
+                    </div>
+                  )
+                })
+              ) : (
+                <Link className='hidden lg:flex  ' to={"/login"} >
+                  <FaUser fontSize={20}/>
+                </Link>
+              )
+            }
+
+            <section className=' relative'>
+                <button className='relative pt-1.5'>
+                  <FaCartShopping fontSize={21}/>
+                  {cartAmount > 0 && (
+                    <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
+                  )}
+                </button> 
+
+                <div className='absolute bottom-0 left-0 opacity-0'>
+                  {(['right'] as const).map((anchor) => (
+                    <React.Fragment key={anchor}>
+                      <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                      <SwipeableDrawer
+                        anchor={anchor}
+                        open={state[anchor]}
+                        onClose={toggleDrawer(anchor, false)}
+                        onOpen={toggleDrawer(anchor, true)}
+                      >
+                        {list(anchor)}
+                      </SwipeableDrawer>
+                    </React.Fragment>
+                  ))}
+                </div>
+            </section>
+          </div>
+      </nav>
+
+      <div className='w-full max-w-7xl px-10 pb-5'>
+        <Popover.Group className=" lg:hidden lg:gap-x-12 w-full max-w-7xl relative">
           <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
           <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
             <IoSearch fontSize={16}/>
           </Link>
         </Popover.Group>
-        <div className={`hidden lg:flex  ${user.length > 0 ? "gap-5" : "gap-2"} items-center  lg:flex-1 lg:justify-end`}>
-          {
-            user.length > 0 ? (
-                user.map(u => {
-                  return (
-                  <div className='flex items-center gap-2'>
-                    <Link to={"/conta"} >
-                      <FaUser fontSize={19.5}/>
-                    </Link>
-                
-                    <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
-                  </div>
-                )
-              })
-            ) : (
-              <Link to={"/login"} >
-                <FaUser fontSize={20}/>
-              </Link>
-            )
-          }
-
-         <section className=' relative'>
-            <button className='relative pt-1.5'>
-                <FaCartShopping fontSize={21}/>
-                {cartAmount > 0 && (
-                  <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
-                )}
-              </button> 
-
-              <div className='absolute bottom-0 left-0 opacity-0'>
-                {(['right'] as const).map((anchor) => (
-                  <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                    <SwipeableDrawer
-                      anchor={anchor}
-                      open={state[anchor]}
-                      onClose={toggleDrawer(anchor, false)}
-                      onOpen={toggleDrawer(anchor, true)}
-                    >
-                      {list(anchor)}
-                    </SwipeableDrawer>
-                  </React.Fragment>
-                ))}
-              </div>
-         </section>
+      </div>
 
 
-        </div>
-      </nav>
+
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to={"/"} className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>

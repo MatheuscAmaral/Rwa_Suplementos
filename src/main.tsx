@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <CartProvider>
     <AuthProvider>
       <Toaster
-        position="top-right"
+        position="bottom-right"
         reverseOrder={false}
       />
 

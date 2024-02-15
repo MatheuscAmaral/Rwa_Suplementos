@@ -16,12 +16,11 @@ import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { StepIconProps } from '@mui/material/StepIcon';
 import { BiStreetView } from "react-icons/bi";
 import { GoNumber } from "react-icons/go";
-import { TbPasswordFingerprint } from "react-icons/tb";
+import { TbPasswordFingerprint, TbLocationPlus } from "react-icons/tb";
 import { GiVillage, GiModernCity } from "react-icons/gi";
 import { MdOutlineShareLocation, MdDriveFileRenameOutline } from "react-icons/md";
 import cepApi from "@/api/cep";
@@ -84,7 +83,6 @@ function ColorlibStepIcon(props: StepIconProps) {
   const icons: { [index: string]: React.ReactElement } = {
     1: <FaUserSecret fontSize={18}/>,
     2: <FaAddressCard fontSize={18}/>,
-    3: <VideoLabelIcon />,
   };
 
   return (
@@ -94,7 +92,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const steps = ['Cadastro', 'Informações adicionais', 'Create an ad'];
+const steps = ['Cadastro', 'Informações adicionais'];
 
 interface CepProps {
     cepInput: string
@@ -104,12 +102,14 @@ export function InfoAccount() {
     const [step, setStep] = useState(Number);
 
     const [nome, setNome] = useState("");
+    const [date, setDate] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
 
     const [cep, setCep] = useState("");
     const [street, setStreet] = useState("");
     const [neighborhood, setNeighborhood] = useState("");
+    const [complement, setComplement] = useState("");
     const [number, setNumber] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -137,6 +137,7 @@ export function InfoAccount() {
             setCity("");
             setState("");
             setNumber("");
+            setComplement("");
 
             return;
         }
@@ -144,8 +145,11 @@ export function InfoAccount() {
         try {
             const response = await cepApi.get(`/${cepInput.cepInput}`);
 
+            console.log(response)
+
             setStreet(response.data.logradouro);
             setNeighborhood(response.data.bairro);
+            setComplement(response.data.complemento);
             setCity(response.data.localidade);
             setState(response.data.uf);
         }
@@ -171,6 +175,7 @@ export function InfoAccount() {
                     nome: nome,
                     cpf: cpf,
                     email: email,
+                    date: date,
                     password: password,
                     address: [
                         {
@@ -178,6 +183,7 @@ export function InfoAccount() {
                             rua: street,
                             numero: number,
                             bairro: neighborhood,
+                            complemento: complement,
                             cidade: city,
                             estado: state
                         }
@@ -200,7 +206,7 @@ export function InfoAccount() {
                     <img src={logo} alt="logo" className="w-16"/>            
                 </Link>
 
-                <Stack spacing={4} className="w-full max-w-5xl mt-10">
+                <Stack spacing={4} className="w-full max-w-7xl mt-10">
                     <Stepper alternativeLabel activeStep={step} connector={<ColorlibConnector />}>
                         {steps.map((label) => (
                             <Step key={label}>
@@ -217,9 +223,14 @@ export function InfoAccount() {
                             step == 0 ?  (
                                 <section className="grid grid-cols-1 md:grid-cols-2 gap-7">
                                     <div className='w-full text-sm text-gray-600 relative'>
-                                        <label htmlFor="user" className='ml-1'>Nome completo *</label>
+                                        <label htmlFor="date" className='ml-1'>Nome completo *</label>
                                         <Input  value={nome} onChange={(e) => setNome(e.target.value)} placeholder='Digite seu nome completo' type='text' id='user' className='text-xs mt-2' required/>
                                         <MdDriveFileRenameOutline fontSize={18} className="absolute top-10 right-3 "/>
+                                    </div>
+
+                                    <div className='w-full text-sm text-gray-600 relative'>
+                                        <label htmlFor="user" className='ml-1'>Data de nascimento *</label>
+                                        <Input  value={date} onChange={(e) => setDate(e.target.value)} placeholder='Digite sua data de nascimento' type='date' id='date' className='text-xs mt-2' required/>
                                     </div>
 
                                     <div className='w-full text-sm text-gray-600 relative'>
@@ -264,6 +275,12 @@ export function InfoAccount() {
                                                     <label htmlFor="bairro" className='ml-1'>Bairro *</label>
                                                     <Input value={neighborhood} onChange={(e) => setNeighborhood(e.target.value)} placeholder='Digite o nome do bairro' type='text' id='bairro' readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " opacity-80 cursor-not-allowed bg-gray-200" : ""}`} required/>
                                                     <GiVillage fontSize={18} className="absolute top-10 right-3 "/>
+                                                </div>
+
+                                                <div className='w-full text-sm text-gray-600 relative'>
+                                                    <label htmlFor="complement" className='ml-1'>Complemento</label>
+                                                    <Input value={complement} onChange={(e) => setComplement(e.target.value)} placeholder='Digite o complemento' type='text' id='complement' readOnly={cep.length != 8} className={`text-xs mt-2 ${cep.length != 8 ? " opacity-80 cursor-not-allowed bg-gray-200" : ""}`} />
+                                                    <TbLocationPlus fontSize={18} className="absolute top-10 right-3 "/>
                                                 </div>
 
                                                 <div className={"w-full text-sm text-gray-600 relative"}>
