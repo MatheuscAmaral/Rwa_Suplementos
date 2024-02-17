@@ -1,6 +1,7 @@
 import { useState, createContext, ReactNode } from "react";
 
 export interface UserDataProps {
+    [x: string]: any;
     id: number,
     cpf: string, 
     email: string,

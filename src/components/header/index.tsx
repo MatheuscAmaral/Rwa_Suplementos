@@ -11,9 +11,9 @@ import { AuthContext } from '@/contexts/AuthContext';
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoBagCheckOutline } from "react-icons/io5";
 
 import { IoMdClose } from "react-icons/io";
-import { IoBagCheckOutline } from "react-icons/io5";
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -106,17 +106,16 @@ export const Header = () => {
           cartAmount <= 0 && (
               <div className=' flex items-center flex-col mt-60 gap-2'>
                 <FaCartPlus fontSize={30} />
-
                 <p>O carrinho está vazio!</p>
               </div>
           )
         }
 
-        <div className=' flex flex-col gap-1 mt-5 mb-60'>
+        <div className=' flex flex-col gap-2 mt-5 mb-60'>
           {
             cart.map(c => {
               return (
-                <section key={c.id} className='flex gap-3 items-center border p-4 m-3 rounded-sm relative'>
+                <section key={c.id} className='flex gap-3 items-center border p-4 mx-3 rounded-sm relative'>
                   <img src={c.image} alt="img_produto" className='w-14'/>
 
                   <div className='flex flex-col gap-2'>
