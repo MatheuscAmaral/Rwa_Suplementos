@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://rwasuplementos.com/"
+    baseURL: "http://rwasuplementos.com:80/"
 })
