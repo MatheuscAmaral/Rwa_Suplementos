@@ -13,22 +13,11 @@ import { MdFlatware } from "react-icons/md";
 import { PiPackageBold } from "react-icons/pi";
 import toast from "react-hot-toast"
 
-interface ProductsProp {
-    id: number
-    image: string 
-    title: string
-    price: any
-    size: string
-    flavor: string
-    typePack: string
-    category: string
-    product: ProductsProps
-}
 
 
 export const Details = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState<ProductsProp>();
+    const [product, setProduct] = useState<ProductsProps>();
     const { addItemCart } = useContext(CartContext);
     const [loadPage, setLoadPage] = useState(false);
 
@@ -50,7 +39,7 @@ export const Details = () => {
         getProductDetails();
    }, []);
 
-   const addProductCart = (product: ProductsProp) => {
+   const addProductCart = (product: ProductsProps) => {
         addItemCart(product);
    }
 

@@ -171,7 +171,8 @@ export function InfoAccount() {
         
         if(step > 0) {
            try {
-                const response = await api.post("/user", {
+                let response = '';
+                response = await api.post("/user", {
                     nome: nome,
                     cpf: cpf,
                     email: email,
@@ -189,6 +190,7 @@ export function InfoAccount() {
                         }
                     ]
                 });
+
 
                 navigate("/login");
            }

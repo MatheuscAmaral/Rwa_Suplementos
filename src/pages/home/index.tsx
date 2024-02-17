@@ -20,6 +20,7 @@ import {
   
 
 export interface ProductsProps {
+    [x: string]: ReactNode;
     id: number, 
     title: string,
     price: number,

@@ -16,7 +16,7 @@ export const Catalog = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
     const [loadPage, setLoadPage] = useState(false);
 
-    const { cart, addItemCart } = useContext(CartContext);
+    const { addItemCart } = useContext(CartContext);
 
     useEffect(() => {
         async function getProducts() {
