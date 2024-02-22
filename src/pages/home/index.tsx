@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { FaCartPlus } from "react-icons/fa";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel as ResponsiveCarousel  } from 'react-responsive-carousel';
 import carousel1 from '../../assets/carousel1.png'
 import carousel2 from '../../assets/carousel2.jpg'
