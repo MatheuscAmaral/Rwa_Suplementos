@@ -48,8 +48,8 @@ export const Details = () => {
     return (
         <>
              {
-                product && (
-                    loadPage ? (
+                product ? (
+                    loadPage && (
                         <div className="flex flex-col md:flex-row justify-center gap-28 px-5 py-20 mb-20 items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto mt-10">
                             <img className="w-72 hover:scale-105 transition-all" src={product.image}/>
 
@@ -137,15 +137,11 @@ export const Details = () => {
 
                             </div>
                         </div>
-                    ) : (
-                        <div className="flex items-center space-x-4 max-w-5xl mx-auto mt-52 mb-80">
-                            <Skeleton className="h-24 w-28 rounded-full" />
-                            <div className="space-y-2 w-full">
-                                <Skeleton className="h-10 w-full" />
-                                <Skeleton className="h-10 w-full" />
-                            </div>
-                        </div>       
-                    )
+                    ) 
+                ) : (
+                    <div className="flex items-center space-x-4 max-w-5xl mx-auto mt-20 mb-80">
+                        <Skeleton className="h-96 w-full" />
+                    </div>       
                 )
             }
         </>

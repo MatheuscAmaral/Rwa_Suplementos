@@ -8,6 +8,7 @@ import { Carousel as ResponsiveCarousel  } from 'react-responsive-carousel';
 import carousel1 from '../../assets/carousel1.png'
 import carousel2 from '../../assets/carousel2.jpg'
 import { Link } from "react-router-dom";
+import { Skeleton } from "@mui/material";
 
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -71,6 +72,13 @@ export const Home = () => {
                 <Carousel className="w-full max-w-3xl mx-auto">
                     <h1 className=" text-xl font-bold text-center"> Whey Protein</h1>
                     <hr className="mb-8 w-44 h-1 bg-blue-800 mx-auto" />
+
+                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.length > 0 && "hidden"}`}>
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
+                    </div>
+
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
@@ -123,6 +131,13 @@ export const Home = () => {
                 <Carousel className="w-full max-w-3xl mx-auto">
                     <h1 className=" text-xl font-bold text-center"> Creatina</h1>
                     <hr className="mb-8 w-32 h-1 bg-blue-800 mx-auto" />
+
+                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.length > 0 && "hidden"}`}>
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
+                    </div>
+
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
@@ -177,6 +192,13 @@ export const Home = () => {
                 <Carousel className="w-full max-w-3xl mx-auto">
                     <h1 className=" text-xl font-bold text-center">Outros</h1>
                     <hr className="mb-8 w-24 h-1 bg-blue-800 mx-auto" />
+
+                    <div className={`flex justify-center gap-2 h-80 mb-10 ${products.length > 0 && "hidden"}`}>
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl" />
+                        <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
+                    </div>
+                    
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
