@@ -20,7 +20,6 @@ import {
   
 
 export interface ProductsProps {
-    [x: string]: ReactNode;
     id: number, 
     title: string,
     price: number,
@@ -28,6 +27,7 @@ export interface ProductsProps {
     category: string,
     size: string,
     flavor: string,
+    type_pack: string,
     amount: number,
 }
 
@@ -74,7 +74,7 @@ export const Home = () => {
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
-                                if(p.category != "whey" ) {
+                                if(p.category != "0" ) {
                                     return;
                                 }
                                 
@@ -127,7 +127,7 @@ export const Home = () => {
                         {
                             products.map(p => {
 
-                                if(p.category != "creatina" ) {
+                                if(p.category != "1" ) {
                                     return;
                                 }
                                 
@@ -181,10 +181,9 @@ export const Home = () => {
                         {
                             products.map(p => {
 
-                                if(p.category != "outros" ) {
+                                if(p.category != "2" ) {
                                     return;
                                 }
-                                
                                 
                                 return (
                                     <CarouselItem key={p.id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">

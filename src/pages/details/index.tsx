@@ -21,13 +21,15 @@ export const Details = () => {
     const { addItemCart } = useContext(CartContext);
     const [loadPage, setLoadPage] = useState(false);
 
+    console.log(product)
+
    useEffect(() => {
         async function getProductDetails () {
             try {
                 const response = await api.get(`/products/${id}`);
                 setLoadPage(true);
                 
-                setProduct(response.data);
+                setProduct(response.data[0]);
             }
             
             catch {
@@ -63,17 +65,63 @@ export const Details = () => {
                                 <ul className="flex flex-col gap-2">
                                     <li className="text-gray-600 flex gap-3 items-center">
                                         <FaWeightHanging fontSize={28}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">{product.size}</span>
+                                        <span className="text-lg font-medium text-gray-500 pt-1">{
+                                            product.size <= "3" ? (
+                                                <p>{product.size}Kg</p>
+                                            ) : (
+                                                <p>{product.size}g</p>
+                                            )
+                                        }</span>
                                     </li>
 
                                     <li className="text-gray-600 flex gap-3 items-center">
                                         <MdFlatware fontSize={30}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">{product.flavor}</span>
+                                        <span className="text-lg font-medium text-gray-500 pt-1">
+                                            {
+                                                product.flavor == "0" && (
+                                                    <p>Sem sabor</p>
+                                                )
+                                            }
+                                               
+                                            {
+                                                 product.flavor == "1" && (
+                                                    <p>Chocolate</p>
+                                                )
+                                            }
+
+                                            {
+                                                product.flavor == "2" && (
+                                                    <p>Morango</p>
+                                                )
+                                            }
+
+                                            {
+                                                product.flavor == "3" && (
+                                                    <p>Baunilha</p>
+                                                )
+                                            }
+                                        </span>
                                     </li>
 
                                     <li className="text-gray-600 flex gap-3 items-center">
                                         <PiPackageBold fontSize={30}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">{product.typePack}</span>
+                                        <span className="text-lg font-medium text-gray-500 pt-1">
+                                            {
+                                                product.type_pack == "0" && (
+                                                    <p>Pote</p>
+                                                )
+                                            }
+                                            {
+                                                product.type_pack == "1" && (
+                                                    <p>Caixa</p>
+                                                )
+                                            }
+                                            {
+                                                product.type_pack == "2" && (
+                                                    <p>Pacote</p>
+                                                )
+                                            }
+                                        </span>
                                     </li>
                                 </ul>
 

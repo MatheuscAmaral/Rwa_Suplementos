@@ -175,7 +175,7 @@ export function InfoAccount() {
                 response = await api.post("/user", {
                     nome: nome,
                     cpf: cpf,
-                    email: email,
+                    email: email,   
                     date: date,
                     password: password,
                     address: [
