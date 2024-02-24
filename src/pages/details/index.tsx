@@ -21,7 +21,6 @@ export const Details = () => {
     const { addItemCart } = useContext(CartContext);
     const [loadPage, setLoadPage] = useState(false);
 
-    console.log(product)
 
    useEffect(() => {
         async function getProductDetails () {
@@ -55,7 +54,7 @@ export const Details = () => {
 
                             <div className="flex flex-col gap-2 w-full max-w-sm">
                                 <h1 className="text-3xl font-semibold">{product.title}</h1>
-                                <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.id}</span>
+                                <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.produto_id}</span>
                                 <p className="text-3xl font-semibold flex items-center gap-2">{product.price.toLocaleString('pt-br', {
                                     style: 'currency',
                                     currency: 'BRL'

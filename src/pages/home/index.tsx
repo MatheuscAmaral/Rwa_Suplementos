@@ -21,7 +21,7 @@ import {
   
 
 export interface ProductsProps {
-    id: number, 
+    produto_id: number, 
     title: string,
     price: number,
     image: string,
@@ -30,6 +30,7 @@ export interface ProductsProps {
     flavor: string,
     type_pack: string,
     amount: number,
+    total: number
 }
 
 export const Home = () => {
@@ -87,12 +88,12 @@ export const Home = () => {
                                 }
                                 
                                 return (
-                                    <CarouselItem key={p.id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-1">
                                         <Card className="w-full max-w-96 h-72">
                                             <CardContent className="flex flex-col  justify-center gap-3 h-full ">
                                                 <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.id}`}>
+                                                    <Link to={`/detalhes/${p.produto_id}`}>
                                                         <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                     </Link>
                                                 </div>
@@ -148,12 +149,12 @@ export const Home = () => {
                                 
 
                                 return (
-                                    <CarouselItem key={p.id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-1">
                                         <Card className="w-full max-w-96 h-72">
                                             <CardContent className="flex flex-col  justify-center gap-3 h-full ">
                                                 <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.id}`}>
+                                                    <Link to={`/detalhes/${p.produto_id}`}>
                                                         <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                     </Link>
                                                 </div>
@@ -208,12 +209,12 @@ export const Home = () => {
                                 }
                                 
                                 return (
-                                    <CarouselItem key={p.id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
                                         <div className="p-1">
                                         <Card className="w-full max-w-96 h-72">
                                             <CardContent className="flex flex-col justify-center gap-3 h-full ">
                                                 <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.id}`}>
+                                                    <Link to={`/detalhes/${p.produto_id}`}>
                                                         <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                     </Link>
                                                 </div>

@@ -11,15 +11,16 @@ interface CartDataProps {
 }
 
 export interface CartProps {
-    id: number, 
+    produto_id: number, 
     title: string,
     price: number,
     image: string,
-    amount: number,
-    total: number,
-    flavor: string,
     category: string,
     size: string,
+    flavor: string,
+    type_pack: string,
+    amount: number,
+    total: number
 }
 
 interface CartProviderProps {
@@ -33,8 +34,8 @@ const CartProvider = ({children}: CartProviderProps) => {
     const [total, setTotal] = useState("");
 
     const addItemCart = (newItem: ProductsProps) => {
-        const existItemCart = cart.filter(c => c.id === newItem.id);
-        const index = cart.findIndex(c => c.id === newItem.id);
+        const existItemCart = cart.filter(c => c.produto_id === newItem.produto_id);
+        const index = cart.findIndex(c => c.produto_id === newItem.produto_id);
 
         let cartList = cart;
         
@@ -62,7 +63,7 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
 
     const removeItemCart = (product: ProductsProps) => {
-        const index = cart.findIndex(c => c.id === product.id);
+        const index = cart.findIndex(c => c.produto_id === product.produto_id);
         
         if (index != -1) {
             if (cart[index].amount > 1) {
