@@ -39,7 +39,7 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [input, setInput] = useState<string>("");
   
-  const { cart, cartAmount, addItemCart, removeItemCart, total } = useContext(CartContext);
+  const { cart, cartAmount, addItemCart, removeItemCart, total, descontos} = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -115,10 +115,10 @@ export const Header = () => {
           {
             cart.map(c => {
               return (
-                <section key={c.id} className='flex gap-3 items-center border p-4 mx-3 rounded-sm relative'>
+                <section key={c.produto_id} className='flex gap-3 items-center border px-4 py-5 mx-3 rounded-sm relative'>
                   <img src={c.image} alt="img_produto" className='w-14'/>
 
-                  <div className='flex flex-col gap-2'>
+                  <div className='flex flex-col gap-3'>
                     <p className=' text-xs w-full max-w-32'>{c.title}</p>
 
                     <div className='flex border rounded-full w-14 py-0.5 justify-center gap-2 text-xs bg-white'>
@@ -136,12 +136,25 @@ export const Header = () => {
                     </div>
                   </div>
 
-                  <span className=' text-xs font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5'>
+                  <span className=' text-sm font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5'>
                     {
-                        c.total.toLocaleString("pt-br", {
-                          style: "currency",
-                          currency: "BRL"
-                        })
+                        c.promocao_id > 1 ? (
+                          <div className='flex items-end gap-1 text-green-600'>
+                             <div className='flex flex-col gap-1'>
+                                { 
+                                  c.total.toLocaleString("pt-br", {
+                                    style: "currency",
+                                    currency: "BRL"
+                                  })
+                                }
+                             </div>
+                          </div>
+                        ) : (
+                          c.total.toLocaleString("pt-br", {
+                            style: "currency",
+                            currency: "BRL"
+                          })
+                        )
                     }
                   </span>
 
@@ -157,16 +170,24 @@ export const Header = () => {
                 cart.length > 0 && (
                    <>
                      <section>
-                      <div className='flex justify-between items-center px-2 text-sm'>
+                        <div className='flex justify-between items-center px-2 text-sm'>
                           <p>SubTotal</p> 
                             <p className='text-lg font-semibold'>
                                 {total}
                             </p> 
                         </div>
 
-                        <div className='flex gap-32 items-center px-2 text-sm'>
+                        <div className='flex justify-between items-center px-2 text-sm'>
                           <p>Descontos</p> 
-                          <span className='text-lg font-semibold'>-R$ 0,00</span> 
+                          <span className='flex items-center text-lg font-semibold text-green-600'>
+                            <span> - </span>
+                             {
+                                descontos.toLocaleString('pt-br', {
+                                  style: "currency",
+                                  currency: "BRL"
+                                })
+                            }
+                          </span> 
                         </div>
                     </section>
                     

@@ -21,6 +21,7 @@ import {
   
 
 export interface ProductsProps {
+    [x: string]: any;
     produto_id: number, 
     title: string,
     price: number,
@@ -30,7 +31,12 @@ export interface ProductsProps {
     flavor: string,
     type_pack: string,
     amount: number,
-    total: number
+    total: number,
+    status: number,
+    promocao_id: number,
+    tipo_desconto: number,
+    valor_desconto: number,
+    priceWithDiscount: number,
 }
 
 export const Home = () => {
