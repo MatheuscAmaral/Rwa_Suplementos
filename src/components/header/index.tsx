@@ -136,17 +136,23 @@ export const Header = () => {
                     </div>
                   </div>
 
-                  <span className=' text-sm font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5'>
+                  <span className='text-sm font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5 mr-1'>
                     {
                         c.promocao_id > 1 ? (
-                          <div className='flex items-end gap-1 text-green-600'>
-                             <div className='flex flex-col gap-1'>
-                                { 
-                                  c.total.toLocaleString("pt-br", {
-                                    style: "currency",
-                                    currency: "BRL"
-                                  })
-                                }
+                          <div className='flex items-end'>
+                             <div className='flex flex-col'>
+                                <span style={{"fontSize": "11.5px"}} className=' line-through'>
+                                  R$ 1000,00
+                                </span>
+
+                                <span style={{"fontSize": "14px"}} className=' text-green-600'>
+                                  { 
+                                    c.total.toLocaleString("pt-br", {
+                                      style: "currency",
+                                      currency: "BRL"
+                                    })
+                                  }
+                                </span>
                              </div>
                           </div>
                         ) : (
