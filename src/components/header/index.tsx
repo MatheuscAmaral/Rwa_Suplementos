@@ -91,6 +91,13 @@ export const Header = () => {
     }, 1000);
   }
 
+  const formatPrice = (price: string | number) => {
+    return price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL"
+    })
+  }
+
   const list = (anchor: Anchor) => (
     <Box
       sx={{ width: 310 }}
@@ -115,10 +122,10 @@ export const Header = () => {
           {
             cart.map(c => {
               return (
-                <section key={c.produto_id} className='flex gap-3 items-center border px-4 py-5 mx-3 rounded-sm relative'>
+                <section key={c.produto_id} className='flex gap-3 items-center border px-4 py-7 mx-3 rounded-sm relative'>
                   <img src={c.image} alt="img_produto" className='w-14'/>
 
-                  <div className='flex flex-col gap-3'>
+                  <div className='flex flex-col gap-4 '>
                     <p className=' text-xs w-full max-w-32'>{c.title}</p>
 
                     <div className='flex border rounded-full w-14 py-0.5 justify-center gap-2 text-xs bg-white'>
@@ -136,30 +143,45 @@ export const Header = () => {
                     </div>
                   </div>
 
-                  <span className='text-sm font-semibold text-gray-500 absolute right-2 bottom-5 pt-0.5 mr-1'>
+                  <span className='text-sm font-semibold flex flex-col gap-0 text-gray-500 absolute right-2 bottom-5 pt-0.5 mr-1'>
                     {
-                        c.promocao_id > 1 ? (
-                          <div className='flex items-end'>
+                        c.promocao_id >= 1 ? (
+                          <div className='flex flex-col items-end'>
                              <div className='flex flex-col'>
                                 <span style={{"fontSize": "11.5px"}} className=' line-through'>
-                                  R$ 1000,00
+                                  {
+                                    formatPrice((c.amount * c.price))
+                                  }
                                 </span>
 
                                 <span style={{"fontSize": "14px"}} className=' text-green-600'>
                                   { 
-                                    c.total.toLocaleString("pt-br", {
-                                      style: "currency",
-                                      currency: "BRL"
-                                    })
+                                    formatPrice(c.total)
                                   }
                                 </span>
                              </div>
+
+                             <span style={{fontSize: 11}} className='text-green-600'>
+                              {
+                                c.tipo_desconto == 1 ? (
+                                  <span>
+                                    {c.valor_desconto}% de desconto
+                                  </span>
+                                ) : (
+                                  <span>
+                                    {
+                                      formatPrice(c.valor_desconto)
+                                    }
+                                    de desconto
+                                  </span>
+                                )
+                              }
+                             </span>
                           </div>
                         ) : (
-                          c.total.toLocaleString("pt-br", {
-                            style: "currency",
-                            currency: "BRL"
-                          })
+                          <span className='mb-2'>
+                            {formatPrice(c.total)}
+                          </span>
                         )
                     }
                   </span>
@@ -179,7 +201,7 @@ export const Header = () => {
                         <div className='flex justify-between items-center px-2 text-sm'>
                           <p>SubTotal</p> 
                             <p className='text-lg font-semibold'>
-                                {total}
+                                {formatPrice((total + descontos))}
                             </p> 
                         </div>
 
@@ -188,12 +210,18 @@ export const Header = () => {
                           <span className='flex items-center text-lg font-semibold text-green-600'>
                             <span> - </span>
                              {
-                                descontos.toLocaleString('pt-br', {
-                                  style: "currency",
-                                  currency: "BRL"
-                                })
+                                formatPrice(descontos)
                             }
                           </span> 
+                        </div>
+
+                        <hr className='my-2 mx-2'/>
+
+                        <div className='flex justify-between items-center px-2 text-sm'>
+                          <p>Total</p> 
+                            <p className='text-lg font-semibold'>
+                                {formatPrice(total)}
+                            </p> 
                         </div>
                     </section>
                     

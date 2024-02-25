@@ -8,7 +8,7 @@ interface CartDataProps {
     addItemCart: (newItem: ProductsProps) => void;
     removeItemCart: (product: ProductsProps) => void;
     descontos: number,
-    total: string;
+    total: number;
 }
 
 export interface CartProps {
@@ -37,8 +37,10 @@ export const CartContext = createContext({} as CartDataProps);
 
 const CartProvider = ({children}: CartProviderProps) => {
     const [cart, setCart] = useState<CartProps[]>([]);
-    const [total, setTotal] = useState("");
+    const [total, setTotal] = useState(0);
     const [descontos, setDescontos] = useState(0);
+  
+    const [oldQtd, setOldQtd] = useState(0);
 
     const applyPromotion = (newItem: ProductsProps) => {
         let price = 0;
@@ -70,6 +72,7 @@ const CartProvider = ({children}: CartProviderProps) => {
             
             setCart([...cartList]);
             totalCart(cart);
+            setOldQtd(cartList[index].amount);
             
             toast.success('Produto atualizado com sucesso!');
             return;
@@ -83,6 +86,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         }
 
         
+        setOldQtd(1);
         setCart((prevCart) => [...prevCart, data]);
         totalCart(cart);
     }
@@ -103,6 +107,13 @@ const CartProvider = ({children}: CartProviderProps) => {
                 toast.success('Produto atualizado com sucesso!');
                 
                 if(cart[index].promocao_id > 0) {
+                    if(descontos == 0) {
+                        setDescontos(0);
+                        return;
+                    }
+
+                    console.log(discount, "cas2")
+                    
                     setDescontos(desc => desc - discount);
                 }
                 
@@ -110,13 +121,22 @@ const CartProvider = ({children}: CartProviderProps) => {
             }
             
             if(cart[index].promocao_id > 0) {
-                setDescontos(desc => desc - discount);
+                if(descontos == 0) {
+                    setDescontos(0);
+                    return;
+                }
+
+                setDescontos(desc => desc - (discount * oldQtd));
             }
             
             cart.splice(index, 1)
             setCart([...cart])
             totalCart(cart);
-            toast.success('Produto removido do carrinho!')
+            toast.success('Produto removido do carrinho!');
+
+            if(cart.length <= 0 ) {
+                setDescontos(0);
+            }
         }   
     }
     
@@ -125,14 +145,11 @@ const CartProvider = ({children}: CartProviderProps) => {
         
         let result = myCart.reduce((acc, obj) => {
             return acc + obj.total
-        }, 0)
+        }, 0);
+
+        console.log(result, "resu")
         
-        const resultFormated = result.toLocaleString("pt-br", {
-            style: "currency",
-            currency: "BRL"
-        })
-        
-        setTotal(resultFormated);
+        setTotal(result);
     }
 
     return ( 
