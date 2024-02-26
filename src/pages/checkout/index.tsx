@@ -25,7 +25,7 @@ export const Checkout = () => {
 
     return (
         <main className="flex flex-col gap-5 md:flex-row  justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-10 md:mt-20 pt-4 px-5 md:mb-30">
-            <section className="border py-5 px-5 pb-10 w-full max-w-xl rounded-lg">
+            <section className="border py-5 px-5 pb-10 w-full md:max-w-xl rounded-lg">
                 <h5 className="font-semibold text-sm ml-2">Revisar e finalizar</h5>
 
                 <div className="flex gap-3 items-center mt-5 text-xs ml-4">
@@ -63,7 +63,33 @@ export const Checkout = () => {
                                             <p className="text-xs font-semibold text-gray-500">{p.title}</p>
                                             <span className="text-xs font-semibold text-gray-500">Código: {p.prod_id}</span>
 
-                                            <span className="text-xs font-bold text-gray-600">{formatPrice(p.price)}</span>
+                                            {
+                                                p.promocao_id >= 1 ? (
+                                                    <div className='flex flex-col'>
+                                                        <div className='flex flex-col'>
+                                                            <span style={{"fontSize": "11px"}} className=' line-through'>
+                                                                {
+                                                                   formatPrice((p.amount * p.price))
+                                                                }
+                                                            </span>
+
+                                                            <span style={{"fontSize": "13px"}} className=' text-green-600 font-semibold'>
+                                                            { 
+                                                                total <= 0 ? (
+                                                                    formatPrice(p.priceWithDiscount)
+                                                                ) : (
+                                                                    formatPrice(p.total)
+                                                                )
+                                                            }
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    ) : (
+                                                    <span className='mb-2 text-sm font-semibold text-gray-700'>
+                                                        {formatPrice(p.total)}
+                                                    </span>
+                                                )
+                                            }
                                         </div>    
                                     </div>
 
@@ -94,11 +120,23 @@ export const Checkout = () => {
                 <p className="font-medium text-xs mb-2 text-gray-500">Pedido: <span className="font-bold">#1</span></p>
                 <hr />
 
-                <p className="mt-3 text-xs flex justify-between font-medium text-gray-500">SubTotal <span>{formatPrice((total + descontos))}</span></p>
-                <p className="mt-2 text-xs flex justify-between mb-3 font-medium text-gray-500">Descontos <span className="text-green-600"> - {formatPrice(descontos)}</span></p>
+                <p className="mt-3 text-xs flex justify-between font-medium text-gray-500">SubTotal
+                    <span>
+                        {
+                            total <= 0 ? formatPrice((cart[0].price)) : formatPrice((total + descontos))
+                        }
+                    </span>
+                </p>
+                <p className="mt-2 text-xs flex justify-between mb-3 font-medium text-gray-500">Descontos <span className="text-green-600 font-medium"> - {formatPrice(descontos)}</span></p>
                 <hr />
 
-                <p className="mt-2 text-sm flex justify-between font-semibold">Total <span>{formatPrice(total)}</span></p>
+                <p className="mt-2 text-sm flex justify-between font-semibold">Total 
+                    <span>
+                        {
+                            total <= 0 ? formatPrice((cart[0].priceWithDiscount > 0 ? cart[0].priceWithDiscount : cart[0].price)) : formatPrice((total))
+                        }
+                    </span>
+                </p>
 
                 <div className='mt-5'>
                   {

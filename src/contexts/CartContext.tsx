@@ -64,11 +64,9 @@ const CartProvider = ({children}: CartProviderProps) => {
 
         let priceWithDiscount = 0;
 
-         if(newItem.promocao_id > 0 && newItem.status == 1) {
+        if(newItem.promocao_id > 0 && newItem.status == 1) {
             priceWithDiscount = applyPromotion(newItem);
-         }
-
-         console.log(priceWithDiscount)
+        }
 
         let cartList = cart;
         

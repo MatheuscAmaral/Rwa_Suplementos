@@ -55,14 +55,6 @@ export const Home = () => {
         getProducts();
     }, [])
 
-    const addProductCart = (item: ProductsProps) => {
-        addItemCart(item);
-    }
-    
-    // const removeProductCart = (products: ProductsProps) => {
-    //     removeItemCart(products)
-    // }
-
 
     return (  
         <main className="w-full mx-auto select-none">       
@@ -96,34 +88,30 @@ export const Home = () => {
                                 
                                 return (
                                     <CarouselItem key={p.prod_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
-                                        <div className="p-1">
-                                        <Card className="w-full max-w-96 h-72">
-                                            <CardContent className="flex flex-col  justify-center gap-3 h-full ">
-                                                <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.prod_id}`}>
-                                                        <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
-                                                    </Link>
-                                                </div>
+                                        <div className="p-0.5">
+                                            <Card className="w-full max-w-96 h-72">
+                                                <CardContent className="flex flex-col justify-center gap-5 h-full ">
+                                                    <div className="flex justify-center w-full h-32 items-center">
+                                                        <Link to={`/detalhes/${p.prod_id}`}>
+                                                            <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
+                                                        </Link>
+                                                    </div>
 
-                                                <h2 className="text-md font-bold ">{p.title}</h2>
-                                                <div className="flex justify-between">
-                                                    <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                        style: 'currency',
-                                                        currency: 'BRL'
-                                                    })}</span>
-
-                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addProductCart(p)}>
-                                                        <FaCartPlus fontSize={18} color="white" />
-                                                    </button>
-                                                </div>
-
-                                                {/*
-                                                    <button onClick={() => removeProductCart(p)}>
-                                                        x
-                                                    </button>
-                                                */}
-                                            </CardContent>
-                                        </Card>
+                                                    <div className="w-full flex flex-col gap-2">
+                                                        <h2 className="text-md font-bold text-gray-700 ">{p.title}</h2>
+                                                        <div className="flex justify-between">
+                                                            <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                style: 'currency',
+                                                                currency: 'BRL'
+                                                            })}</span>
+                                                            
+                                                            <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                <FaCartPlus fontSize={18} color="white" />
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
                                         </div>
                                     </CarouselItem>
                                 )
@@ -158,33 +146,28 @@ export const Home = () => {
                                 return (
                                     <CarouselItem key={p.prod_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-1">
-                                        <Card className="w-full max-w-96 h-72">
-                                            <CardContent className="flex flex-col  justify-center gap-3 h-full ">
-                                                <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.prod_id}`}>
-                                                        <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
-                                                    </Link>
-                                                </div>
+                                            <Card className="w-full max-w-96 h-72">
+                                                <CardContent className="flex flex-col  justify-center gap-3 h-full ">
+                                                    <div className="flex justify-center">
+                                                        <Link to={`/detalhes/${p.prod_id}`}>
+                                                            <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
+                                                        </Link>
+                                                    </div>
 
-                                                <h2 className="text-md font-bold ">{p.title}</h2>
-                                                <div className="flex justify-between">
-                                                    <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                        style: 'currency',
-                                                        currency: 'BRL'
-                                                    })}</span>
+                                                    <h2 className="text-md font-bold ">{p.title}</h2>
+                                                    <div className="flex justify-between">
+                                                        <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                            style: 'currency',
+                                                            currency: 'BRL'
+                                                        })}</span>
 
-                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addProductCart(p)}>
-                                                        <FaCartPlus fontSize={18} color="white" />
-                                                    </button>
-                                                </div>
+                                                        <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                            <FaCartPlus fontSize={18} color="white" />
+                                                        </button>
+                                                    </div>
 
-                                                {/*
-                                                    <button onClick={() => removeProductCart(p)}>
-                                                        x
-                                                    </button>
-                                                */}
-                                            </CardContent>
-                                        </Card>
+                                                </CardContent>
+                                            </Card>
                                         </div>
                                     </CarouselItem>
                                 )
@@ -234,7 +217,7 @@ export const Home = () => {
                                                         currency: 'BRL'
                                                     })}</span>
 
-                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addProductCart(p)}>
+                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                         <FaCartPlus fontSize={18} color="white" />
                                                     </button>
                                                 </div>

@@ -156,11 +156,7 @@ export const Header = () => {
 
                                 <span style={{"fontSize": "14px"}} className=' text-green-600'>
                                   { 
-                                    total <= 0 ? (
-                                      formatPrice(c.priceWithDiscount)
-                                    ) : (
-                                      formatPrice(c.total)
-                                    )
+                                    formatPrice(c.priceWithDiscount * c.amount) 
                                   }
                                 </span>
                              </div>
@@ -229,7 +225,7 @@ export const Header = () => {
                             <p className='text-lg font-semibold'>
                                 {
                                   total <= 0 ? (
-                                    formatPrice(cart[0].priceWithDiscount)
+                                    formatPrice((cart[0].priceWithDiscount > 0 ? cart[0].priceWithDiscount : cart[0].price))
                                   ) : (
                                     formatPrice(total)
                                   )
