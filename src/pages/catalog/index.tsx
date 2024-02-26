@@ -116,12 +116,12 @@ export const Catalog = () => {
                                         {
                                             products.map((p) => {
                                                 return (
-                                                    <div key={p.produto_id} className="flex flex-col h-60 gap-4 shadow-sm py-4 px-5 rounded-lg w-full sm:max-w-52 bg-gray-50">
-                                                        <Link to={`/detalhes/${p.produto_id}`} className="cursor-pointer hover:scale-105 transition-all">
+                                                    <div key={p.prod_id} className="flex flex-col h-60 gap-4 shadow-sm py-4 px-5 rounded-lg w-full sm:max-w-52 bg-gray-50">
+                                                        <Link to={`/detalhes/${p.prod_id}`} className="cursor-pointer hover:scale-105 transition-all">
                                                             <img src={p.image} className=" w-20 mx-auto" alt="img_produto" />                                                        
                                                         </Link>
                                                         
-                                                        <h1 key={p.produto_id} className=" text-xs md:px-0 font-semibold w-34">{p.title}</h1>
+                                                        <h1 key={p.prod_id} className=" text-xs md:px-0 font-semibold w-34">{p.title}</h1>
                 
                                                         <p className="text-md font-semibold text-start">
                                                             {

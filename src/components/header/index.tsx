@@ -122,11 +122,11 @@ export const Header = () => {
           {
             cart.map(c => {
               return (
-                <section key={c.produto_id} className='flex gap-3 items-center border px-4 py-7 mx-3 rounded-sm relative'>
+                <section key={c.prod_id} className='flex gap-3 items-center border px-4 py-7 mx-3 rounded-sm relative'>
                   <img src={c.image} alt="img_produto" className='w-14'/>
 
                   <div className='flex flex-col gap-4 '>
-                    <p className=' text-xs w-full max-w-32'>{c.title}</p>
+                    <p className=' text-xs font-semibold text-gray-600 w-full max-w-32'>{c.title}</p>
 
                     <div className='flex border rounded-full w-14 py-0.5 justify-center gap-2 text-xs bg-white'>
                       <button onClick={() => removeProductCart(c)}>
@@ -156,7 +156,11 @@ export const Header = () => {
 
                                 <span style={{"fontSize": "14px"}} className=' text-green-600'>
                                   { 
-                                    formatPrice(c.total)
+                                    total <= 0 ? (
+                                      formatPrice(c.priceWithDiscount)
+                                    ) : (
+                                      formatPrice(c.total)
+                                    )
                                   }
                                 </span>
                              </div>
@@ -169,10 +173,7 @@ export const Header = () => {
                                   </span>
                                 ) : (
                                   <span>
-                                    {
-                                      formatPrice(c.valor_desconto)
-                                    }
-                                    de desconto
+                                    {formatPrice(c.valor_desconto)} de desconto
                                   </span>
                                 )
                               }
@@ -201,7 +202,13 @@ export const Header = () => {
                         <div className='flex justify-between items-center px-2 text-sm'>
                           <p>SubTotal</p> 
                             <p className='text-lg font-semibold'>
-                                {formatPrice((total + descontos))}
+                                {
+                                  total <= 0 ? (
+                                    formatPrice((cart[0].price))
+                                  ) : (
+                                    formatPrice((total + descontos))
+                                  )
+                                }
                             </p> 
                         </div>
 
@@ -220,7 +227,13 @@ export const Header = () => {
                         <div className='flex justify-between items-center px-2 text-sm'>
                           <p>Total</p> 
                             <p className='text-lg font-semibold'>
-                                {formatPrice(total)}
+                                {
+                                  total <= 0 ? (
+                                    formatPrice(cart[0].priceWithDiscount)
+                                  ) : (
+                                    formatPrice(total)
+                                  )
+                                }
                             </p> 
                         </div>
                     </section>

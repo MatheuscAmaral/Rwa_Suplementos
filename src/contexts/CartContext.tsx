@@ -12,7 +12,7 @@ interface CartDataProps {
 }
 
 export interface CartProps {
-    produto_id: number, 
+    prod_id: number, 
     title: string,
     price: number,
     image: string,
@@ -23,6 +23,7 @@ export interface CartProps {
     amount: number,
     total: number,
     status: number,
+    prod_status: number,
     promocao_id: number,
     tipo_desconto: number,
     valor_desconto: number,
@@ -45,18 +46,21 @@ const CartProvider = ({children}: CartProviderProps) => {
     const applyPromotion = (newItem: ProductsProps) => {
         let price = 0;
         
-        if(newItem.tipo_desconto = 1) {
+        if(newItem.tipo_desconto == 1) {
             let discount = newItem.price * (newItem.valor_desconto / 100);
             setDescontos(desc => desc + discount);
             price = newItem.price - discount;
-        } 
+        } else if (newItem.tipo_desconto == 0) {
+            setDescontos(desc => desc + newItem.valor_desconto);
+            price = newItem.price - newItem.valor_desconto;
+        }
 
         return price;
     }
 
     const addItemCart = (newItem: ProductsProps) => {
-        const existItemCart = cart.filter(c => c.produto_id === newItem.produto_id);
-        const index = cart.findIndex(c => c.produto_id === newItem.produto_id);
+        const existItemCart = cart.filter(c => c.prod_id === newItem.prod_id);
+        const index = cart.findIndex(c => c.prod_id === newItem.prod_id);
 
         let priceWithDiscount = 0;
 
@@ -64,11 +68,13 @@ const CartProvider = ({children}: CartProviderProps) => {
             priceWithDiscount = applyPromotion(newItem);
          }
 
+         console.log(priceWithDiscount)
+
         let cartList = cart;
         
         if (existItemCart.length > 0) {
             cartList[index].amount += 1;
-            cartList[index].total = (cartList[index].priceWithDiscount > 0 ?  cartList[index].priceWithDiscount :  cartList[index].price) * cartList[index].amount;
+            cartList[index].total = cartList[index].priceWithDiscount > 0 ?  (cartList[index].priceWithDiscount * cartList[index].amount) :  (cartList[index].price * cartList[index].amount);
             
             setCart([...cartList]);
             totalCart(cart);
@@ -82,7 +88,7 @@ const CartProvider = ({children}: CartProviderProps) => {
             ...newItem, 
             amount: 1,
             priceWithDiscount: priceWithDiscount,
-            total: priceWithDiscount > 0 ? priceWithDiscount : newItem.price
+            total: newItem.price
         }
 
         
@@ -92,10 +98,10 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
     
     const removeItemCart = (product: ProductsProps) => {
-        const index = cart.findIndex(c => c.produto_id === product.produto_id);
+        const index = cart.findIndex(c => c.prod_id === product.prod_id);
         
         if (index != -1) {
-            let discount = product.price * (product.valor_desconto / 100);
+            let discount = cart[index].tipo_desconto == 0 ? (cart[index].price - cart[index].valor_desconto) : cart[index].price * (cart[index].valor_desconto / 100);
 
             if (cart[index].amount > 1) {
                 cart[index].amount--;
@@ -112,8 +118,6 @@ const CartProvider = ({children}: CartProviderProps) => {
                         return;
                     }
 
-                    console.log(discount, "cas2")
-                    
                     setDescontos(desc => desc - discount);
                 }
                 

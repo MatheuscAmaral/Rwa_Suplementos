@@ -55,13 +55,13 @@ export const Checkout = () => {
                     {
                         cart.map(p => {
                             return (
-                                <div className="flex gap-2 justify-between border border-l-0 border-r-0 border-b-0 border-gray-100 py-2 items-center" key={p.produto_id}> 
+                                <div className="flex gap-2 justify-between border border-l-0 border-r-0 border-b-0 border-gray-100 py-2 items-center" key={p.prod_id}> 
                                     <div className="flex gap-3 items-center">
                                         <img src={p.image} className="w-16" alt="img_prod"/>
                                         
                                         <div className="flex flex-col gap-1">
                                             <p className="text-xs font-semibold text-gray-500">{p.title}</p>
-                                            <span className="text-xs font-semibold text-gray-500">Código: {p.produto_id}</span>
+                                            <span className="text-xs font-semibold text-gray-500">Código: {p.prod_id}</span>
 
                                             <span className="text-xs font-bold text-gray-600">{formatPrice(p.price)}</span>
                                         </div>    
