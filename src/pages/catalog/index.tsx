@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import { MdOutlineSearchOff } from "react-icons/md";
+import { FaCartPlus } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 export const Catalog = () => {
@@ -62,7 +63,7 @@ export const Catalog = () => {
             {
                 loadPage ? (
                     <div className="flex gap-2 transition-all">
-                        <section className="bg-gray-50 pt-5 w-52 h-full pb-10 rounded-lg px-5 hidden md:flex md:flex-col">
+                        <section className="bg-gray-50 pt-5 w-52 h-full pb-10 rounded-lg px-5 hidden lg:flex md:flex-col">
                             <div>
                                 <h4 className="text-sm font-medium text-gray-600 mb-1">Categoria</h4>
                                 <input type="text" placeholder="Buscar" className="w-full text-xs py-1 bg-transparent border rounded-md pl-2 mt-2" />
@@ -116,26 +117,26 @@ export const Catalog = () => {
                                         {
                                             products.map((p) => {
                                                 return (
-                                                    <div key={p.prod_id} className="flex flex-col h-60 gap-4 shadow-sm py-4 px-5 rounded-lg w-full sm:max-w-52 bg-gray-50">
-                                                        <Link to={`/detalhes/${p.prod_id}`} className="cursor-pointer hover:scale-105 transition-all">
-                                                            <img src={p.image} className=" w-20 mx-auto" alt="img_produto" />                                                        
-                                                        </Link>
+                                                    <div key={p.prod_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full bg-gray-50">
+                                                      <div className="flex justify-center w-full h-28 items-center">
+                                                            <Link to={`/detalhes/${p.prod_id}`}>
+                                                                <img src={p.image} className="w-28 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
+                                                            </Link>
+                                                        </div>
                                                         
-                                                        <h1 key={p.prod_id} className=" text-xs md:px-0 font-semibold w-34">{p.title}</h1>
-                
-                                                        <p className="text-md font-semibold text-start">
-                                                            {
-                                                                p.price.toLocaleString("pt-br", {
-                                                                    style: "currency",
-                                                                    currency: "BRL"
-                                                                })
-                                                            }
-                                                        </p>
-
-                                                        
-                                                        <button className="text-sm" onClick={() => addProductCart(p)}>
-                                                            comprar
-                                                        </button>
+                                                        <div className="w-full flex flex-col gap-2">
+                                                            <h2 className="text-sm w-full font-bold text-gray-700 ">{p.title}</h2>
+                                                            <div className="flex justify-between">
+                                                                <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                    style: 'currency',
+                                                                    currency: 'BRL'
+                                                                })}</span>
+                                                                
+                                                                <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                    <FaCartPlus fontSize={18} color="white" />
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     
                                                     </div>
                                                 )

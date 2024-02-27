@@ -69,7 +69,7 @@ export const Home = () => {
 
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
-                <Carousel className="w-full max-w-3xl mx-auto">
+                <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center"> Whey Protein</h1>
                     <hr className="mb-8 w-44 h-1 bg-blue-800 mx-auto" />
 
@@ -124,7 +124,7 @@ export const Home = () => {
             </section>
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
-                <Carousel className="w-full max-w-3xl mx-auto">
+                <Carousel className={`w-full max-w-3xl mx-auto ${products.length <= 0 }`}>
                     <h1 className=" text-xl font-bold text-center"> Creatina</h1>
                     <hr className="mb-8 w-32 h-1 bg-blue-800 mx-auto" />
 
@@ -180,7 +180,7 @@ export const Home = () => {
             </section>
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 ">
-                <Carousel className="w-full max-w-3xl mx-auto">
+                <Carousel className={`w-full max-w-3xl mx-auto ${products.length <= 0 }`}>
                     <h1 className=" text-xl font-bold text-center">Outros</h1>
                     <hr className="mb-8 w-24 h-1 bg-blue-800 mx-auto" />
 
