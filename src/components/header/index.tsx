@@ -56,9 +56,17 @@ export const Header = () => {
   };
 
   const removeProductCartTrash = (product: ProductsProps) => {
+    const index = cart.findIndex(c => c.prod_id === product.prod_id);
+
+    if (index != -1) {
       product.amount = 0;
 
-      removeItemCart(product);
+      
+      console.log(product.amount);
+    }
+
+
+    removeItemCart(product);
   }
 
   const removeProductCart = (product: ProductsProps) => {
@@ -168,9 +176,9 @@ export const Header = () => {
                                     {c.valor_desconto}% de desconto
                                   </span>
                                 ) : (
-                                  <span>
+                                  <p className=' max-w-20'>
                                     {formatPrice(c.valor_desconto)} de desconto
-                                  </span>
+                                  </p>
                                 )
                               }
                              </span>
@@ -199,9 +207,7 @@ export const Header = () => {
                           <p>SubTotal</p> 
                             <p className='text-lg font-semibold'>
                                 {
-                                  total <= 0 ? (
-                                    formatPrice((cart[0].price))
-                                  ) : (
+                                   (
                                     formatPrice((total + descontos))
                                   )
                                 }
@@ -224,9 +230,7 @@ export const Header = () => {
                           <p>Total</p> 
                             <p className='text-lg font-semibold'>
                                 {
-                                  total <= 0 ? (
-                                    formatPrice((cart[0].priceWithDiscount > 0 ? cart[0].priceWithDiscount : cart[0].price))
-                                  ) : (
+                                  (
                                     formatPrice(total)
                                   )
                                 }

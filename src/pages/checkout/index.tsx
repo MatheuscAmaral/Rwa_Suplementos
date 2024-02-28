@@ -74,13 +74,9 @@ export const Checkout = () => {
                                                             </span>
 
                                                             <span style={{"fontSize": "13px"}} className=' text-green-600 font-semibold'>
-                                                            { 
-                                                                total <= 0 ? (
-                                                                    formatPrice(p.priceWithDiscount)
-                                                                ) : (
-                                                                    formatPrice(p.total)
-                                                                )
-                                                            }
+                                                                {                                                               
+                                                                    formatPrice(p.total) 
+                                                                }
                                                             </span>
                                                         </div>
                                                     </div>

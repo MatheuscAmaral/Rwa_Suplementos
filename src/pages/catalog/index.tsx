@@ -51,12 +51,6 @@ export const Catalog = () => {
         getProducts();
     }, [search]); 
 
-    const addProductCart = (item: ProductsProps) => {
-        addItemCart(item);
-    }
-
-    console.log(products)
-
     return (
         
         <main className="w-full max-w-5xl mx-auto mt-10 px-12 md:px-5">
