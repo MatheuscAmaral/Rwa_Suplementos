@@ -35,7 +35,7 @@ export const Checkout = () => {
                             return (
                                 <div key={u.id} className="text-gray-500 font-medium">
                                     <p className="font-bold">Endereço</p>
-                                    <p> {u.address[0].rua}, {u.address[0].numero}, {u.address[0].bairro} -  {u.address[0].estado}</p>
+                                    <p> {u.rua}, {u.numero}, {u.bairro} -  {u.uf}</p>
                                 </div>
                             )
                         })

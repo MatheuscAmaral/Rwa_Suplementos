@@ -11,6 +11,7 @@ import { Orders } from "../pages/orders";
 import { DetailsOrders } from "../pages/detailsOrders";
 import { Account } from "../pages/account";
 import { InfoAccount } from "@/pages/register/infoAccount";
+import { PrivateRoute } from "./privateRouter";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/checkout",
-                element: <Checkout/>
+                element: <PrivateRoute>
+                            <Checkout/>
+                        </PrivateRoute>
             },
             {
                 path: "/detalhes/:id",
@@ -34,15 +37,21 @@ const router = createBrowserRouter([
             },
             {
                 path: "/pedidos",
-                element: <Orders/>
+                element: <PrivateRoute>
+                            <Orders/>
+                        </PrivateRoute>
             },
             {
                 path: "/pedidos/detalhes",
-                element: <DetailsOrders/>
+                element: <PrivateRoute>
+                            <DetailsOrders/>
+                        </PrivateRoute>
             },
             {
                 path: "/conta",
-                element: <Account/>
+                element: <PrivateRoute>
+                            <Account/>
+                        </PrivateRoute>
             },
         ]
     },

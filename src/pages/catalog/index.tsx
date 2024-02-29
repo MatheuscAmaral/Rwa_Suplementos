@@ -121,7 +121,7 @@ export const Catalog = () => {
                                                         <div className="w-full flex flex-col gap-2">
                                                             <h2 className="text-sm w-full font-bold text-gray-700 ">{p.title}</h2>
                                                             <div className="flex justify-between">
-                                                                <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                <span className="text-md font-bold">{p.price.toLocaleString('pt-br', {
                                                                     style: 'currency',
                                                                     currency: 'BRL'
                                                                 })}</span>

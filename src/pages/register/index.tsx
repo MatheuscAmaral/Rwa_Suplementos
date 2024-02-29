@@ -21,24 +21,31 @@ export const Register = () =>  {
         setLoading(true);
 
         try {
-            const response = await api.get("/user", {
-                params: {
-                    cpf: cpf,
-                    email: email
-                }
-            })
-
-            const userData = response.data;
-
-            if(userData.length <= 0) {
+            const response = await api.get(`/users/${cpf}/${email}`)
+            
+            const userData = response.data.user;
+            
+            if(userData == false) {
                 navigate(`/cadastro/detalhes/${cpf}/${email}`);
-            } else {
-                toast.error("Opss, usuário já existe!")
-            }
+            } 
         }
         
-        catch {
-            toast.error("Opss, ocorreu um erro, favor contatar o suporte!")
+        catch (error: any) {
+            const errors = error.response.data.errors;
+            
+            if(!errors) {
+                return toast.error("Ocorreu um erro ao verificar o cadastro!");
+            }
+
+            if(errors.cpf) {
+                return toast.error(error.response.data.errors.cpf)
+            } 
+            
+            if (errors.email) {
+                return toast.error(error.response.data.errors.email);
+            } 
+
+
         }
 
         finally {

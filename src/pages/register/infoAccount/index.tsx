@@ -1,7 +1,9 @@
 import logo from "../../../assets/rwalogo2.png"
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 import * as React from 'react';
 
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
@@ -100,11 +102,15 @@ interface CepProps {
 
 export function InfoAccount() {
     const [step, setStep] = useState(Number);
+    const [loading, setLoading] = useState(false);
 
     const [nome, setNome] = useState("");
     const [date, setDate] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
+    const [error, setError] = useState(false);
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const [cep, setCep] = useState("");
     const [street, setStreet] = useState("");
@@ -145,8 +151,6 @@ export function InfoAccount() {
         try {
             const response = await cepApi.get(`/${cepInput.cepInput}`);
 
-            console.log(response)
-
             setStreet(response.data.logradouro);
             setNeighborhood(response.data.bairro);
             setComplement(response.data.complemento);
@@ -162,42 +166,72 @@ export function InfoAccount() {
 
     async function verifySectionInfo (e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        setLoading(true);
+        
+        if(password != confirmPass)  {
+            toast.error("As senhas digitadas não coincidem!");
+            setError(true);
+            setLoading(false);
+            return;
+        }
+        
+        if(password.length < 6) {
+            toast.error("As senhas devem ter no mínimo 6 dígitos!");
+            setError(true);
+            setLoading(false);
+            return;
 
-        setStep((step) => step + 1);  
-
-        console.log(cpf, email)
-
-        console.log(step)
+        }
+        
+        setLoading(false);
+        setStep((step) => step + 1); 
+        setError(false);
+        
         
         if(step > 0) {
-           try {
-                let response = '';
-                response = await api.post("/user", {
-                    nome: nome,
+            try {
+               setLoading(true);
+                await api.post("/users/register", {
+                    name: nome,
                     cpf: cpf,
                     email: email,   
                     date: date,
                     password: password,
-                    address: [
-                        {
-                            cep: cep,
-                            rua: street,
-                            numero: number,
-                            bairro: neighborhood,
-                            complemento: complement,
-                            cidade: city,
-                            estado: state
-                        }
-                    ]
+                    cep: cep,
+                    rua: street,
+                    numero: number,
+                    bairro: neighborhood,
+                    cidade: city,
+                    uf: state,
+                    status: 1,
                 });
 
 
+                toast.success("Usuário cadastrado com sucesso!")
                 navigate("/login");
            }
 
-           catch {
-                toast.error("Opss, ocorreu um erro ao salvar o cadastro");
-           }
+           catch (error: any) {
+                const errors = error.response.data.errors;
+                
+                if(!errors) {
+                    return toast.error("Ocorreu um erro ao verificar o cadastro!");
+                }
+
+                if(errors.cpf) {
+                    return toast.error(error.response.data.errors.cpf)
+                } 
+                
+                if (errors.email) {
+                    return toast.error(error.response.data.errors.email);
+                }
+
+            }
+
+            finally {
+                setLoading(false);
+            }
+
 
         }
     }
@@ -211,7 +245,7 @@ export function InfoAccount() {
                 <Stack spacing={4} className="w-full max-w-7xl mt-10">
                     <Stepper alternativeLabel activeStep={step} connector={<ColorlibConnector />}>
                         {steps.map((label) => (
-                            <Step key={label}>
+                            <Step key={label} onClick={() => step == 1 && setStep(step - 1)}>
                                 <StepLabel StepIconComponent={ColorlibStepIcon}>
                                     <p className="text-xs font-sans font-semibold ">{label}</p>
                                 </StepLabel>
@@ -220,7 +254,7 @@ export function InfoAccount() {
                     </Stepper>
                 </Stack>
 
-                    <form onSubmit={(e) => verifySectionInfo(e)} className="flex flex-col gap-7 w-full max-w-3xl mt-20 px-10">
+                    <form onSubmit={(e) => verifySectionInfo(e)} className="flex flex-col gap-7 w-full max-w-3xl mt-16 px-10">
                         { 
                             step == 0 ?  (
                                 <section className="grid grid-cols-1 md:grid-cols-2 gap-7">
@@ -232,19 +266,39 @@ export function InfoAccount() {
 
                                     <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="user" className='ml-1'>Data de nascimento *</label>
-                                        <Input  value={date} onChange={(e) => setDate(e.target.value)} placeholder='Digite sua data de nascimento' type='date' id='date' className='text-xs mt-2' required/>
+                                        <Input value={date} onChange={(e) => setDate(e.target.value)} placeholder='Digite sua data de nascimento' type='date' id='date' className='text-xs mt-2 w-full' required/>
                                     </div>
 
                                     <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="password" className='ml-1'>Senha *</label>
-                                        <Input value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='Digite sua senha' type='password' id='password' className='text-xs mt-2' required/>
-                                        <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 "/>
+                                        <Input value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='Digite sua senha' type={showPassword ? 'text': 'password'} id='password' className={`text-xs mt-2 transition-all ${error ? "border-red-500" : ""}`} required/>
+                                        {
+                                            password.length <= 0 ? (
+                                                <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                            ) : (
+                                                showPassword ? (
+                                                    <FaEye onClick={() => setShowPassword(false)} fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                                ) : (
+                                                    <FaEyeSlash onClick={() => setShowPassword(true)} fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                                )
+                                            )
+                                        }
                                     </div>
 
                                     <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="password" className='ml-1'>Confirmar senha *</label>
-                                        <Input value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)}  placeholder='Digite sua senha novamente' type='password' id='password' className='text-xs mt-2' required/>
-                                        <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 "/>
+                                        <Input value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)}  placeholder='Digite sua senha novamente' type={showPassword ? 'text': 'password'} id='password' className={`text-xs mt-2 transition-all ${error ? "border-red-500" : ""}`} required/>
+                                        {
+                                            confirmPass.length <= 0 ? (
+                                                <TbPasswordFingerprint fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                            ) : (
+                                                showPassword ? (
+                                                    <FaEye onClick={() => setShowPassword(false)} fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                                ) : (
+                                                    <FaEyeSlash onClick={() => setShowPassword(true)} fontSize={18} className="absolute top-10 right-3 transition-all "/>
+                                                )
+                                            )
+                                        }
                                     </div>
                                 </section>
                             ) : (
@@ -302,8 +356,18 @@ export function InfoAccount() {
                         )
                     }
                     
-                    <button className=" w-full bg-blue-800 p-2 rounded-lg text-white hover:bg-blue-700 transition-all">
-                        Próximo
+                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
+                        {
+                            loading ? (
+                                <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
+                                ) : (
+                                    <p style={{paddingBottom: 2}} className='transition-all'>
+                                        {
+                                            step > 1 ? "Cadastrar" : "Próximo"
+                                        }
+                                    </p>      
+                                )
+                        }
                     </button>
                 </form>
             </div>

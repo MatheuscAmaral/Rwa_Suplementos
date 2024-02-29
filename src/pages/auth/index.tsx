@@ -8,31 +8,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { api } from '@/api';
 import toast from 'react-hot-toast';
 
-interface UserProps {
-    id: number,
-    cpf: string, 
-    email: string,
-    password: string,
-    cep: string,
-    street: string,
-    neighborhood: string,
-    number: string,
-    city: string,
-    state: string,
-    nome: string
-}
 
 export const Auth = () => {
     const [loading, setLoading] = useState(false);
     const [cpf, setCpf] = useState("");
-    const [user, setUser] = useState<UserProps[]>([]);
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { authUser } = useContext(AuthContext);
-
-    const saveAuthUser = (user: UserProps[]) => {
-        authUser(user);
-    }
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -40,34 +22,26 @@ export const Auth = () => {
         setLoading(true);
 
         try {
-            const response = await api.get("/user", {
-                params: {
-                    cpf: cpf,
-                    password: password
-                }
-            });
-        
-            console.log(response);
-        
-            setUser(response.data);
-        
-            if (user.length > 0) {
-                saveAuthUser(user);
-                navigate("/");
-            } else {
-                toast.error("Opss, usuário ou senha incorreta!");
+            const data = {
+                cpf: cpf,
+                password: password
             }
+
+            const response = await api.post("/login", data);
+
+            if (response.data && response.data.user) {
+                authUser([response.data.user]);
+                navigate("/");
+            } 
         } 
-        
-        catch (error) {
-            console.error(error);
-            toast.error("Opss, ocorreu um erro, favor contatar o suporte!");
+
+        catch (error: any) {
+            toast.error(`${error.response.data.message}`);  
         } 
-        
+
         finally {
             setLoading(false);
         }
-          
     }
 
 

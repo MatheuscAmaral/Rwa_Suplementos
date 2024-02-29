@@ -3,16 +3,16 @@ import { useState, createContext, ReactNode } from "react";
 export interface UserDataProps {
     [x: string]: any;
     id: number,
+    name: string,
     cpf: string, 
     email: string,
-    password: string,
     cep: string,
-    street: string,
-    neighborhood: string,
-    number: string,
-    city: string,
-    state: string,
-    nome: string
+    rua: string,
+    bairro: string,
+    numero: string,
+    cidade: string,
+    uf: string,
+    status: number,
 }
 
 interface AuthProps {

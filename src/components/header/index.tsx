@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
-import { IoClose } from "react-icons/io5";
-import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
 import logo from "../../assets/rwalogo2.png";
 import { Link, useNavigate } from 'react-router-dom';
-import { IoSearch } from "react-icons/io5";
 import { useContext } from 'react'; 
 import { CartContext } from '@/contexts/CartContext'
 import { AuthContext } from '@/contexts/AuthContext';
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { IoBagCheckOutline } from "react-icons/io5";
+
+import { TiUserAdd } from "react-icons/ti";
+
+import { MdManageAccounts } from "react-icons/md";
+
+import { LuLogIn } from "react-icons/lu";
+
+import { Dropdown } from 'flowbite-react';
 
 import { IoMdClose } from "react-icons/io";
+import { IoSearch, IoLogOut, IoBagCheckOutline, IoClose } from "react-icons/io5";
+import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
@@ -40,7 +46,7 @@ export const Header = () => {
   const [input, setInput] = useState<string>("");
   
   const { cart, cartAmount, addItemCart, removeItemCart, total, descontos} = useContext(CartContext);
-  const { user } = useContext(AuthContext);
+  const { user, authUser } = useContext(AuthContext);
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -314,17 +320,21 @@ export const Header = () => {
               user.length > 0 ? (
                   user.map(u => {
                     return (
-                    <div className='hidden lg:flex items-center gap-2'>
+                    <div key={u.id} className='hidden lg:flex items-center gap-2'>
                       <Link to={"/conta"} >
                         <FaUser fontSize={19.5}/>
                       </Link>
                   
-                      <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
+                      <p className='text-xs font-medium w-full text-black max-w-md'>
+                        {
+                          u.name
+                        }
+                      </p>
                     </div>
                   )
                 })
               ) : (
-                <Link className='hidden lg:flex  ' to={"/login"} >
+                <Link className='hidden lg:flex' to={"/login"} >
                   <FaUser fontSize={20}/>
                 </Link>
               )
@@ -362,7 +372,6 @@ export const Header = () => {
 
       <nav className='hidden lg:flex mx-auto justify-between w-full max-w-7xl pt-5 px-30 md:px-16 items-center'>
           <Link to={"/"}>
-            <span className="sr-only">Your Company</span>
             <img className="h-16" src={logo} alt="logo" />
           </Link>
 
@@ -373,26 +382,46 @@ export const Header = () => {
             </Link>
           </Popover.Group>
 
-          <div className={`flex ${user.length > 0 ? "gap-5" : "gap-2"} items-center gap-2`}>
+          <div className={`flex ${user.length > 0 ? "gap-3" : "gap-2"} items-center gap-2`}>
             {
               user.length > 0 ? (
                   user.map(u => {
                     return (
-                    <div className='hidden lg:flex items-center gap-2'>
+                    <div key={u.id} className='hidden lg:flex items-center'>
                       <Link to={"/conta"} >
                         <FaUser fontSize={19.5}/>
                       </Link>
-                  
-                      <p className='text-xs font-medium w-full max-w-md'>{u.nome}</p>
                     </div>
                   )
                 })
               ) : (
-                <Link className='hidden lg:flex  ' to={"/login"} >
+                <Link className='hidden lg:flex' to={"/login"} >
                   <FaUser fontSize={20}/>
                 </Link>
               )
             }
+
+              <Dropdown label={`${user.length > 0 ? `Olá, ${user[0].name}` : "Entre ou cadastre-se"}`} className=' rounded' inline>
+                <Dropdown.Item className={`${user.length <= 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3.5 items-center`} onClick={() => navigate("/login")}>
+                  <LuLogIn fontSize={18} className=''/>
+                  <span className='text-xs'>Entrar</span>
+                </Dropdown.Item>
+
+                <Dropdown.Item className={`${user.length <= 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3.5 items-center`} onClick={() => navigate("/cadastro")}>
+                  <TiUserAdd fontSize={20} className=''/>
+                  <span className='text-xs'>Cadastrar</span>
+                </Dropdown.Item>
+
+                <Dropdown.Item className={`${user.length > 0 ? "flex" : "hidden"} gap-1.5 items-center justify-start pl-3`} onClick={() => navigate("/conta")}>
+                  <MdManageAccounts fontSize={23} className=''/>
+                  <span className='text-xs'>Minha conta</span>
+                </Dropdown.Item>
+
+                <Dropdown.Item className={`${user.length > 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3`} onClick={() => authUser([])}>
+                  <IoLogOut fontSize={23} className=''/>
+                  <span className='text-xs'>Sair</span>
+                </Dropdown.Item>
+              </Dropdown>
 
             <section className=' relative'>
                 <button className='relative pt-1.5'>
@@ -400,7 +429,7 @@ export const Header = () => {
                   {cartAmount > 0 && (
                     <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
                   )}
-                </button> 
+                </button>          
 
                 <div className='absolute bottom-0 left-0 opacity-0'>
                   {(['right'] as const).map((anchor) => (
@@ -434,38 +463,37 @@ export const Header = () => {
 
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
-            <Link to={"/"} className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-16 w-auto"
-                src={logo}
-                alt="logo"
-              />
-            </Link>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <IoClose className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Features
-                </a>
-              
+          <Dialog.Panel className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <div className="flex items-center justify-between">
+              <Link to={"/"} className="-m-1.5 p-1.5">
+                <img
+                  className="h-16 w-auto"
+                  src={logo}
+                  alt="logo"
+                />
+              </Link>
+              <button
+                type="button"
+                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <IoClose className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-gray-500/10">
+                <div className="space-y-2 py-6">
+                  <a
+                    href="#"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Features
+                  </a>
+                
+                </div>
               </div>
             </div>
-          </div>
-        </Dialog.Panel>
+          </Dialog.Panel>
       </Dialog>
     </header>
   )
