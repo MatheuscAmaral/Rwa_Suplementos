@@ -59,7 +59,7 @@ export const Header = () => {
     const index = cart.findIndex(c => c.prod_id === product.prod_id);
 
     if (index != -1) {
-      product.amount = 0;
+      product.amount = -99;
 
       
       console.log(product.amount);

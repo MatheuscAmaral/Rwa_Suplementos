@@ -126,7 +126,8 @@ const CartProvider = ({children}: CartProviderProps) => {
                 
                 return;
             }
-            
+    
+
             if(cart[index].promocao_id > 0) {
                 if(descontos == 0) {
                     setDescontos(0);
@@ -135,8 +136,7 @@ const CartProvider = ({children}: CartProviderProps) => {
 
                 console.log(discount, "dasd")
                 
-                
-                setDescontos(desc => desc - (discount * product.amount));
+                setDescontos(desc => product.amount != -99 ? desc - (discount * product.amount) : desc - (discount * qtd));
                 console.log(discount, "dasd")
             }
 
