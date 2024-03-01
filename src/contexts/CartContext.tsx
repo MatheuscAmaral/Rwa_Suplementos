@@ -133,14 +133,9 @@ const CartProvider = ({children}: CartProviderProps) => {
                     setDescontos(0);
                     return;
                 }
-
-                console.log(discount, "dasd")
                 
                 setDescontos(desc => product.amount != -99 ? desc - (discount * product.amount) : desc - (discount * qtd));
-                console.log(discount, "dasd")
             }
-
-            console.log(product.amount, "das")
             
             cart.splice(index, 1)
             setCart([...cart])

@@ -12,6 +12,7 @@ import { DetailsOrders } from "../pages/detailsOrders";
 import { Account } from "../pages/account";
 import { InfoAccount } from "@/pages/register/infoAccount";
 import { PrivateRoute } from "./privateRouter";
+import NotFound from "@/pages/notFound";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
                             <Account/>
                         </PrivateRoute>
             },
+            {
+                path: "*",
+                element: <NotFound/>
+            }
         ]
     },
     {
