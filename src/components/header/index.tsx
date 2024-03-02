@@ -8,23 +8,35 @@ import { AuthContext } from '@/contexts/AuthContext';
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { IoIosArrowDown } from "react-icons/io";
+import {
+  CreditCard,
+  LogIn,
+  LogOut,
+  Settings,
+  User,
+  UserPlus,
+} from "lucide-react"
 
-import { TiUserAdd } from "react-icons/ti";
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
-import { MdManageAccounts } from "react-icons/md";
-
-import { LuLogIn } from "react-icons/lu";
-
-import { Dropdown } from 'flowbite-react';
 
 import { IoMdClose } from "react-icons/io";
-import { IoSearch, IoLogOut, IoBagCheckOutline, IoClose } from "react-icons/io5";
+import { IoSearch, IoBagCheckOutline, IoClose } from "react-icons/io5";
 import { FaBarsStaggered, FaCartShopping, FaUser } from "react-icons/fa6";
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-
 
 
 import { Input } from "@/components/ui/input"
@@ -66,11 +78,7 @@ export const Header = () => {
 
     if (index != -1) {
       product.amount = -99;
-
-      
-      console.log(product.amount);
     }
-
 
     removeItemCart(product);
   }
@@ -136,7 +144,7 @@ export const Header = () => {
           {
             cart.map(c => {
               return (
-                <section key={c.prod_id} className='flex gap-3 items-center border px-4 py-7 mx-3 rounded-sm relative'>
+                <section key={c.prod_id} className={`flex gap-3 items-center border ${c.tipo_desconto == 0 ? "h-32" : "h-26"} px-4 py-7 mx-3 rounded-sm relative`}>
                   <img src={c.image} alt="img_produto" className='w-14'/>
 
                   <div className='flex flex-col gap-4 '>
@@ -388,47 +396,75 @@ export const Header = () => {
                   user.map(u => {
                     return (
                     <div key={u.id} className='hidden lg:flex items-center'>
-                      <Link to={"/conta"} >
                         <FaUser fontSize={19.5}/>
-                      </Link>
                     </div>
                   )
                 })
               ) : (
-                <Link className='hidden lg:flex' to={"/login"} >
                   <FaUser fontSize={20}/>
-                </Link>
               )
             }
 
-              <Dropdown label={`${user.length > 0 ? `Olá, ${user[0].name}` : "Entre ou cadastre-se"}`} className=' rounded' inline>
-                <Dropdown.Item className={`${user.length <= 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3.5 items-center`} onClick={() => navigate("/login")}>
-                  <LuLogIn fontSize={18} className=''/>
-                  <span className='text-xs'>Entrar</span>
-                </Dropdown.Item>
 
-                <Dropdown.Item className={`${user.length <= 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3.5 items-center`} onClick={() => navigate("/cadastro")}>
-                  <TiUserAdd fontSize={20} className=''/>
-                  <span className='text-xs'>Cadastrar</span>
-                </Dropdown.Item>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <p className='text-sm mx-2 cursor-pointer flex items-center gap-1.5'>
+                    {
+                        user.length > 0 ? `Olá, ${user[0].name} ` : "Entre ou cadastre-se"
+                    }
 
-                <Dropdown.Item className={`${user.length > 0 ? "flex" : "hidden"} gap-1.5 items-center justify-start pl-3`} onClick={() => navigate("/conta")}>
-                  <MdManageAccounts fontSize={23} className=''/>
-                  <span className='text-xs'>Minha conta</span>
-                </Dropdown.Item>
-
-                <Dropdown.Item className={`${user.length > 0 ? "flex" : "hidden"} gap-1.5 justify-start pl-3`} onClick={() => authUser([])}>
-                  <IoLogOut fontSize={23} className=''/>
-                  <span className='text-xs'>Sair</span>
-                </Dropdown.Item>
-              </Dropdown>
+                    <span className='pt-0.5'>
+                      <IoIosArrowDown/>
+                    </span>
+                  </p>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel className={`${user.length > 0 ? "flex" : "hidden"}`}>
+                    Minha conta
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator className={`${user.length > 0 ? "flex" : "hidden"}`} />
+                    <DropdownMenuGroup className={`${user.length > 0 ? "block" : "hidden"}`}>
+                      <DropdownMenuItem onClick={() => navigate("/conta")} className='cursor-pointer'>
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Minha conta</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className='cursor-pointer'>
+                        <CreditCard className="mr-2 h-4 w-4" />
+                        <span>Pedidos</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className='cursor-pointer'>
+                        <Settings className="mr-2 h-4 w-4" />
+                        <span>Configurações</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  <DropdownMenuGroup className={`${user.length <= 0 ? "block" : "hidden"}`}>
+                    <DropdownMenuItem onClick={() => navigate("/login")} className='cursor-pointer'>
+                      <LogIn className="mr-2 h-4 w-4" />
+                      <span>Entrar</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSub>
+                      <DropdownMenuItem onClick={() => navigate("/cadastro")} className='cursor-pointer'>
+                        <UserPlus className="mr-2 h-4 w-4" />
+                        <span>Cadastrar</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuSub>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator className={`${user.length > 0 ? "flex" : "hidden"}`} />
+                  <DropdownMenuItem onClick={() => authUser([])} className={`${user.length > 0 ? "flex" : "hidden"} cursor-pointer`} >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sair</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
             <section className=' relative'>
                 <button className='relative pt-1.5'>
                   <FaCartShopping fontSize={21}/>
-                  {cartAmount > 0 && (
-                    <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
-                  )}
+                  {
+                    cartAmount > 0 && (
+                      <span className='px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white'>{cartAmount}</span>
+                    )
+                  }
                 </button>          
 
                 <div className='absolute bottom-0 left-0 opacity-0'>
