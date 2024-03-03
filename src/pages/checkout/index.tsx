@@ -4,16 +4,62 @@ import { AuthContext } from "@/contexts/AuthContext";
 
 import { CiLocationArrow1 } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { IoBagCheckOutline } from "react-icons/io5";
-import { IoBarcodeOutline } from "react-icons/io5";
+import { IoBarcodeOutline, IoClose, IoBagCheckOutline } from "react-icons/io5";
+import { MdPayment, MdPix } from "react-icons/md";
 
+import { Check } from "lucide-react"
+ 
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input";
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
 
-export const Checkout = () => {
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { api } from "@/api";
+import toast from "react-hot-toast";
+
+type CardProps = React.ComponentProps<typeof Card>
+
+interface FormaProps {
+    id: number,
+    descricao: string,
+    tipo: number,
+    status: number
+}
+
+export const Checkout = ({ className, ...props }: CardProps) => {
 
     const { cart, total, addItemCart, removeItemCart, descontos } = useContext(CartContext);
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("1");
+    const [formas, setFormas] = useState<FormaProps[]>([]);
+    const [formaPag, setFormaPag] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [load, setLoad] = useState(false);
+    const [tipo, setTipo] = useState("");
+    
+    const getFormasPagamento = async () => {
+        setOpenModal(true);
+        const response = await api.get("/forma");
+
+        setFormas(response.data);
+    }
 
     const formatPrice = (price: string | number) => {
         return price.toLocaleString("pt-br", {
@@ -22,7 +68,31 @@ export const Checkout = () => {
         })
     }
 
+    const handleFormaPag = (f: FormaProps) => {
+        setSelectedOption(String(f.tipo));
 
+        setDescricao(f.descricao);
+        setTipo(String(f.tipo));
+    }
+
+    const saveFormaPag = () => {
+        
+        try {
+            setLoad(true);
+            setFormaPag(tipo);
+        }
+
+        catch {
+            toast.error("Ocorreu um erro ao salvar forma de pagamento!");
+        }
+
+        finally {
+            setLoad(false);
+            setOpenModal(false);
+        }
+    }
+
+    
     return (
         <main className="flex flex-col gap-5 md:flex-row  justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-10 md:mt-20 pt-4 px-5 md:mb-30">
             <section className="border py-5 px-5 pb-10 w-full md:max-w-xl rounded-lg">
@@ -42,14 +112,49 @@ export const Checkout = () => {
                     }
                 </div>
 
-                <div className="flex gap-3 items-center mt-5 text-xs ml-4">
-                    <IoBarcodeOutline fontSize={23} className="text-gray-700"/>
-                    
-                    <div className="text-gray-500 font-medium">
-                        <p className="font-bold">A vista</p>
-                        <p>Boleto</p>
+                <div className="flex justify-between items-center mt-5 text-xs mx-4">
+                    <div className="flex gap-3 items-center text-xs ">
+                        {
+                            formaPag == "2" && <MdPayment className="text-gray-700" fontSize={23}/>
+                        }
+
+                        {
+                            formaPag == "1" && <IoBarcodeOutline fontSize={23}/>
+                        }
+
+                        {                         
+                            formaPag == "3" && <MdPix className="text-gray-700" fontSize={23}/>
+                        }
+
+                        {                         
+                            formaPag == "" && <IoBarcodeOutline fontSize={23}/>
+                        }
+                        
+                        <div className="text-gray-500 font-medium">
+                            <p className="font-bold">
+                                {
+                                    formaPag == "2" ? "12x sem juros" : "A vista"
+                                }
+                            </p>
+                            <p>
+                                {
+                                    formaPag != "" ? (
+                                        <span>
+                                            {formaPag == "2" && "Cartão de crédito"}
+                                            {formaPag == "1" && "Boleto"}
+                                            {formaPag == "3" && "Pix"}
+                                        </span>
+                                    ) : "Boleto"
+                                }
+                            </p>
+                        </div>
                     </div>
+
+                    <span onClick={() => getFormasPagamento()} className="text-gray-500 font-medium cursor-pointer">
+                        Alterar
+                    </span>
                 </div>
+
 
                 <div className="flex flex-col gap-1 mt-10  h-full max-h-80 overflow-auto scrollbar-none">
                     {
@@ -168,6 +273,143 @@ export const Checkout = () => {
                       }
                 </div>
             </section>
+
+            <div className={` fixed top-0 left-0 right-0 bottom-0`} style={{ backgroundColor: "#222121b3", height: "100vh", display: openModal ? "flex" : "none", justifyContent: "center", alignItems: "center" }}>
+                <Card  className={`${cn("w-full", className)} ${openModal ? "block" : "hidden"} relative mx-auto max-w-lg`} style={{ height: selectedOption === "2" ? 650 : 300 }} {...props}>
+                    <CardHeader className="relative">
+                        <CardTitle>Forma de pagamento</CardTitle>
+                        <IoClose onClick={() => setOpenModal(false)} fontSize={25} className="absolute top-4 right-5 cursor-pointer"/>
+                    </CardHeader>
+
+                    <CardContent className="flex flex-col gap-5">
+                        <RadioGroup id="radio" defaultValue={selectedOption} className={`grid ${formas.length <= 0 ? "grid-cols-1" : "grid-cols-3"} gap-2 mt-3 justify-center ${selectedOption != "2" && "mb-10"}`}>
+                            <div className={`${formas.length <= 0 ? "flex justify-center" : "hidden"} text-center mt-3`}>
+                                <AiOutlineLoading3Quarters fontSize={30} className="animate-spin"/>
+                            </div>
+
+                            {
+                                formas.length > 0 && (
+                                    formas.map(f => {
+                                        return (
+                                            <div key={f.id} className={`flex flex-col items-center gap-2 ${selectedOption == String(f.tipo) && "bg-blue-700 text-white"} rounded-md border p-3 hover:border-blue-700 transition-all select-none relative`}>
+                                                {
+                                                    f.tipo == 2 && <MdPayment fontSize={30}/>
+                                                }
+
+                                                {                         
+                                                    f.tipo == 3 && <MdPix fontSize={30}/>
+                                                }
+
+                                                {                         
+                                                    f.tipo == 1 && <IoBarcodeOutline fontSize={30}/>
+                                                }
+
+                                                <span className="text-xs font-semibold text-center">
+                                                    {
+                                                        f.descricao
+                                                    }     
+                                                </span>
+
+                                                <RadioGroupItem onClick={() => handleFormaPag(f)}  value={String(f.tipo)} id={f.descricao} className="absolute w-full h-full top-0 rounded opacity-0"/>
+                                            </div>
+                                        )
+                                    })
+                                )
+                            }
+                        </RadioGroup>
+
+                        <section className={`grid grid-rows-3 gap-7 ${selectedOption != "2" && "hidden"}`}>
+                            <div className="flex flex-col gap-2 text-sm">
+                                <label htmlFor="name">Nome do títular:</label>
+                                <Input id="name" placeholder="Digite o nome escrito no cartão..."/>
+                            </div>
+
+                            <div className="flex flex-col gap-2 text-sm">
+                                <label htmlFor="number">Número do cartão:</label>
+                                <Input id="number" type="number" placeholder="Digite o número escrito no cartão..."/>
+                            </div>
+
+                            <div className=" grid grid-cols-3 gap-2 text-sm">
+                                <div className="flex flex-col gap-2">
+                                    <label htmlFor="date"> Mês:</label>
+                                    <Select>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Janeiro" />
+                                        </SelectTrigger>
+
+                                        <SelectContent>
+                                            <SelectItem value="01">Janeiro</SelectItem>
+                                            <SelectItem value="02">Fevereiro</SelectItem>
+                                            <SelectItem value="03">Março</SelectItem>
+                                            <SelectItem value="04">Abril</SelectItem>
+                                            <SelectItem value="05">Maio</SelectItem>
+                                            <SelectItem value="06">Junho</SelectItem>
+                                            <SelectItem value="07">Julho</SelectItem>
+                                            <SelectItem value="08">Agosto</SelectItem>
+                                            <SelectItem value="09">Setembro</SelectItem>
+                                            <SelectItem value="10">Outubro</SelectItem>
+                                            <SelectItem value="11">Novembro</SelectItem>
+                                            <SelectItem value="12">Dezembro</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+
+                                <div className="flex flex-col gap-2">
+                                    <label htmlFor="date"> Ano:</label>
+                                    <Select>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="2024" />
+                                        </SelectTrigger>
+                                        
+                                        <SelectContent>
+                                            <SelectItem value="2024">2024</SelectItem>
+                                            <SelectItem value="2025">2025</SelectItem>
+                                            <SelectItem value="2026">2026</SelectItem>
+                                            <SelectItem value="2027">2027</SelectItem>
+                                            <SelectItem value="2028">2028</SelectItem>
+                                            <SelectItem value="2029">2029</SelectItem>
+                                            <SelectItem value="2030">2030</SelectItem>
+                                            <SelectItem value="2031">2031</SelectItem>
+                                            <SelectItem value="2032">2032</SelectItem>
+                                            <SelectItem value="2033">2033</SelectItem>
+                                            <SelectItem value="2034">2034</SelectItem>
+                                            <SelectItem value="2035">2035</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+
+                                
+                                <div className="flex flex-col gap-2">
+                                    <label htmlFor="cvc">CVC:</label>
+                                    <Input id="cvc" type="number" placeholder="CVC"/>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                                    <label htmlFor="date"> Parcelas:</label>
+                                    <Select>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Selecione o número de parcelas" />
+                                        </SelectTrigger>
+                                        
+                                        <SelectContent>
+                                            <SelectItem value="1">À vista - R$2200,00</SelectItem>
+                                            <SelectItem value="2">2x sem juros - R$1100,00</SelectItem>   
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                        </section>
+                    </CardContent>
+
+                    <CardFooter>
+                        <Button onClick={() => saveFormaPag()} className={`w-full h-11 bg-blue-700`} >
+                            {
+                                load ? <AiOutlineLoading3Quarters/> : (<span className="flex items-center"><Check className="mr-2 h-4 w-4" /> Salvar </span>) 
+                            }
+                        </Button>
+                    </CardFooter>
+                </Card>
+            </div>
         </main>
     )
 }
