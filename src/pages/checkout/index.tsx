@@ -50,12 +50,14 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     const [selectedOption, setSelectedOption] = useState("1");
     const [formas, setFormas] = useState<FormaProps[]>([]);
     const [formaPag, setFormaPag] = useState("");
-    const [descricao, setDescricao] = useState("");
     const [load, setLoad] = useState(false);
     const [tipo, setTipo] = useState("");
+    const [address, setEditAddress] = useState(false);
     
     const getFormasPagamento = async () => {
         setOpenModal(true);
+        setEditAddress(false);
+        setSelectedOption(formaPag);
         const response = await api.get("/forma");
 
         setFormas(response.data);
@@ -68,10 +70,14 @@ export const Checkout = ({ className, ...props }: CardProps) => {
         })
     }
 
+    const closeModal = () => {
+        setOpenModal(false);
+        setEditAddress(false);
+    }
+
     const handleFormaPag = (f: FormaProps) => {
         setSelectedOption(String(f.tipo));
 
-        setDescricao(f.descricao);
         setTipo(String(f.tipo));
     }
 
@@ -92,24 +98,41 @@ export const Checkout = ({ className, ...props }: CardProps) => {
         }
     }
 
+    const editAddress = () => {
+        setEditAddress(true);
+        setOpenModal(true);
+
+    }
+
+    const saveEndereco = () => {
+        
+    }
+
     
     return (
         <main className="flex flex-col gap-5 md:flex-row  justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-10 md:mt-20 pt-4 px-5 md:mb-30">
             <section className="border py-5 px-5 pb-10 w-full md:max-w-xl rounded-lg">
                 <h5 className="font-semibold text-sm ml-2">Revisar e finalizar</h5>
 
-                <div className="flex gap-3 items-center mt-5 text-xs ml-4">
-                    <CiLocationArrow1 fontSize={22} className="text-gray-800"/>
-                    {
-                        user.map(u => {
-                            return (
-                                <div key={u.id} className="text-gray-500 font-medium">
-                                    <p className="font-bold">Endereço</p>
-                                    <p> {u.rua}, {u.numero}, {u.bairro} -  {u.uf}</p>
-                                </div>
-                            )
-                        })
-                    }
+                <div className="flex justify-between items-center text-xs mx-4">
+                    <div className="flex gap-3 items-center mt-5 text-xs">
+                        <CiLocationArrow1 fontSize={22} className="text-gray-800"/>
+                        {
+                            user.map(u => {
+                                return (
+                                    <div key={u.id} className="text-gray-500 font-medium">
+                                        <p className="font-bold">Endereço</p>
+                                        <p> {u.rua}, {u.numero}, {u.bairro} -  {u.uf}</p>
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </div>
+
+                    <span onClick={() => editAddress()} className="text-gray-500 font-medium cursor-pointer mt-5">
+                        Alterar
+                    </span>
                 </div>
 
                 <div className="flex justify-between items-center mt-5 text-xs mx-4">
@@ -275,10 +298,10 @@ export const Checkout = ({ className, ...props }: CardProps) => {
             </section>
 
             <div className={` fixed top-0 left-0 right-0 bottom-0`} style={{ backgroundColor: "#222121b3", height: "100vh", display: openModal ? "flex" : "none", justifyContent: "center", alignItems: "center" }}>
-                <Card  className={`${cn("w-full", className)} ${openModal ? "block" : "hidden"} relative mx-auto max-w-lg`} style={{ height: selectedOption === "2" ? 650 : 300 }} {...props}>
+                <Card className={`${cn("w-full", className)} ${openModal ? "block" : "hidden"} ${address && "hidden"} relative mx-auto max-w-lg`} style={{ height: selectedOption === "2" ? 650 : 300 }} {...props}>
                     <CardHeader className="relative">
                         <CardTitle>Forma de pagamento</CardTitle>
-                        <IoClose onClick={() => setOpenModal(false)} fontSize={25} className="absolute top-4 right-5 cursor-pointer"/>
+                        <IoClose onClick={() => closeModal()} fontSize={25} className="absolute top-4 right-5 cursor-pointer"/>
                     </CardHeader>
 
                     <CardContent className="flex flex-col gap-5">
@@ -405,6 +428,57 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                         <Button onClick={() => saveFormaPag()} className={`w-full h-11 bg-blue-700`} >
                             {
                                 load ? <AiOutlineLoading3Quarters/> : (<span className="flex items-center"><Check className="mr-2 h-4 w-4" /> Salvar </span>) 
+                            }
+                        </Button>
+                    </CardFooter>
+                </Card>
+
+                <Card className={`${cn("w-full", className)} ${openModal && address ? "block" : "hidden"} relative mx-auto max-w-lg`} style={{ height: 530 }} {...props}>
+                    <CardHeader className="relative">
+                        <CardTitle>Endereço</CardTitle>
+                        <IoClose onClick={() => closeModal()} fontSize={25} className="absolute top-4 right-5 cursor-pointer"/>
+                    </CardHeader>
+
+                    <CardContent className="flex flex-col">
+                        <section className={`grid grid-rows-2 gap-5 mt-2 `}>
+                           <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                <label htmlFor="cep">Cep:</label>
+                                <Input id="cep" type="number" placeholder="Digite o seu cep..."/>
+                           </div>
+
+                            <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                    <label htmlFor="rua">Rua:</label>
+                                    <Input id="rua" type="text" placeholder="Digite a sua rua..."/>
+                            </div>
+
+                           <div className="grid grid-cols-2 gap-5">
+                                <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                        <label htmlFor="numero">Número:</label>
+                                        <Input id="numero" type="text" placeholder="Digite o número..."/>
+                                </div>
+
+                                <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                        <label htmlFor="bairro">Bairro:</label>
+                                        <Input id="bairro" type="string" placeholder="Digite o seu bairro..."/>
+                                </div>
+
+                                <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                        <label htmlFor="cidade">Cidade:</label>
+                                        <Input id="cidade" type="text" placeholder="Digite a sua cidade..."/>
+                                </div>
+
+                                <div className="flex flex-col gap-2 text-sm text-gray-700">
+                                        <label htmlFor="uf">UF:</label>
+                                        <Input id="uf" type="string" placeholder="Digite a uf..."/>
+                                </div>
+                           </div>
+                        </section>
+                    </CardContent>
+
+                    <CardFooter>
+                        <Button onClick={() => saveEndereco()} className={`w-full h-11 bg-blue-700`} >
+                            {
+                                load ? <AiOutlineLoading3Quarters/> : (<span className="flex items-center"><Check className="mr-2 h-4 w-4" /> Salvar endereço</span>) 
                             }
                         </Button>
                     </CardFooter>
