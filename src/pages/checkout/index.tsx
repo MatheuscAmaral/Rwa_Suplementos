@@ -31,6 +31,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { api } from "@/api";
 import toast from "react-hot-toast";
+import cepApi from "@/api/cep";
 
 type CardProps = React.ComponentProps<typeof Card>
 
@@ -53,6 +54,11 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     const [load, setLoad] = useState(false);
     const [tipo, setTipo] = useState("");
     const [address, setEditAddress] = useState(false);
+    const [street, setStreet] = useState("");
+    const [neighborhood, setNeighborhood] = useState("");
+    const [number, setNumber] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
     
     const getFormasPagamento = async () => {
         setOpenModal(true);
@@ -82,7 +88,6 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     }
 
     const saveFormaPag = () => {
-        
         try {
             setLoad(true);
             setFormaPag(tipo);
@@ -101,7 +106,25 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     const editAddress = () => {
         setEditAddress(true);
         setOpenModal(true);
+    }
 
+    const getCep = async (cep: string) => {
+        if (cep.length != 8) {
+            return;
+        }
+
+        try {
+            const response = await cepApi.get(`/${cep}`);
+
+            setStreet(response.data.logradouro);
+            setNeighborhood(response.data.bairro);
+            setCity(response.data.localidade);
+            setState(response.data.uf);
+        }
+
+        catch {
+            toast.error("Ocorreu um erro ao buscar os dados do cep em questão!");
+        }
     }
 
     const saveEndereco = () => {
@@ -443,33 +466,33 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                         <section className={`grid grid-rows-2 gap-5 mt-2 `}>
                            <div className="flex flex-col gap-2 text-sm text-gray-700">
                                 <label htmlFor="cep">Cep:</label>
-                                <Input id="cep" type="number" placeholder="Digite o seu cep..."/>
+                                <Input id="cep" onChange={(e) => getCep(e.target.value)} type="number" placeholder="Digite o seu cep..."/>
                            </div>
 
                             <div className="flex flex-col gap-2 text-sm text-gray-700">
                                     <label htmlFor="rua">Rua:</label>
-                                    <Input id="rua" type="text" placeholder="Digite a sua rua..."/>
+                                    <Input id="rua" value={street} onChange={(e) => setStreet(e.target.value)} type="text" placeholder="Digite a sua rua..."/>
                             </div>
 
                            <div className="grid grid-cols-2 gap-5">
                                 <div className="flex flex-col gap-2 text-sm text-gray-700">
                                         <label htmlFor="numero">Número:</label>
-                                        <Input id="numero" type="text" placeholder="Digite o número..."/>
+                                        <Input id="numero" value={number} onChange={(e) => setNumber(e.target.value)} type="text" placeholder="Digite o número..."/>
                                 </div>
 
                                 <div className="flex flex-col gap-2 text-sm text-gray-700">
                                         <label htmlFor="bairro">Bairro:</label>
-                                        <Input id="bairro" type="string" placeholder="Digite o seu bairro..."/>
+                                        <Input id="bairro" value={neighborhood} onChange={(e) => setNeighborhood(e.target.value)} type="string" placeholder="Digite o seu bairro..."/>
                                 </div>
 
                                 <div className="flex flex-col gap-2 text-sm text-gray-700">
                                         <label htmlFor="cidade">Cidade:</label>
-                                        <Input id="cidade" type="text" placeholder="Digite a sua cidade..."/>
+                                        <Input id="cidade" value={city} onChange={(e) => setCity(e.target.value)} type="text" placeholder="Digite a sua cidade..."/>
                                 </div>
 
                                 <div className="flex flex-col gap-2 text-sm text-gray-700">
                                         <label htmlFor="uf">UF:</label>
-                                        <Input id="uf" type="string" placeholder="Digite a uf..."/>
+                                        <Input id="uf" value={state} onChange={(e) => setState(e.target.value)} type="string" placeholder="Digite a uf..."/>
                                 </div>
                            </div>
                         </section>
