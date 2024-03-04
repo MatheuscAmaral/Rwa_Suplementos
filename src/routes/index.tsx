@@ -55,6 +55,10 @@ const router = createBrowserRouter([
                         </PrivateRoute>
             },
             {
+                path: "/pedidos",
+                element: <Orders/>
+            },
+            {
                 path: "*",
                 element: <NotFound/>
             }

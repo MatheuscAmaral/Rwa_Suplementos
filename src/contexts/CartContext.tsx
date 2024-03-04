@@ -7,6 +7,7 @@ interface CartDataProps {
     cartAmount: number;
     addItemCart: (newItem: ProductsProps) => void;
     removeItemCart: (product: ProductsProps) => void;
+    clearAll: () => void;
     descontos: number,
     total: number;
 }
@@ -59,6 +60,13 @@ const CartProvider = ({children}: CartProviderProps) => {
         return price;
     }
 
+    const clearAll = () => {
+        setCart([]);
+        setTotal(0);
+        setDescontos(0);
+        setQtd(0);
+    }
+
     const addItemCart = (newItem: ProductsProps) => {
         const existItemCart = cart.filter(c => c.prod_id === newItem.prod_id);
         const index = cart.findIndex(c => c.prod_id === newItem.prod_id);
@@ -95,7 +103,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         setCart([...cartList, data]);
         totalCart([...cartList, data]);
         toast.success('Produto adicionado ao carrinho com sucesso!');
-    };
+    }
     
     
     const removeItemCart = (product: ProductsProps) => {
@@ -160,7 +168,7 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
 
     return ( 
-        <CartContext.Provider value={{cart, cartAmount: cart.length, addItemCart, removeItemCart, total, descontos}}>
+        <CartContext.Provider value={{cart, cartAmount: cart.length, addItemCart, removeItemCart, total, descontos, clearAll}}>
             {children}
         </CartContext.Provider>
     )

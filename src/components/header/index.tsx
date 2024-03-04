@@ -428,7 +428,7 @@ export const Header = () => {
                         <User className="mr-2 h-4 w-4" />
                         <span>Minha conta</span>
                       </DropdownMenuItem>
-                      <DropdownMenuItem className='cursor-pointer'>
+                      <DropdownMenuItem onClick={() => navigate("/pedidos")} className='cursor-pointer'>
                         <CreditCard className="mr-2 h-4 w-4" />
                         <span>Pedidos</span>
                       </DropdownMenuItem>

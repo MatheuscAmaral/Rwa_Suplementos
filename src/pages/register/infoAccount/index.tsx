@@ -225,14 +225,11 @@ export function InfoAccount() {
                 if (errors.email) {
                     return toast.error(error.response.data.errors.email);
                 }
-
             }
 
             finally {
                 setLoading(false);
             }
-
-
         }
     }
 
