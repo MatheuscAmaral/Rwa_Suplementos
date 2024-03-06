@@ -21,7 +21,6 @@ import {
   
 
 export interface ProductsProps {
-    [x: string]: any;
     prod_id: number, 
     title: string,
     price: number,
@@ -38,6 +37,7 @@ export interface ProductsProps {
     tipo_desconto: number,
     valor_desconto: number,
     priceWithDiscount: number,
+    stock: number
 }
 
 export const Home = () => {
@@ -55,7 +55,7 @@ export const Home = () => {
         getProducts();
     }, [])
 
-
+console.log(products)
     return (  
         <main className="w-full mx-auto select-none">       
             <ResponsiveCarousel className="mb-5" autoPlay infiniteLoop showArrows={false} showThumbs={false} showStatus={false}>

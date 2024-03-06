@@ -37,7 +37,6 @@ import Container from "@/components/container";
 export const Orders = () => {
     const [pedidos, setPedidos] = useState<PedidosProps[]>([]);
     const {user} = useContext(AuthContext);
-    const [data, setData] = useState('');
     const [ordersFilter, setOrdersFilter] = useState("0");
     const [load, setLoad] = useState(false);
 
@@ -47,11 +46,7 @@ export const Orders = () => {
                 setLoad(true);
                 const response = await api.get(`/pedidos/${user[0].id}/${ordersFilter}`);
             
-                const createdAtMoment = moment(response.data.pedidos.created_at);
-                console.log(response.data.pedidos.created_at);
                 setPedidos(response.data.pedidos);
-
-                setData(createdAtMoment.format('DD/MM/YYYY')); 
             }
 
             catch {
@@ -73,12 +68,18 @@ export const Orders = () => {
         });
     }
 
+    const formatData = (data: string) => {
+        const createdAtMoment = moment(data);
+
+       return createdAtMoment.format('DD/MM/YYYY');
+    }
+
     return (
         <main className="h-svh">
             <Container>
                <h1 className="text-2xl font-semibold text-gray-700 flex items-center gap-1">Pedidos <span className="text-xs mt-1">({pedidos.length})</span></h1>
 
-               <div className="flex justify-between mb-10 mt-6">
+               <div className="flex justify-between gap-5 mb-10 mt-6">
                     <div className="flex">
                         <input type="text" placeholder="Pesquisar..." className="border-2 px-1 py-1.5 border-gray-200 rounded-l-md pl-2 text-black text-sm"/>
                         <button className="bg-blue-700 px-3 text-white rounded-r-md">
@@ -111,7 +112,7 @@ export const Orders = () => {
                                 pedidos.map(p => {
                                     return (
                                         <Accordion key={p.pedido_id} type="single" collapsible>
-                                            <AccordionItem className="border-2 rounded-lg px-5 border-gray-100" value="item-1">
+                                            <AccordionItem className="border-2 rounded-lg px-5 border-gray-100 text-xs md:text-sm" value="item-1">
                                                 <AccordionTrigger className="select-none">
                                                     <p className="flex flex-col gap-1 items-start">
                                                         Pedido
@@ -149,10 +150,12 @@ export const Orders = () => {
     
                                                     <p className="flex flex-col gap-1 items-start">
                                                         Data
-                                                        <span className="text-xs font-medium text-gray-600">{data}</span>
+                                                        <span className="text-xs font-medium text-gray-600">{
+                                                            formatData(p.created_at)
+                                                        }</span>
                                                     </p>
     
-                                                    <p className="flex flex-col gap-1 items-start">
+                                                    <p className="hidden md:flex flex-col gap-1 items-start">
                                                         Pagamento
                                                         <span className="text-xs font-medium text-gray-600">
                                                             {
@@ -175,7 +178,7 @@ export const Orders = () => {
                                                         </span>
                                                     </p>
     
-                                                    <p className="flex flex-col gap-1 items-start">
+                                                    <p className="hidden md:flex flex-col gap-1 items-start">
                                                         Total
                                                         <span className="text-xs font-medium text-gray-600">
                                                             {

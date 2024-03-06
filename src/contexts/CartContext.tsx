@@ -28,7 +28,8 @@ export interface CartProps {
     promocao_id: number,
     tipo_desconto: number,
     valor_desconto: number,
-    priceWithDiscount: number
+    priceWithDiscount: number,
+    stock: number
 }
 
 interface CartProviderProps {

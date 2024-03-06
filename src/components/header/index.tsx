@@ -520,12 +520,42 @@ export const Header = () => {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    onClick={() => navigate("/login")}
+                    className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${user.length <= 0 ? "flex" : "hidden"}`}
                   >
-                    Features
+                    Entrar
+                    <User fontSize={20} />
                   </a>
-                
+                  <a
+                    onClick={() => navigate("/cadastro")}
+                    className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${user.length <= 0 ? "flex" : "hidden"}`}
+                  >
+                    Cadastrar
+                    <UserPlus fontSize={20} />
+                  </a>
+                  <a
+                    onClick={() => navigate("/conta")}
+                    className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${user.length <= 0 ? "hidden" : "flex"}`}
+                  >
+                    Minha conta
+                    <User fontSize={20} />
+                  </a>
+
+                  <a
+                    onClick={() => navigate("/pedidos")}
+                    className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${user.length <= 0 ? "hidden" : "flex"}`}
+                  >
+                    Pedidos
+                    <CreditCard fontSize={20} />
+                  </a>
+
+                  <a
+                    onClick={() => authUser([])}
+                    className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${user.length <= 0 ? "hidden" : "flex"}`}
+                  >
+                    Sair
+                    <LogOut fontSize={20} />
+                  </a>
                 </div>
               </div>
             </div>
