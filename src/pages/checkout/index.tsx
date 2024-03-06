@@ -233,7 +233,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   };
 
   return (
-    <main>
+    <main className="mb-20">
       {pedidoMessage != "" ? (
         <div className="flex flex-col gap-5 h-svh items-center mt-52">
           <FaCheckCircle fontSize={40} className="text-green-500" />
@@ -322,7 +322,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               </span>
             </div>
 
-            <div className="flex flex-col gap-1 mt-10  h-full max-h-80 overflow-auto scrollbar-none">
+            <div className="flex flex-col gap-1 mt-10 h-full max-h-80 overflow-auto scrollbar-none">
               {cart.map((p) => {
                 return (
                   <div
@@ -378,7 +378,6 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               })}
             </div>
 
-            <hr className="border-gray-100" />
           </section>
 
           <form onSubmit={(e) => finalizarPedido(e)} className="w-full md:max-w-80 rounded-lg px-5 py-4 pb-5 border">
@@ -547,7 +546,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                       );
                     })
                   ) : (
-                    <div className="text-center mt-10">
+                    <div className="text-center mt-1">
                       <h1>Nenhuma forma de pagamento disponível!</h1>
                     </div>
                   )}

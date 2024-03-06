@@ -5,8 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { Md123 } from "react-icons/md";
 import { api } from '@/api';
 import toast from 'react-hot-toast';
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { TbPasswordFingerprint } from "react-icons/tb";
 
 
 export const Auth = () => {
@@ -15,6 +18,7 @@ export const Auth = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const { authUser } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -28,6 +32,10 @@ export const Auth = () => {
             }
 
             const response = await api.post("/login", data);
+
+            if(response.data.message) {
+                return toast.error(response.data.message);
+            }
 
             if (response.data && response.data.user) {
                 authUser([response.data.user]);
@@ -52,18 +60,26 @@ export const Auth = () => {
                 <h1 className='text-4xl font-semibold mb-10 text-black'>Entrar <span className='text-blue-800'>com</span></h1>
 
                 <form onSubmit={(e) => verifyLogin(e)} className='w-full flex flex-col gap-5'>
-                    <div className='w-full text-sm text-gray-600'>
+                    <div className='w-full text-sm text-gray-600 relative'>
                         <label htmlFor="user" className='ml-1'>CPF *</label>
                         <Input value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='Digite seu cpf' id='user' className='text-xs mt-2' required/>
+                        <Md123  fontSize={32} className="absolute top-8 right-1.5 transition-all "/>
                     </div>
 
-                    <div className='w-full text-sm text-gray-600'>
+                    <div className='w-full text-sm text-gray-600 relative'>
                         <label htmlFor="password" className='ml-1'>Senha *</label>
-                        <Input value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Digite sua senha' type='password' id='password' className='text-xs mt-2' required/>
-
-                        <a href="#">
-                            {/* <p className='text-blue-800 mt-3 text-end mb-3'>Esqueci minha senha</p> */}
-                        </a>
+                        <Input value={password} onChange={(e) => setPassword(e.target.value)}  placeholder='Digite sua senha' type={showPassword ? 'text': 'password'} id='password' className={`text-xs mt-2 transition-all`} required/>
+                        {
+                            password.length <= 0 ? (
+                                <TbPasswordFingerprint fontSize={20} className="absolute top-9 right-3 pt-0.5 transition-all "/>
+                            ) : (
+                                showPassword ? (
+                                    <FaEye onClick={() => setShowPassword(false)} fontSize={20} className="absolute top-9 pt-1 right-3 transition-all "/>
+                                ) : (
+                                    <FaEyeSlash onClick={() => setShowPassword(true)} fontSize={20} className="absolute top-9 pt-1 right-3 transition-all "/>
+                                )
+                            )
+                        }
                     </div>
 
                     <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
