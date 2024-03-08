@@ -55,7 +55,6 @@ export const Home = () => {
         getProducts();
     }, [])
 
-console.log(products)
     return (  
         <main className="w-full mx-auto select-none">       
             <ResponsiveCarousel className="mb-5" autoPlay infiniteLoop showArrows={false} showThumbs={false} showStatus={false}>

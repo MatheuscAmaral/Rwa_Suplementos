@@ -13,6 +13,7 @@ import { Account } from "../pages/account";
 import { InfoAccount } from "@/pages/register/infoAccount";
 import { PrivateRoute } from "./privateRouter";
 import NotFound from "@/pages/notFound";
+import ChangePassword from "@/pages/changePassword";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,12 @@ const router = createBrowserRouter([
             {
                 path: "/pedidos",
                 element: <Orders/>
+            },
+            {
+                path: "/alterar/",
+                element: <PrivateRoute>
+                            <ChangePassword/>
+                        </PrivateRoute>
             },
             {
                 path: "*",
