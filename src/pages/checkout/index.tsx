@@ -482,12 +482,12 @@ export const Checkout = ({ className, ...props }: CardProps) => {
             <Card
               className={`${cn("w-full", className)} ${
                 openModal ? "block" : "hidden"
-              } ${address && "hidden"} relative mx-auto max-w-lg`}
-              style={{ height: selectedOption === "2" ? 650 : 300 }}
+              } ${address && "hidden"} relative md:mx-auto max-w-lg mx-5`}
+              style={{ height: selectedOption === "2" ? 680 : 300 }}
               {...props}
             >
-              <CardHeader className="relative">
-                <CardTitle>Forma de pagamento</CardTitle>
+              <CardHeader className="relative ">
+                <CardTitle className="text-lg xl:text-2xl">Forma de pagamento</CardTitle>
                 <IoClose
                   onClick={() => closeModal()}
                   fontSize={25}
@@ -502,12 +502,12 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                   className={`grid ${
                     formas.length <= 0 ? "grid-cols-1" : "grid-cols-3"
                   } gap-2 mt-3 justify-center ${
-                    selectedOption != "2" && "mb-10"
+                    selectedOption != "2" && "mb-0 sm:mb-10"
                   }`}
                 >
                   <div
                     className={`${
-                      formas.length < 0 ? "flex justify-center" : "hidden"
+                      formas.length > 0 ? "hidden" : "flex justify-center"
                     } text-center mt-3`}
                   >
                     <AiOutlineLoading3Quarters
@@ -546,7 +546,9 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                       );
                     })
                   ) : (
-                    <div className="text-center mt-1">
+                    <div className={`text-center mt-1 ${
+                      loading ? "hidden" : "flex justify-center"
+                    }`}>
                       <h1>Nenhuma forma de pagamento disponível!</h1>
                     </div>
                   )}

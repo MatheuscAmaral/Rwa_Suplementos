@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
 import logo from "../../assets/rwalogo2.png";
 import { Link, useNavigate } from 'react-router-dom';
@@ -57,8 +57,24 @@ export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [input, setInput] = useState<string>("");
   
-  const { cart, cartAmount, addItemCart, removeItemCart, total, descontos} = useContext(CartContext);
+  const { cart, cartAmount, addItemCart, removeItemCart, total, descontos, fillCart} = useContext(CartContext);
   const { user, authUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedUser != null) {
+        const user = JSON.parse(storedUser);
+        authUser([...user]);
+    }
+
+    if (storedCart !== null) {
+        const cart = JSON.parse(storedCart);
+        fillCart([...cart]);
+    }
+}, []);
+
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -298,9 +314,9 @@ export const Header = () => {
 
   return (
     <header className="bg-white shadow-sm">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between pt-5 px-6 mb-5 lg:hidden" aria-label="Global">
-        <div className="w-full flex items-center justify-between mx-auto lg:hidden">
-          <div className="flex lg:hidden">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between pt-5 px-6 mb-5 xl:hidden" aria-label="Global">
+        <div className="w-full flex items-center justify-between mx-auto xl:hidden">
+          <div className="flex xl:hidden">
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -315,7 +331,7 @@ export const Header = () => {
             <img className="h-16" src={logo} alt="logo" />
           </Link>
 
-          <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+          <Popover.Group className="hidden xl:flex lg:gap-x-12 w-full max-w-2xl relative">
             <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
             <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
               <IoSearch fontSize={16}/>
@@ -323,12 +339,12 @@ export const Header = () => {
           </Popover.Group>
 
           
-          <div className={`${user.length > 0 ? "gap-5" : "gap-2"}lg:flex lg:gap-2 items-center lg:flex-1 lg:justify-end`}>
+          <div className={`${user.length > 0 ? "gap-5" : "gap-2"}xl:flex xl:gap-2 items-center xl:flex-1 xl:justify-end`}>
             {
               user.length > 0 ? (
                   user.map(u => {
                     return (
-                    <div key={u.id} className='hidden lg:flex items-center gap-2'>
+                    <div key={u.id} className='hidden xl:flex items-center gap-2'>
                       <Link to={"/conta"} >
                         <FaUser fontSize={19.5}/>
                       </Link>
@@ -342,7 +358,7 @@ export const Header = () => {
                   )
                 })
               ) : (
-                <Link className='hidden lg:flex' to={"/login"} >
+                <Link className='hidden xl:flex' to={"/login"} >
                   <FaUser fontSize={20}/>
                 </Link>
               )
@@ -378,12 +394,12 @@ export const Header = () => {
 
       </nav>
 
-      <nav className='hidden lg:flex mx-auto justify-between w-full max-w-7xl pt-5 px-30 md:px-16 items-center'>
+      <nav className='hidden xl:flex mx-auto justify-between w-full max-w-7xl pt-5 px-30 md:px-16 items-center'>
           <Link to={"/"}>
             <img className="h-16" src={logo} alt="logo" />
           </Link>
 
-          <Popover.Group className="hidden lg:flex lg:gap-x-12 w-full max-w-2xl relative">
+          <Popover.Group className="hidden xl:flex x:gap-x-12 w-full max-w-2xl relative">
             <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
             <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
               <IoSearch fontSize={16}/>
@@ -395,7 +411,7 @@ export const Header = () => {
               user.length > 0 ? (
                   user.map(u => {
                     return (
-                    <div key={u.id} className='hidden lg:flex items-center'>
+                    <div key={u.id} className='hidden xl:flex items-center'>
                         <FaUser fontSize={19.5}/>
                     </div>
                   )
@@ -487,9 +503,9 @@ export const Header = () => {
       </nav>
 
       <div className='w-full max-w-7xl px-10 pb-5'>
-        <Popover.Group className=" lg:hidden lg:gap-x-12 w-full max-w-7xl relative">
+        <Popover.Group className=" xl:hidden xl:gap-x-12 w-full max-w-7xl relative">
           <Input type="text" placeholder="Procure por um produto..." value={input} onChange={(e) => setInput(e.target.value)}/>
-          <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 p'>
+          <Link onClick={() => setInput("")} to={`/catalogo/${input != "" ? input : "todos"}`} className='absolute right-3 top-3 '>
             <IoSearch fontSize={16}/>
           </Link>
         </Popover.Group>
@@ -497,7 +513,7 @@ export const Header = () => {
 
 
 
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+      <Dialog as="div" className="xl:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
           <Dialog.Panel className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
