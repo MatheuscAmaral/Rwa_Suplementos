@@ -66,7 +66,6 @@ export const Catalog = () => {
                                     <li>Whey</li>
                                     <li>Creatina</li>
                                     <li>Outros</li>
-                                    <li>Ômega 3</li>
                                 </ul>
 
                                 <hr className="mt-4 opacity-50"/>

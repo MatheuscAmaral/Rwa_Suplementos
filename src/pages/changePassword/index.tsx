@@ -9,6 +9,7 @@ import { TiEdit } from "react-icons/ti";
 import { api } from "@/api";
 import { AuthContext } from "@/contexts/AuthContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
   const { user } = useContext(AuthContext);
@@ -17,9 +18,20 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [password, setPassword] = useState(""); 
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const changePass = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if(password == oldPassword) {
+        setError(true);
+        return toast.error("A nova senha não pode ser igual a senha atual!");
+    }
+
+    if(password.length < 6) {
+        setError(true);
+        return toast.error("A nova senha não pode conter menos de 6 digítos!");
+    }
 
     const data = {
         password: password
@@ -29,7 +41,10 @@ const ChangePassword = () => {
         setLoading(true);
         await api.put(`/users/password/${user[0].id}/${oldPassword}`, data);
 
+        setOldPassword("");
+        setPassword("");
         toast.success("Senha atualizada com sucesso!");
+        navigate("/conta");
         setError(false);
     }
 
@@ -64,12 +79,14 @@ const ChangePassword = () => {
 
             <form onSubmit={(e) => changePass(e)} className="flex flex-col justify-start gap-5 mt-8 mb-20 w-full xl:max-w-96">
               <div className="flex flex-col gap-1 relative">
-                <span className="text-sm text-gray-500">Senha antiga:</span>
+                <span className="text-sm text-gray-500">Senha atual:</span>
                 <input
                   onChange={(e) => setOldPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
+                  value={oldPassword}
                   className={`border w-full rounded-sm text-xs py-2 pl-2 ${error ? "border-red-500" : "border-gray-100"}`}
                   placeholder="Digite a sua antiga senha"
+                  required
                 />
 
                 <IoEyeSharp onClick={() => setShowPassword(false)} className={`${showPassword ? "block" : "hidden"} absolute right-2 top-8`}/>
@@ -81,8 +98,10 @@ const ChangePassword = () => {
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   type={showPassword ? "text" : "password"}
+                  value={password}
                   className={`border  w-full rounded-sm text-xs py-2 pl-2 ${error ? "border-red-500" : "border-gray-100"}`}
                   placeholder="Digite a sua antiga senha"
+                  required
                 />
 
                 <IoEyeSharp onClick={() => setShowPassword(false)} className={`${showPassword ? "block" : "hidden"} absolute right-2 top-8`}/>

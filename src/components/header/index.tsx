@@ -13,7 +13,6 @@ import {
   CreditCard,
   LogIn,
   LogOut,
-  Settings,
   User,
   UserPlus,
 } from "lucide-react"
@@ -421,7 +420,6 @@ export const Header = () => {
               )
             }
 
-
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <p className='text-sm mx-2 cursor-pointer flex items-center gap-1.5'>
@@ -434,7 +432,7 @@ export const Header = () => {
                     </span>
                   </p>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56">
+                <DropdownMenuContent className="w-56 hidden xl:block">
                   <DropdownMenuLabel className={`${user.length > 0 ? "flex" : "hidden"}`}>
                     Minha conta
                   </DropdownMenuLabel>
@@ -447,10 +445,6 @@ export const Header = () => {
                       <DropdownMenuItem onClick={() => navigate("/pedidos")} className='cursor-pointer'>
                         <CreditCard className="mr-2 h-4 w-4" />
                         <span>Pedidos</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem className='cursor-pointer'>
-                        <Settings className="mr-2 h-4 w-4" />
-                        <span>Configurações</span>
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                   <DropdownMenuGroup className={`${user.length <= 0 ? "block" : "hidden"}`}>

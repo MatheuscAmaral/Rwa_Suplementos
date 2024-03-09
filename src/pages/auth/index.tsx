@@ -2,7 +2,7 @@ import wallpaper from '../../assets/wallpaper.png'
 import logo from "../../assets/rwalogo2.png";
 import { Input } from '@/components/ui/input';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext , useEffect} from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Md123 } from "react-icons/md";
@@ -19,6 +19,21 @@ export const Auth = () => {
     const navigate = useNavigate();
     const { authUser } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        const verifyStoredUser =  () => {
+            const storedUser = localStorage.getItem("user");
+        
+            if (storedUser != null) {
+                const user = JSON.parse(storedUser);
+                authUser(user);
+                return navigate("/");
+            }
+
+        }
+
+        verifyStoredUser();
+    }, [])
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
