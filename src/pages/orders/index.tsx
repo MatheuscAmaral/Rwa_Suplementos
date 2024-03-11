@@ -19,17 +19,35 @@ import { LuPackageSearch } from "react-icons/lu";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "@/api";
 import { AuthContext } from "@/contexts/AuthContext";
 import moment from 'moment';
 import toast from "react-hot-toast";
 
-interface PedidosProps {
+export interface PedidosProps {
     pedido_id: number,
     total: number,
     status: number,
     created_at: string,
-    formapag_id: number
+    formapag_id: number,
+    descontos: number,
+    valor_frete: number,
+    name: string,
+    cpf: number, 
+    cliente_id: number,
+    cep: number,
+    rua: string,
+    numero: number,
+    bairro: string,
+    cidade: string,
+    uf: string,
+    produto_id: number,
+    title: string,
+    qtd_atendida: number,
+    image: string,
+    price: number,
+    flavor: number,
 }
 
 import Container from "@/components/container";
@@ -41,6 +59,7 @@ export const Orders = () => {
     const {user} = useContext(AuthContext);
     const [ordersFilter, setOrdersFilter] = useState("0");
     const [load, setLoad] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getPedidos = async () => {
@@ -194,10 +213,35 @@ export const Orders = () => {
                                                             </AccordionTrigger>
                                                             <AccordionContent className="mt-1">
                                                                 <hr className="mb-2"/>
-                                                                <p>Pedido Realizado.</p>
+                                                                <p>
+                                                                    Pedido  
+                                                                    {
+                                                                        p.status == 1 && (
+                                                                            " em análise"
+                                                                        )
+                                                                    }
+            
+                                                                    {
+                                                                        p.status == 2 && (
+                                                                            " bloqueado"
+                                                                        )
+                                                                    }
+            
+                                                                    {
+                                                                        p.status == 3 && (
+                                                                            " cancelado"
+                                                                        )
+                                                                    }
+            
+                                                                    {
+                                                                        p.status == 4 && (
+                                                                            " faturado"
+                                                                        )
+                                                                    }
+                                                                </p>
                 
                                                                 <div className="mt-5 flex justify-center gap-2">
-                                                                    <button className="p-3 text-md font-medium text-white bg-blue-700 rounded-md">Detalhes do pedido</button>
+                                                                    <button onClick={() => navigate(`/pedidos/detalhes/${p.pedido_id}`)} className="p-3 text-md font-medium text-white bg-blue-700 rounded-md">Detalhes do pedido</button>
                                                                     <button className="p-3 text-md font-medium text-black border-2 border-blue-700 hover:bg-blue-700 hover:text-white transition-all rounded-md">Preciso de ajuda</button>
                                                                 </div>
                                                             </AccordionContent>

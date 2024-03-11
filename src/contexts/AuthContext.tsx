@@ -32,7 +32,6 @@ const AuthProvider = ({children}: AuthProvider) => {
     const authUser = (user: UserDataProps[]) => {
         setUser([...user]);
         localStorage.setItem("user", JSON.stringify([...user]));
-        console.log(user)
     }
     
     return ( 
