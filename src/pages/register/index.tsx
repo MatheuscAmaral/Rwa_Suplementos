@@ -57,8 +57,7 @@ export const Register = () =>  {
 
     return (
         <div className='relative flex justify-between gap-5'>
-            <div className='flex flex-col justify-center py-44 items-center gap-5 border-black p-16 my-auto mx-auto w-full max-w-lg'>
-
+            <div className='flex flex-col justify-center py-44 items-center gap-5 border-black p-16 my-auto mx-auto w-full max-w-xl'>
                 <h1 className='text-4xl flex items-center font-semibold mb-10 text-black'>Cadastre- <span className='text-blue-800'>se</span></h1>
                 
                 <form onSubmit={(e) => verifyRegister(e)} action="" className='w-full flex flex-col gap-5'>
@@ -99,7 +98,7 @@ export const Register = () =>  {
                     <img src={logo} className='w-20'/>                
                 </Link>
                 
-                <img src={wallpaper} style={{"height": "920px"}} className='w-full max-w-5xl' />
+                <img src={wallpaper} className='w-full max-w-4xl  h-svh' />
             </div>
    </div>
     )

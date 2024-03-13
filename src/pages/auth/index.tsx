@@ -24,12 +24,11 @@ export const Auth = () => {
         const verifyStoredUser =  () => {
             const storedUser = localStorage.getItem("user");
         
-            if (storedUser != null) {
+            if (storedUser && storedUser?.length <= 0) {
                 const user = JSON.parse(storedUser);
                 authUser(user);
                 return navigate("/");
             }
-
         }
 
         verifyStoredUser();
@@ -70,7 +69,7 @@ export const Auth = () => {
 
     return (
        <div className='relative flex justify-between gap-5'>
-            <div className='flex flex-col justify-center py-44 items-center gap-5 border-black p-16 my-auto mx-auto w-full max-w-lg'>
+            <div className='flex flex-col justify-center py-44 items-center gap-5 border-black p-16 my-auto mx-auto w-full max-w-xl'>
 
                 <h1 className='text-4xl font-semibold mb-10 text-black'>Entrar <span className='text-blue-800'>com</span></h1>
 
@@ -122,7 +121,7 @@ export const Auth = () => {
                     <img src={logo} className='w-20'/>                
                 </Link>
                 
-                <img src={wallpaper} style={{"height": "920px"}} className='w-full max-w-5xl' />
+                <img src={wallpaper} className='w-full max-w-4xl h-svh' />
             </div>
        </div>
     )
