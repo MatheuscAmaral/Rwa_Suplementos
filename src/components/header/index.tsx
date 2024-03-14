@@ -4,7 +4,7 @@ import logo from "../../assets/rwalogo2.png";
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react'; 
 import { CartContext } from '@/contexts/CartContext'
-import { AuthContext } from '@/contexts/AuthContext';
+import { AuthContext, UserDataProps } from '@/contexts/AuthContext';
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -40,6 +40,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
 import { Input } from "@/components/ui/input"
 import { ProductsProps } from '@/pages/home';
+import { api } from '@/api';
 
 type Anchor = 'right';
 
@@ -60,11 +61,18 @@ export const Header = () => {
   const { user, authUser } = useContext(AuthContext);
 
   useEffect(() => {
+    // const verifyIfUserExists = async (cpf, email) => {
+    //    const response =  await api.get(`/users/${cpf}/${email}`);
+
+    //    return response.data;
+    // }
+
     const storedUser = localStorage.getItem("user");
     const storedCart = localStorage.getItem("cart");
 
     if (storedUser != null) {
         const user = JSON.parse(storedUser);
+        
         authUser([...user]);
     }
 
@@ -72,6 +80,7 @@ export const Header = () => {
         const cart = JSON.parse(storedCart);
         fillCart([...cart]);
     }
+
 }, []);
 
 
