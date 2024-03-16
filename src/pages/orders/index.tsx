@@ -100,7 +100,7 @@ export const Orders = () => {
             <Container>
                 <div className="flex flex-col xl:flex-row w-full justify-center gap-3 xl:mt-10" >
                     <Menu/>
-                    <div className="border  border-gray-100 p-6 rounded-lg pb-52 w-full">
+                    <div className={`border  border-gray-100 p-6 rounded-lg ${load ? "pb-52" : "pb-16"} w-full `}>
                         <h1 className="text-2xl font-semibold text-gray-700 flex items-center gap-1">Pedidos <span className="text-xs mt-1">({pedidos.length})</span></h1>
 
                         <div className="flex justify-between gap-5 mb-10 mt-6">

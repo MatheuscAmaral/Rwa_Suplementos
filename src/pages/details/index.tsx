@@ -55,11 +55,17 @@ export const Details = () => {
                             <div className="flex flex-col gap-2 w-full max-w-sm">
                                 <h1 className="text-3xl font-semibold">{product.title}</h1>
                                 <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.prod_id}</span>
-                                <p className="text-3xl font-semibold flex items-center gap-2">{product.price.toLocaleString('pt-br', {
-                                    style: 'currency',
-                                    currency: 'BRL'
-                                })} <span  className="text-lg">no Pix</span></p>
-                                <span className="pb-5">ou até 12x no cartão</span>
+                                {
+                                    product.stock > 0 && (
+                                        <>
+                                            <p className="text-3xl font-semibold flex items-center gap-2">{product.price.toLocaleString('pt-br', {
+                                            style: 'currency',
+                                            currency: 'BRL'
+                                            })} <span  className="text-lg">no Pix</span></p>
+                                            <span className="pb-5">ou até 12x no cartão</span>
+                                        </>
+                                    )    
+                                }
 
                                 <ul className="flex flex-col gap-2">
                                     <li className="text-gray-600 flex gap-3 items-center">
@@ -124,15 +130,23 @@ export const Details = () => {
                                     </li>
                                 </ul>
 
-                                <div className="flex items-center rounded-lg shadow-sm mt-8 w-36">  
-                                    <Link to={"/checkout"} className=" shadow-md p-3 rounded-s-lg">
-                                        Comprar
-                                    </Link>
-
-                                    <button onClick={() => addProductCart(product)} className=" shadow-md p-3 rounded-e-lg ">
-                                        <FaCartPlus className="hover:scale-105 transition-all" fontSize={24}  />
-                                    </button>
-                                </div>
+                               {
+                                 product.stock > 0 ? (
+                                    <div className="flex items-center rounded-lg shadow-sm mt-8 w-36">  
+                                        <Link to={"/checkout"} className=" shadow-md p-3 rounded-s-lg">
+                                            Comprar
+                                        </Link>
+    
+                                        <button onClick={() => addProductCart(product)} className=" shadow-md p-3 rounded-e-lg ">
+                                            <FaCartPlus className="hover:scale-105 transition-all" fontSize={24}  />
+                                        </button>
+                                    </div>
+                                 ) : (
+                                    <span className="bg-red-50 w-40 mt-5 text-center p-2 rounded-lg text-sm">
+                                        Produto indisponível
+                                    </span>
+                                 )
+                               }
 
                             </div>
                         </div>

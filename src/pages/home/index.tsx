@@ -81,7 +81,7 @@ export const Home = () => {
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
-                                if(p.category != "0" ) {
+                                if(p.category != "0") {
                                     return;
                                 }
                                 
@@ -98,15 +98,25 @@ export const Home = () => {
 
                                                     <div className="w-full flex flex-col gap-2">
                                                         <h2 className="text-md font-bold text-gray-700 ">{p.title}</h2>
-                                                        <div className="flex justify-between">
-                                                            <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                                style: 'currency',
-                                                                currency: 'BRL'
-                                                            })}</span>
-                                                            
-                                                            <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
-                                                                <FaCartPlus fontSize={18} color="white" />
-                                                            </button>
+                                                        <div>
+                                                            {
+                                                                p.stock <= 0 ?(
+                                                                    <span>
+                                                                        Produto indisponível
+                                                                    </span>
+                                                                ) : (
+                                                                    <div className="flex justify-between">
+                                                                        <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                            style: 'currency',
+                                                                            currency: 'BRL'
+                                                                        })}</span>
+                                                                        
+                                                                        <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                            <FaCartPlus fontSize={18} color="white" />
+                                                                        </button>
+                                                                    </div>
+                                                                )
+                                                            }
                                                         </div>
                                                     </div>
                                                 </CardContent>
@@ -154,15 +164,25 @@ export const Home = () => {
                                                     </div>
 
                                                     <h2 className="text-md font-bold ">{p.title}</h2>
-                                                    <div className="flex justify-between">
-                                                        <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                            style: 'currency',
-                                                            currency: 'BRL'
-                                                        })}</span>
-
-                                                        <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
-                                                            <FaCartPlus fontSize={18} color="white" />
-                                                        </button>
+                                                    <div>
+                                                        {
+                                                            p.stock <= 0 ?(
+                                                                <span>
+                                                                    Produto indisponível
+                                                                </span>
+                                                            ) : (
+                                                                <div className="flex justify-between">
+                                                                    <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                        style: 'currency',
+                                                                        currency: 'BRL'
+                                                                    })}</span>
+                                                                    
+                                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                        <FaCartPlus fontSize={18} color="white" />
+                                                                    </button>
+                                                                </div>
+                                                            )
+                                                        }
                                                     </div>
 
                                                 </CardContent>
@@ -193,7 +213,7 @@ export const Home = () => {
                         {
                             products.map(p => {
 
-                                if(p.category != "2" ) {
+                                if(p.category != "2") {
                                     return;
                                 }
                                 
@@ -210,15 +230,25 @@ export const Home = () => {
 
                                                 <h2 className="text-md font-bold ">{p.title}</h2>
 
-                                                <div className="flex justify-between">
-                                                    <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                        style: 'currency',
-                                                        currency: 'BRL'
-                                                    })}</span>
-
-                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
-                                                        <FaCartPlus fontSize={18} color="white" />
-                                                    </button>
+                                                <div className={`${p.stock <= 0 && "flex justify-center"}`}>
+                                                    {
+                                                        p.stock <= 0 ?(
+                                                            <span className="bg-red-100 w-full text-center p-2 rounded-lg text-sm">
+                                                                Produto indisponível
+                                                            </span>
+                                                        ) : (
+                                                            <div className="flex justify-between">
+                                                                <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
+                                                                    style: 'currency',
+                                                                    currency: 'BRL'
+                                                                })}</span>
+                                                                
+                                                                <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                    <FaCartPlus fontSize={18} color="white" />
+                                                                </button>
+                                                            </div>
+                                                        )
+                                                    }
                                                 </div>
 
                                                 {/*

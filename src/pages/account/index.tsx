@@ -80,10 +80,10 @@ export const Account = () => {
                                             user.map(u => {
                                                 return (
                                                     <>
-                                                        <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
-                                                            <label className=" text-gray-400 text-sm font-medium">CEP:</label>
-                                                            <p className="text-md font-medium text-gray-600">{u.cep}</p>
-                                                        </div>
+                                                    <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
+                                                        <label className=" text-gray-400 text-sm font-medium">CEP:</label>
+                                                        <p className="text-md font-medium text-gray-600">{u.cep}</p>
+                                                    </div>
                                                         
                                                     <div className="grid grid-cols-3">
                                                             <div className="flex flex-col gap-2 ml-2 mt-6">

@@ -61,28 +61,22 @@ export const Header = () => {
   const { user, authUser } = useContext(AuthContext);
 
   useEffect(() => {
-    const verifyIfUserExists = async (id: UserDataProps) => {
-       const response =  await api.get(`/users/${id}`);
+    // const verifyIfUserExists = async (cpf, email) => {
+    //    const response =  await api.get(`/users/${cpf}/${email}`);
 
-       if(response.data[0].status == 0) {
-          authUser([]);
-       }
-    }
+    //    return response.data;
+    // }
 
     const storedUser = localStorage.getItem("user");
     const storedCart = localStorage.getItem("cart");
 
-    if (storedUser && storedUser.length > 0) {
+    if (storedUser != null) {
         const user = JSON.parse(storedUser);
-
-        if(user.length > 0) {
-          verifyIfUserExists(user[0].id);
-        }
         
         authUser([...user]);
     }
 
-    if (storedCart && storedCart.length > 0) {
+    if (storedCart !== null) {
         const cart = JSON.parse(storedCart);
         fillCart([...cart]);
     }

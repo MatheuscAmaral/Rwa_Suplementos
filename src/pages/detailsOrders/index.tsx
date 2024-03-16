@@ -199,7 +199,7 @@ export const DetailsOrders = () => {
                                             ) :
                                             items.map(i => {
                                                 return (
-                                                    <div className="flex flex-col gap-1 h-full max-h-80 scrollbar-none overflow-y-auto">
+                                                    <div key={i.cliente_id} className="flex flex-col gap-1 h-full max-h-80 scrollbar-none overflow-y-auto">
                                                         <div className="flex gap-2 justify-between border rounded-md w-full border-gray-100 py-2 items-center"key={i.produto_id}>
                                                             <div className="flex gap-3 items-center w-full pl-5">
                                                                 <img src={i.image} className="w-16" alt="img_prod" />

@@ -219,7 +219,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     try {
       const response = await api.post("/pedidos", data);
 
-      setPedidoMessage(response.data.message);
+      setPedidoMessage(response.data.numero_pedido);
 
       toast.success("Pedido enviado com sucesso!");
       clearCart();
@@ -237,7 +237,8 @@ export const Checkout = ({ className, ...props }: CardProps) => {
       {pedidoMessage != "" ? (
         <div className="flex flex-col gap-5 h-svh items-center mt-52">
           <FaCheckCircle fontSize={40} className="text-green-500" />
-          <h1 className=" text-xl font-medium ">{pedidoMessage}</h1>
+          <h1 className=" text-xl font-medium ">Pedido enviado com sucesso!</h1>
+          <p className="text-md font-medium">Número do pedido: <span className="font-bold">{pedidoMessage}</span></p>
           <Link
             to={"/pedidos"}
             className="bg-blue-700 text-white p-3 rounded-md"
@@ -323,7 +324,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
             </div>
 
             <div className="flex flex-col gap-1 mt-10 h-full max-h-80 overflow-auto scrollbar-none">
-              {cart.map((p) => {
+              {cart && cart.map((p) => {
                 return (
                   <div
                     className="flex gap-2 justify-between border border-l-0 border-r-0 border-b-0 border-gray-100 py-2 items-center"
