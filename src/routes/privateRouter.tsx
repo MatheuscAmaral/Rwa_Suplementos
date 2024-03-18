@@ -7,7 +7,7 @@ export const PrivateRoute = ({children}: any) => {
     
     useEffect(() => {
         const verifyStoredUser =  () => {
-            const storedUser = localStorage.getItem("user");
+            const storedUser = localStorage.getItem("@userEcommerce");
         
             if (storedUser != null) {
                 const user = JSON.parse(storedUser);

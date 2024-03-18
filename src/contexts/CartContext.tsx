@@ -53,14 +53,13 @@ const CartProvider = ({children}: CartProviderProps) => {
         if(newItem.tipo_desconto == 1) {
             let discount = newItem.price * (newItem.valor_desconto / 100);
             setDescontos(desc => desc + discount);
-            localStorage.setItem("descontos", JSON.stringify(descontos + discount));
+            localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos + discount));
             price = newItem.price - discount;
         } else if (newItem.tipo_desconto == 0) {
             setDescontos(desc => desc + newItem.valor_desconto);
-            localStorage.setItem("descontos", JSON.stringify(descontos + newItem.valor_desconto));
+            localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos + newItem.valor_desconto));
             price = newItem.price - newItem.valor_desconto;
         }
-
 
         return price;
     }
@@ -73,8 +72,8 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
 
     const fillCart = (cartt: CartProps[]) => {
-        const storedTotal = localStorage.getItem("total");
-        const storedDescontos = localStorage.getItem("descontos");
+        const storedTotal = localStorage.getItem("@totalEcommerce");
+        const storedDescontos = localStorage.getItem("@descontosEcommerce");
 
         setCart([...cartt]);
 
@@ -112,7 +111,7 @@ const CartProvider = ({children}: CartProviderProps) => {
             setQtd(cartList[index].amount);
     
             setCart(cartList);
-            localStorage.setItem("cart", JSON.stringify(cartList));
+            localStorage.setItem("@cartEcommerce", JSON.stringify(cartList));
             totalCart(cartList); 
             
             toast.success('Produto atualizado com sucesso!');
@@ -127,7 +126,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         };
         
         setCart([...cartList, data]);
-        localStorage.setItem("cart", JSON.stringify([...cartList, data]));
+        localStorage.setItem("@cartEcommerce", JSON.stringify([...cartList, data]));
         totalCart([...cartList, data]);
         toast.success('Produto adicionado ao carrinho com sucesso!');
     }
@@ -143,7 +142,7 @@ const CartProvider = ({children}: CartProviderProps) => {
                 cart[index].amount--;
                 cart[index].total -= cart[index].priceWithDiscount;
                 setCart([...cart]);
-                localStorage.setItem("cart", JSON.stringify([...cart]));
+                localStorage.setItem("@cartEcommerce", JSON.stringify([...cart]));
 
                 setQtd(cart[index].amount);
                 
@@ -154,12 +153,12 @@ const CartProvider = ({children}: CartProviderProps) => {
                 if(cart[index].promocao_id > 0) {
                     if(descontos == 0) {
                         setDescontos(0);
-                        localStorage.setItem("descontos", JSON.stringify(0));
+                        localStorage.setItem("@descontosEcommerce", JSON.stringify(0));
                         return;
                     }
 
                     setDescontos(desc => desc - discount);
-                    localStorage.setItem("descontos", JSON.stringify(descontos - discount));
+                    localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos - discount));
                 }
                 
                 return;
@@ -169,17 +168,17 @@ const CartProvider = ({children}: CartProviderProps) => {
             if(cart[index].promocao_id > 0) {
                 if(descontos == 0) {
                     setDescontos(0);
-                    localStorage.setItem("descontos", JSON.stringify(0));
+                    localStorage.setItem("@descontosEcommerce", JSON.stringify(0));
                     return;
                 }
                 
                 setDescontos(desc => product.amount != -99 ? desc - (discount * product.amount) : desc - (discount * qtd));
-                localStorage.setItem("descontos", JSON.stringify(product.amount != -99 ? descontos - (discount * product.amount) : descontos - (discount * qtd)));
+                localStorage.setItem("@descontosEcommerce", JSON.stringify(product.amount != -99 ? descontos - (discount * product.amount) : descontos - (discount * qtd)));
             }
             
             cart.splice(index, 1)
             setCart([...cart]);
-            localStorage.setItem("cart", JSON.stringify([...cart]));
+            localStorage.setItem("@cartEcommerce", JSON.stringify([...cart]));
             totalCart([...cart]);
             
             toast.success('Produto removido do carrinho!');
@@ -198,7 +197,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         }, 0);
         
         setTotal(result);
-        localStorage.setItem("total", JSON.stringify(result));
+        localStorage.setItem("@totalEcommerce", JSON.stringify(result));
     }
 
     return ( 

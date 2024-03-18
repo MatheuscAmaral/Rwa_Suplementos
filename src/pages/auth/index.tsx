@@ -22,7 +22,7 @@ export const Auth = () => {
 
     useEffect(() => {
         const verifyStoredUser =  () => {
-            const storedUser = localStorage.getItem("user");
+            const storedUser = localStorage.getItem("@userEcommerce");
         
             if (storedUser && storedUser?.length <= 0) {
                 const user = JSON.parse(storedUser);
