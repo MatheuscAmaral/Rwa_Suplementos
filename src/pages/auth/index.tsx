@@ -51,8 +51,9 @@ export const Auth = () => {
                 return toast.error(response.data.message);
             }
 
-            if (response.data && response.data.user) {
-                authUser([response.data.user]);
+            if (response.data) {
+                toast.success("Login efetuado com sucesso!")
+                authUser([response.data]);
                 navigate("/");
             } 
         } 
