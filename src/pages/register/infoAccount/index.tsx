@@ -263,7 +263,7 @@ export function InfoAccount() {
 
                                     <div className='w-full text-sm text-gray-600 relative'>
                                         <label htmlFor="user" className='ml-1'>Data de nascimento *</label>
-                                        <Input value={date} onChange={(e) => setDate(e.target.value)} placeholder='Digite sua data de nascimento' type='date' id='date' className='text-xs mt-2 w-full' required/>
+                                        <Input value={date} onChange={(e) => setDate(e.target.value)} placeholder='Digite sua data de nascimento' type='date' id='date' className="text-xs mt-2 w-full" required/>
                                     </div>
 
                                     <div className='w-full text-sm text-gray-600 relative'>

@@ -16,13 +16,15 @@ export const Catalog = () => {
     const { search } = useParams();
     const [products, setProducts] = useState<ProductsProps[]>([]);
     const [loadPage, setLoadPage] = useState(false);
+    const query = useParams();
+    console.log(query)
 
     const { addItemCart } = useContext(CartContext);
 
     useEffect(() => {
         async function getProducts() {
             try {
-                const response = await api.get(`/products/`);
+                const response = await api.get(`/products/${query.search}`);
 
                 setTimeout(() => {
                     setLoadPage(true);             

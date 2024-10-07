@@ -81,7 +81,7 @@ export const Home = () => {
                     <CarouselContent className="-ml-1">
                         {
                             products.map(p => {
-                                if(p.category != "0") {
+                                if(p.category != "Whey") {
                                     return;
                                 }
                                 
@@ -147,7 +147,7 @@ export const Home = () => {
                         {
                             products.map(p => {
 
-                                if(p.category != "1" ) {
+                                if(p.category != "Creatina" ) {
                                     return;
                                 }
                                 
@@ -213,7 +213,7 @@ export const Home = () => {
                         {
                             products.map(p => {
 
-                                if(p.category != "2") {
+                                if(p.category != "Outros") {
                                     return;
                                 }
                                 

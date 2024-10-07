@@ -7,8 +7,7 @@ import { Md123, MdAlternateEmail } from "react-icons/md";
 import { useState } from 'react';
 import { api } from '@/api';
 import toast from 'react-hot-toast';
-
-
+import MaskedInput from '@/components/InputMask';
 
 export const Register = () =>  { 
     const [loading, setLoading] = useState(false);
@@ -16,15 +15,24 @@ export const Register = () =>  {
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
 
+    const handleCpfChange = (value: string) => {
+        setCpf(value);
+    };
+
     async function verifyRegister(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         setLoading(true);
+        
+        const data = {
+            cpf: cpf,
+            email: email
+        }
 
         try {
-            const response = await api.get(`/users/${cpf}/${email}`)
+            const response = await api.post(`/users/verify`, data);
             
-            const userData = response.data.user;
+            const userData = response.data;
             
             if(userData == false) {
                 navigate(`/cadastro/detalhes/${cpf}/${email}`);
@@ -32,21 +40,13 @@ export const Register = () =>  {
         }
         
         catch (error: any) {
-            const errors = error.response.data.errors;
+            const errors = error.response.data.error;
             
             if(!errors) {
                 return toast.error("Ocorreu um erro ao verificar o cadastro!");
-            }
-
-            if(errors.cpf) {
-                return toast.error(error.response.data.errors.cpf)
-            } 
-            
-            if (errors.email) {
-                return toast.error(error.response.data.errors.email);
             } 
 
-
+            toast.error(errors);
         }
 
         finally {
@@ -63,8 +63,13 @@ export const Register = () =>  {
                 <form onSubmit={(e) => verifyRegister(e)} action="" className='w-full flex flex-col gap-5'>
                     <div className='w-full text-sm text-gray-600 relative'>
                         <label htmlFor="cpf" className='ml-1'>CPF *</label>
-                        <Input value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='Digite seu cpf ' type='number' id='cpf' className='text-xs mt-2' required/>
-                        <Md123  fontSize={32} className="absolute top-8 right-1.5 transition-all "/>
+
+                        <MaskedInput 
+                            value={cpf}
+                            onChange={handleCpfChange}
+                        />
+
+                        <Md123  fontSize={32} className="absolute top-6 right-1.5 transition-all "/>
                     </div>
 
                     <div className='w-full text-sm text-gray-600 relative'>

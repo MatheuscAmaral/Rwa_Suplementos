@@ -10,6 +10,7 @@ import { api } from '@/api';
 import toast from 'react-hot-toast';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { TbPasswordFingerprint } from "react-icons/tb";
+import MaskedInput from '@/components/InputMask';
 
 
 export const Auth = () => {
@@ -33,6 +34,11 @@ export const Auth = () => {
 
         verifyStoredUser();
     }, [])
+
+    const handleCpfChange = (value: string) => {
+        setCpf(value);
+    };
+
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -77,7 +83,10 @@ export const Auth = () => {
                 <form onSubmit={(e) => verifyLogin(e)} className='w-full flex flex-col gap-5'>
                     <div className='w-full text-sm text-gray-600 relative'>
                         <label htmlFor="user" className='ml-1'>CPF *</label>
-                        <Input value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder='Digite seu cpf' id='user' className='text-xs mt-2' required/>
+                        <MaskedInput
+                            value={cpf}
+                            onChange={handleCpfChange}
+                        />
                         <Md123  fontSize={32} className="absolute top-8 right-1.5 transition-all "/>
                     </div>
 
