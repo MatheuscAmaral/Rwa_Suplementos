@@ -19,9 +19,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
   
-
 export interface ProductsProps {
-    prod_id: number, 
+    produto_id: number, 
     title: string,
     price: number,
     image: string,
@@ -40,8 +39,19 @@ export interface ProductsProps {
     stock: number
 }
 
+interface Products {
+   whey: ProductsProps[],
+   creatina: ProductsProps[],
+   others: ProductsProps[]
+}
+
 export const Home = () => {
-    const [products, setProducts] = useState<ProductsProps[]>([]);
+    const [products, setProducts] = useState<Products>({
+        whey: [],
+        creatina: [],
+        others: []
+      });
+      
     const { addItemCart } = useContext(CartContext);
 
 
@@ -61,18 +71,18 @@ export const Home = () => {
                 <div>
                     <img src={carousel1} style={{ maxHeight: '700px'}} alt="carousel1" />
                 </div>
+
                 <div>
                     <img src={carousel2} style={{ maxHeight: '700px'}} alt="carousel2" />
                 </div>
             </ResponsiveCarousel>
-
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
                 <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center"> Whey Protein</h1>
                     <hr className="mb-8 w-44 h-1 bg-blue-800 mx-auto" />
 
-                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.length > 0 && "hidden"}`}>
+                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.whey.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
@@ -80,18 +90,14 @@ export const Home = () => {
 
                     <CarouselContent className="-ml-1">
                         {
-                            products.map(p => {
-                                if(p.category != "Whey") {
-                                    return;
-                                }
-                                
+                            products.whey.map(p => {
                                 return (
-                                    <CarouselItem key={p.prod_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-0.5">
                                             <Card className="w-full max-w-96 h-72">
                                                 <CardContent className="flex flex-col justify-center gap-5 h-full ">
                                                     <div className="flex justify-center w-full h-32 items-center">
-                                                        <Link to={`/detalhes/${p.prod_id}`}>
+                                                        <Link to={`/detalhes/${p.produto_id}`}>
                                                             <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                         </Link>
                                                     </div>
@@ -133,11 +139,11 @@ export const Home = () => {
             </section>
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
-                <Carousel className={`w-full max-w-3xl mx-auto ${products.length <= 0 }`}>
+                <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center"> Creatina</h1>
                     <hr className="mb-8 w-32 h-1 bg-blue-800 mx-auto" />
 
-                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.length > 0 && "hidden"}`}>
+                    <div className={`flex justify-center gap-2 h-80  mb-10 ${products.creatina.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
@@ -145,20 +151,14 @@ export const Home = () => {
 
                     <CarouselContent className="-ml-1">
                         {
-                            products.map(p => {
-
-                                if(p.category != "Creatina" ) {
-                                    return;
-                                }
-                                
-
+                            products.creatina.map(p => {
                                 return (
-                                    <CarouselItem key={p.prod_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-1">
                                             <Card className="w-full max-w-96 h-72">
                                                 <CardContent className="flex flex-col  justify-center gap-3 h-full ">
                                                     <div className="flex justify-center">
-                                                        <Link to={`/detalhes/${p.prod_id}`}>
+                                                        <Link to={`/detalhes/${p.produto_id}`}>
                                                             <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                         </Link>
                                                     </div>
@@ -199,11 +199,11 @@ export const Home = () => {
             </section>
 
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 ">
-                <Carousel className={`w-full max-w-3xl mx-auto ${products.length <= 0 }`}>
+                <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center">Outros</h1>
                     <hr className="mb-8 w-24 h-1 bg-blue-800 mx-auto" />
 
-                    <div className={`flex justify-center gap-2 h-80 mb-10 ${products.length > 0 && "hidden"}`}>
+                    <div className={`flex justify-center gap-2 h-80 mb-10 ${products.others.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
                         <Skeleton className="h-[170px] w-[200px] rounded-xl hidden md:block" />
@@ -211,19 +211,14 @@ export const Home = () => {
                     
                     <CarouselContent className="-ml-1">
                         {
-                            products.map(p => {
-
-                                if(p.category != "Outros") {
-                                    return;
-                                }
-                                
+                            products.others.map(p => {
                                 return (
-                                    <CarouselItem key={p.prod_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
+                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
                                         <div className="p-1">
                                         <Card className="w-full max-w-96 h-72">
                                             <CardContent className="flex flex-col justify-center gap-3 h-full ">
                                                 <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.prod_id}`}>
+                                                    <Link to={`/detalhes/${p.produto_id}`}>
                                                         <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                     </Link>
                                                 </div>
@@ -250,12 +245,6 @@ export const Home = () => {
                                                         )
                                                     }
                                                 </div>
-
-                                                {/*
-                                                    <button onClick={() => removeProductCart(p)}>
-                                                        x
-                                                    </button>
-                                                */}
                                             </CardContent>
                                         </Card>
                                         </div>

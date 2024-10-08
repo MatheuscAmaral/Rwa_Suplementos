@@ -65,9 +65,9 @@ export const Orders = () => {
         const getPedidos = async () => {
             try {
                 setLoad(true);
-                const response = await api.get(`/pedidos/${user[0].id}/${ordersFilter}`);
+                const response = await api.get(`/orders/${user[0].id}/${ordersFilter}`);
             
-                setPedidos(response.data.pedidos);
+                setPedidos(response.data);
             }
 
             catch {

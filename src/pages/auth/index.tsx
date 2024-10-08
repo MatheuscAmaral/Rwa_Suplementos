@@ -18,14 +18,14 @@ export const Auth = () => {
     const [cpf, setCpf] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { authUser } = useContext(AuthContext);
+    const { authUser, } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const verifyStoredUser =  () => {
             const storedUser = localStorage.getItem("@userEcommerce");
         
-            if (storedUser && storedUser?.length <= 0) {
+            if (storedUser && storedUser?.length > 0) {
                 const user = JSON.parse(storedUser);
                 authUser(user);
                 return navigate("/");
@@ -87,7 +87,7 @@ export const Auth = () => {
                             value={cpf}
                             onChange={handleCpfChange}
                         />
-                        <Md123  fontSize={32} className="absolute top-8 right-1.5 transition-all "/>
+                        <Md123  fontSize={32} className="absolute top-6 right-1.5 transition-all "/>
                     </div>
 
                     <div className='w-full text-sm text-gray-600 relative'>

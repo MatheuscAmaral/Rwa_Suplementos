@@ -14,7 +14,7 @@ interface CartDataProps {
 }
 
 export interface CartProps {
-    prod_id: number, 
+    produto_id: number, 
     title: string,
     price: number,
     image: string,
@@ -89,8 +89,8 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
 
     const addItemCart = (newItem: ProductsProps) => {
-        const existItemCart = cart.filter(c => c.prod_id === newItem.prod_id);
-        const index = cart.findIndex(c => c.prod_id === newItem.prod_id);
+        const existItemCart = cart.filter(c => c.produto_id === newItem.produto_id);
+        const index = cart.findIndex(c => c.produto_id === newItem.produto_id);
     
         let priceWithDiscount = 0;
     
@@ -133,7 +133,7 @@ const CartProvider = ({children}: CartProviderProps) => {
     
     
     const removeItemCart = (product: ProductsProps) => {
-        const index = cart.findIndex(c => c.prod_id === product.prod_id);
+        const index = cart.findIndex(c => c.produto_id === product.produto_id);
         
         if (index != -1) {
             let discount = product.tipo_desconto == 0 ? product.valor_desconto : product.price * (product.valor_desconto / 100);

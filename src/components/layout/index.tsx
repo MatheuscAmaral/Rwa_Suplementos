@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
     return (
-        <div>
+        <div className="grid grid-rows-[auto,1fr,auto] min-h-screen">
             <Header/>
             <Outlet/>
             <Footer/>

@@ -13,8 +13,6 @@ import { MdFlatware } from "react-icons/md";
 import { PiPackageBold } from "react-icons/pi";
 import toast from "react-hot-toast"
 
-
-
 export const Details = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<ProductsProps>();
@@ -28,7 +26,7 @@ export const Details = () => {
                 const response = await api.get(`/products/${id}`);
                 setLoadPage(true);
                 
-                setProduct(response.data[0]);
+                setProduct(response.data);
             }
             
             catch {
@@ -49,12 +47,12 @@ export const Details = () => {
              {
                 product ? (
                     loadPage && (
-                        <div className="flex flex-col md:flex-row justify-center gap-28 px-5 py-20 mb-20 items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto mt-10">
+                        <div className="flex flex-col md:flex-row justify-center gap-28 px-5 my-40 items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto">
                             <img className="w-72 hover:scale-105 transition-all" src={product.image}/>
 
                             <div className="flex flex-col gap-2 w-full max-w-sm">
                                 <h1 className="text-3xl font-semibold">{product.title}</h1>
-                                <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.prod_id}</span>
+                                <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.produto_id}</span>
                                 {
                                     product.stock > 0 && (
                                         <>

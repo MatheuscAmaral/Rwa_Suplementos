@@ -20,11 +20,11 @@ const MaskedInput: React.FC<MaskedInputProps> = ({
   };
 
   return (
-    <InputMask mask="999.999.999-99 " value={value} onChange={handleChange} >
+    <InputMask mask="999.999.999-99" value={value} onChange={handleChange} >
       {(inputProps: any) => (
         <Input
           {...inputProps}
-          className="col-span-3"
+          className="col-span-3 text-sm"
           placeholder={placeholder}
         />
       )}

@@ -63,7 +63,7 @@ export const Header = () => {
     const verifyIfUserExists = async (id: UserDataProps) => {
       const response = await api.get(`/users/${id}`);
 
-      if (response.data[0].status == 0 || response.data[0].cpf != user[0].cpf) {
+      if (response.data.status == 0 || response.data.cpf != user[0].cpf) {
         authUser([]);
       }
     };
@@ -103,7 +103,7 @@ export const Header = () => {
     };
 
   const removeProductCartTrash = (product: ProductsProps) => {
-    const index = cart.findIndex((c) => c.prod_id === product.prod_id);
+    const index = cart.findIndex((c) => c.produto_id === product.produto_id);
 
     if (index != -1) {
       product.amount = -99;
@@ -174,7 +174,7 @@ export const Header = () => {
           {cart.map((c) => {
             return (
               <section
-                key={c.prod_id}
+                key={c.produto_id}
                 className={`flex gap-3 items-center border ${
                   c.tipo_desconto == 0 ? "h-32" : "h-26"
                 } px-4 py-7 mx-3 rounded-sm relative`}

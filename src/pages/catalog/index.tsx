@@ -17,14 +17,13 @@ export const Catalog = () => {
     const [products, setProducts] = useState<ProductsProps[]>([]);
     const [loadPage, setLoadPage] = useState(false);
     const query = useParams();
-    console.log(query)
 
     const { addItemCart } = useContext(CartContext);
 
     useEffect(() => {
         async function getProducts() {
             try {
-                const response = await api.get(`/products/${query.search}`);
+                const response = await api.get(`/products/search/${query.search}`);
 
                 setTimeout(() => {
                     setLoadPage(true);             
@@ -55,7 +54,7 @@ export const Catalog = () => {
 
     return (
         
-        <main className="w-full max-w-5xl mx-auto mt-10 px-12 md:px-5">
+        <main className="w-full max-w-5xl mx-auto mt-20 mb-44 px-12 md:px-5">
             {
                 loadPage ? (
                     <div className="flex gap-2 transition-all">
@@ -112,9 +111,9 @@ export const Catalog = () => {
                                         {
                                             products.map((p) => {
                                                 return (
-                                                    <div key={p.prod_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full bg-gray-50">
+                                                    <div key={p.produto_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full bg-gray-50">
                                                         <div className="flex justify-center w-full h-28 items-center">
-                                                            <Link to={`/detalhes/${p.prod_id}`}>
+                                                            <Link to={`/detalhes/${p.produto_id}`}>
                                                                 <img src={p.image} className="w-28 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                             </Link>
                                                         </div>
