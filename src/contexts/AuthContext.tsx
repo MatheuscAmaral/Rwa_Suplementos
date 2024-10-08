@@ -31,7 +31,12 @@ const AuthProvider = ({children}: AuthProvider) => {
 
     const authUser = (user: UserDataProps[]) => {
         setUser([...user]);
-        localStorage.setItem("@userEcommerce", JSON.stringify([...user]));
+
+        if (user.length > 0) {
+            localStorage.setItem("@userEcommerce", JSON.stringify([...user]));
+        } else {
+            localStorage.removeItem("@userEcommerce");
+        }
     }
     
     return ( 

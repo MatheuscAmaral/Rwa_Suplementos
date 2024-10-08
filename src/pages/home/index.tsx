@@ -54,7 +54,6 @@ export const Home = () => {
       
     const { addItemCart } = useContext(CartContext);
 
-
     useEffect(() => {
         async function getProducts () {
             const response = await api.get("/products");
@@ -66,7 +65,7 @@ export const Home = () => {
     }, [])
 
     return (  
-        <main className="w-full mx-auto select-none">       
+        <main className="w-full sm:max-w-full mx-auto select-none n overflow-hidden transition-all">       
             <ResponsiveCarousel className="mb-5" autoPlay infiniteLoop showArrows={false} showThumbs={false} showStatus={false}>
                 <div>
                     <img src={carousel1} style={{ maxHeight: '700px'}} alt="carousel1" />
@@ -112,10 +111,12 @@ export const Home = () => {
                                                                     </span>
                                                                 ) : (
                                                                     <div className="flex justify-between">
-                                                                        <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                                            style: 'currency',
-                                                                            currency: 'BRL'
-                                                                        })}</span>
+                                                                        <span className="text-xl font-bold">
+                                                                            {(Number(p.price) || 0).toLocaleString('pt-BR', {
+                                                                                style: 'currency',
+                                                                                currency: 'BRL'
+                                                                            })}
+                                                                        </span>
                                                                         
                                                                         <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                             <FaCartPlus fontSize={18} color="white" />
@@ -172,10 +173,12 @@ export const Home = () => {
                                                                 </span>
                                                             ) : (
                                                                 <div className="flex justify-between">
-                                                                    <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                                        style: 'currency',
-                                                                        currency: 'BRL'
-                                                                    })}</span>
+                                                                      <span className="text-xl font-bold">
+                                                                        {(Number(p.price) || 0).toLocaleString('pt-BR', {
+                                                                            style: 'currency',
+                                                                            currency: 'BRL'
+                                                                        })}
+                                                                    </span>
                                                                     
                                                                     <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                         <FaCartPlus fontSize={18} color="white" />
@@ -233,10 +236,12 @@ export const Home = () => {
                                                             </span>
                                                         ) : (
                                                             <div className="flex justify-between">
-                                                                <span className="text-xl font-bold">{p.price.toLocaleString('pt-br', {
-                                                                    style: 'currency',
-                                                                    currency: 'BRL'
-                                                                })}</span>
+                                                                 <span className="text-xl font-bold">
+                                                                    {(Number(p.price) || 0).toLocaleString('pt-BR', {
+                                                                        style: 'currency',
+                                                                        currency: 'BRL'
+                                                                    })}
+                                                                </span>
                                                                 
                                                                 <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                     <FaCartPlus fontSize={18} color="white" />

@@ -67,7 +67,7 @@ const ChangePassword = () => {
   }
 
   return (
-    <main className="h-svh select-none transition-all w-full">
+    <main className="w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden transition-all">
       <Container>
         <div className="flex flex-col xl:flex-row w-full justify-center gap-3 xl:mt-10">
           <Menu />

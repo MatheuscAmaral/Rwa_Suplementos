@@ -96,7 +96,7 @@ export const Orders = () => {
     }
 
     return (
-        <main className="h-svh">
+        <main className="w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden">
             <Container>
                 <div className="flex flex-col xl:flex-row w-full justify-center gap-3 xl:mt-10" >
                     <Menu/>

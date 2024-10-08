@@ -57,12 +57,12 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [load, setLoad] = useState(false);
   const [tipo, setTipo] = useState("");
   const [address, setEditAddress] = useState(false);
-  const [street, setStreet] = useState("");
-  const [neighborhood, setNeighborhood] = useState("");
-  const [number, setNumber] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [cep, setCep] = useState("");
+  const [street, setStreet] = useState(user[0].rua);
+  const [neighborhood, setNeighborhood] = useState(user[0].bairro);
+  const [number, setNumber] = useState(user[0].numero);
+  const [city, setCity] = useState(user[0].cidade);
+  const [state, setState] = useState(user[0].uf);
+  const [cep, setCep] = useState(user[0].cep);
   const [totalValue, setTotalValue] = useState(total + descontos);
   const [pedidoMessage, setPedidoMessage] = useState("");
 
@@ -188,7 +188,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
       total: totalValue - descontos,
       descontos: descontos,
       valor_frete: 23,
-      produto_id: cart.map((p) => p.prod_id),
+      produto_id: cart.map((p) => p.produto_id),
       cep: cep != "" ? cep : user[0].cep,
       cliente_id: user[0].id,
       formapag_id: formaPag,
@@ -328,7 +328,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                 return (
                   <div
                     className="flex gap-2 justify-between border border-l-0 border-r-0 border-b-0 border-gray-100 py-2 items-center"
-                    key={p.prod_id}
+                    key={p.produto_id}
                   >
                     <div className="flex gap-3 items-center">
                       <img src={p.image} className="w-16" alt="img_prod" />
@@ -338,7 +338,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                           {p.title}
                         </p>
                         <span className="text-xs font-semibold text-gray-500">
-                          Código: {p.prod_id}
+                          Código: {p.produto_id}
                         </span>
 
                         {p.promocao_id >= 1 ? (
@@ -506,16 +506,6 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                     selectedOption != "2" && "mb-0 sm:mb-10"
                   }`}
                 >
-                  <div
-                    className={`${
-                      formas.length > 0 ? "hidden" : "flex justify-center"
-                    } text-center mt-3`}
-                  >
-                    <AiOutlineLoading3Quarters
-                      fontSize={30}
-                      className="animate-spin"
-                    />
-                  </div>
 
                   {formas.length > 0 ? (
                     formas.map((f) => {
@@ -653,12 +643,13 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               <CardFooter>
                 <Button
                   onClick={() => saveFormaPag()}
-                  className={`w-full h-11 bg-blue-700`}
+                  className={`w-full h-11 bg-blue-700 ${formas.length <= 0 && "mt-16"}`}
+                  disabled={formas.length <= 0}
                 >
                   {load ? (
                     <AiOutlineLoading3Quarters />
                   ) : (
-                    <span className="flex items-center">
+                    <span className={`flex items-center`}>
                       <Check className="mr-2 h-4 w-4" /> Salvar{" "}
                     </span>
                   )}
@@ -758,13 +749,14 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               <CardFooter>
                 <Button
                   type="submit"
+                  disabled={!cep || !rua || !numero || !cidade || !bairro || !uf}
                   onClick={() => saveEndereco()}
                   className={`w-full h-11 bg-blue-700`}
                 >
                   {load ? (
                     <AiOutlineLoading3Quarters />
                   ) : (
-                    <span className="flex items-center">
+                    <span className={`flex items-center`}>
                       <Check className="mr-2 h-4 w-4" /> Salvar endereço
                     </span>
                   )}

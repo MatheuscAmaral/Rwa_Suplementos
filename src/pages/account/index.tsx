@@ -10,7 +10,7 @@ export const Account = () => {
     const [active, setActive] = useState(1);
     
     return (
-        <main className="h-svh select-none transition-all w-full">
+        <main className="transition-all w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden">
             <Container>         
                 <div className="flex flex-col xl:flex-row w-full justify-center gap-3 xl:mt-10" >
                     <Menu/>

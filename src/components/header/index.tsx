@@ -145,6 +145,11 @@ export const Header = () => {
     });
   };
 
+  const navigateRoute = (route: string) => {
+    navigate(route);
+    setMobileMenuOpen(false);
+  }
+
   const list = (anchor: Anchor) => (
     <Box
       sx={{ width: 310 }}
@@ -493,14 +498,14 @@ export const Header = () => {
                 className={`${user.length > 0 ? "block" : "hidden"}`}
               >
                 <DropdownMenuItem
-                  onClick={() => navigate("/conta")}
+                  onClick={() => navigateRoute("/conta")}
                   className="cursor-pointer"
                 >
                   <User className="mr-2 h-4 w-4" />
                   <span>Minha conta</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  onClick={() => navigate("/pedidos")}
+                  onClick={() => navigateRoute("/pedidos")}
                   className="cursor-pointer"
                 >
                   <CreditCard className="mr-2 h-4 w-4" />
@@ -511,7 +516,7 @@ export const Header = () => {
                 className={`${user.length <= 0 ? "block" : "hidden"}`}
               >
                 <DropdownMenuItem
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigateRoute("/login")}
                   className="cursor-pointer"
                 >
                   <LogIn className="mr-2 h-4 w-4" />
@@ -519,7 +524,7 @@ export const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSub>
                   <DropdownMenuItem
-                    onClick={() => navigate("/cadastro")}
+                    onClick={() => navigateRoute("/cadastro")}
                     className="cursor-pointer"
                   >
                     <UserPlus className="mr-2 h-4 w-4" />
@@ -613,7 +618,7 @@ export const Header = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <a
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigateRoute("/login")}
                   className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${
                     user.length <= 0 ? "flex" : "hidden"
                   }`}
@@ -622,7 +627,7 @@ export const Header = () => {
                   <User fontSize={20} />
                 </a>
                 <a
-                  onClick={() => navigate("/cadastro")}
+                  onClick={() => navigateRoute("/cadastro")}
                   className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${
                     user.length <= 0 ? "flex" : "hidden"
                   }`}
@@ -631,7 +636,7 @@ export const Header = () => {
                   <UserPlus fontSize={20} />
                 </a>
                 <a
-                  onClick={() => navigate("/conta")}
+                  onClick={() => navigateRoute("/conta")}
                   className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${
                     user.length <= 0 ? "hidden" : "flex"
                   }`}
@@ -641,7 +646,7 @@ export const Header = () => {
                 </a>
 
                 <a
-                  onClick={() => navigate("/pedidos")}
+                  onClick={() => navigateRoute("/pedidos")}
                   className={`-mx-3 cursor-pointer justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${
                     user.length <= 0 ? "hidden" : "flex"
                   }`}

@@ -113,8 +113,6 @@ const CartProvider = ({children}: CartProviderProps) => {
             setCart(cartList);
             localStorage.setItem("@cartEcommerce", JSON.stringify(cartList));
             totalCart(cartList); 
-            
-            toast.success('Produto atualizado com sucesso!');
             return;
         }
         
@@ -147,8 +145,6 @@ const CartProvider = ({children}: CartProviderProps) => {
                 setQtd(cart[index].amount);
                 
                 totalCart(cart);
-                
-                toast.success('Produto atualizado com sucesso!');
                 
                 if(cart[index].promocao_id > 0) {
                     if(descontos == 0) {
