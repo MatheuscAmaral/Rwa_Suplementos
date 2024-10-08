@@ -43,32 +43,38 @@ export const Details = () => {
    }
 
     return (
-        <>
+        <div className="mx-5 md:mx-5">
              {
                 product ? (
                     loadPage && (
-                        <div className="flex flex-col md:flex-row justify-center gap-28 xl:px-5 p-10 xl:p-0 my-5 xl:my-40 items-center rounded-lg bg-gray-50 w-full max-w-7xl mx-auto">
-                            <img className="w-72 hover:scale-105 transition-all" src={product.image}/>
+                        <div className="flex flex-col md:flex-row justify-center gap-5 md:gap-32 xl:px-5 py-3 px-7 pb-10 md:py-20 my-5 xl:my-24 items-center rounded-lg border-gray-200 border w-full max-w-7xl mx-auto">
+                            <img className="w-64 hover:scale-105 transition-all" src={product.image}/>
 
                             <div className="flex flex-col gap-2 w-full max-w-sm">
-                                <h1 className="text-3xl font-semibold">{product.title}</h1>
-                                <span className="font-semibold text-gray-600 pb-5 text-sm">Código: {product.produto_id}</span>
+                                <div className="flex flex-col pb-6">
+                                    <h1 className="text-2xl md:text-3xl font-semibold">{product.title}</h1>
+                                    <span className="font-semibold text-gray-600 text-sm">Código: {product.produto_id}</span>
+                                </div>
+
                                 {
                                     product.stock > 0 && (
-                                        <>
-                                            <p className="text-3xl font-semibold flex items-center gap-2">{product.price.toLocaleString('pt-br', {
-                                            style: 'currency',
-                                            currency: 'BRL'
-                                            })} <span  className="text-lg">no Pix</span></p>
-                                            <span className="pb-5">ou até 12x no cartão</span>
-                                        </>
+                                        <div className="flex flex-col">
+                                            <p className="text-2xl md:text-3xl font-semibold flex items-center gap-2">
+                                                {(Number(product.price) || 0).toLocaleString('pt-BR', {
+                                                    style: 'currency',
+                                                    currency: 'BRL'
+                                                })}
+
+                                                <span className="text-sm mt-1">no Pix</span></p>
+                                            <span className="pb-5 text-sm md:text-md">ou até 12x no cartão</span>
+                                        </div>
                                     )    
                                 }
 
                                 <ul className="flex flex-col gap-2">
                                     <li className="text-gray-600 flex gap-3 items-center">
-                                        <FaWeightHanging fontSize={28}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">{
+                                        <FaWeightHanging fontSize={26}/>
+                                        <span className="text-md md:text-lg font-medium text-gray-500 pt-1">{
                                             product.size <= "3" ? (
                                                 <p>{product.size}Kg</p>
                                             ) : (
@@ -79,50 +85,18 @@ export const Details = () => {
 
                                     <li className="text-gray-600 flex gap-3 items-center">
                                         <MdFlatware fontSize={30}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">
+                                        <span className="text-md md:text-lg  font-medium text-gray-500 pt-1">
                                             {
-                                                product.flavor == "0" && (
-                                                    <p>Sem sabor</p>
-                                                )
-                                            }
-                                               
-                                            {
-                                                 product.flavor == "1" && (
-                                                    <p>Chocolate</p>
-                                                )
-                                            }
-
-                                            {
-                                                product.flavor == "2" && (
-                                                    <p>Morango</p>
-                                                )
-                                            }
-
-                                            {
-                                                product.flavor == "3" && (
-                                                    <p>Baunilha</p>
-                                                )
+                                                product.flavor 
                                             }
                                         </span>
                                     </li>
 
                                     <li className="text-gray-600 flex gap-3 items-center">
                                         <PiPackageBold fontSize={30}/>
-                                        <span className="text-lg font-medium text-gray-500 pt-1">
+                                        <span className="text-md md:text-lg  font-medium text-gray-500 pt-1">
                                             {
-                                                product.type_pack == "0" && (
-                                                    <p>Pote</p>
-                                                )
-                                            }
-                                            {
-                                                product.type_pack == "1" && (
-                                                    <p>Caixa</p>
-                                                )
-                                            }
-                                            {
-                                                product.type_pack == "2" && (
-                                                    <p>Pacote</p>
-                                                )
+                                                product.type_pack
                                             }
                                         </span>
                                     </li>
@@ -155,7 +129,7 @@ export const Details = () => {
                     </div>       
                 )
             }
-        </>
+        </div>
 
     )
     

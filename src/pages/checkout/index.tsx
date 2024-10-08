@@ -265,7 +265,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                   return (
                     <div key={u.id} className="text-gray-500 font-medium">
                       <p className="font-bold">Endereço</p>
-                      <p>
+                      <p className="max-w-40 lg:max-w-full">
                         {" "}
                         {rua}, {numero}, {bairro} - {uf}
                       </p>

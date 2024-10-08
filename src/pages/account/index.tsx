@@ -37,89 +37,87 @@ export const Account = () => {
 
                             {
                                 <section className={`${active == 1 ? "flex flex-col gap-2" : "hidden"} text-xs md:text-sm`}>
-                                        {
-                                            user.map(u => {
-                                                return (
-                                                    <>
-                                                        <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
-                                                            <label className=" text-gray-400 text-sm font-medium">Nome:</label>
-                                                            <p className="text-md font-medium">{u.name}</p>
+                                    {
+                                        user.map(u => {
+                                            return (
+                                                <>
+                                                    <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
+                                                        <label className=" text-gray-400 text-sm font-medium">Nome:</label>
+                                                        <p className="text-md font-medium">{u.name}</p>
+                                                    </div>
+                                                    
+                                                    <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                        <label className=" text-gray-400 text-sm font-medium">E-mail:</label>
+                                                        <p className="text-md font-medium">{u.email}</p>
+                                                    </div>
+
+                                                    <hr className="mt-3 border-gray-200"/>
+
+                                                    <div className="grid grid-cols-3">
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">CPF:</label>
+                                                            <p className="text-md font-medium">{u.cpf}</p>
                                                         </div>
                                                         
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                            <label className=" text-gray-400 text-sm font-medium">E-mail:</label>
-                                                            <p className="text-md font-medium">{u.email}</p>
+                                                            <label className=" text-gray-400 text-sm font-medium">Status:</label>
+                                                            <p className="text-md font-medium">{
+                                                                u.status == 0 ? "Inativo" : "Ativo"
+                                                            }</p>
                                                         </div>
-
-                                                        <hr className="mt-3 border-gray-200"/>
-
-                                                        <div className="grid grid-cols-3">
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">CPF:</label>
-                                                                <p className="text-md font-medium">{u.cpf}</p>
-                                                            </div>
-                                                            
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Status:</label>
-                                                                <p className="text-md font-medium">{
-                                                                    u.status == 0 ? "Inativo" : "Ativo"
-                                                                }</p>
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                )
-                                            })
-                                        }
-
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    }
                                 </section>
                             }
 
                             {
                                 <section className={`${active == 2 ? "flex flex-col gap-2" : "hidden"} text-xs md:text-sm`}>
-                                        {
-                                            user.map(u => {
-                                                return (
-                                                    <>
-                                                    <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
-                                                        <label className=" text-gray-400 text-sm font-medium">CEP:</label>
-                                                        <p className="text-md font-medium text-gray-600">{u.cep}</p>
-                                                    </div>
-                                                        
-                                                    <div className="grid grid-cols-3">
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Rua:</label>
-                                                                <p className="text-md font-medium text-gray-600">{u.rua}</p>
-                                                            </div>
-
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Número:</label>
-                                                                <p className="text-md font-medium text-gray-600">{u.numero}</p>
-                                                            </div>
-                                                    </div>
-
-                                                        <hr className="mt-3 border-gray-200"/>
-
-                                                        <div className="grid grid-cols-3">
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Bairro:</label>
-                                                                <p className="text-md font-medium text-gray-600">{u.bairro}</p>
-                                                            </div>
-
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Cidade:</label>
-                                                                <p className="text-md font-medium text-gray-600">{u.cidade}</p>
-                                                            </div>
-
-                                                            <div className="flex flex-col gap-2 ml-2 mt-6">
-                                                                <label className=" text-gray-400 text-sm font-medium">Estado:</label>
-                                                                <p className="text-md font-medium text-gray-600">{u.uf}</p>
-                                                            </div>
+                                    {
+                                        user.map(u => {
+                                            return (
+                                                <>
+                                                <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
+                                                    <label className=" text-gray-400 text-sm font-medium">CEP:</label>
+                                                    <p className="text-md font-medium text-gray-600">{u.cep}</p>
+                                                </div>
+                                                    
+                                                <div className="grid grid-cols-2">
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">Rua:</label>
+                                                            <p className="text-md font-medium text-gray-600">{u.rua}</p>
                                                         </div>
-                                                    </>
-                                                )
-                                            })
-                                        }
 
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">Número:</label>
+                                                            <p className="text-md font-medium text-gray-600">{u.numero}</p>
+                                                        </div>
+                                                </div>
+
+                                                    <hr className="mt-3 border-gray-200"/>
+
+                                                    <div className="grid grid-cols-3">
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">Bairro:</label>
+                                                            <p className="text-md font-medium text-gray-600">{u.bairro}</p>
+                                                        </div>
+
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">Cidade:</label>
+                                                            <p className="text-md font-medium text-gray-600">{u.cidade}</p>
+                                                        </div>
+
+                                                        <div className="flex flex-col gap-2 ml-2 mt-6">
+                                                            <label className=" text-gray-400 text-sm font-medium">Estado:</label>
+                                                            <p className="text-md font-medium text-gray-600">{u.uf}</p>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                    }
                                 </section>
                             }
                     </div>

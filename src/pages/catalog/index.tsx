@@ -54,11 +54,11 @@ export const Catalog = () => {
 
     return (
         
-        <main className="w-full max-w-5xl mx-auto mt-20 mb-44 px-12 md:px-5">
+        <main className="w-full max-w-5xl mx-auto mt-5 md:mt-20 mb-44 px-4 md:px-5">
             {
                 loadPage ? (
                     <div className="flex gap-2 transition-all">
-                        <section className="bg-gray-50 pt-5 w-52 h-full pb-10 rounded-lg px-5 hidden lg:flex md:flex-col">
+                        <section className="border border-gray-200 pt-5 w-52 h-full pb-10 rounded-lg px-5 hidden lg:flex md:flex-col">
                             <div>
                                 <h4 className="text-sm font-medium text-gray-600 mb-1">Categoria</h4>
                                 <input type="text" placeholder="Buscar" className="w-full text-xs py-1 bg-transparent border rounded-md pl-2 mt-2" />
@@ -93,16 +93,16 @@ export const Catalog = () => {
                         </section>
 
                         <div className="w-full">
-                            <section className={`px-5 pb-5 ${search != "todos" ? "pt-7" : "pt-2"} bg-gray-50 rounded-lg`}>
+                            <section className={`px-5 pb-5 ${search != "todos" ? "pt-7" : "pt-2"} border border-gray-200 rounded-lg`}>
                                 <h1 className="text-2xl font-semibold pb-5 text-gray-600">
                                     {
                                         search != "todos" ? search : ""
                                     }
                                 </h1>
                                 
-                                <hr className="bg-gray-50 opacity-30"/>
-                                <p className="text-sm py-4 px-2 text-gray-500">Foram encontrados <span className="font-bold text-black">{products.length}</span> produtos</p>
-                                <hr className="bg-gray-50 opacity-30"/>
+                                <hr className="bg-gray-700 opacity-50"/>
+                                    <p className="text-sm py-4 px-2 text-gray-500">Foram encontrados <span className="font-bold text-black">{products.length}</span> produtos</p>
+                                <hr className="bg-gray-700 opacity-50"/>
                                 <BsFillGrid3X2GapFill fontSize={30} className="mt-2 pl-2"/>
                             </section>
                             {
@@ -111,7 +111,7 @@ export const Catalog = () => {
                                         {
                                             products.map((p) => {
                                                 return (
-                                                    <div key={p.produto_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full bg-gray-50">
+                                                    <div key={p.produto_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full border border-gray-200">
                                                         <div className="flex justify-center w-full h-28 items-center">
                                                             <Link to={`/detalhes/${p.produto_id}`}>
                                                                 <img src={p.image} className="w-28 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
@@ -127,10 +127,12 @@ export const Catalog = () => {
                                                                     </span>
                                                                 ) : (
                                                                     <div className="flex justify-between">
-                                                                        <span className="text-md font-bold">{p.price.toLocaleString('pt-br', {
-                                                                            style: 'currency',
-                                                                            currency: 'BRL'
-                                                                        })}</span>
+                                                                        <span className="text-md font-bold">
+                                                                            {(Number(p.price) || 0).toLocaleString('pt-BR', {
+                                                                                style: 'currency',
+                                                                                currency: 'BRL'
+                                                                            })}
+                                                                        </span>
                                                                         
                                                                         <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                             <FaCartPlus fontSize={18} color="white" />
