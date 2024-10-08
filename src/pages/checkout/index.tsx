@@ -656,7 +656,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                 <Button
                   onClick={() => saveFormaPag()}
                   className={`w-full h-11 bg-blue-700 ${formas.length <= 0 && "mt-12"}`}
-                  disabled={formas.length <= 0 || (!name || !cvc || !numberCart || !year || !month || !parcelas) }
+                  disabled={formas.length <= 0 || (Number(selectedOption) == 2 && (!name || !cvc || !numberCart || !year || !month || !parcelas)) }
                 >
                   {load ? (
                     <AiOutlineLoading3Quarters />
