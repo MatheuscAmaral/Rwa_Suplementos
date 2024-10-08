@@ -53,7 +53,7 @@ export const Account = () => {
 
                                                     <hr className="mt-3 border-gray-200"/>
 
-                                                    <div className="grid grid-cols-3">
+                                                    <div className="grid grid-cols-2">
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-sm font-medium">CPF:</label>
                                                             <p className="text-md font-medium">{u.cpf}</p>
