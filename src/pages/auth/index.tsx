@@ -42,7 +42,6 @@ export const Auth = () => {
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
         setLoading(true);
 
         try {
