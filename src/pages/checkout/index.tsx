@@ -254,7 +254,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 md:flex-row  justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-10 md:mt-20 pt-4 px-5 md:mb-30">
+        <div className="flex flex-col gap-5 md:flex-row justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-2 md:mt-10 pt-4 px-5 md:mb-30">
           <section className="border py-5 px-5 pb-10 w-full md:max-w-xl rounded-lg">
             <h5 className="font-semibold text-sm ml-2">Revisar e finalizar</h5>
 
