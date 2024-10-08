@@ -66,6 +66,13 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [totalValue, setTotalValue] = useState(total + descontos);
   const [pedidoMessage, setPedidoMessage] = useState("");
 
+  const [parcelas, setParcelas] = useState("");
+  const [cvc, setCVC] = useState("");
+  const [numberCart, setNumberCart] = useState("");
+  const [name, setName] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+
   const [rua, setRua] = useState(user[0].rua);
   const [bairro, setBairro] = useState(user[0].bairro);
   const [numero, setNumero] = useState(user[0].numero);
@@ -76,7 +83,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     setOpenModal(true);
     setEditAddress(false);
     setSelectedOption(formaPag);
-    const response = await api.get("/forma");
+    const response = await api.get("/payments");
 
     
     setFormas(response.data);
@@ -554,6 +561,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                     <label htmlFor="name">Nome do títular:</label>
                     <Input
                       id="name"
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Digite o nome escrito no cartão..."
                     />
                   </div>
@@ -562,6 +570,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                     <label htmlFor="number">Número do cartão:</label>
                     <Input
                       id="number"
+                      onChange={(e) => setNumberCart(e.target.value)}
                       type="number"
                       placeholder="Digite o número escrito no cartão..."
                     />
@@ -570,7 +579,8 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                   <div className=" grid grid-cols-3 gap-2 text-sm">
                     <div className="flex flex-col gap-2">
                       <label htmlFor="date"> Mês:</label>
-                      <Select>
+
+                      <Select onValueChange={(e) => setMonth(e)}>
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Janeiro" />
                         </SelectTrigger>
@@ -594,9 +604,10 @@ export const Checkout = ({ className, ...props }: CardProps) => {
 
                     <div className="flex flex-col gap-2">
                       <label htmlFor="date"> Ano:</label>
-                      <Select>
+
+                      <Select onValueChange={(e) => setYear(e)}>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="2024" />
+                          <SelectValue placeholder="Ano" />
                         </SelectTrigger>
 
                         <SelectContent>
@@ -618,13 +629,14 @@ export const Checkout = ({ className, ...props }: CardProps) => {
 
                     <div className="flex flex-col gap-2">
                       <label htmlFor="cvc">CVC:</label>
-                      <Input id="cvc" type="number" placeholder="CVC" />
+                      <Input id="cvc" onChange={(e) => setCVC(e.target.value)} type="number" placeholder="CVC" />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label htmlFor="date"> Parcelas:</label>
-                    <Select>
+
+                    <Select onValueChange={(e) => setParcelas(e)}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Selecione o número de parcelas" />
                       </SelectTrigger>
@@ -643,8 +655,8 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               <CardFooter>
                 <Button
                   onClick={() => saveFormaPag()}
-                  className={`w-full h-11 bg-blue-700 ${formas.length <= 0 && "mt-16"}`}
-                  disabled={formas.length <= 0}
+                  className={`w-full h-11 bg-blue-700 ${formas.length <= 0 && "mt-12"}`}
+                  disabled={formas.length <= 0 || (!name || !cvc || !numberCart || !year || !month || !parcelas) }
                 >
                   {load ? (
                     <AiOutlineLoading3Quarters />

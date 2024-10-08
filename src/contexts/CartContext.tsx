@@ -104,9 +104,7 @@ const CartProvider = ({children}: CartProviderProps) => {
     
         if (existItemCart.length > 0) {
             cartList[index].amount += 1;
-
            
-
             cartList[index].total = cartList[index].priceWithDiscount * cartList[index].amount;
             setQtd(cartList[index].amount);
     
@@ -118,9 +116,9 @@ const CartProvider = ({children}: CartProviderProps) => {
         
         let data = {
             ...newItem,
-            amount: 1,
-            priceWithDiscount: priceWithDiscount,
-            total: priceWithDiscount,
+            amount: 1,            
+            priceWithDiscount: !cartList ? priceWithDiscount : priceWithDiscount * 1,
+            total: !cartList ? priceWithDiscount : priceWithDiscount * 1,
         };
         
         setCart([...cartList, data]);
