@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Container from "@/components/container";
 import moment  from "moment";
 
+import { PiUserFocusBold } from "react-icons/pi";
 import { IoCart, IoChevronBackCircle } from "react-icons/io5";
 import { BsFillCartXFill } from "react-icons/bs";
 import { CiBoxList } from "react-icons/ci";
@@ -88,21 +89,21 @@ export const DetailsOrders = () => {
                             <ul className="flex text-sm font-medium whitespace-nowrap w-full text-center overflow-x-auto text-gray-500 dark:text-gray-400">
                                 <li className="me-2 text-xs md:text-sm">
                                     <a onClick={() => setActive(1)} className={`cursor-pointer inline-flex items-center justify-center p-4 rounded-t-lg gap-2 group ${active == 1 ? "text-blue-600 border-b-2 border-blue-600" : "hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"}`}>
-                                        <CiBoxList fontSize={18}/>
+                                        <CiBoxList fontSize={20}/>
                                         Dados do pedido
                                     </a>
                                 </li>
 
                                 <li className="me-2 text-xs md:text-sm">
                                     <a onClick={() => setActive(2)} className={`cursor-pointer inline-flex items-center justify-center p-4 rounded-t-lg gap-2 group ${active == 2 ? "text-blue-600 border-b-2 border-blue-600" : "hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"}`} aria-current="page">
-                                        <IoCart fontSize={18}/>
+                                        <IoCart fontSize={20}/>
                                         Produtos
                                     </a>
                                 </li>
 
                                 <li className="me-2 text-xs md:text-sm">
                                     <a onClick={() => setActive(3)} className={`cursor-pointer inline-flex items-center justify-center p-4 rounded-t-lg gap-2 group ${active == 3 ? "text-blue-600 border-b-2 border-blue-600" : "hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"}`} aria-current="page">
-                                        <IoCart fontSize={18}/>
+                                        <PiUserFocusBold fontSize={20}/>
                                         Dados do cliente
                                     </a>
                                 </li>

@@ -1,7 +1,7 @@
 import wallpaper from '../../assets/wallpaper.png'
 import logo from "../../assets/rwalogo2.png";
 import { Input } from '@/components/ui/input';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useContext , useEffect} from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -22,18 +22,13 @@ export const Auth = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
-        const verifyStoredUser =  () => {
-            const storedUser = localStorage.getItem("@userEcommerce");
-        
-            if (storedUser && storedUser?.length > 0) {
-                const user = JSON.parse(storedUser);
-                authUser(user);
-                return navigate("/");
-            }
-        }
+        const lastVisitedRoute = localStorage.getItem("@lastVisitedRoute");
 
-        verifyStoredUser();
-    }, [])
+        if (lastVisitedRoute) {
+            const cleanedRoute = lastVisitedRoute.replace(/['"]+/g, '');
+            navigate(cleanedRoute);  
+        }
+    }, [navigate]);
 
     const handleCpfChange = (value: string) => {
         setCpf(value);

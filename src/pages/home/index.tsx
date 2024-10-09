@@ -60,7 +60,8 @@ export const Home = () => {
 
             setProducts(response.data);
         }
-
+        
+        localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
         getProducts();
     }, [])
 
@@ -106,7 +107,7 @@ export const Home = () => {
                                                         <div>
                                                             {
                                                                 p.stock <= 0 ?(
-                                                                    <span>
+                                                                    <span className="bg-red-100 w-full text-center p-2 rounded-lg text-sm">
                                                                         Produto indisponível
                                                                     </span>
                                                                 ) : (

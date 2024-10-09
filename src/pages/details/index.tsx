@@ -35,6 +35,7 @@ export const Details = () => {
             }
         }
 
+        localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
         getProductDetails();
    }, []);
 

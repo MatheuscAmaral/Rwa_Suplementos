@@ -36,6 +36,7 @@ const AuthProvider = ({children}: AuthProvider) => {
             localStorage.setItem("@userEcommerce", JSON.stringify([...user]));
         } else {
             localStorage.removeItem("@userEcommerce");
+            localStorage.removeItem("@lastVisitedRoute");
         }
     }
     

@@ -241,7 +241,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   return (
     <main className="mb-20">
       {pedidoMessage != "" ? (
-        <div className="flex flex-col gap-5 h-svh items-center mt-52">
+        <div className="flex flex-col gap-5 h-svh items-center mt-20 lg:mt-52">
           <FaCheckCircle fontSize={40} className="text-green-500" />
           <h1 className=" text-xl font-medium ">Pedido enviado com sucesso!</h1>
           <p className="text-md font-medium">Número do pedido: <span className="font-bold">{pedidoMessage}</span></p>

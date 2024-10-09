@@ -79,6 +79,7 @@ export const Orders = () => {
             }
         }
         
+        localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
         getPedidos();
     }, [ordersFilter]);
 

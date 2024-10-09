@@ -49,6 +49,7 @@ export const Catalog = () => {
             }
         }
 
+        localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
         getProducts();
     }, [search]); 
 
