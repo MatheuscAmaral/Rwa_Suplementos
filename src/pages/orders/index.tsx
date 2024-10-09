@@ -29,7 +29,7 @@ export interface PedidosProps {
     pedido_id: number,
     total: number,
     status: number,
-    created_at: string,
+    createdAt: string,
     formapag_id: number,
     descontos: number,
     valor_frete: number,
@@ -83,10 +83,10 @@ export const Orders = () => {
     }, [ordersFilter]);
 
     const formatPrice = (price: number) => {
-        return price.toLocaleString('pt-br', {
-            style: "currency",
-            currency: "BRL"
-        });
+        return (Number(price) || 0).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        })
     }
 
     const formatData = (data: string) => {
@@ -104,14 +104,14 @@ export const Orders = () => {
                         <h1 className="text-2xl font-semibold text-gray-700 flex items-center gap-1">Pedidos <span className="text-xs mt-1">({pedidos.length})</span></h1>
 
                         <div className="flex justify-between gap-5 mb-10 mt-6">
-                                <div className="flex">
-                                    <input type="text" placeholder="Pesquise pelo número do pedido..." className="border-2 px-1 py-1.5 w-24 sm:w-full border-gray-200 rounded-l-md pl-2 text-black text-sm"/>
+                                <div className="flex w-full">
+                                    <input type="text" placeholder="Pesquise pelo número do pedido..." className="border-2 px-1 py-1.5 w-full max-w-80 border-gray-200 rounded-l-md pl-2 text-black text-sm"/>
                                     <button className="bg-blue-700 px-3 text-white rounded-r-md">
                                         <IoIosSearch fontSize={21}/>
                                     </button>
                                 </div>
                                 <Select defaultValue={ordersFilter} onValueChange={(e) => setOrdersFilter(e)}>
-                                    <SelectTrigger className="w-[180px]">
+                                    <SelectTrigger className="w-full max-w-60">
                                         <SelectValue />
                                     </SelectTrigger>
 
@@ -175,7 +175,7 @@ export const Orders = () => {
                                                                 <p className="flex flex-col gap-1 items-start">
                                                                     Data
                                                                     <span className="text-xs font-medium text-gray-600">{
-                                                                        formatData(p.created_at)
+                                                                        formatData(p.createdAt)
                                                                     }</span>
                                                                 </p>
                 

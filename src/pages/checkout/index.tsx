@@ -85,7 +85,6 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     setSelectedOption(formaPag);
     const response = await api.get("/payments");
 
-    
     setFormas(response.data);
   };
 
@@ -224,9 +223,9 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     };
 
     try {
-      const response = await api.post("/pedidos", data);
+      const response = await api.post("/orders", data);
 
-      setPedidoMessage(response.data.numero_pedido);
+      setPedidoMessage(response.data.pedido_id);
 
       toast.success("Pedido enviado com sucesso!");
       clearCart();

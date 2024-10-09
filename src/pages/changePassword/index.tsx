@@ -34,12 +34,13 @@ const ChangePassword = () => {
     }
 
     const data = {
+        old_password: oldPassword,
         password: password
     }
 
     try {
         setLoading(true);
-        await api.put(`/users/password/${user[0].id}/${oldPassword}`, data);
+        await api.put(`/users/password/${user[0].id}`, data);
 
         setOldPassword("");
         setPassword("");
