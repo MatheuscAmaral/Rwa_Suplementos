@@ -1,61 +1,33 @@
+import { api } from "@/api";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-  } from "@/components/ui/select";
-
+} from "@/components/ui/select";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-
-
+import { useNavigate } from "react-router-dom";
+import { IOrders } from "@/interfaces/IOrders";
 import { IoIosSearch } from "react-icons/io";
 import { LuPackageSearch } from "react-icons/lu";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
-import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { api } from "@/api";
+import { formatData } from "@/format/formatData";
+import { formatPrice } from "@/format/formatPrice";
 import { AuthContext } from "@/contexts/AuthContext";
-import moment from 'moment';
-import toast from "react-hot-toast";
-
-export interface PedidosProps {
-    pedido_id: number,
-    total: number,
-    status: number,
-    createdAt: string,
-    formapag_id: number,
-    descontos: number,
-    valor_frete: number,
-    name: string,
-    cpf: number, 
-    cliente_id: number,
-    cep: number,
-    rua: string,
-    numero: number,
-    bairro: string,
-    cidade: string,
-    uf: string,
-    produto_id: number,
-    title: string,
-    qtd_atendida: number,
-    image: string,
-    price: number,
-    flavor: number,
-}
-
+import { useEffect, useState, useContext } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Container from "@/components/container";
+import toast from "react-hot-toast";
 import Menu from "@/components/menu";
   
 
 export const Orders = () => {
-    const [pedidos, setPedidos] = useState<PedidosProps[]>([]);
+    const [pedidos, setPedidos] = useState<IOrders[]>([]);
     const {user} = useContext(AuthContext);
     const [ordersFilter, setOrdersFilter] = useState("0");
     const [load, setLoad] = useState(false);
@@ -82,19 +54,6 @@ export const Orders = () => {
         localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
         getPedidos();
     }, [ordersFilter]);
-
-    const formatPrice = (price: number) => {
-        return (Number(price) || 0).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        })
-    }
-
-    const formatData = (data: string) => {
-        const createdAtMoment = moment(data);
-
-       return createdAtMoment.format('DD/MM/YYYY');
-    }
 
     return (
         <main className="w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden">
@@ -136,12 +95,12 @@ export const Orders = () => {
                                         pedidos.length > 0 ? (
                                             pedidos.map(p => {
                                                 return (
-                                                    <Accordion key={p.pedido_id} type="single" collapsible>
+                                                    <Accordion key={p.order_id} type="single" collapsible>
                                                         <AccordionItem className="border-2 rounded-lg px-5 border-gray-100 text-xs md:text-sm" value="item-1">
                                                             <AccordionTrigger className="select-none">
                                                                 <p className="flex flex-col gap-1 items-start">
                                                                     Pedido
-                                                                    <span className="text-xs font-medium text-gray-600">#{p.pedido_id}</span>
+                                                                    <span className="text-xs font-medium text-gray-600">#{p.order_id}</span>
                                                                 </p>
                 
                                                                 <p className="flex flex-col gap-1 items-start">
@@ -184,19 +143,19 @@ export const Orders = () => {
                                                                     Pagamento
                                                                     <span className="text-xs font-medium text-gray-600">
                                                                         {
-                                                                            p.formapag_id == 1 && (
+                                                                            p.payment_method == 1 && (
                                                                                 "Boleto"
                                                                             )
                                                                         }
                 
                                                                         {
-                                                                            p.formapag_id == 2 && (
+                                                                            p.payment_method == 2 && (
                                                                                 "Cartão de crédito"
                                                                             )
                                                                         }
                 
                                                                         {
-                                                                            p.formapag_id == 3 && (
+                                                                            p.payment_method == 3 && (
                                                                                 "Pix"
                                                                             )
                                                                         }
@@ -242,7 +201,7 @@ export const Orders = () => {
                                                                 </p>
                 
                                                                 <div className="mt-5 flex justify-center gap-2">
-                                                                    <button onClick={() => navigate(`/pedidos/detalhes/${p.pedido_id}`)} className="p-3 text-md font-medium text-white bg-blue-700 rounded-md">Detalhes do pedido</button>
+                                                                    <button onClick={() => navigate(`/pedidos/detalhes/${p.order_id}`)} className="p-3 text-md font-medium text-white bg-blue-700 rounded-md">Detalhes do pedido</button>
                                                                     <button className="p-3 text-md font-medium text-black border-2 border-blue-700 hover:bg-blue-700 hover:text-white transition-all rounded-md">Preciso de ajuda</button>
                                                                 </div>
                                                             </AccordionContent>

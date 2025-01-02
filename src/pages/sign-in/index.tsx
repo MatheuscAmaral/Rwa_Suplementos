@@ -13,7 +13,7 @@ import { TbPasswordFingerprint } from "react-icons/tb";
 import MaskedInput from '@/components/InputMask';
 
 
-export const Auth = () => {
+export const SignIn = () => {
     const [loading, setLoading] = useState(false);
     const [cpf, setCpf] = useState("");
     const [password, setPassword] = useState("");
@@ -21,19 +21,9 @@ export const Auth = () => {
     const { authUser, } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
-    useEffect(() => {
-        const lastVisitedRoute = localStorage.getItem("@lastVisitedRoute");
-
-        if (lastVisitedRoute) {
-            const cleanedRoute = lastVisitedRoute.replace(/['"]+/g, '');
-            navigate(cleanedRoute);  
-        }
-    }, [navigate]);
-
     const handleCpfChange = (value: string) => {
         setCpf(value);
     };
-
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -45,10 +35,10 @@ export const Auth = () => {
                 password: password
             }
 
-            const response = await api.post("/login", data);
+            const response = await api.post("/users/sign-in", data);
 
-            if(response.data.message) {
-                return toast.error(response.data.message);
+            if(response.data.error) {
+                return toast.error(response.data.error);
             }
 
             if (response.data) {
@@ -56,13 +46,9 @@ export const Auth = () => {
                 authUser([response.data]);
                 navigate("/");
             } 
-        } 
-
-        catch (error: any) {
-            toast.error(`${error.response.data.message}`);  
-        } 
-
-        finally {
+        } catch (error: any) {
+            toast.error(`${error.response.data.error}`);  
+        } finally {
             setLoading(false);
         }
     }

@@ -1,16 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-
 import { Home } from "../pages/home";
 import { Layout } from "../components/layout";
-import { Auth } from "../pages/auth";
-import { Register } from "../pages/register";
+import { SignIn } from "../pages/sign-in";
+import { SignUp } from "../pages/sign-up";
 import { Catalog } from "../pages/catalog";
 import { Checkout } from "../pages/checkout";
 import { Details } from "../pages/details";
 import { Orders } from "../pages/orders";
 import { DetailsOrders } from "../pages/detailsOrders";
 import { Account } from "../pages/account";
-import { InfoAccount } from "@/pages/register/infoAccount";
+import { InfoAccount } from "@/pages/sign-up/infoAccount";
 import { PrivateRoute } from "./privateRouter";
 import NotFound from "@/pages/notFound";
 import ChangePassword from "@/pages/changePassword";
@@ -73,12 +72,12 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <Auth/>
+        element: <SignIn/>
     },
 
     {
         path: "/cadastro",
-        element: <Register/>,
+        element: <SignUp/>,
     },
 
     {

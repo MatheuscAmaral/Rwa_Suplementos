@@ -1,36 +1,16 @@
-import { ProductsProps } from "@/pages/home";
+import { IProducts } from "@/interfaces/IProducts";
 import { useState, createContext, ReactNode } from "react";
 import toast from "react-hot-toast";
 
 interface CartDataProps {
-    cart: CartProps[];
+    cart: IProducts[];
     cartAmount: number;
-    addItemCart: (newItem: ProductsProps) => void;
-    removeItemCart: (product: ProductsProps) => void;
-    fillCart: (cartt: CartProps[]) => void;
+    addItemCart: (newItem: IProducts) => void;
+    removeItemCart: (product: IProducts) => void;
+    fillCart: (cart: IProducts[]) => void;
     clearAll: () => void;
     descontos: number,
     total: number;
-}
-
-export interface CartProps {
-    produto_id: number, 
-    title: string,
-    price: number,
-    image: string,
-    category: string,
-    size: string,
-    flavor: string,
-    type_pack: string,
-    amount: number,
-    total: number,
-    status: number,
-    prod_status: number,
-    promocao_id: number,
-    tipo_desconto: number,
-    valor_desconto: number,
-    priceWithDiscount: number,
-    stock: number
 }
 
 interface CartProviderProps {
@@ -40,25 +20,25 @@ interface CartProviderProps {
 export const CartContext = createContext({} as CartDataProps);
 
 const CartProvider = ({children}: CartProviderProps) => {
-    const [cart, setCart] = useState<CartProps[]>([]);
+    const [cart, setCart] = useState<IProducts[]>([]);
     const [total, setTotal] = useState(0);
     const [descontos, setDescontos] = useState(0);
 
     const [qtd, setQtd] = useState(0);
 
 
-    const applyPromotion = (newItem: ProductsProps) => {
+    const applyPromotion = (newItem: IProducts) => {
         let price = 0;
         
-        if(newItem.tipo_desconto == 1) {
-            let discount = newItem.price * (newItem.valor_desconto / 100);
+        if(newItem.discount_type == 1) {
+            let discount = newItem.price * (newItem.discount_value / 100);
             setDescontos(desc => desc + discount);
             localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos + discount));
             price = newItem.price - discount;
-        } else if (newItem.tipo_desconto == 0) {
-            setDescontos(desc => desc + newItem.valor_desconto);
-            localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos + newItem.valor_desconto));
-            price = newItem.price - newItem.valor_desconto;
+        } else if (newItem.discount_type == 0) {
+            setDescontos(desc => desc + newItem.discount_value);
+            localStorage.setItem("@descontosEcommerce", JSON.stringify(descontos + newItem.discount_value));
+            price = newItem.price - newItem.discount_value;
         }
 
         return price;
@@ -71,7 +51,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         setQtd(0);
     }
 
-    const fillCart = (cartt: CartProps[]) => {
+    const fillCart = (cartt: IProducts[]) => {
         const storedTotal = localStorage.getItem("@totalEcommerce");
         const storedDescontos = localStorage.getItem("@descontosEcommerce");
 
@@ -88,13 +68,13 @@ const CartProvider = ({children}: CartProviderProps) => {
         }
     }
 
-    const addItemCart = (newItem: ProductsProps) => {
-        const existItemCart = cart.filter(c => c.produto_id === newItem.produto_id);
-        const index = cart.findIndex(c => c.produto_id === newItem.produto_id);
+    const addItemCart = (newItem: IProducts) => {
+        const existItemCart = cart.filter(c => c.product_id === newItem.product_id);
+        const index = cart.findIndex(c => c.product_id === newItem.product_id);
     
         let priceWithDiscount = 0;
     
-        if (newItem.promocao_id > 0 && newItem.status == 1) {
+        if (newItem.promotion_id > 0 && newItem.status == 1) {
             priceWithDiscount = applyPromotion(newItem);
         } else {
             priceWithDiscount = newItem.price;
@@ -128,11 +108,11 @@ const CartProvider = ({children}: CartProviderProps) => {
     }
     
     
-    const removeItemCart = (product: ProductsProps) => {
-        const index = cart.findIndex(c => c.produto_id === product.produto_id);
+    const removeItemCart = (product: IProducts) => {
+        const index = cart.findIndex(c => c.product_id === product.product_id);
         
         if (index != -1) {
-            let discount = product.tipo_desconto == 0 ? product.valor_desconto : product.price * (product.valor_desconto / 100);
+            let discount = product.discount_type == 0 ? product.discount_value : product.price * (product.discount_value / 100);
 
             if (product.amount > 1) {
                 cart[index].amount--;
@@ -144,7 +124,7 @@ const CartProvider = ({children}: CartProviderProps) => {
                 
                 totalCart(cart);
                 
-                if(cart[index].promocao_id > 0) {
+                if(cart[index].promotion_id > 0) {
                     if(descontos == 0) {
                         setDescontos(0);
                         localStorage.setItem("@descontosEcommerce", JSON.stringify(0));
@@ -159,7 +139,7 @@ const CartProvider = ({children}: CartProviderProps) => {
             }
     
 
-            if(cart[index].promocao_id > 0) {
+            if(cart[index].promotion_id > 0) {
                 if(descontos == 0) {
                     setDescontos(0);
                     localStorage.setItem("@descontosEcommerce", JSON.stringify(0));
@@ -183,7 +163,7 @@ const CartProvider = ({children}: CartProviderProps) => {
         }   
     }
     
-    const totalCart = (items: CartProps[]) => {
+    const totalCart = (items: IProducts[]) => {
         let myCart = items;
         
         let result = myCart.reduce((acc, obj) => {

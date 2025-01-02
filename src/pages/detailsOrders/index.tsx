@@ -1,23 +1,25 @@
 import { api } from "@/api";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { PedidosProps } from "../orders";
-import toast from "react-hot-toast";
-import Container from "@/components/container";
-import moment  from "moment";
-
 import { PiUserFocusBold } from "react-icons/pi";
 import { IoCart, IoChevronBackCircle } from "react-icons/io5";
 import { BsFillCartXFill } from "react-icons/bs";
 import { CiBoxList } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { AuthContext } from "@/contexts/AuthContext";
+import { IOrders } from "@/interfaces/IOrders";
+import { formatCep } from "@/format/formatCep";
+import toast from "react-hot-toast";
+import Container from "@/components/container";
+import moment  from "moment";
+import { formatPrice } from "@/format/formatPrice";
+import { formatData } from "@/format/formatData";
 
 export const DetailsOrders = () => {
     const {id} = useParams();
     const navigate = useNavigate();
-    const [pedido, setPedido] = useState<PedidosProps>();
-    const [items, setItems] = useState<PedidosProps[]>([]);
+    const [pedido, setPedido] = useState<IOrders>();
+    const [items, setItems] = useState<IOrders[]>([]);
     const [active, setActive] = useState(1);
     const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
@@ -61,20 +63,6 @@ export const DetailsOrders = () => {
         getItemsOrder();
     }, [])
 
-    const formatData = (data: string) => {
-        const createdAtMoment = moment(data);
-
-       return createdAtMoment.format('DD/MM/YYYY');
-    }
-
-    const formatPrice = (price: number) => {
-        return (Number(price) || 0).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        })
-    }
-
-
     return (
         <main className="w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden">
             <Container>
@@ -82,7 +70,7 @@ export const DetailsOrders = () => {
                     <div className="border border-gray-100 p-6 rounded-lg pb-52 w-full">
                         <div className="flex gap-2 items-center">
                             <button onClick={() => navigate("/pedidos")}><IoChevronBackCircle className="text-gray-600" fontSize={23}/></button>
-                            <h1 className="text-2xl font-semibold text-gray-700 flex items-center gap-1">Pedido #{pedido && pedido.pedido_id}</h1>
+                            <h1 className="text-2xl font-semibold text-gray-700 flex items-center gap-1">Pedido #{pedido && pedido.order_id}</h1>
                         </div>
 
                         <div className="border-b border-gray-200 dark:border-gray-700 mt-5">
@@ -120,10 +108,10 @@ export const DetailsOrders = () => {
                                         ) :
                                         pedido && (
                                                 <>
-                                                    <div key={pedido.pedido_id} className="grid grid-cols-2">
+                                                    <div key={pedido.order_id} className="grid grid-cols-2">
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-xs md:text-sm font-medium">Número:</label>
-                                                            <p className="text-md font-medium">#{pedido.pedido_id}</p>
+                                                            <p className="text-md font-medium">#{pedido.order_id}</p>
                                                         </div>
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
@@ -173,15 +161,15 @@ export const DetailsOrders = () => {
                                                             <label className=" text-gray-400 text-xs md:text-sm font-medium">Forma de pagamento:</label>
                                                             <p className="text-md font-medium">
                                                                 {
-                                                                    pedido.formapag_id == 1 && "Boleto"
+                                                                    pedido.payment_method == 1 && "Boleto"
                                                                 }
 
                                                                 {
-                                                                    pedido.formapag_id == 2 && "Cartão de crédito"
+                                                                    pedido.payment_method == 2 && "Cartão de crédito"
                                                                 }
 
                                                                 {
-                                                                    pedido.formapag_id == 3 && "Pix"
+                                                                    pedido.payment_method == 3 && "Pix"
                                                                 }
                                                             </p>
                                                         </div>
@@ -193,12 +181,12 @@ export const DetailsOrders = () => {
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-xs md:text-sm font-medium">Descontos:</label>
-                                                            <p className="text-md font-medium">{formatPrice(pedido.descontos)}</p>
+                                                            <p className="text-md font-medium">{formatPrice(pedido.discounts)}</p>
                                                         </div>
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-xs md:text-sm font-medium">Frete:</label>
-                                                            <p className="text-md font-medium">{formatPrice(pedido.valor_frete)}</p>
+                                                            <p className="text-md font-medium">{formatPrice(pedido.shipping_cost)}</p>
                                                         </div>
 
                                                     </div>
@@ -220,8 +208,8 @@ export const DetailsOrders = () => {
                                             items.length > 0 ? (
                                                 items.map(i => {
                                                     return (
-                                                        <div key={i.cliente_id} className="flex flex-col gap-1 h-full max-h-80 scrollbar-none overflow-y-auto">
-                                                            <div className="flex gap-2 justify-between border rounded-md w-full border-gray-100 py-2 items-center"key={i.produto_id}>
+                                                        <div key={i.client_id} className="flex flex-col gap-1 h-full max-h-80 scrollbar-none overflow-y-auto">
+                                                            <div className="flex gap-2 justify-between border rounded-md w-full border-gray-100 py-2 items-center"key={i.product_id}>
                                                                 <div className="flex gap-3 items-center w-full pl-5">
                                                                     <img src={i.image} className="w-14 mr-4" alt="img_prod" />
     
@@ -234,21 +222,21 @@ export const DetailsOrders = () => {
                                                                         <li className="hidden sm:flex flex-col gap-1">
                                                                             <span className="text-sm font-semibold text-gray-500">Código:</span>
                                                                             <p className="text-xs text-gray-700 font-medium">
-                                                                                {i.produto_id}
+                                                                                {i.product_id}
                                                                             </p>
                                                                         </li>
      
                                                                         <li className="hidden sm:flex flex-col gap-1">
                                                                             <span className="text-sm font-semibold text-gray-500">Valor:</span>
                                                                             <p className="text-xs text-gray-700 font-medium">
-                                                                                {formatPrice(i.price * i.qtd_atendida)}
+                                                                                {formatPrice(i.price * i.quantity_served)}
                                                                             </p>        
                                                                         </li>
     
                                                                         <li className="flex flex-col gap-1">
                                                                             <span className="text-sm font-semibold text-gray-500">Quantidade:</span>
                                                                             <p className="text-xs text-gray-700 font-medium">
-                                                                                {i.qtd_atendida}
+                                                                                {i.quantity_served}
                                                                             </p>       
                                                                         </li>
     
@@ -287,7 +275,7 @@ export const DetailsOrders = () => {
                                         ) :
                                         pedido &&
                                             <>
-                                                <div key={pedido.pedido_id} className="grid grid-cols-2">
+                                                <div key={pedido.order_id} className="grid grid-cols-2">
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Nome:</label>
                                                         <p className="text-md font-medium">{user[0].name}</p>
@@ -295,7 +283,7 @@ export const DetailsOrders = () => {
 
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Código:</label>
-                                                        <p className="text-md font-medium">{pedido.cliente_id}</p>
+                                                        <p className="text-md font-medium">{pedido.client_id}</p>
                                                     </div>
 
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
@@ -321,28 +309,28 @@ export const DetailsOrders = () => {
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Cep:</label>
                                                         <p className="text-md font-medium">
-                                                            {pedido.cep}
+                                                            {formatCep(String(pedido.zip_code))}
                                                         </p>
                                                     </div>
                                                     
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Rua:</label>
-                                                        <p className="text-md font-medium">{pedido.rua}</p>
+                                                        <p className="text-md font-medium">{pedido.street}</p>
                                                     </div>
 
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Número:</label>
-                                                        <p className="text-md font-medium">{pedido.numero}</p>
+                                                        <p className="text-md font-medium">{pedido.number}</p>
                                                     </div>
 
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Bairro:</label>
-                                                        <p className="text-md font-medium">{pedido.bairro}</p>
+                                                        <p className="text-md font-medium">{pedido.neighborhood}</p>
                                                     </div>
                                                     
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">
                                                         <label className=" text-gray-400 text-xs md:text-sm font-medium">Cidade:</label>
-                                                        <p className="text-md font-medium">{pedido.cidade}</p>
+                                                        <p className="text-md font-medium">{pedido.city}</p>
                                                     </div>
 
                                                     <div className="flex flex-col gap-2 ml-2 mt-6">

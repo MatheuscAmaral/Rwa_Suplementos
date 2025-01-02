@@ -9,7 +9,7 @@ import { api } from '@/api';
 import toast from 'react-hot-toast';
 import MaskedInput from '@/components/InputMask';
 
-export const Register = () =>  { 
+export const SignUp = () =>  { 
     const [loading, setLoading] = useState(false);
     const [cpf, setCpf] = useState("");
     const [email, setEmail] = useState("");

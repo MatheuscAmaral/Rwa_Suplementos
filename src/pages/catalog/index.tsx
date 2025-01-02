@@ -1,24 +1,20 @@
 import { api } from "@/api";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { ProductsProps } from "../home";
-
 import { CartContext } from "@/contexts/CartContext";
-
 import { Skeleton } from "@/components/ui/skeleton"
-
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import { MdOutlineSearchOff } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
+import { IProducts } from "@/interfaces/IProducts";
 import toast from "react-hot-toast";
 
 export const Catalog = () => {
-    const { search } = useParams();
-    const [products, setProducts] = useState<ProductsProps[]>([]);
-    const [loadPage, setLoadPage] = useState(false);
     const query = useParams();
-
+    const { search } = useParams();
     const { addItemCart } = useContext(CartContext);
+    const [loadPage, setLoadPage] = useState(false);
+    const [products, setProducts] = useState<IProducts[]>([]);
 
     useEffect(() => {
         async function getProducts() {
@@ -54,8 +50,7 @@ export const Catalog = () => {
     }, [search]); 
 
     return (
-        
-        <main className="w-full max-w-5xl mx-auto mt-5 md:mt-20 mb-44 px-4 md:px-5">
+        <main className="w-full max-w-6xl mx-auto mt-5 md:mt-20 mb-44 px-4">
             {
                 loadPage ? (
                     <div className="flex gap-2 transition-all">
@@ -112,9 +107,9 @@ export const Catalog = () => {
                                         {
                                             products.map((p) => {
                                                 return (
-                                                    <div key={p.produto_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full border border-gray-200">
+                                                    <div key={p.product_id} className="flex flex-col h-64 gap-7 shadow-sm py-4 px-5 rounded-lg w-full border border-gray-200">
                                                         <div className="flex justify-center w-full h-28 items-center">
-                                                            <Link to={`/detalhes/${p.produto_id}`}>
+                                                            <Link to={`/detalhes/${p.product_id}`}>
                                                                 <img src={p.image} className="w-28 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                             </Link>
                                                         </div>

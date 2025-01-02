@@ -8,6 +8,10 @@ import Menu from "@/components/menu";
 export const Account = () => {
     const {user} = useContext(AuthContext);
     const [active, setActive] = useState(1);
+
+    const formatCep = (cep: number) => {    
+        return cep.toString().replace(/^(\d{5})(\d{3})$/, "$1-$2");
+    }
     
     return (
         <main className="transition-all w-full sm:max-w-full mx-auto select-none h-screen overflow-hidden">
@@ -80,19 +84,19 @@ export const Account = () => {
                                             return (
                                                 <>
                                                 <div key={u.id} className="flex flex-col gap-2 ml-2 mt-6">
-                                                    <label className=" text-gray-400 text-sm font-medium">CEP:</label>
-                                                    <p className="text-md font-medium text-gray-600">{u.cep}</p>
+                                                    <label className=" text-gray-400 text-sm font-medium">Cep:</label>
+                                                    <p className="text-md font-medium text-gray-600">{formatCep(u.zip_code)}</p>
                                                 </div>
                                                     
                                                 <div className="grid grid-cols-2">
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-sm font-medium">Rua:</label>
-                                                            <p className="text-md font-medium text-gray-600">{u.rua}</p>
+                                                            <p className="text-md font-medium text-gray-600">{u.street}</p>
                                                         </div>
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-sm font-medium">Número:</label>
-                                                            <p className="text-md font-medium text-gray-600">{u.numero}</p>
+                                                            <p className="text-md font-medium text-gray-600">{u.number}</p>
                                                         </div>
                                                 </div>
 
@@ -101,12 +105,12 @@ export const Account = () => {
                                                     <div className="grid grid-cols-3">
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-sm font-medium">Bairro:</label>
-                                                            <p className="text-md font-medium text-gray-600">{u.bairro}</p>
+                                                            <p className="text-md font-medium text-gray-600">{u.neighborhood}</p>
                                                         </div>
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">
                                                             <label className=" text-gray-400 text-sm font-medium">Cidade:</label>
-                                                            <p className="text-md font-medium text-gray-600">{u.cidade}</p>
+                                                            <p className="text-md font-medium text-gray-600">{u.city}</p>
                                                         </div>
 
                                                         <div className="flex flex-col gap-2 ml-2 mt-6">

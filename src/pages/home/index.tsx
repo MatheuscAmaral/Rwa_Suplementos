@@ -1,48 +1,28 @@
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel"
 import { api } from "../../api";
 import { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { FaCartPlus } from "react-icons/fa";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel as ResponsiveCarousel  } from 'react-responsive-carousel';
 import carousel1 from '../../assets/carousel1.png'
 import carousel2 from '../../assets/carousel2.jpg'
 import { Link } from "react-router-dom";
 import { Skeleton } from "@mui/material";
-
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { IProducts } from "@/interfaces/IProducts";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
   
-export interface ProductsProps {
-    produto_id: number, 
-    title: string,
-    price: number,
-    image: string,
-    category: string,
-    size: string,
-    flavor: string,
-    type_pack: string,
-    amount: number,
-    total: number,
-    status: number,
-    prod_status: number,
-    promocao_id: number,
-    tipo_desconto: number,
-    valor_desconto: number,
-    priceWithDiscount: number,
-    stock: number
-}
-
 interface Products {
-   whey: ProductsProps[],
-   creatina: ProductsProps[],
-   others: ProductsProps[]
+   whey: IProducts[],
+   creatina: IProducts[],
+   others: IProducts[]
 }
 
 export const Home = () => {
@@ -92,12 +72,12 @@ export const Home = () => {
                         {
                             products.whey.map(p => {
                                 return (
-                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.product_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-0.5">
                                             <Card className="w-full max-w-96 h-72">
                                                 <CardContent className="flex flex-col justify-center gap-5 h-full ">
                                                     <div className="flex justify-center w-full h-32 items-center">
-                                                        <Link to={`/detalhes/${p.produto_id}`}>
+                                                        <Link to={`/detalhes/${p.product_id}`}>
                                                             <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                         </Link>
                                                     </div>
@@ -155,12 +135,12 @@ export const Home = () => {
                         {
                             products.creatina.map(p => {
                                 return (
-                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
+                                    <CarouselItem key={p.product_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3">
                                         <div className="p-1">
                                             <Card className="w-full max-w-96 h-72">
                                                 <CardContent className="flex flex-col  justify-center gap-3 h-full ">
                                                     <div className="flex justify-center">
-                                                        <Link to={`/detalhes/${p.produto_id}`}>
+                                                        <Link to={`/detalhes/${p.product_id}`}>
                                                             <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                         </Link>
                                                     </div>
@@ -217,12 +197,12 @@ export const Home = () => {
                         {
                             products.others.map(p => {
                                 return (
-                                    <CarouselItem key={p.produto_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
+                                    <CarouselItem key={p.product_id} className="pl-1 basis-2/3 sm:basis-2/3 md:basis-1/3 lg:basis-1/3 mb-10">
                                         <div className="p-1">
                                         <Card className="w-full max-w-96 h-72">
                                             <CardContent className="flex flex-col justify-center gap-3 h-full ">
                                                 <div className="flex justify-center">
-                                                    <Link to={`/detalhes/${p.produto_id}`}>
+                                                    <Link to={`/detalhes/${p.product_id}`}>
                                                         <img src={p.image} className="w-32 hover:scale-105 transition-all cursor-pointer" alt="img_prod_" />
                                                     </Link>
                                                 </div>

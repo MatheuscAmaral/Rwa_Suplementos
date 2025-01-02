@@ -1,16 +1,13 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
 import { AuthContext } from "@/contexts/AuthContext";
-
 import { CiLocationArrow1 } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoBarcodeOutline, IoClose, IoBagCheckOutline } from "react-icons/io5";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { MdPayment, MdPix } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
-
 import { Check } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -35,13 +32,14 @@ import { api } from "@/api";
 import toast from "react-hot-toast";
 import cepApi from "@/api/cep";
 import { Link } from "react-router-dom";
+import { formatPrice } from "@/format/formatPrice";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
 interface FormaProps {
   id: number;
-  descricao: string;
-  tipo: number;
+  description: string;
+  type: number;
   status: number;
 }
 
@@ -53,16 +51,16 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState("1");
   const [formas, setFormas] = useState<FormaProps[]>([]);
-  const [formaPag, setFormaPag] = useState("");
+  const [formaPag, setFormaPag] = useState<string>("");
   const [load, setLoad] = useState(false);
   const [tipo, setTipo] = useState("");
   const [address, setEditAddress] = useState(false);
-  const [street, setStreet] = useState(user[0].rua);
-  const [neighborhood, setNeighborhood] = useState(user[0].bairro);
-  const [number, setNumber] = useState(user[0].numero);
-  const [city, setCity] = useState(user[0].cidade);
+  const [street, setStreet] = useState(user[0].street);
+  const [neighborhood, setNeighborhood] = useState(user[0].neighborhood);
+  const [number, setNumber] = useState(user[0].number);
+  const [city, setCity] = useState(user[0].city);
   const [state, setState] = useState(user[0].uf);
-  const [cep, setCep] = useState(user[0].cep);
+  const [cep, setCep] = useState(user[0].zip_code);
   const [totalValue, setTotalValue] = useState(total + descontos);
   const [pedidoMessage, setPedidoMessage] = useState("");
 
@@ -73,10 +71,10 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
 
-  const [rua, setRua] = useState(user[0].rua);
-  const [bairro, setBairro] = useState(user[0].bairro);
-  const [numero, setNumero] = useState(user[0].numero);
-  const [cidade, setCidade] = useState(user[0].cidade);
+  const [rua, setRua] = useState(user[0].street);
+  const [bairro, setBairro] = useState(user[0].neighborhood);
+  const [numero, setNumero] = useState(user[0].number);
+  const [cidade, setCidade] = useState(user[0].city);
   const [uf, setUf] = useState(user[0].uf);
 
   const getFormasPagamento = async () => {
@@ -88,13 +86,6 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     setFormas(response.data);
   };
 
-  const formatPrice = (price: string | number) => {
-    return price.toLocaleString("pt-br", {
-      style: "currency",
-      currency: "BRL",
-    });
-  };
-
   const closeModal = () => {
     setOpenModal(false);
     setEditAddress(false);
@@ -102,9 +93,9 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   };
 
   const handleFormaPag = (f: FormaProps) => {
-    setSelectedOption(String(f.tipo));
+    setSelectedOption(String(f.type));
 
-    setTipo(String(f.tipo));
+    setTipo(String(f.type));
   };
 
   const saveFormaPag = () => {
@@ -192,20 +183,20 @@ export const Checkout = ({ className, ...props }: CardProps) => {
 
     const data = {
       total: totalValue - descontos,
-      descontos: descontos,
-      valor_frete: 23,
-      produto_id: cart.map((p) => p.produto_id),
-      cep: cep != "" ? cep : user[0].cep,
-      cliente_id: user[0].id,
-      formapag_id: formaPag,
-      rua: rua != "" ? rua : user[0].rua,
-      cidade: cidade != "" ? cidade : user[0].cidade,
-      numero: numero != "" ? numero : user[0].numero,
-      bairro: bairro != "" ? bairro : user[0].bairro,
+      discounts: descontos,
+      shippingCost: 23,
+      productId: cart.map((p) => p.product_id),
+      zipCode: cep != "" ? cep : user[0].cep,
+      clientId: user[0].id,
+      paymentMethod: formaPag,
+      street: rua != "" ? rua : user[0].rua,
+      city: cidade != "" ? cidade : user[0].cidade,
+      number: numero != "" ? numero : user[0].numero,
+      neighborhood: bairro != "" ? bairro : user[0].bairro,
       uf: uf != "" ? uf : user[0].uf,
       status: 1,
-      qtd_pedida: cart.map(p => p.amount),
-      qtd_atendida:  cart.map(p => {
+      quantityOrdered: cart.map(p => p.amount),
+      quantityServed:  cart.map(p => {
         if (p.stock <= 0 || p.status == 0) {
           return 0;
         }
@@ -218,14 +209,14 @@ export const Checkout = ({ className, ...props }: CardProps) => {
           p.amount
         )
       }),
-      tipo_desconto: cart.map(p => p.tipo_desconto),
-      valor_desconto: cart.map(p => p.valor_desconto),
+      discountType: cart.map(p => p.discount_type),
+      discountValue: cart.map(p => p.discount_value),
     };
 
     try {
       const response = await api.post("/orders", data);
 
-      setPedidoMessage(response.data.pedido_id);
+      setPedidoMessage(response.data.order_id);
 
       toast.success("Pedido enviado com sucesso!");
       clearCart();
@@ -253,8 +244,8 @@ export const Checkout = ({ className, ...props }: CardProps) => {
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 md:flex-row justify-center w-full max-w-4xl mx-auto h-full pb-48 mt-2 md:mt-10 pt-4 px-5 md:mb-30">
-          <section className="border py-5 px-5 pb-10 w-full md:max-w-xl rounded-lg">
+        <div className="flex flex-col gap-5 md:flex-row justify-center w-full max-w-7xl mx-auto h-full pb-48 mt-2 md:mt-10 pt-4 px-5 md:mb-30">
+          <section className="border py-5 px-5 pb-10 w-full md:max-w-3xl rounded-lg">
             <h5 className="font-semibold text-sm ml-2">Revisar e finalizar</h5>
 
             <div className="flex justify-between items-center text-xs mx-4">
@@ -334,7 +325,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                 return (
                   <div
                     className="flex gap-2 justify-between border border-l-0 border-r-0 border-b-0 border-gray-100 py-2 items-center"
-                    key={p.produto_id}
+                    key={p.product_id}
                   >
                     <div className="flex gap-3 items-center">
                       <img src={p.image} className="w-16" alt="img_prod" />
@@ -344,10 +335,10 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                           {p.title}
                         </p>
                         <span className="text-xs font-semibold text-gray-500">
-                          Código: {p.produto_id}
+                          Código: {p.product_id}
                         </span>
 
-                        {p.promocao_id >= 1 ? (
+                        {p.promotion_id >= 1 ? (
                           <div className="flex flex-col">
                             <div className="flex flex-col">
                               <span
@@ -387,7 +378,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
 
           </section>
 
-          <form onSubmit={(e) => finalizarPedido(e)} className="w-full md:max-w-80 rounded-lg px-5 py-4 pb-5 border">
+          <form onSubmit={(e) => finalizarPedido(e)} className="w-full md:max-w-96 rounded-lg px-5 py-4 pb-5 border">
             <h5 className="font-semibold text-sm mb-5">Resumo do pedido</h5>
             <p className="font-medium text-xs mb-2 text-gray-500">
               Pedido: <span className="font-bold">#1</span>
@@ -519,24 +510,24 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                         <div
                           key={f.id}
                           className={`flex flex-col items-center gap-2 ${
-                            selectedOption == String(f.tipo) &&
+                            selectedOption == String(f.type) &&
                             "bg-blue-700 text-white"
                           } rounded-md border p-3 hover:border-blue-700 transition-all select-none relative`}
                         >
-                          {f.tipo == 2 && <MdPayment fontSize={30} />}
+                          {f.type == 2 && <MdPayment fontSize={30} />}
 
-                          {f.tipo == 3 && <MdPix fontSize={30} />}
+                          {f.type == 3 && <MdPix fontSize={30} />}
 
-                          {f.tipo == 1 && <IoBarcodeOutline fontSize={30} />}
+                          {f.type == 1 && <IoBarcodeOutline fontSize={30} />}
 
                           <span className="text-xs font-semibold text-center">
-                            {f.descricao}
+                            {f.description}
                           </span>
 
                           <RadioGroupItem
                             onClick={() => handleFormaPag(f)}
-                            value={String(f.tipo)}
-                            id={f.descricao}
+                            value={String(f.type)}
+                            id={f.description}
                             className="absolute w-full h-full top-0 rounded opacity-0"
                           />
                         </div>

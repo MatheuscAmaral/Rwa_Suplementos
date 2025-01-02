@@ -1,24 +1,20 @@
 import { api } from "@/api"
 import { useParams, Link } from "react-router-dom"
 import { useEffect, useState, useContext } from "react"
-
-import { ProductsProps } from "../home"
 import { CartContext } from "@/contexts/CartContext"
-
 import { Skeleton } from "@/components/ui/skeleton"
-
 import { FaCartPlus } from "react-icons/fa6"
 import { FaWeightHanging } from "react-icons/fa";
 import { MdFlatware } from "react-icons/md";
 import { PiPackageBold } from "react-icons/pi";
+import { IProducts } from "@/interfaces/IProducts"
 import toast from "react-hot-toast"
 
 export const Details = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState<ProductsProps>();
     const { addItemCart } = useContext(CartContext);
+    const [product, setProduct] = useState<IProducts>();
     const [loadPage, setLoadPage] = useState(false);
-
 
    useEffect(() => {
         async function getProductDetails () {
@@ -39,7 +35,7 @@ export const Details = () => {
         getProductDetails();
    }, []);
 
-   const addProductCart = (product: ProductsProps) => {
+   const addProductCart = (product: IProducts) => {
         addItemCart(product);
    }
 
@@ -54,7 +50,7 @@ export const Details = () => {
                             <div className="flex flex-col gap-2 w-full max-w-sm">
                                 <div className="flex flex-col pb-6">
                                     <h1 className="text-2xl md:text-3xl font-semibold">{product.title}</h1>
-                                    <span className="font-semibold text-gray-600 text-sm">Código: {product.produto_id}</span>
+                                    <span className="font-semibold text-gray-600 text-sm">Código: {product.product_id}</span>
                                 </div>
 
                                 {

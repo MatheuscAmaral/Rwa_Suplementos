@@ -31,8 +31,9 @@ import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 
 import { Input } from "@/components/ui/input";
-import { ProductsProps } from "@/pages/home";
 import { api } from "@/api";
+import { formatPrice } from "@/format/formatPrice";
+import type { IProducts } from "@/interfaces/IProducts";
 
 type Anchor = "right";
 
@@ -102,8 +103,8 @@ export const Header = () => {
       setState({ ...state, [anchor]: open });
     };
 
-  const removeProductCartTrash = (product: ProductsProps) => {
-    const index = cart.findIndex((c) => c.produto_id === product.produto_id);
+  const removeProductCartTrash = (product: IProducts) => {
+    const index = cart.findIndex((c) => c.product_id === product.product_id);
 
     if (index != -1) {
       product.amount = -99;
@@ -112,11 +113,11 @@ export const Header = () => {
     removeItemCart(product);
   };
 
-  const removeProductCart = (product: ProductsProps) => {
+  const removeProductCart = (product: IProducts) => {
     removeItemCart(product);
   };
 
-  const addProductCart = (product: ProductsProps) => {
+  const addProductCart = (product: IProducts) => {
     addItemCart(product);
   };
 
@@ -136,13 +137,6 @@ export const Header = () => {
       navigate("/catalogo/todos");
       setLoading(false);
     }, 1000);
-  };
-
-  const formatPrice = (price: string | number) => {
-    return price.toLocaleString("pt-br", {
-      style: "currency",
-      currency: "BRL",
-    });
   };
 
   const navigateRoute = (route: string) => {
@@ -179,9 +173,9 @@ export const Header = () => {
           {cart.map((c) => {
             return (
               <section
-                key={c.produto_id}
+                key={c.product_id}
                 className={`flex gap-3 items-center border ${
-                  c.tipo_desconto == 0 ? "h-32" : "h-26"
+                  c.discount_type == 0 ? "h-32" : "h-26"
                 } px-4 py-7 mx-3 rounded-sm relative`}
               >
                 <img src={c.image} alt="img_produto" className="w-14" />
@@ -201,7 +195,7 @@ export const Header = () => {
                 </div>
 
                 <span className="text-sm font-semibold flex flex-col gap-0 text-gray-500 absolute right-2 bottom-5 pt-0.5 mr-1">
-                  {c.promocao_id >= 1 ? (
+                  {c.promotion_id >= 1 ? (
                     <div className="flex flex-col items-end">
                       <div className="flex flex-col">
                         <span
@@ -220,11 +214,11 @@ export const Header = () => {
                       </div>
 
                       <span style={{ fontSize: 11 }} className="text-green-600">
-                        {c.tipo_desconto == 1 ? (
-                          <span>{c.valor_desconto}% de desconto</span>
+                        {c.discount_type == 1 ? (
+                          <span>{c.discount_value}% de desconto</span>
                         ) : (
                           <p className=" max-w-20">
-                            {formatPrice(c.valor_desconto)} de desconto
+                            {formatPrice(c.discount_value)} de desconto
                           </p>
                         )}
                       </span>
