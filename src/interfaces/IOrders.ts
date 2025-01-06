@@ -1,4 +1,5 @@
 export interface IOrders {
+  invoice_id: string;
   order_id: number,
   total: number,
   status: number,

@@ -13,6 +13,7 @@ import { InfoAccount } from "@/pages/sign-up/infoAccount";
 import { PrivateRoute } from "./privateRouter";
 import NotFound from "@/pages/notFound";
 import ChangePassword from "@/pages/changePassword";
+import Payment from "@/pages/checkout/payment";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/detalhes/:id",
                 element: <Details/>
+            },
+            {
+                path: "/pagamentos/:id",
+                element: <Payment/>
             },
             {
                 path: "/pedidos",

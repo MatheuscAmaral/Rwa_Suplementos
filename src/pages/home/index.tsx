@@ -60,7 +60,7 @@ export const Home = () => {
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
                 <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center"> Whey Protein</h1>
-                    <hr className="mb-8 w-44 h-1 bg-blue-800 mx-auto" />
+                    <hr className="mb-8 w-44 h-1 bg-secondaryColor mx-auto" />
 
                     <div className={`flex justify-center gap-2 h-80  mb-10 ${products.whey.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
@@ -99,7 +99,7 @@ export const Home = () => {
                                                                             })}
                                                                         </span>
                                                                         
-                                                                        <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                        <button className="bg-primaryColor p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                             <FaCartPlus fontSize={18} color="white" />
                                                                         </button>
                                                                     </div>
@@ -123,7 +123,7 @@ export const Home = () => {
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 pb-20">
                 <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center"> Creatina</h1>
-                    <hr className="mb-8 w-32 h-1 bg-blue-800 mx-auto" />
+                    <hr className="mb-8 w-32 h-1 bg-secondaryColor mx-auto" />
 
                     <div className={`flex justify-center gap-2 h-80  mb-10 ${products.creatina.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
@@ -161,7 +161,7 @@ export const Home = () => {
                                                                         })}
                                                                     </span>
                                                                     
-                                                                    <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                    <button className="bg-primaryColor p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                         <FaCartPlus fontSize={18} color="white" />
                                                                     </button>
                                                                 </div>
@@ -185,7 +185,7 @@ export const Home = () => {
             <section className="flex flex-col gap-1 w-full max-w-7xl justify-center mx-auto p-4 ">
                 <Carousel className={`w-full max-w-3xl mx-auto`}>
                     <h1 className=" text-xl font-bold text-center">Outros</h1>
-                    <hr className="mb-8 w-24 h-1 bg-blue-800 mx-auto" />
+                    <hr className="mb-8 w-24 h-1 bg-secondaryColor mx-auto" />
 
                     <div className={`flex justify-center gap-2 h-80 mb-10 ${products.others.length > 0 && "hidden"}`}>
                         <Skeleton className="h-[170px] w-[200px] rounded-xl" />
@@ -224,7 +224,7 @@ export const Home = () => {
                                                                     })}
                                                                 </span>
                                                                 
-                                                                <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                <button className="bg-primaryColor p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                     <FaCartPlus fontSize={18} color="white" />
                                                                 </button>
                                                             </div>

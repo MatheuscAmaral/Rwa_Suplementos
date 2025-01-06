@@ -58,7 +58,7 @@ export const SignUp = () =>  {
     return (
         <div className='relative flex justify-between gap-5'>
             <div className='flex flex-col justify-center py-44 items-center gap-5 border-black p-16 my-auto mx-auto w-full max-w-xl'>
-                <h1 className='text-4xl flex items-center font-semibold mb-10 text-black'>Cadastre- <span className='text-blue-800'>se</span></h1>
+                <h1 className='text-4xl flex items-center font-semibold mb-10 text-black'>Cadastre- <span className='text-secondaryColor'>se</span></h1>
                 
                 <form onSubmit={(e) => verifyRegister(e)} action="" className='w-full flex flex-col gap-5'>
                     <div className='w-full text-sm text-gray-600 relative'>
@@ -79,7 +79,7 @@ export const SignUp = () =>  {
                     </div>
 
 
-                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
+                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
                         {
                             loading ? (
                                 <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -92,7 +92,7 @@ export const SignUp = () =>  {
                 </form>
 
                 <p className='text-sm flex gap-1'>Já possui cadastro? 
-                    <Link to={"/login"} className='text-blue-800'>
+                    <Link to={"/login"} className='text-secondaryColor'>
                         Entrar
                     </Link>
                 </p>

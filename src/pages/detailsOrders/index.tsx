@@ -9,11 +9,10 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { AuthContext } from "@/contexts/AuthContext";
 import { IOrders } from "@/interfaces/IOrders";
 import { formatCep } from "@/format/formatCep";
-import toast from "react-hot-toast";
-import Container from "@/components/container";
-import moment  from "moment";
 import { formatPrice } from "@/format/formatPrice";
 import { formatData } from "@/format/formatData";
+import toast from "react-hot-toast";
+import Container from "@/components/container";
 
 export const DetailsOrders = () => {
     const {id} = useParams();
@@ -129,25 +128,44 @@ export const DetailsOrders = () => {
                                                             <p className="text-md font-medium">
                                                                 {
                                                                     pedido.status == 1 && (
-                                                                        "Em análise"
+                                                                        "Aguardando pagamento"
                                                                     )
+
                                                                 }
-        
+
                                                                 {
                                                                     pedido.status == 2 && (
-                                                                        "Bloqueado"
+                                                                        "Pagamento aprovado"
                                                                     )
                                                                 }
-        
+                                                                
                                                                 {
                                                                     pedido.status == 3 && (
-                                                                        "Cancelado"
+                                                                        "Em separação"
+                                                                    )
+                                                                }
+
+                                                                {
+                                                                    pedido.status == 4 && (
+                                                                        "Em transito"
+                                                                    )
+                                                                }
+
+                                                                {
+                                                                    pedido.status == 5 && (
+                                                                        "Em rota de entrega"
                                                                     )
                                                                 }
         
                                                                 {
-                                                                    pedido.status == 4 && (
+                                                                    pedido.status == 6 && (
                                                                         "Faturado"
+                                                                    )
+                                                                }
+
+                                                                {
+                                                                    pedido.status == 7 && (
+                                                                        "Cancelado"
                                                                     )
                                                                 }
                                                             </p>

@@ -130,7 +130,7 @@ export const Catalog = () => {
                                                                             })}
                                                                         </span>
                                                                         
-                                                                        <button className="bg-blue-700 p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                        <button className="bg- p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                             <FaCartPlus fontSize={18} color="white" />
                                                                         </button>
                                                                     </div>

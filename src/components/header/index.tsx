@@ -284,7 +284,7 @@ export const Header = () => {
                   id="button"
                   className={`${
                     loading ? "disabled cursor-not-allowed opacity-70" : ""
-                  } text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-blue-700 transition-all  mb-3`}
+                  } text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-primaryColor transition-all  mb-3`}
                 >
                   {loading ? (
                     <AiOutlineLoading3Quarters
@@ -308,7 +308,7 @@ export const Header = () => {
                     id="button"
                     className={`${
                       loading ? "disabled cursor-not-allowed opacity-70" : ""
-                    } text-sm bg-blue-800 text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3 hover:bg-blue-700 transition-all`}
+                    } text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3 hover:bg- transition-all`}
                   >
                     {loading ? (
                       <AiOutlineLoading3Quarters
@@ -401,7 +401,7 @@ export const Header = () => {
               <button className="relative pt-1.5">
                 <FaCartShopping fontSize={21} />
                 {cartAmount > 0 && (
-                  <span className="px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white">
+                  <span className="px-1.5 flex items-center justify-center rounded-full bg- absolute bottom-3.5 left-3 text-xs text-white">
                     {cartAmount}
                   </span>
                 )}
@@ -545,7 +545,7 @@ export const Header = () => {
             <button className="relative pt-1.5">
               <FaCartShopping fontSize={21} />
               {cartAmount > 0 && (
-                <span className="px-1.5 flex items-center justify-center rounded-full bg-blue-700 absolute bottom-3.5 left-3 text-xs text-white">
+                <span className="px-1.5 flex items-center justify-center rounded-full bg- absolute bottom-3.5 left-3 text-xs text-white">
                   {cartAmount}
                 </span>
               )}
