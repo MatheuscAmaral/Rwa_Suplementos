@@ -1,11 +1,11 @@
-import wallpaper from '../../assets/wallpaper.png'
-import logo from "../../assets/rwalogo2.png";
 import { Link, useNavigate} from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Md123, MdAlternateEmail } from "react-icons/md";
 import { useState } from 'react';
 import { api } from '@/api';
+import wallpaper from '../../assets/wallpaper.png'
+import logo from "../../assets/rwalogo2.png";
 import toast from 'react-hot-toast';
 import MaskedInput from '@/components/InputMask';
 
@@ -79,7 +79,7 @@ export const SignUp = () =>  {
                     </div>
 
 
-                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
+                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-primaryColor hover:bg-secondaryColor transition-all text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
                         {
                             loading ? (
                                 <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -92,7 +92,7 @@ export const SignUp = () =>  {
                 </form>
 
                 <p className='text-sm flex gap-1'>Já possui cadastro? 
-                    <Link to={"/login"} className='text-secondaryColor'>
+                    <Link to={"/login"} className='text-primaryColor hover:text-secondaryColor transition-all'>
                         Entrar
                     </Link>
                 </p>

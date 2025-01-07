@@ -3,8 +3,8 @@ import { Dialog, Popover } from "@headlessui/react";
 import logo from "../../assets/rwalogo2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "@/contexts/CartContext";
-import { AuthContext, UserDataProps } from "@/contexts/AuthContext";
+import { CartContext } from "@/hooks/CartContext";
+import { AuthContext, UserDataProps } from "@/hooks/AuthContext";
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -261,6 +261,13 @@ export const Header = () => {
                     </span>
                   </div>
 
+                  <div className="flex justify-between items-center px-2 text-sm">
+                    <p>Frete</p>
+                    <span className="flex items-center text-lg font-semibold text-green-600">
+                      {formatPrice(0)}
+                    </span>
+                  </div>
+
                   <hr className="my-2 mx-2" />
 
                   <div className="flex justify-between items-center px-2 text-sm">
@@ -284,7 +291,7 @@ export const Header = () => {
                   id="button"
                   className={`${
                     loading ? "disabled cursor-not-allowed opacity-70" : ""
-                  } text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-primaryColor transition-all  mb-3`}
+                  } text-sm bg-primaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-secondaryColor transition-all  mb-3`}
                 >
                   {loading ? (
                     <AiOutlineLoading3Quarters
@@ -308,7 +315,7 @@ export const Header = () => {
                     id="button"
                     className={`${
                       loading ? "disabled cursor-not-allowed opacity-70" : ""
-                    } text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3 hover:bg- transition-all`}
+                    } text-sm bg-primaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 mb-3 hover:bg-secondaryColor transition-all`}
                   >
                     {loading ? (
                       <AiOutlineLoading3Quarters
@@ -401,7 +408,7 @@ export const Header = () => {
               <button className="relative pt-1.5">
                 <FaCartShopping fontSize={21} />
                 {cartAmount > 0 && (
-                  <span className="px-1.5 flex items-center justify-center rounded-full bg- absolute bottom-3.5 left-3 text-xs text-white">
+                  <span className="px-1.5 flex items-center justify-center rounded-full bg-primaryColor absolute bottom-3.5 left-3 text-xs text-white">
                     {cartAmount}
                   </span>
                 )}
@@ -545,7 +552,7 @@ export const Header = () => {
             <button className="relative pt-1.5">
               <FaCartShopping fontSize={21} />
               {cartAmount > 0 && (
-                <span className="px-1.5 flex items-center justify-center rounded-full bg- absolute bottom-3.5 left-3 text-xs text-white">
+                <span className="px-1.5 flex items-center justify-center rounded-full bg-primaryColor absolute bottom-3.5 left-3 text-xs text-white">
                   {cartAmount}
                 </span>
               )}

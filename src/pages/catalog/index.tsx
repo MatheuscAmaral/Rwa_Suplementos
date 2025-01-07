@@ -1,7 +1,7 @@
 import { api } from "@/api";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { CartContext } from "@/contexts/CartContext";
+import { CartContext } from "@/hooks/CartContext";
 import { Skeleton } from "@/components/ui/skeleton"
 import { BsFillGrid3X2GapFill } from "react-icons/bs";
 import { MdOutlineSearchOff } from "react-icons/md";
@@ -130,7 +130,7 @@ export const Catalog = () => {
                                                                             })}
                                                                         </span>
                                                                         
-                                                                        <button className="bg- p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
+                                                                        <button className="bg-primaryColor p-1.5 w-8 rounded-full flex items-center justify-center" onClick={() => addItemCart(p)}>
                                                                             <FaCartPlus fontSize={18} color="white" />
                                                                         </button>
                                                                     </div>

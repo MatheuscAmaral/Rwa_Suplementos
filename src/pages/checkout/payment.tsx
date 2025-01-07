@@ -1,8 +1,8 @@
 import { api } from "@/api";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { AuthContext } from "@/contexts/AuthContext";
-import { CartContext } from "@/contexts/CartContext";
+import { AuthContext } from "@/hooks/AuthContext";
+import { CartContext } from "@/hooks/CartContext";
 import { formatPrice } from "@/format/formatPrice";
 import { InvoiceProps } from "@/interfaces/InvoicePropst";
 import { useContext, useEffect, useState } from "react";
@@ -153,14 +153,14 @@ const Payment = () => {
                                   i.ticketCode.identificationField
                                 )
                               }
-                              className="flex gap-2 bg-primaryColor text-white p-3 text-sm rounded-md"
+                              className="flex gap-2 bg-primaryColor hover:bg-secondaryColor text-white p-3 text-sm rounded-md"
                             >
                               Copiar linha digitável <IoCopyOutline fontSize={22} />
                             </Button>
     
                             <Button
                               onClick={() => window.open(i.invoiceUrl, "_blank")}
-                              className="flex gap-2 bg-primaryColor text-white p-3 rounded-md"
+                              className="flex gap-2 bg-primaryColor hover:bg-secondaryColor text-white p-3 rounded-md"
                             >
                               Visualizar boleto <IoBarcodeOutline fontSize={27} />
                             </Button>
@@ -194,7 +194,7 @@ const Payment = () => {
                                     i.qrCode.payload
                                   )
                                 }
-                                className="flex gap-2 bg-primaryColor text-white p-3 text-sm rounded-md"
+                                className="flex gap-2 bg-primaryColor hover:bg-secondaryColor text-white p-3 text-sm rounded-md"
                               >
                                 Copiar código copia e cola <IoCopyOutline fontSize={22} />
                               </Button>

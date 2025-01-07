@@ -29,6 +29,8 @@ export const AuthContext = createContext({} as AuthProps);
 const AuthProvider = ({children}: AuthProvider) => {
     const [user, setUser] = useState<UserDataProps[]>([]);
 
+    console.log(user);
+
     const authUser = (user: UserDataProps[]) => {
         setUser([...user]);
 

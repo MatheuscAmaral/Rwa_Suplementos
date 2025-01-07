@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { CartContext } from "@/contexts/CartContext";
-import { AuthContext } from "@/contexts/AuthContext";
+import { CartContext } from "@/hooks/CartContext";
+import { AuthContext } from "@/hooks/AuthContext";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoBarcodeOutline, IoClose, IoBagCheckOutline } from "react-icons/io5";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { MdPayment, MdPix } from "react-icons/md";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaShippingFast } from "react-icons/fa";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -29,8 +29,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { api } from "@/api";
 import { Link, useNavigate } from "react-router-dom";
 import { formatPrice } from "@/format/formatPrice";
+import { IOrders } from "@/interfaces/IOrders";
 import toast from "react-hot-toast";
 import cepApi from "@/api/cep";
+import CreditCardMaskedInput from "@/components/CreditCardMask";
+import CVCMaskedInput from "@/components/CvcMaskInput";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
@@ -54,6 +57,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [load, setLoad] = useState(false);
   const [tipo, setTipo] = useState("");
   const [address, setEditAddress] = useState(false);
+  const [shipping, setShipping] = useState(false);
   const [street, setStreet] = useState(user[0].street);
   const [neighborhood, setNeighborhood] = useState(user[0].neighborhood);
   const [number, setNumber] = useState(user[0].number);
@@ -69,6 +73,10 @@ export const Checkout = ({ className, ...props }: CardProps) => {
   const [name, setName] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  const [shippingCost, setShippingCost] = useState([{
+    enterprise: '',
+    value: 0
+  }]);
 
   const [rua, setRua] = useState(user[0].street);
   const [bairro, setBairro] = useState(user[0].neighborhood);
@@ -85,9 +93,15 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     setFormas(response.data);
   };
 
+  const getShippingCostEnterprises = async () => {
+    setShipping(true);
+    setOpenModal(true);
+  };
+
   const closeModal = () => {
     setOpenModal(false);
     setEditAddress(false);
+    setShipping(false);
     cleanModal();
   };
 
@@ -114,13 +128,19 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     setOpenModal(true);
   };
 
-  const cancelInvoice = async () => {
+  const cancelInvoice = async (order?: IOrders) => {
     try {
         const invoiceString = localStorage.getItem('@invoiceEcommerce');
 
         if (invoiceString) {
-          const invoice = JSON.parse(invoiceString);
-          await api.delete(`/invoices/${invoice.id}`);
+          const invoiceLocal = JSON.parse(invoiceString);
+          const invoice = await api.delete(`/invoices/${invoiceLocal.id}`);
+
+          if (invoice.status === 200) {
+            if (order) {
+              await api.delete(`/orders/${order.order_id}`);
+            }
+          }
         }
     } catch (error) {
       toast.error("Ocorreu um erro ao cancelar o pedido!");
@@ -230,6 +250,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
         }),
         discountType: cart.map((p) => p.discount_type),
         discountValue: cart.map((p) => p.discount_value),
+        installmentValue: (total / Number(parcelas)).toFixed(2),
         creditCard: {
           holderName: name,
           number: numberCart,
@@ -250,6 +271,11 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     try {
       response = await api.post('/orders/prepare', data);
       const userString = localStorage.getItem('@userEcommerce');
+
+      if (response.data.errors) {
+        toast.error(response.data.errors);
+        return;
+      }
       
       if (userString) {
         const user = JSON.parse(userString);
@@ -271,16 +297,17 @@ export const Checkout = ({ className, ...props }: CardProps) => {
           invoice_id: invoice.id,
         });
 
-       if (formaPag != "2") {
-        navigate(`/pagamentos/${invoice.id}`);
-       }
-
        if (invoice && invoice.creditCard && !invoice.creditCard.errors) {
          clearCart();
          setPedidoMessage(`#${response.data.order_id}`);
        } else {
-        cancelInvoice();
+        cancelInvoice(response.data);
         toast.error("Ocorreu um erro ao enviar o seu pedido, tente novamente mais tarde!");
+        return;
+       }
+
+       if (formaPag != "2") {
+        navigate(`/pagamentos/${invoice.id}`);
        }
       }
     } catch {
@@ -385,6 +412,34 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                    }
                   </span>
                 </div>
+
+                <div className="flex justify-between items-center mt-5 text-xs mx-4">
+                  <div className="flex gap-3 items-center text-xs ">
+                    <FaShippingFast className="text-gray-500" fontSize={23} />
+    
+                    <div className="text-gray-500 font-medium">
+                      <p className="font-bold">Frete</p>
+                      <p>
+                        {shippingCost.length > 0 && shippingCost[0].enterprise  ? (
+                          <span>
+                            {shippingCost[0].enterprise}
+                          </span>
+                        ) : (
+                            <span className="text-red-600"> Nada selecionado</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+    
+                  <span
+                    onClick={() => getShippingCostEnterprises()}
+                    className="text-gray-500 font-medium cursor-pointer"
+                  >
+                   {
+                        shippingCost && shippingCost[0].enterprise ? "Alterar" : "Adicionar"
+                   }
+                  </span>
+                </div>
     
                 <div className="flex flex-col gap-1 mt-10 h-full max-h-80 overflow-auto scrollbar-none">
                   {cart && cart.map((p) => {
@@ -466,6 +521,12 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                     - {formatPrice(descontos)}
                   </span>
                 </p>
+                <p className="mt-2 text-xs flex justify-between mb-3 font-medium text-gray-500">
+                  Frete{" "}
+                  <span className=" font-medium">
+                    {formatPrice(0)}
+                  </span>
+                </p>
                 <hr />
     
                 <p className="mt-2 text-sm flex justify-between font-semibold">
@@ -488,7 +549,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                       type="submit"
                       className={`${
                         loading ? "disabled cursor-not-allowed opacity-70" : ""
-                      } text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-primaryColor transition-all  mb-3`}
+                      } text-sm bg-primaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0 hover:bg-secondaryColor transition-all  mb-3`}
                     >
                       {loading ? (
                         <AiOutlineLoading3Quarters
@@ -545,8 +606,8 @@ export const Checkout = ({ className, ...props }: CardProps) => {
               >
                 <Card
                   className={`${cn("w-full", className)} ${
-                    openModal ? "block" : "hidden"
-                  } ${address && "hidden"} relative md:mx-auto max-w-lg mx-5`}
+                    openModal && !shipping ? "block" : "hidden"
+                  } ${address && "hidden"} relative md:mx-auto max-w-xl mx-5`}
                   style={{ height: selectedOption === "2" ? 680 : 300 }}
                   {...props}
                 >
@@ -624,17 +685,15 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     
                       <div className="flex flex-col gap-2 text-sm">
                         <label htmlFor="number">Número do cartão:</label>
-                        <Input
-                          id="number"
-                          onChange={(e) => setNumberCart(e.target.value)}
-                          type="number"
-                          placeholder="Digite o número escrito no cartão..."
+                        <CreditCardMaskedInput
+                          value={numberCart}
+                          onChange={(e) => setNumberCart(e)}
                         />
                       </div>
     
                       <div className=" grid grid-cols-3 gap-2 text-sm">
                         <div className="flex flex-col gap-2">
-                          <label htmlFor="date"> Mês:</label>
+                          <label htmlFor="date"> Mês de vencimento:</label>
     
                           <Select onValueChange={(e) => setMonth(e)}>
                             <SelectTrigger className="w-full">
@@ -659,7 +718,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                         </div>
     
                         <div className="flex flex-col gap-2">
-                          <label htmlFor="date"> Ano:</label>
+                          <label htmlFor="date"> Ano de vencimento:</label>
     
                           <Select onValueChange={(e) => setYear(e)}>
                             <SelectTrigger className="w-full">
@@ -685,7 +744,7 @@ export const Checkout = ({ className, ...props }: CardProps) => {
     
                         <div className="flex flex-col gap-2">
                           <label htmlFor="cvc">CVC:</label>
-                          <Input id="cvc" onChange={(e) => setCVC(e.target.value)} type="number" placeholder="CVC" />
+                          <CVCMaskedInput onChange={(e) => setCVC(e)} value={cvc} />
                         </div>
                       </div>
     
@@ -718,6 +777,48 @@ export const Checkout = ({ className, ...props }: CardProps) => {
                       onClick={() => saveFormaPag()}
                       className={`w-full h-11 bg-primaryColor ${formas.length <= 0 && "mt-12"}`}
                       disabled={formas.length <= 0 || (Number(selectedOption) == 2 && (!name || !cvc || !numberCart || !year || !month || !parcelas)) }
+                    >
+                      {load ? (
+                        <AiOutlineLoading3Quarters />
+                      ) : (
+                        <span className={`flex items-center`}>
+                          <Check className="mr-2 h-4 w-4" /> Salvar{" "}
+                        </span>
+                      )}
+                    </Button>
+                  </CardFooter>
+                </Card>
+
+                <Card
+                  className={`${cn("w-full", className)} ${
+                    openModal && shipping ? "block" : "hidden"
+                  } ${address && "hidden"} relative md:mx-auto max-w-xl mx-5`}
+                  style={{ height: selectedOption === "2" ? 680 : 300 }}
+                  {...props}
+                >
+                  <CardHeader className="relative ">
+                    <CardTitle className="text-lg xl:text-2xl">Frete</CardTitle>
+                    <IoClose
+                      onClick={() => closeModal()}
+                      fontSize={25}
+                      className="absolute top-4 right-5 cursor-pointer"
+                    />
+                  </CardHeader>
+    
+                  <CardContent className="flex flex-col gap-5">
+    
+                    <section
+                      className={`grid grid-rows-3 gap-7`}
+                    >
+                      <div className="">
+
+                      </div>
+                    </section>
+                  </CardContent>
+    
+                  <CardFooter>
+                    <Button
+                      className={`w-full h-11 bg-primaryColor ${formas.length <= 0 && "mt-12"}`}
                     >
                       {load ? (
                         <AiOutlineLoading3Quarters />

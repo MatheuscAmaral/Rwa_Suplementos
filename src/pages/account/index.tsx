@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Container from "@/components/container";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/hooks/AuthContext";
 import { useContext } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import Menu from "@/components/menu";

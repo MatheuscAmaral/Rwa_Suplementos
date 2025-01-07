@@ -1,7 +1,7 @@
 import { api } from "@/api"
 import { useParams, Link } from "react-router-dom"
 import { useEffect, useState, useContext } from "react"
-import { CartContext } from "@/contexts/CartContext"
+import { CartContext } from "@/hooks/CartContext"
 import { Skeleton } from "@/components/ui/skeleton"
 import { FaCartPlus } from "react-icons/fa6"
 import { FaWeightHanging } from "react-icons/fa";

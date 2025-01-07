@@ -23,9 +23,8 @@ const CartProvider = ({children}: CartProviderProps) => {
     const [cart, setCart] = useState<IProducts[]>([]);
     const [total, setTotal] = useState(0);
     const [descontos, setDescontos] = useState(0);
-
     const [qtd, setQtd] = useState(0);
-
+    console.log(cart)
 
     const applyPromotion = (newItem: IProducts) => {
         let price = 0;

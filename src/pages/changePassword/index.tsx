@@ -7,7 +7,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TiEdit } from "react-icons/ti";
 import { api } from "@/api";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/hooks/AuthContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -114,7 +114,7 @@ const ChangePassword = () => {
                 type="submit"
                 className={`${
                   loading ? "disabled cursor-not-allowed opacity-70" : ""
-                } text-xs bg-secondaryColor text-white flex items-center justify-center py-1.5 w-full rounded-md border-0 hover:bg-primaryColor transition-all mt-2 mb-3`}
+                } text-xs bg-primaryColor text-white flex items-center justify-center py-1.5 w-full rounded-md border-0 hover:bg-secondaryColor transition-all mt-2 mb-3`}
               >
                 {loading ? (
                   <AiOutlineLoading3Quarters

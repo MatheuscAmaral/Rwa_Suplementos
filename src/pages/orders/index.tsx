@@ -18,14 +18,14 @@ import { IoIosSearch } from "react-icons/io";
 import { LuPackageSearch } from "react-icons/lu";
 import { formatData } from "@/format/formatData";
 import { formatPrice } from "@/format/formatPrice";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/hooks/AuthContext";
 import { useEffect, useState, useContext, useRef } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Container from "@/components/container";
 import toast from "react-hot-toast";
 import Menu from "@/components/menu";
 import { Button } from "@/components/ui/button";
-import { ReloadContext } from "@/contexts/ReloadContext";
+import { ReloadContext } from "@/hooks/ReloadContext";
   
 
 export const Orders = () => {

@@ -3,7 +3,7 @@ import logo from "../../assets/rwalogo2.png";
 import { Input } from '@/components/ui/input';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useContext , useEffect} from 'react';
-import { AuthContext } from '@/contexts/AuthContext';
+import { AuthContext } from '@/hooks/AuthContext';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Md123 } from "react-icons/md";
 import { api } from '@/api';
@@ -18,12 +18,26 @@ export const SignIn = () => {
     const [cpf, setCpf] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { authUser, } = useContext(AuthContext);
+    const { authUser, user } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
     const handleCpfChange = (value: string) => {
         setCpf(value);
     };
+
+    const verifyIfUserIsAuthenticated = () => {
+        const lastRouteString = localStorage.getItem("@lastVisitedRoute");
+        if (lastRouteString) {
+            const lastRoute = JSON.parse(lastRouteString);
+            if (user.length > 0) {
+                navigate(lastRoute);
+            }
+        }
+    }
+
+    useEffect(() => {
+        verifyIfUserIsAuthenticated();
+    }, [user])
 
     async function verifyLogin(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -86,7 +100,7 @@ export const SignIn = () => {
                         }
                     </div>
 
-                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-secondaryColor text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
+                    <button id='button' className={`${loading ? "disabled cursor-not-allowed opacity-70" : ""} text-sm bg-primaryColor hover:bg-secondaryColor transition-all text-white flex items-center justify-center py-3 w-full rounded-lg border-0`}>
                         {
                             loading ? (
                                 <AiOutlineLoading3Quarters fontSize={22} className=' transition-all animate-spin'/>
@@ -100,7 +114,7 @@ export const SignIn = () => {
                 </form>
 
                 <p className='text-xs md:text-sm flex gap-1'>Não possui usuário? 
-                    <Link to={"/cadastro"} className='text-secondaryColor'>
+                    <Link to={"/cadastro"} className='text-primaryColor hover:text-secondaryColor transition-all'>
                         Cadastre-se
                     </Link>
                 </p>

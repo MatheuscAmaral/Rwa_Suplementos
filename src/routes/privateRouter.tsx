@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/hooks/AuthContext";
 
 export const PrivateRoute = ({children}: any) => {
     const {user, authUser} = useContext(AuthContext);
@@ -10,7 +10,9 @@ export const PrivateRoute = ({children}: any) => {
         const verifyStoredUser =  () => {
             const storedUser = localStorage.getItem("@userEcommerce");
 
-            localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
+            if (location.pathname != "/login") {
+                localStorage.setItem("@lastVisitedRoute", JSON.stringify(location.pathname));
+            }
         
             if (storedUser != null) {
                 const user = JSON.parse(storedUser);

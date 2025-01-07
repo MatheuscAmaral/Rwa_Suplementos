@@ -8,7 +8,7 @@ import {
 import { api } from "../../api";
 import { useEffect, useState } from 'react';
 import { useContext } from "react";
-import { CartContext } from "@/contexts/CartContext";
+import { CartContext } from "@/hooks/CartContext";
 import { FaCartPlus } from "react-icons/fa";
 import { Carousel as ResponsiveCarousel  } from 'react-responsive-carousel';
 import carousel1 from '../../assets/carousel1.png'

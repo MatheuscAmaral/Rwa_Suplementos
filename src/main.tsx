@@ -3,9 +3,9 @@ import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import router from "../src/routes";
 
-import CartProvider from './contexts/CartContext';
-import AuthProvider from './contexts/AuthContext';
-import ReloadProvider from './contexts/ReloadContext';
+import CartProvider from './hooks/CartContext';
+import AuthProvider from './hooks/AuthContext';
+import ReloadProvider from './hooks/ReloadContext';
 
 import { Toaster } from 'react-hot-toast'
 

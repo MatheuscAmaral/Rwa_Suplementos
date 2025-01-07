@@ -6,7 +6,7 @@ import { IoCart, IoChevronBackCircle } from "react-icons/io5";
 import { BsFillCartXFill } from "react-icons/bs";
 import { CiBoxList } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthContext } from "@/hooks/AuthContext";
 import { IOrders } from "@/interfaces/IOrders";
 import { formatCep } from "@/format/formatCep";
 import { formatPrice } from "@/format/formatPrice";
